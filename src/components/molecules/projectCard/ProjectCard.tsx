@@ -1,3 +1,4 @@
+import { Divider } from '@material-ui/core';
 import {
   Avatar,
   Card,
@@ -26,7 +27,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(3),
   },
   linearProgress: {
-    margin: theme.spacing(3, 0, 1),
+    margin: theme.spacing(2, 0, 0),
+  },
+  grid: {
+    margin: theme.spacing(0, 0, 1),
   },
   bold: {
     fontWeight: 600,
@@ -73,7 +77,12 @@ const ProjectCard: FC<any> = ({ item }) => {
             className={classes.description}>
             {item.description}
           </Typography>
-          <Grid container direction="row" alignItems="center" spacing={2}>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            spacing={2}
+            className={classes.grid}>
             <Grid item>
               <Avatar
                 alt="Robert Jervis"
@@ -98,8 +107,8 @@ const ProjectCard: FC<any> = ({ item }) => {
               </Grid>
             </Grid>
           </Grid>
+          <Divider />
           <div className={classes.linearProgress}>
-            <BorderLinearProgress variant="determinate" value={50} />
             <Grid
               container
               justify="space-between"
@@ -107,23 +116,19 @@ const ProjectCard: FC<any> = ({ item }) => {
               direction="row">
               <Grid item>
                 <Typography align="center" className={classes.bold}>
+                  ۵۰ میلیون تومان
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography align="center" className={classes.bold}>
                   ۳۲٪
                 </Typography>
-                <Typography align="center">سرمایه‌گذاری</Typography>
-              </Grid>
-              <Grid item>
-                <Typography align="center" className={classes.bold}>
-                  ۵۰ میلیون
-                </Typography>
-                <Typography align="center">هدف</Typography>
-              </Grid>
-              <Grid item>
-                <Typography align="center" className={classes.bold}>
-                  ۱۰ روز
-                </Typography>
-                <Typography align="center">تا پایان</Typography>
               </Grid>
             </Grid>
+            <div style={{ margin: '5px 0' }}>
+              <BorderLinearProgress variant="determinate" value={50} />
+            </div>
+            <Typography className={classes.bold}>۱۰ روز</Typography>
           </div>
         </CardContent>
       </CardActionArea>
