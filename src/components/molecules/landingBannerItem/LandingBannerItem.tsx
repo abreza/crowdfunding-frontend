@@ -1,4 +1,4 @@
-import { Button, makeStyles, Theme } from '@material-ui/core';
+import { Button, makeStyles, Theme, Typography } from '@material-ui/core';
 import { FC } from 'react';
 
 const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
@@ -21,7 +21,7 @@ const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
       top: 0,
       width: '100%',
       height: '100%',
-      backgroundImage: 'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55))',
+      backgroundImage: 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6))',
       content: '""',
     },
   }),
@@ -39,6 +39,15 @@ const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
       width: '90%',
     },
   },
+  description: {
+    display: '-webkit-box',
+    maxWidth: '100%',
+    WebkitLineClamp: '4' as any,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    marginBottom: theme.spacing(3),
+  },
 }));
 
 const LandingBannerItem: FC<any> = ({ item }) => {
@@ -48,9 +57,11 @@ const LandingBannerItem: FC<any> = ({ item }) => {
     <div className={classes.bannerItem}>
       <div className={classes.bannerItemBackground}></div>
       <div className={classes.bannerItemContent}>
-        <h2>{item.name}</h2>
-        <p>{item.description}</p>
-        <Button style={{ color: 'white' }} variant="outlined">
+        <Typography variant="h2">{item.name}</Typography>
+        <Typography variant="body1" className={classes.description}>
+          {item.description}
+        </Typography>
+        <Button variant="outlined" color="inherit">
           مشاهده
         </Button>
       </div>
