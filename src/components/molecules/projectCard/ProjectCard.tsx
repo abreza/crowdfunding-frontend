@@ -42,13 +42,8 @@ const BorderLinearProgress = withStyles((theme) => ({
     height: 10,
     borderRadius: 5,
   },
-  colorPrimary: {
-    backgroundColor:
-      theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-  },
   bar: {
     borderRadius: 5,
-    backgroundColor: '#1a90ff',
   },
 }))(LinearProgress);
 
@@ -126,7 +121,11 @@ const ProjectCard: FC<any> = ({ item }) => {
               </Grid>
             </Grid>
             <div style={{ margin: '5px 0' }}>
-              <BorderLinearProgress variant="determinate" value={50} />
+              <BorderLinearProgress
+                variant="determinate"
+                value={50}
+                color="secondary"
+              />
             </div>
             <Typography className={classes.bold}>۱۰ روز</Typography>
           </div>
