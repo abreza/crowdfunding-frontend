@@ -1,7 +1,7 @@
 const theme = {
   palette: {
     primary: {
-      main: '#5197aa',
+      main: '#ED5513',
     },
     grey: {
       100: '#fefefe',
@@ -9,7 +9,8 @@ const theme = {
       400: 'rgba(0,0,0,0.1)',
     },
     secondary: {
-      main: '#3d4977',
+      main: '#50C7DF',
+      dark: '#317DB0',
     },
     error: {
       main: '#EB1748',

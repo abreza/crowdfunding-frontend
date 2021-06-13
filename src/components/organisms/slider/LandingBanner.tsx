@@ -2,7 +2,8 @@ import { Button, Grid } from '@material-ui/core';
 import { Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBannerItem';
-import { FC } from 'react';
+import { LandingContext } from 'pages/Landing';
+import { FC, useContext } from 'react';
 import Carousel from 'react-material-ui-carousel';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,6 +96,8 @@ const LandingBanner: FC<{}> = () => {
     },
   ];
 
+  const { scrollToWIC, openAuthDialog } = useContext(LandingContext);
+
   return (
     <div style={{ position: 'relative' }}>
       <Paper className={classes.paper}>
@@ -116,12 +119,15 @@ const LandingBanner: FC<{}> = () => {
           </Grid>
           <Grid container item spacing={3}>
             <Grid item>
-              <Button variant="outlined" color="primary">
+              <Button variant="outlined" color="primary" onClick={scrollToWIC}>
                 مطالعه بیشتر
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={openAuthDialog}>
                 ثبت‌نام
               </Button>
             </Grid>
