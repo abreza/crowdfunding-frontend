@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { accountReducer } from 'reduxSlices/accountSlice';
 import { translatorReducer } from 'reduxSlices/localSlice';
+import { projectsReducer } from 'reduxSlices/projectsSlice';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 export const store = configureStore({
   reducer: {
+    projects: projectsReducer,
     account: accountReducer,
     local: translatorReducer,
   },

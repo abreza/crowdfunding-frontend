@@ -6,6 +6,8 @@ import { LandingContext } from 'pages/Landing';
 import { HomepageContext } from 'templates/Homepages';
 import { FC, useContext } from 'react';
 import Carousel from 'react-material-ui-carousel';
+import { useSelector } from 'react-redux';
+import { RootState } from 'configs/redux/store';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,64 +40,7 @@ const useStyles = makeStyles((theme) => ({
 const LandingBanner: FC<{}> = () => {
   const classes = useStyles();
 
-  const items = [
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: 'پرینتر ۳ بعدی با دقت نانومتر',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
-      name: 'رویداد WSS',
-      description: `چهارمین دوره از سمینار زمستانه مباحث پیشرفته در علوم و مهندسی کامپیوتر (WSS) امسال در تاریخ ۵ و ۶ دی‌ماه مطابق با روال همیشه در دانشگاه صنعتی شریف برگزار می‌گردد.
-        در این سمینار با ارائه‌ی سخنرانی‌های علمی-تخصصی توسط مدعوینی خبره از سراسر دنیا، آخرين دستاوردهای علمی در زمينه‌های مختلف علوم و مهندسی کامپیوتر در قالب یک سمینار دو روزه ارائه می‌گردد. اطلاعات تکمیلی من جمله برنامه‌ی زمانی رویداد و جزئیات سمینارها را می‌توانید از سایت سمینار زمستانه کسب کنید. هم‌چنین اطلاع‌رسانی رویداد از طریق کانال تلگرامی رویداد خواهد بود.`,
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: 'پرینتر ۳ بعدی با دقت نانومتر',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
-      name: 'رویداد WSS',
-      description: `چهارمین دوره از سمینار زمستانه مباحث پیشرفته در علوم و مهندسی کامپیوتر (WSS) امسال در تاریخ ۵ و ۶ دی‌ماه مطابق با روال همیشه در دانشگاه صنعتی شریف برگزار می‌گردد.
-        در این سمینار با ارائه‌ی سخنرانی‌های علمی-تخصصی توسط مدعوینی خبره از سراسر دنیا، آخرين دستاوردهای علمی در زمينه‌های مختلف علوم و مهندسی کامپیوتر در قالب یک سمینار دو روزه ارائه می‌گردد. اطلاعات تکمیلی من جمله برنامه‌ی زمانی رویداد و جزئیات سمینارها را می‌توانید از سایت سمینار زمستانه کسب کنید. هم‌چنین اطلاع‌رسانی رویداد از طریق کانال تلگرامی رویداد خواهد بود.`,
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: 'پرینتر ۳ بعدی با دقت نانومتر',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
-      name: 'رویداد WSS',
-      description: `چهارمین دوره از سمینار زمستانه مباحث پیشرفته در علوم و مهندسی کامپیوتر (WSS) امسال در تاریخ ۵ و ۶ دی‌ماه مطابق با روال همیشه در دانشگاه صنعتی شریف برگزار می‌گردد.
-        در این سمینار با ارائه‌ی سخنرانی‌های علمی-تخصصی توسط مدعوینی خبره از سراسر دنیا، آخرين دستاوردهای علمی در زمينه‌های مختلف علوم و مهندسی کامپیوتر در قالب یک سمینار دو روزه ارائه می‌گردد. اطلاعات تکمیلی من جمله برنامه‌ی زمانی رویداد و جزئیات سمینارها را می‌توانید از سایت سمینار زمستانه کسب کنید. هم‌چنین اطلاع‌رسانی رویداد از طریق کانال تلگرامی رویداد خواهد بود.`,
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: 'پرینتر ۳ بعدی با دقت نانومتر',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
-      name: 'رویداد WSS',
-      description: `چهارمین دوره از سمینار زمستانه مباحث پیشرفته در علوم و مهندسی کامپیوتر (WSS) امسال در تاریخ ۵ و ۶ دی‌ماه مطابق با روال همیشه در دانشگاه صنعتی شریف برگزار می‌گردد.
-        در این سمینار با ارائه‌ی سخنرانی‌های علمی-تخصصی توسط مدعوینی خبره از سراسر دنیا، آخرين دستاوردهای علمی در زمينه‌های مختلف علوم و مهندسی کامپیوتر در قالب یک سمینار دو روزه ارائه می‌گردد. اطلاعات تکمیلی من جمله برنامه‌ی زمانی رویداد و جزئیات سمینارها را می‌توانید از سایت سمینار زمستانه کسب کنید. هم‌چنین اطلاع‌رسانی رویداد از طریق کانال تلگرامی رویداد خواهد بود.`,
-    },
-  ];
+  const projects = useSelector((state: RootState) => state.projects.projects);
 
   const { scrollToWIC } = useContext(LandingContext);
   const { openAuthDialog } = useContext(HomepageContext);
@@ -153,7 +98,7 @@ const LandingBanner: FC<{}> = () => {
             className: classes.indicatorContainer,
           } as any
         }>
-        {items.map((item, i) => (
+        {projects.map((item, i) => (
           <LandingBannerItem key={i} item={item} />
         ))}
       </Carousel>

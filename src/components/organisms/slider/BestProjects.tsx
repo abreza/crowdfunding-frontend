@@ -8,7 +8,9 @@ import {
 } from '@material-ui/core';
 import { ArrowForward, ArrowBack } from '@material-ui/icons';
 import ChunkedCarousel from 'components/molecules/chunkedCarousel/ChunkedCarousel';
+import { RootState } from 'configs/redux/store';
 import { FC, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,65 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const BestProjects: FC<{}> = () => {
   const classes = useStyles();
 
-  const items = [
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: 'پرینتر ۳ بعدی',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
-      name: 'رویداد WSS',
-      description: `چهارمین دوره از سمینار زمستانه مباحث پیشرفته در علوم و مهندسی کامپیوتر (WSS) امسال در تاریخ ۵ و ۶ دی‌ماه مطابق با روال همیشه در دانشگاه صنعتی شریف برگزار می‌گردد.
-        در این سمینار با ارائه‌ی سخنرانی‌های علمی-تخصصی توسط مدعوینی خبره از سراسر دنیا، آخرين دستاوردهای علمی در زمينه‌های مختلف علوم و مهندسی کامپیوتر در قالب یک سمینار دو روزه ارائه می‌گردد. اطلاعات تکمیلی من جمله برنامه‌ی زمانی رویداد و جزئیات سمینارها را می‌توانید از سایت سمینار زمستانه کسب کنید. هم‌چنین اطلاع‌رسانی رویداد از طریق کانال تلگرامی رویداد خواهد بود.
-        از كليه دانشجویان، پژوهشگران و متخصصان دانشگاه‌ها و مؤسسات تحقيقاتی در رشته‌های مرتبط با محورهای سمینار، دعوت می‌شود تا از تاریخ ۱۷ آذرماه تا ۱ دی‌ماه از طریق صفحه‌ی سمینار نسبت به ثبت‌نام اقدام نمایند. با توجه به ظرفیت محدود سمینار، اولیت با افرادی است که زود‌تر ثبت‌نام کنند.`,
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: '3',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: '4',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: '5',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: '5',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: '5',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-    {
-      image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
-      name: '5',
-      description:
-        'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول امکان استفاده صنعتی از آن را فراهم کرده است.',
-    },
-  ];
+  const projects = useSelector((state: RootState) => state.projects.projects);
 
   const [index, setIndex] = useState(0);
 
@@ -112,7 +56,7 @@ const BestProjects: FC<{}> = () => {
         </Grid>
       </Grid>
       <ChunkedCarousel
-        items={items}
+        items={projects}
         rtl
         setting={{
           fullHeightHover: true,
