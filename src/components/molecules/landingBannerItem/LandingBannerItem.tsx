@@ -1,5 +1,6 @@
 import { Button, makeStyles, Theme, Typography } from '@material-ui/core';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
   bannerItem: {
@@ -61,7 +62,11 @@ const LandingBannerItem: FC<any> = ({ item }) => {
         <Typography variant="body1" className={classes.description}>
           {item.description}
         </Typography>
-        <Button variant="outlined" color="inherit">
+        <Button
+          variant="outlined"
+          color="inherit"
+          component={Link}
+          to={`/project/${item.id}`}>
           مشاهده
         </Button>
       </div>

@@ -1,4 +1,4 @@
-import { Divider } from '@material-ui/core';
+import { Box, Divider } from '@material-ui/core';
 import {
   Avatar,
   Card,
@@ -12,6 +12,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BorderLinearProgress = withStyles((theme) => ({
+export const BorderLinearProgress = withStyles((theme) => ({
   root: {
     height: 10,
     borderRadius: 5,
@@ -52,7 +53,7 @@ const ProjectCard: FC<any> = ({ item }) => {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea component={Link} to={`/project/${item.id}`} disableRipple>
         <CardMedia
           component="img"
           alt={item.name}
@@ -120,13 +121,13 @@ const ProjectCard: FC<any> = ({ item }) => {
                 </Typography>
               </Grid>
             </Grid>
-            <div style={{ margin: '5px 0' }}>
+            <Box my={3}>
               <BorderLinearProgress
                 variant="determinate"
                 value={50}
                 color="secondary"
               />
-            </div>
+            </Box>
             <Typography className={classes.bold}>۱۰ روز</Typography>
           </div>
         </CardContent>
