@@ -9,6 +9,7 @@ import {
 import { ArrowForward, ArrowBack } from '@material-ui/icons';
 import ChunkedCarousel from 'components/molecules/chunkedCarousel/ChunkedCarousel';
 import { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -124,7 +125,11 @@ const BestProjects: FC<{}> = () => {
       />
       <Grid container alignItems="center" justify="center">
         <Grid item>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/projects">
             مشاهده همه
           </Button>
         </Grid>
