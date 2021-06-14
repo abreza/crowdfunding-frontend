@@ -65,7 +65,7 @@ const Projects: FC<ProjectsProps> = () => {
           <Grid
             container
             direction="row"
-            spacing={3}
+            spacing={2}
             alignItems="center"
             justify="flex-start">
             <Grid item>
