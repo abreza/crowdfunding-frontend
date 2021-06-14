@@ -1,4 +1,4 @@
-import { FC, MutableRefObject, useRef, createContext } from 'react';
+import { FC, MutableRefObject, useRef, createContext, useEffect } from 'react';
 import LandingBanner from 'components/organisms/slider/LandingBanner';
 import BestProjects from 'components/organisms/slider/BestProjects';
 import LandingSubscribe from 'components/organisms/landingSections/landingSubscrib/LandingSubscribe';
@@ -6,20 +6,26 @@ import { Divider } from '@material-ui/core';
 import WhatIsCrowdfunding from 'components/organisms/landingSections/whatIsCrowdfunding/WhatIsCrowdfunding';
 import Homepage from 'templates/Homepages';
 
-type LandingProps = {};
+type LandingProps = {
+  location: any;
+};
 
-export const LandingContext = createContext({
-  scrollToWIC: () => {},
-});
+const scrollToWIC = () => '/?sc=what-is-crowdfunding';
 
-const Landing: FC<LandingProps> = () => {
+export const LandingContext = createContext({ scrollToWIC });
+
+const Landing: FC<LandingProps> = ({ location }) => {
   const whatIsCrowdfunding = useRef() as MutableRefObject<HTMLDivElement>;
-  const scrollToWIC = () => {
-    whatIsCrowdfunding.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
+
+  useEffect(() => {
+    const sc = new URLSearchParams(location?.search).get('sc');
+    if (sc === 'what-is-crowdfunding') {
+      whatIsCrowdfunding.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }, [location]);
 
   return (
     <Homepage>

@@ -1,19 +1,19 @@
 import { FC, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
-const ScrollToTop: FC<any> = ({ history, children }) => {
+const ScrollToTop: FC<any> = ({ history, children, location }) => {
   useEffect(() => {
-    const unListen = history.listen(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
+    const sc = new URLSearchParams(location?.search).get('sc');
+    if (sc) {
+      return;
+    }
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
     });
-    return () => {
-      unListen();
-    };
-  }, []);
+  }, [location, history]);
 
   return <>{children}</>;
 };
