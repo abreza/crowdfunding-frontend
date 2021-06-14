@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core';
-import { FC } from 'react';
+import UseWindowDimensions from 'components/hoc/UseWindowSize';
+import { FC, useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import ProjectCard from '../projectCard/ProjectCard';
 
@@ -9,7 +10,21 @@ const ChunkedCarousel: FC<{
   index: number;
   setting: any;
 }> = ({ items, rtl = false, index = 0, setting }) => {
-  const chunk = 3;
+  const windowDimensions = UseWindowDimensions(600);
+
+  const [chunk, setChunk] = useState(3);
+
+  useEffect(() => {
+    setChunk(
+      windowDimensions.width < 600
+        ? 1
+        : windowDimensions.width < 960
+        ? 2
+        : windowDimensions.width < 1280
+        ? 3
+        : 4
+    );
+  }, [windowDimensions]);
   const tempItems = [];
 
   for (let i = 0; i < items.length; i += chunk) {
