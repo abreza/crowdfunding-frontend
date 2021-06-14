@@ -1,3 +1,4 @@
+import { HomepageContext } from 'templates/Homepages';
 import { Button } from '@material-ui/core';
 import NavbarLogo from 'components/atoms/NavbarLogo';
 import NavbarSearch from 'components/atoms/NavbarSearch';
@@ -5,7 +6,8 @@ import { LandingContext } from 'pages/Landing';
 import { useContext } from 'react';
 
 const LandingAppBarItems = () => {
-  const { scrollToWIC, openAuthDialog } = useContext(LandingContext);
+  const { scrollToWIC } = useContext(LandingContext);
+  const { openAuthDialog } = useContext(HomepageContext);
 
   return {
     desktopLeftItems: [

@@ -3,6 +3,7 @@ import { Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBannerItem';
 import { LandingContext } from 'pages/Landing';
+import { HomepageContext } from 'templates/Homepages';
 import { FC, useContext } from 'react';
 import Carousel from 'react-material-ui-carousel';
 
@@ -96,7 +97,8 @@ const LandingBanner: FC<{}> = () => {
     },
   ];
 
-  const { scrollToWIC, openAuthDialog } = useContext(LandingContext);
+  const { scrollToWIC } = useContext(LandingContext);
+  const { openAuthDialog } = useContext(HomepageContext);
 
   return (
     <div style={{ position: 'relative' }}>

@@ -1,18 +1,15 @@
-import { FC, MutableRefObject, useRef, createContext, useState } from 'react';
+import { FC, MutableRefObject, useRef, createContext } from 'react';
 import LandingBanner from 'components/organisms/slider/LandingBanner';
 import BestProjects from 'components/organisms/slider/BestProjects';
-import ResponsiveAppBar from 'components/organisms/navbar/LandingNavbar';
 import LandingSubscribe from 'components/organisms/landingSections/landingSubscrib/LandingSubscribe';
 import { Divider } from '@material-ui/core';
 import WhatIsCrowdfunding from 'components/organisms/landingSections/whatIsCrowdfunding/WhatIsCrowdfunding';
-import Footer from 'components/organisms/footer/Footer';
-import AuthDialog from 'components/molecules/authDialog/AuthDialog';
+import Homepage from 'templates/Homepages';
 
 type LandingProps = {};
 
 export const LandingContext = createContext({
   scrollToWIC: () => {},
-  openAuthDialog: () => {},
 });
 
 const Landing: FC<LandingProps> = () => {
@@ -24,13 +21,9 @@ const Landing: FC<LandingProps> = () => {
     });
   };
 
-  const [openAuthDialog, setOpenAuthDialog] = useState(false);
-
   return (
-    <div>
-      <LandingContext.Provider
-        value={{ scrollToWIC, openAuthDialog: () => setOpenAuthDialog(true) }}>
-        <ResponsiveAppBar />
+    <Homepage>
+      <LandingContext.Provider value={{ scrollToWIC }}>
         <LandingBanner />
         <BestProjects />
         <Divider />
@@ -41,13 +34,8 @@ const Landing: FC<LandingProps> = () => {
           style={{ scrollMarginTop: 50, scrollSnapMargin: 50 }}>
           <WhatIsCrowdfunding />
         </div>
-        <Footer />
       </LandingContext.Provider>
-      <AuthDialog
-        open={openAuthDialog}
-        handleClose={() => setOpenAuthDialog(false)}
-      />
-    </div>
+    </Homepage>
   );
 };
 
