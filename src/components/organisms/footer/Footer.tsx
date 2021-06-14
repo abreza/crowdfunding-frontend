@@ -14,6 +14,7 @@ import {
   Instagram as InstagramIcon,
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -56,11 +57,13 @@ export default function Footer() {
             justify="center"
             spacing={2}>
             <Grid item xs={6}>
-              <img
-                src={process.env.PUBLIC_URL + 'logo2.png'}
-                alt="logo"
-                style={{ width: '100%' }}
-              />
+              <Link to="/">
+                <img
+                  src={process.env.PUBLIC_URL + 'logo2.png'}
+                  alt="logo"
+                  style={{ width: '100%' }}
+                />
+              </Link>
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -87,13 +90,19 @@ export default function Footer() {
               </Typography>
             </Grid>
             <Grid item>
-              <Button color="inherit">مهندسی کامپیوتر</Button>
+              <Button color="inherit" component={Link} to="/projects">
+                مهندسی کامپیوتر
+              </Button>
             </Grid>
             <Grid item>
-              <Button color="inherit">علوم شیمی</Button>
+              <Button color="inherit" component={Link} to="/projects">
+                علوم شیمی
+              </Button>
             </Grid>
             <Grid item>
-              <Button color="inherit">علوم فیزیک</Button>
+              <Button color="inherit" component={Link} to="/projects">
+                علوم فیزیک
+              </Button>
             </Grid>
           </Grid>
         </Grid>
