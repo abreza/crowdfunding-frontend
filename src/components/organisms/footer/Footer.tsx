@@ -56,7 +56,7 @@ export default function Footer() {
             alignItems="center"
             justify="center"
             spacing={2}>
-            <Grid item xs={6}>
+            <Grid item xs={4} sm={5}>
               <Link to="/">
                 <img
                   src={process.env.PUBLIC_URL + '/logo2.png'}
@@ -151,10 +151,10 @@ export default function Footer() {
               <Button color="inherit">بلاگ</Button>
             </Grid>
             <Grid item>
-              <Button color="inherit">تماس‌با ما</Button>
+              <Button color="inherit">تماس با ما</Button>
             </Grid>
             <Grid item>
-              <Button color="inherit">درباره‌ما</Button>
+              <Button color="inherit">درباره ما</Button>
             </Grid>
           </Grid>
         </Grid>
