@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   image: {
-    background: `url(${process.env.PUBLIC_URL + 'pic1.png'})`,
+    background: `url(${process.env.PUBLIC_URL + '/pic1.png'})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',

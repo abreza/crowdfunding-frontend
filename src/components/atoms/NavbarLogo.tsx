@@ -10,7 +10,7 @@ const NavbarLogo: FC<{}> = () => {
       <img
         src={
           process.env.PUBLIC_URL +
-          (windowDimensions.width < 960 ? 'logo2.png' : 'logo3.png')
+          (windowDimensions.width < 960 ? '/logo2.png' : '/logo3.png')
         }
         alt="logo"
         style={{ height: 35 }}

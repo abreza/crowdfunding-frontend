@@ -59,7 +59,7 @@ export default function Footer() {
             <Grid item xs={6}>
               <Link to="/">
                 <img
-                  src={process.env.PUBLIC_URL + 'logo2.png'}
+                  src={process.env.PUBLIC_URL + '/logo2.png'}
                   alt="logo"
                   style={{ width: '100%' }}
                 />

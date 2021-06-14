@@ -31,7 +31,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
         <Grid container spacing={2} alignItems="center" justify="center">
           <Grid item sm={6} xs={12}>
             <img
-              src={process.env.PUBLIC_URL + 'pic2.png'}
+              src={process.env.PUBLIC_URL + '/pic2.png'}
               alt="crowdfunding"
               className={classes.img}
             />
@@ -65,14 +65,14 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           </Grid>
           <Grid item sm={6} xs={12}>
             <img
-              src={process.env.PUBLIC_URL + 'pic6.png'}
+              src={process.env.PUBLIC_URL + '/pic6.png'}
               alt="crowdfunding"
               className={classes.img}
             />
           </Grid>
           <Grid item sm={6} xs={12}>
             <img
-              src={process.env.PUBLIC_URL + 'pic7.png'}
+              src={process.env.PUBLIC_URL + '/pic7.png'}
               alt="crowdfunding"
               className={classes.img}
             />
