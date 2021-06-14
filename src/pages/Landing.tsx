@@ -1,4 +1,4 @@
-import { FC, MutableRefObject, useRef, createContext, useEffect } from 'react';
+import { FC, MutableRefObject, useRef, useEffect } from 'react';
 import LandingBanner from 'components/organisms/slider/LandingBanner';
 import BestProjects from 'components/organisms/slider/BestProjects';
 import LandingSubscribe from 'components/organisms/landingSections/landingSubscrib/LandingSubscribe';
@@ -9,10 +9,6 @@ import Homepage from 'templates/Homepages';
 type LandingProps = {
   location: any;
 };
-
-const scrollToWIC = () => '/?sc=what-is-crowdfunding';
-
-export const LandingContext = createContext({ scrollToWIC });
 
 const Landing: FC<LandingProps> = ({ location }) => {
   const whatIsCrowdfunding = useRef() as MutableRefObject<HTMLDivElement>;
@@ -29,18 +25,16 @@ const Landing: FC<LandingProps> = ({ location }) => {
 
   return (
     <Homepage>
-      <LandingContext.Provider value={{ scrollToWIC }}>
-        <LandingBanner />
-        <BestProjects />
-        <Divider />
-        <LandingSubscribe />
-        <Divider />
-        <div
-          ref={whatIsCrowdfunding}
-          style={{ scrollMarginTop: 50, scrollSnapMargin: 50 }}>
-          <WhatIsCrowdfunding />
-        </div>
-      </LandingContext.Provider>
+      <LandingBanner />
+      <BestProjects />
+      <Divider />
+      <LandingSubscribe />
+      <Divider />
+      <div
+        ref={whatIsCrowdfunding}
+        style={{ scrollMarginTop: 50, scrollSnapMargin: 50 }}>
+        <WhatIsCrowdfunding />
+      </div>
     </Homepage>
   );
 };

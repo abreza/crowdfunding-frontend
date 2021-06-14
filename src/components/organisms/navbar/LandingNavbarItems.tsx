@@ -2,41 +2,32 @@ import { HomepageContext } from 'templates/Homepages';
 import { Button } from '@material-ui/core';
 import NavbarLogo from 'components/atoms/NavbarLogo';
 import NavbarSearch from 'components/atoms/NavbarSearch';
-import { LandingContext } from 'pages/Landing';
-import { useContext } from 'react';
-import { useHistory } from 'react-router';
+import { useContext, ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingAppBarItems = () => {
-  const { scrollToWIC } = useContext(LandingContext);
   const { openAuthDialog } = useContext(HomepageContext);
 
-  const history = useHistory();
+  const SignUpButton: ReactElement = (
+    <Button onClick={openAuthDialog}>ثبت‌نام</Button>
+  );
+
+  const LoginButton: ReactElement = (
+    <Button onClick={openAuthDialog}>ورود</Button>
+  );
+
+  const WICButton: ReactElement = (
+    <Button component={Link} to="/?sc=what-is-crowdfunding">
+      تامین‌مالی جمعی چیست؟
+    </Button>
+  );
 
   return {
-    desktopLeftItems: [
-      <Button onClick={openAuthDialog}>ثبت‌نام</Button>,
-      <Button onClick={openAuthDialog}>ورود</Button>,
-    ],
-    desktopRightItems: [
-      <NavbarLogo />,
-      <Button
-        onClick={() => {
-          const res = scrollToWIC();
-          if (typeof res === 'string') {
-            history.push(res);
-          }
-        }}>
-        تامین‌مالی جمعی چیست؟
-      </Button>,
-      <NavbarSearch />,
-    ],
+    desktopLeftItems: [SignUpButton, LoginButton],
+    desktopRightItems: [<NavbarLogo />, WICButton, <NavbarSearch />],
     mobileLeftItems: [<NavbarLogo />],
     mobileRightItems: [<NavbarSearch />],
-    mobileMenuListItems: [
-      <Button>ثبت‌نام</Button>,
-      <Button>ورود</Button>,
-      <Button>تامین‌مالی جمعی چیست؟</Button>,
-    ],
+    mobileMenuListItems: [SignUpButton, LoginButton, WICButton],
   };
 };
 

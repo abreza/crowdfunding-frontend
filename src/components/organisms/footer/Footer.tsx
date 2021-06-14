@@ -118,7 +118,12 @@ export default function Footer() {
               </Typography>
             </Grid>
             <Grid item>
-              <Button color="inherit">تامین‌مالی جمعی چیست؟</Button>
+              <Button
+                color="inherit"
+                component={Link}
+                to="/?sc=what-is-crowdfunding">
+                تامین‌مالی جمعی چیست؟
+              </Button>
             </Grid>
             <Grid item>
               <Button color="inherit">چرا تامین‌مالی جمعی شریف؟</Button>

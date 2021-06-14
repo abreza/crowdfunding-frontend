@@ -2,12 +2,12 @@ import { Button, Grid } from '@material-ui/core';
 import { Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBannerItem';
-import { LandingContext } from 'pages/Landing';
 import { HomepageContext } from 'templates/Homepages';
 import { FC, useContext } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { useSelector } from 'react-redux';
 import { RootState } from 'configs/redux/store';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,7 +42,6 @@ const LandingBanner: FC<{}> = () => {
 
   const projects = useSelector((state: RootState) => state.projects.projects);
 
-  const { scrollToWIC } = useContext(LandingContext);
   const { openAuthDialog } = useContext(HomepageContext);
 
   return (
@@ -66,7 +65,11 @@ const LandingBanner: FC<{}> = () => {
           </Grid>
           <Grid container item spacing={3}>
             <Grid item>
-              <Button variant="outlined" color="primary" onClick={scrollToWIC}>
+              <Button
+                variant="outlined"
+                color="primary"
+                component={Link}
+                to="/?sc=what-is-crowdfunding">
                 مطالعه بیشتر
               </Button>
             </Grid>
