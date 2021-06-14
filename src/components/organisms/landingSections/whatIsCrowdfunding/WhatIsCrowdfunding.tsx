@@ -6,6 +6,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -86,7 +87,11 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
             </Typography>
           </Grid>
           <Grid item container justify="center" xs={12} sm={12}>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              component={Link}
+              to="/projects">
               مشاهده پروژه‌های موفق
             </Button>
           </Grid>
