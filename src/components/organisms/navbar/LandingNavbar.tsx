@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import clsx from 'clsx';
-import { FC } from 'react';
+import { cloneElement, FC } from 'react';
 import { useState } from 'react';
 import HideOnScroll from '../../molecules/hideOnScroll/HideOnScroll';
 
@@ -53,10 +53,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ElevationScroll: FC<any> = ({ children, disable = false }) => {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
+  if (disable) return <>{children}</>;
+
+  return cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+  });
+};
+
 const ResponsiveAppBar: FC<any> = ({
   mode = 'LANDING',
   showBackOnScroll = false,
-  hideOnScroll = false,
+  disableHideOnScroll = true,
+  disableElevationScroll = false,
   width,
 }) => {
   const classes = useStyles();
@@ -76,57 +90,59 @@ const ResponsiveAppBar: FC<any> = ({
 
   return (
     <>
-      <HideOnScroll disable={!hideOnScroll}>
-        <AppBar
-          id="appBar"
-          className={clsx(
-            classes.appBar,
-            showBackOnScroll && !trigger && classes.hideBack
-          )}
-          color="inherit">
-          <Container>
-            <Toolbar disableGutters>
-              {mobileMenuListItems.length > 0 && (
-                <IconButton
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                  className={classes.menuButton}
-                  onClick={() => setDrawerOpen(true)}>
-                  <MenuIcon />
-                </IconButton>
-              )}
-              <Grid container justify="space-between">
-                <Grid item>
-                  <Grid
-                    spacing={1}
-                    container
-                    justify="flex-start"
-                    alignItems="center">
-                    {rightItems.map((item, index) => (
-                      <Grid key={index} item>
-                        {item}
-                      </Grid>
-                    ))}
+      <HideOnScroll disable={disableHideOnScroll}>
+        <ElevationScroll disable={disableElevationScroll}>
+          <AppBar
+            id="appBar"
+            className={clsx(
+              classes.appBar,
+              showBackOnScroll && !trigger && classes.hideBack
+            )}
+            color="inherit">
+            <Container>
+              <Toolbar disableGutters>
+                {mobileMenuListItems.length > 0 && (
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                    className={classes.menuButton}
+                    onClick={() => setDrawerOpen(true)}>
+                    <MenuIcon />
+                  </IconButton>
+                )}
+                <Grid container justify="space-between">
+                  <Grid item>
+                    <Grid
+                      spacing={1}
+                      container
+                      justify="flex-start"
+                      alignItems="center">
+                      {rightItems.map((item, index) => (
+                        <Grid key={index} item>
+                          {item}
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </Grid>
+                  <Grid item>
+                    <Grid
+                      spacing={1}
+                      container
+                      justify="flex-end"
+                      alignItems="center">
+                      {leftItems.map((item, index) => (
+                        <Grid key={index} item>
+                          {item}
+                        </Grid>
+                      ))}
+                    </Grid>
                   </Grid>
                 </Grid>
-                <Grid item>
-                  <Grid
-                    spacing={1}
-                    container
-                    justify="flex-end"
-                    alignItems="center">
-                    {leftItems.map((item, index) => (
-                      <Grid key={index} item>
-                        {item}
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Toolbar>
-          </Container>
-        </AppBar>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </ElevationScroll>
       </HideOnScroll>
       {mobileMenuListItems.length > 0 && (
         <Hidden smUp>
