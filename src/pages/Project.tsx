@@ -26,6 +26,9 @@ import { useSelector } from 'react-redux';
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing';
 import Homepage from 'templates/Homepages';
 import { fakeData } from 'constants/fakeData';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
+import 'assets/styles/gallery.css';
 
 type ProjectProps = {
   match: any;
@@ -44,9 +47,14 @@ const Project: FC<ProjectProps> = ({ match }) => {
   const classes = useStyles();
   const projectId = match?.params?.id;
 
-  const project: any = useSelector((state: RootState) =>
+  const project: {
+    id: string;
+    name: string;
+    subtitle: string;
+    gallery: any[];
+  } = useSelector((state: RootState) =>
     state.projects.projects.find((project) => +project.id === +projectId)
-  );
+  ) as any;
 
   return (
     <Homepage>
@@ -68,10 +76,14 @@ const Project: FC<ProjectProps> = ({ match }) => {
             spacing={3}>
             <Grid item sm={7} xs={12}>
               <Paper>
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className={classes.image}
+                <ImageGallery
+                  autoPlay={false}
+                  items={project.gallery.map((item) => ({
+                    ...item,
+                    originalHeight: 350,
+                  }))}
+                  lazyLoad={true}
+                  isRTL={true}
                 />
               </Paper>
             </Grid>
