@@ -5,8 +5,7 @@ const initialState = {
   projects: [
     {
       id: 0,
-      image:
-        'https://www.bhphotovideo.com/images/images2500x2500/makerbot_mp07825_replicator_3d_printer_1296081.jpg',
+      image: 'https://www.robotlab.com/hubfs/Makerbot%20Replicator+%203D-1.png',
       name: 'پرینتر ۳ بعدی',
       subtitle:
         'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول، امکان استفاده صنعتی از آن را فراهم کرده است.',
@@ -15,9 +14,9 @@ const initialState = {
       gallery: [
         {
           original:
-            'https://www.bhphotovideo.com/images/images2500x2500/makerbot_mp07825_replicator_3d_printer_1296081.jpg',
+            'https://www.robotlab.com/hubfs/Makerbot%20Replicator+%203D-1.png',
           thumbnail:
-            'https://www.bhphotovideo.com/images/images2500x2500/makerbot_mp07825_replicator_3d_printer_1296081.jpg',
+            'https://www.robotlab.com/hubfs/Makerbot%20Replicator+%203D-1.png',
         },
         {
           original: 'https://picsum.photos/id/1018/1000/600/',
