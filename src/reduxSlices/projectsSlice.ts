@@ -6,7 +6,7 @@ const initialState = {
     {
       id: 0,
       image:
-        'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
+        'https://www.bhphotovideo.com/images/images2500x2500/makerbot_mp07825_replicator_3d_printer_1296081.jpg',
       name: 'پرینتر ۳ بعدی',
       subtitle:
         'کیفیتی فوق‌العاده و طراحی بسیار دقیق جزئیات! سرعت بالای این محصول، امکان استفاده صنعتی از آن را فراهم کرده است.',
@@ -15,9 +15,9 @@ const initialState = {
       gallery: [
         {
           original:
-            'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
+            'https://www.bhphotovideo.com/images/images2500x2500/makerbot_mp07825_replicator_3d_printer_1296081.jpg',
           thumbnail:
-            'https://store.makerbot.com/media/catalog/product/cache/75b2125818f23adb3f72d90831c39808/r/e/replicator__1.png',
+            'https://www.bhphotovideo.com/images/images2500x2500/makerbot_mp07825_replicator_3d_printer_1296081.jpg',
         },
         {
           original: 'https://picsum.photos/id/1018/1000/600/',
