@@ -10,7 +10,7 @@ const defaultType = {
 };
 
 type dateFormatterType = {
-  date?: string;
+  date?: string | Date;
   lang?: languageType;
   format?: string;
 };
