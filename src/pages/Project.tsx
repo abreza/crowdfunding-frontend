@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: '100%',
   },
+  galleryPaper: {
+    overflow: 'hidden',
+  },
 }));
 
 const Project: FC<ProjectProps> = ({ match }) => {
@@ -75,12 +78,13 @@ const Project: FC<ProjectProps> = ({ match }) => {
             justify="space-between"
             spacing={3}>
             <Grid item sm={7} xs={12}>
-              <Paper>
+              <Paper className={classes.galleryPaper}>
                 <ImageGallery
                   autoPlay={false}
                   items={project.gallery.map((item) => ({
                     ...item,
-                    originalHeight: 350,
+                    originalHeight: 300,
+                    thumbnailHeight: 50,
                   }))}
                   lazyLoad={true}
                   isRTL={true}
