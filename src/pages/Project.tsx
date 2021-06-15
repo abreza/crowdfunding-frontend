@@ -1,6 +1,6 @@
 import { Container, makeStyles } from '@material-ui/core';
 import { RootState } from 'configs/redux/store';
-import { FC } from 'react';
+import { createContext, FC } from 'react';
 import { useSelector } from 'react-redux';
 import Homepage from 'templates/Homepages';
 import ProjectHead from 'components/organisms/projectSections/ProjectHead';
@@ -23,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+export const ProjectContext = createContext({});
+
 const Project: FC<ProjectProps> = ({ match }) => {
   const classes = useStyles();
   const projectId = match?.params?.id;
@@ -38,13 +40,15 @@ const Project: FC<ProjectProps> = ({ match }) => {
 
   return (
     <Homepage>
-      <div className={classes.root}>
-        <Container maxWidth="md">
-          <ProjectHead name={project.name} subtitle={project.subtitle} />
-          <ProjectStatus project={project} />
-          <ProjectTabs project={project} />
-        </Container>
-      </div>
+      <ProjectContext.Provider value={{ ...project }}>
+        <div className={classes.root}>
+          <Container maxWidth="md">
+            <ProjectHead />
+            <ProjectStatus />
+            <ProjectTabs />
+          </Container>
+        </div>
+      </ProjectContext.Provider>
     </Homepage>
   );
 };

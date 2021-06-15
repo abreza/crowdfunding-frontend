@@ -17,19 +17,13 @@ import {
   Telegram as TelegramIcon,
 } from '@material-ui/icons';
 import { BorderLinearProgress } from 'components/molecules/projectCard/ProjectCard';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import 'assets/styles/gallery.css';
+import { ProjectContext } from 'pages/Project';
 
-type ProjectStatusProps = {
-  project: {
-    id: string;
-    name: string;
-    subtitle: string;
-    gallery: any[];
-  };
-};
+type ProjectStatusProps = {};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,8 +37,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProjectStatus: FC<ProjectStatusProps> = ({ project }) => {
+const ProjectStatus: FC<ProjectStatusProps> = () => {
   const classes = useStyles();
+
+  const { gallery } = useContext(ProjectContext) as { gallery: any[] };
 
   return (
     <Grid
@@ -57,7 +53,7 @@ const ProjectStatus: FC<ProjectStatusProps> = ({ project }) => {
         <Paper className={classes.galleryPaper}>
           <ImageGallery
             autoPlay={false}
-            items={project.gallery.map((item) => ({
+            items={gallery.map((item) => ({
               ...item,
               originalHeight: 300,
               thumbnailHeight: 50,

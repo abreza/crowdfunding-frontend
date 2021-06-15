@@ -1,12 +1,12 @@
 import { Typography, Box } from '@material-ui/core';
-import { FC } from 'react';
+import { ProjectContext } from 'pages/Project';
+import { FC, useContext } from 'react';
 
-type ProjectHeadProps = {
-  name: string;
-  subtitle: string;
-};
+type ProjectHeadProps = {};
 
-const ProjectHead: FC<ProjectHeadProps> = ({ name, subtitle }) => {
+const ProjectHead: FC<ProjectHeadProps> = () => {
+  const { name, subtitle } = useContext(ProjectContext) as any;
+
   return (
     <Box mb={4}>
       <Typography variant="h1" align="center" gutterBottom>

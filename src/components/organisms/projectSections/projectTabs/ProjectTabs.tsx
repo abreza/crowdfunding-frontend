@@ -1,12 +1,40 @@
 import { Paper, Box, Tabs, Tab } from '@material-ui/core';
 import { FC, useState } from 'react';
+import ProjectBudget from './ProjectBudget';
+import ProjectDescription from './ProjectDescription';
+import ProjectFounds from './ProjectFounds';
+import ProjectReviews from './ProjectReviews';
+import ProjectTechnical from './ProjectTechnical';
 
-type ProjectTabsProps = {
-  project: any;
-};
+type ProjectTabsProps = {};
 
-const ProjectTabs: FC<ProjectTabsProps> = ({ project }) => {
+const tabs: { name: string; component: FC<any> }[] = [
+  {
+    name: 'توضیحات',
+    component: ProjectDescription,
+  },
+  {
+    name: 'اطلاعات فنی',
+    component: ProjectTechnical,
+  },
+  {
+    name: 'بودجه',
+    component: ProjectBudget,
+  },
+  {
+    name: 'سرمایه‌گذاری',
+    component: ProjectFounds,
+  },
+  {
+    name: 'نظرات',
+    component: ProjectReviews,
+  },
+];
+
+const ProjectTabs: FC<ProjectTabsProps> = () => {
   const [tabIndex, setTabIndex] = useState(0);
+
+  const TabComponent = tabs[tabIndex].component;
 
   return (
     <>
@@ -18,15 +46,17 @@ const ProjectTabs: FC<ProjectTabsProps> = ({ project }) => {
             textColor="primary"
             onChange={(event, value) => setTabIndex(value)}
             centered>
-            <Tab label="توضیحات" />
-            <Tab label="اطلاعات فنی" />
-            <Tab label="هزینه‌ها" />
-            <Tab label="سرمایه‌گذاری‌ها" />
-            <Tab label="نظرات" />
+            {tabs.map((tab) => (
+              <Tab label={tab.name} />
+            ))}
           </Tabs>
         </Paper>
       </Box>
-      <Paper></Paper>
+      <Paper>
+        <Box p={2}>
+          <TabComponent />
+        </Box>
+      </Paper>
     </>
   );
 };

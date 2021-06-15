@@ -7,11 +7,7 @@ import 'assets/styles/gallery.css';
 
 type ProjectFoundsProps = {};
 
-const useStyles = makeStyles((theme) => ({}));
-
 const ProjectFounds: FC<ProjectFoundsProps> = () => {
-  const classes = useStyles();
-
   return (
     <Paper style={{ height: 300 }}>
       <ResponsiveCirclePackingCanvas
