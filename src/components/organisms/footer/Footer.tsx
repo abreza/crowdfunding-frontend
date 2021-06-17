@@ -148,7 +148,9 @@ export default function Footer() {
               </Typography>
             </Grid>
             <Grid item>
-              <Button color="inherit">بلاگ</Button>
+              <Button color="inherit" component={Link} to="/blog">
+                بلاگ
+              </Button>
             </Grid>
             <Grid item>
               <Button color="inherit">تماس با ما</Button>
