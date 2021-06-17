@@ -1,4 +1,4 @@
-import { Container, makeStyles } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 import { RootState } from 'configs/redux/store';
 import { createContext, FC } from 'react';
 import { useSelector } from 'react-redux';
@@ -11,22 +11,9 @@ type ProjectProps = {
   match: any;
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(3, 0),
-  },
-  image: {
-    width: '100%',
-  },
-  galleryPaper: {
-    overflow: 'hidden',
-  },
-}));
-
 export const ProjectContext = createContext({});
 
 const Project: FC<ProjectProps> = ({ match }) => {
-  const classes = useStyles();
   const projectId = match?.params?.id;
 
   const project: {
@@ -41,13 +28,13 @@ const Project: FC<ProjectProps> = ({ match }) => {
   return (
     <Homepage>
       <ProjectContext.Provider value={{ ...project }}>
-        <div className={classes.root}>
+        <Box py={3}>
           <Container maxWidth="md">
             <ProjectHead />
             <ProjectStatus />
             <ProjectTabs />
           </Container>
-        </div>
+        </Box>
       </ProjectContext.Provider>
     </Homepage>
   );

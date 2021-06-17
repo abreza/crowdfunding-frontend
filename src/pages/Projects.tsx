@@ -2,7 +2,7 @@ import {
   Button,
   Container,
   Grid,
-  makeStyles,
+  Box,
   MenuItem,
   TextField,
   Typography,
@@ -16,20 +16,12 @@ import Homepage from 'templates/Homepages';
 
 type ProjectsProps = {};
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    paddingTop: theme.spacing(2),
-  },
-}));
-
 const Projects: FC<ProjectsProps> = () => {
-  const classes = useStyles();
-
   const projects = useSelector((state: RootState) => state.projects.projects);
 
   return (
     <Homepage>
-      <div className={classes.root}>
+      <Box pt={2}>
         <Container maxWidth="md">
           <Grid
             container
@@ -97,7 +89,7 @@ const Projects: FC<ProjectsProps> = () => {
             ))}
           </Grid>
         </Container>
-      </div>
+      </Box>
     </Homepage>
   );
 };
