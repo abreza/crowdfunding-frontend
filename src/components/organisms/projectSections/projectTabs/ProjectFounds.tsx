@@ -8,8 +8,6 @@ import {
 import { FC } from 'react';
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing';
 import { fakeData } from 'constants/fakeData';
-import 'react-image-gallery/styles/css/image-gallery.css';
-import 'assets/styles/gallery.css';
 
 type ProjectFoundsProps = {};
 
