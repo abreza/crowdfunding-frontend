@@ -34,8 +34,7 @@ const initialState = {
     },
     {
       id: 1,
-      image:
-        'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
+      image: process.env.PUBLIC_URL + 'wss.jpg',
       name: 'رویداد WSS',
       subtitle:
         'رویداد WSS امسال سعی دارد بستری هرچه موثرتر را برای ایجاد ارتباط فراهم نماید.',
@@ -44,10 +43,8 @@ const initialState = {
       از كليه دانشجویان، پژوهشگران و متخصصان دانشگاه‌ها و مؤسسات تحقيقاتی در رشته‌های مرتبط با محورهای سمینار، دعوت می‌شود تا از تاریخ ۱۷ آذرماه تا ۱ دی‌ماه از طریق صفحه‌ی سمینار نسبت به ثبت‌نام اقدام نمایند. با توجه به ظرفیت محدود سمینار، اولویت با افرادی است که زود‌تر ثبت‌نام کنند.`,
       gallery: [
         {
-          original:
-            'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
-          thumbnail:
-            'https://yt3.ggpht.com/ytc/AAUvwnhUoqGzslL9NApxwxZ182t9zksg-G69pMlXHhYLAw=s900-c-k-c0x00ffffff-no-rj',
+          original: process.env.PUBLIC_URL + 'wss.jpg',
+          thumbnail: process.env.PUBLIC_URL + 'wss.jpg',
           videoUrl:
             'https://video-5-ir-1.dalfak.com/67/672275766-904988928.mp4',
           renderItem: VideoPlayer,
