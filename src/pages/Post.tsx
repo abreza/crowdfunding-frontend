@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Chip,
-  Grid,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { Avatar, Box, Button, Chip, Grid, Typography } from '@material-ui/core';
 import { ArrowForward as ArrowForwardIcon } from '@material-ui/icons';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
