@@ -60,7 +60,7 @@ const LandingBanner: FC<{}> = () => {
           </Grid>
           <Grid item>
             <Typography variant="h6">
-              اینجا بهترین موقعیت برای معرفی و همایت از دانش و تکنولوژیست.
+              اینجا بهترین موقعیت برای معرفی و حمایت از دانش و تکنولوژیست.
             </Typography>
           </Grid>
           <Grid container item spacing={3}>
