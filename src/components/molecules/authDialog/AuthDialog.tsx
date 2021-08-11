@@ -82,9 +82,9 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
             />
           </Grid>
           <Grid item>
-            <Typography align="center">
+            <Typography align="left">
               {'اگر رمزتون رو فراموش کردین، به '}
-              <Link to="/change-password">{'این‌جا'}</Link>
+              <Link to="#">{'این‌جا'}</Link>
               {' مراجعه کنید.'}
             </Typography>
           </Grid>
