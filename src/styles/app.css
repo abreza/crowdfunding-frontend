@@ -62,56 +62,6 @@ input.ltr-input,
   }
 }
 
-/* @media (max-width: 1000px) {
-  .MuiTableCell-body.MuiTableCell-root {
-    padding: 5px;
-  }
-} */
-
-/* .google-map-container {
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px solid #ccc;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25), 0 3px 3px rgba(0, 0, 0, 0.22);
+body[dir='rtl'] .MuiTabs-scrollButtons .MuiSvgIcon-root {
+  transform: scaleX(1);
 }
-
-a[href^="http://maps.google.com/maps"]
-{
-  display: none !important;
-}
-a[href^="https://maps.google.com/maps"]
-{
-  display: none !important;
-}
-
-.gmnoprint a,
-.gmnoprint span,
-.gm-style-cc {
-  display: none !important;
-}
-.gmnoprint div {
-  background: none !important;
-  display: none !important;
-}
-.gm-style-iw + div {
-  display: none !important;
-}
-.gm-ui-hover-effect {
-  display: none !important;
-}
-.gm-style-iw.gm-style-iw-c {
-  padding: 0;
-}
-.gm-style-iw-d {
-  overflow: inherit !important;
-  max-width: unset !important;
-  max-height: unset !important;
-}
-
-.MuiAlert-message {
-  width: 100%;
-}
-
-input[type='search' i]::-webkit-search-cancel-button {
-  display: none;
-} */

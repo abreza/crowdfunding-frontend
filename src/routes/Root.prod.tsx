@@ -1,5 +1,6 @@
 import ScrollToTop from 'components/atoms/scrollToTop/ScrollToTop';
 import Blog from 'pages/Blog';
+import CreateProject from 'pages/CreateProject';
 import Landing from 'pages/Landing';
 import Post from 'pages/Post';
 import Project from 'pages/Project';
@@ -13,6 +14,7 @@ const Root: FC<RootProdProps> = () => {
   return (
     <ScrollToTop>
       <Switch>
+        <Route path="/new" component={CreateProject} />
         <Route path="/blog" component={Blog} />
         <Route path="/post/:id" component={Post} />
         <Route path="/projects" component={Projects} />

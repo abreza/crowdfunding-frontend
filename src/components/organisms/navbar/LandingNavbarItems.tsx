@@ -9,11 +9,15 @@ const LandingAppBarItems = () => {
   const { openAuthDialog } = useContext(HomepageContext);
 
   const SignUpButton: ReactElement = (
-    <Button onClick={openAuthDialog}>ثبت‌نام</Button>
+    <Button component={Link} to="/new" variant="contained" color="primary">
+      ایجاد پروژه جدید
+    </Button>
   );
 
   const LoginButton: ReactElement = (
-    <Button onClick={openAuthDialog}>ورود</Button>
+    <Button onClick={openAuthDialog} variant="outlined" color="primary">
+      ورود
+    </Button>
   );
 
   const WICButton: ReactElement = (

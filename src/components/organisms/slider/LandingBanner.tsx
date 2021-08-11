@@ -75,10 +75,12 @@ const LandingBanner: FC<{}> = () => {
             </Grid>
             <Grid item>
               <Button
+                component={Link}
+                to="/new"
                 variant="contained"
                 color="primary"
                 onClick={openAuthDialog}>
-                ثبت‌نام
+                ایجاد پروژه جدید
               </Button>
             </Grid>
           </Grid>
