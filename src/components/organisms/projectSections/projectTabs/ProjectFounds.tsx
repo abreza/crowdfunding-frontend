@@ -1,8 +1,12 @@
 import {
+  Avatar,
+  Box,
+  Chip,
   Divider,
   Grid,
   Hidden,
   makeStyles,
+  Theme,
   Typography,
 } from '@material-ui/core';
 import { FC } from 'react';
@@ -11,10 +15,18 @@ import { fakeData } from 'constants/fakeData';
 
 type ProjectFoundsProps = {};
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   packingCanvasContainer: {
     height: 250,
     width: '100%',
+  },
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
   },
 }));
 
@@ -23,7 +35,75 @@ const ProjectFounds: FC<ProjectFoundsProps> = () => {
 
   return (
     <Grid container>
-      <Grid item xs={12} sm={8}></Grid>
+      <Grid item xs={12} sm={8}>
+        <Typography variant="h2">سرمایه‌گذاران</Typography>
+        <Box p={2} className={classes.root}>
+          <Chip
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + '/sponsor.jpeg'}
+              />
+            }
+            label="مرتضی ابوالقاسمی"
+          />
+          <Chip
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + '/sponsor.jpeg'}
+              />
+            }
+            label="مرتضی ابوالقاسمی"
+          />
+          <Chip
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + '/sponsor.jpeg'}
+              />
+            }
+            label="مرتضی ابوالقاسمی"
+          />
+          <Chip
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + '/sponsor.jpeg'}
+              />
+            }
+            label="مرتضی ابوالقاسمی"
+          />
+          <Chip
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + '/sponsor.jpeg'}
+              />
+            }
+            label="مرتضی ابوالقاسمی"
+          />
+          <Chip
+            avatar={
+              <Avatar
+                alt="علی احتشامی"
+                src={process.env.PUBLIC_URL + '/sponsor.jpeg'}
+              />
+            }
+            label="علی احتشامی"
+          />
+          <Chip
+            avatar={
+              <Avatar
+                alt="علی احتشامی"
+                src={process.env.PUBLIC_URL + '/sponsor.jpeg'}
+              />
+            }
+            label="علی احتشامی"
+          />
+          <Chip avatar={<Avatar alt="علی احتشامی" />} label="علی احتشامی" />
+        </Box>
+      </Grid>
       <Grid item xs={12} sm={4} container spacing={2} justify="center">
         <Hidden xsDown>
           <Grid item>
