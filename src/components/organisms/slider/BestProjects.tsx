@@ -11,7 +11,7 @@ import ChunkedCarousel from 'components/molecules/chunkedCarousel/ChunkedCarouse
 import { RootState } from 'configs/redux/store';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const BestProjects: FC<{}> = () => {
   const classes = useStyles();
 
+  // @ts-ignore
   const projects = useSelector((state: RootState) => state.projects.projects);
 
   const [index, setIndex] = useState(0);
@@ -69,13 +70,11 @@ const BestProjects: FC<{}> = () => {
       />
       <Grid container alignItems="center" justify="center">
         <Grid item>
-          <Button
-            variant="contained"
-            color="primary"
-            component={Link}
-            to="/projects">
-            مشاهده همه
-          </Button>
+          <Link href="/project" passHref>
+            <Button variant="contained" color="primary">
+              مشاهده همه
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     </Container>

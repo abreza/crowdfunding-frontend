@@ -1,32 +1,32 @@
-import { Paper, Box, Tabs, Tab } from '@material-ui/core';
-import { FC, useState } from 'react';
-import ProjectBudget from './ProjectBudget';
-import ProjectDescription from './ProjectDescription';
-import ProjectFounds from './ProjectFounds';
-import ProjectReviews from './ProjectReviews';
-import ProjectTechnical from './ProjectTechnical';
+import { Paper, Box, Tabs, Tab } from "@material-ui/core";
+import { FC, useState } from "react";
+import ProjectBudget from "./ProjectBudget";
+import ProjectDescription from "./ProjectDescription";
+import ProjectFounds from "./ProjectFounds";
+import ProjectReviews from "./ProjectReviews";
+import ProjectTechnical from "./ProjectTechnical";
 
 type ProjectTabsProps = {};
 
 const tabs: { name: string; component: FC<any> }[] = [
   {
-    name: 'توضیحات',
+    name: "توضیحات",
     component: ProjectDescription,
   },
   {
-    name: 'اطلاعات فنی',
+    name: "اطلاعات فنی",
     component: ProjectTechnical,
   },
   {
-    name: 'بودجه',
+    name: "بودجه",
     component: ProjectBudget,
   },
   {
-    name: 'سرمایه‌گذاری',
+    name: "سرمایه‌گذاری",
     component: ProjectFounds,
   },
   {
-    name: 'نظرات',
+    name: "نظرات",
     component: ProjectReviews,
   },
 ];
@@ -42,12 +42,12 @@ const ProjectTabs: FC<ProjectTabsProps> = () => {
         <Paper>
           <Tabs
             value={tabIndex}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorColor='primary'
+            textColor='primary'
             onChange={(event, value) => setTabIndex(value)}
             centered>
             {tabs.map((tab) => (
-              <Tab label={tab.name} />
+              <Tab key={tab.name} label={tab.name} />
             ))}
           </Tabs>
         </Paper>

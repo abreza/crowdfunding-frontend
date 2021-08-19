@@ -17,6 +17,7 @@ import Homepage from 'templates/Homepages';
 type ProjectsProps = {};
 
 const Projects: FC<ProjectsProps> = () => {
+  // @ts-ignore
   const projects = useSelector((state: RootState) => state.projects.projects);
 
   return (
@@ -82,7 +83,7 @@ const Projects: FC<ProjectsProps> = () => {
             justify="space-around"
             spacing={3}
             style={{ padding: '10px 0' }}>
-            {projects.map((item, i) => (
+            {projects.map((item: any, i: number) => (
               <Grid item key={i}>
                 <ProjectCard item={item} />
               </Grid>

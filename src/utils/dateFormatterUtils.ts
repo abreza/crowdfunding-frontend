@@ -1,34 +1,34 @@
-import jMoment from 'jalali-moment';
-import moment from 'moment';
-import { languageType } from 'types/generalTypes';
-import getLocale from './getLocaleUtils';
-import translateNumber from './translateNumberUtils';
+import jMoment from "jalali-moment";
+import moment from "moment";
+import { LanguageEnum } from "types/generalTypes";
+import getLocale from "./getLocaleUtils";
+import translateNumber from "./translateNumberUtils";
 
 const defaultType = {
-  fa: 'jalali',
-  en: 'gregorian',
+  fa: "jalali",
+  en: "gregorian",
 };
 
 type dateFormatterType = {
   date?: string | Date;
-  lang?: languageType;
+  lang?: LanguageEnum;
   format?: string;
 };
 
 export const dateFormatter = ({
   date,
   lang = getLocale(),
-  format = 'YYYY/MM/DD',
+  format = "YYYY/MM/DD",
 }: dateFormatterType) => {
-  let result = '';
+  let result = "";
 
   switch (defaultType[lang]) {
-    case 'jalali':
+    case "jalali":
       result = jMoment(date ? date : jMoment().toISOString())
-        .locale('fa')
+        .locale("fa")
         .format(format);
       break;
-    case 'gregorian':
+    case "gregorian":
     default:
       result = moment(date ? date : moment().toISOString()).format(format);
       break;

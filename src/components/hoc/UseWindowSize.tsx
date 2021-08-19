@@ -11,21 +11,24 @@ const getWindowDimensions = (breakPointWidth: number) => {
 };
 
 const UseWindowDimensions = (breakPointWidth: number = 600) => {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions(breakPointWidth)
-  );
+  const [windowDimensions, setWindowDimensions] = useState({
+    isMobile: true,
+    width: 0,
+    height: 0,
+  });
+
+  function handleResize() {
+    const windowSize = getWindowDimensions(breakPointWidth);
+    if (
+      windowSize.width !== windowDimensions.width ||
+      windowSize.height !== windowDimensions.height
+    ) {
+      setWindowDimensions(windowSize);
+    }
+  }
 
   useEffect(() => {
-    function handleResize() {
-      const windowSize = getWindowDimensions(breakPointWidth);
-      if (
-        windowSize.width !== windowDimensions.width ||
-        windowSize.height !== windowDimensions.height
-      ) {
-        setWindowDimensions(windowSize);
-      }
-    }
-
+    setWindowDimensions(getWindowDimensions(breakPointWidth));
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [breakPointWidth, windowDimensions]);

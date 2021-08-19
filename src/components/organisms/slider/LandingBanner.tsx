@@ -2,12 +2,12 @@ import { Button, Grid } from '@material-ui/core';
 import { Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBannerItem';
-import { HomepageContext } from 'templates/Homepages';
 import { FC, useContext } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { useSelector } from 'react-redux';
 import { RootState } from 'configs/redux/store';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import { HomepageContext } from 'contex/HompageContext';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 const LandingBanner: FC<{}> = () => {
   const classes = useStyles();
 
+  // @ts-ignore
   const projects = useSelector((state: RootState) => state.projects.projects);
 
   const { openAuthDialog } = useContext(HomepageContext);
@@ -65,23 +66,18 @@ const LandingBanner: FC<{}> = () => {
           </Grid>
           <Grid container item spacing={3}>
             <Grid item>
-              <Button
-                variant="outlined"
-                color="primary"
-                component={Link}
-                to="/?sc=what-is-crowdfunding">
-                مطالعه بیشتر
-              </Button>
+              <Link href="/?sc=what-is-crowdfunding" passHref>
+                <Button variant="outlined" color="primary">
+                  مطالعه بیشتر
+                </Button>
+              </Link>
             </Grid>
             <Grid item>
-              <Button
-                component={Link}
-                to="/new"
-                variant="contained"
-                color="primary"
-                onClick={openAuthDialog}>
-                ایجاد پروژه جدید
-              </Button>
+              <Link href="/new" passHref>
+                <Button variant="contained" color="primary">
+                  ایجاد پروژه جدید
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Grid>
@@ -103,7 +99,7 @@ const LandingBanner: FC<{}> = () => {
             className: classes.indicatorContainer,
           } as any
         }>
-        {projects.map((item, i) => (
+        {projects.map((item: any, i: number) => (
           <LandingBannerItem key={i} item={item} />
         ))}
       </Carousel>

@@ -1,15 +1,21 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent } from "react";
 
 export type indexType = string | number;
 
-export type languageType = 'fa' | 'en';
+export enum LanguageEnum {
+  "fa" = "fa",
+  "en" = "en",
+}
 
 export type reduxAction = {
   type: string;
   payload: any;
 };
 
-export type directionType = 'rtl' | 'ltr';
+export enum DirectionEnum {
+  "rtl" = "rtl",
+  "ltr" = "ltr",
+}
 
 export type inputEventType = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement

@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Chip, Grid, Typography } from '@material-ui/core';
 import { ArrowForward as ArrowForwardIcon } from '@material-ui/icons';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Homepage from 'templates/Homepages';
 
 type BlogProps = {};
@@ -58,14 +58,11 @@ const BlogCard: FC<BlogCardProps> = () => {
           ملموسی نیز بر اقتصاد و اشتغال و زندگی عامه جامعه گذاشته می‌شود.
         </Typography>
       </Box>
-      <Button
-        variant="outlined"
-        fullWidth
-        size="large"
-        component={Link}
-        to="/post/0">
-        مطالعه بیشتر
-      </Button>
+      <Link href="/blog/0" passHref>
+        <Button variant="outlined" fullWidth size="large">
+          مطالعه بیشتر
+        </Button>
+      </Link>
     </div>
   );
 };
@@ -83,9 +80,9 @@ const Blog: FC<BlogProps> = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button endIcon={<ArrowForwardIcon />} component={Link} to="/">
-                  بازگشت به خانه
-                </Button>
+                <Link href="/" passHref>
+                  <Button endIcon={<ArrowForwardIcon />}>بازگشت به خانه</Button>
+                </Link>
               </Grid>
             </Grid>
             <Box mt={2} mb={4}>

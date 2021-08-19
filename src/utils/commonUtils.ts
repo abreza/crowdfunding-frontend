@@ -1,5 +1,5 @@
-import jMoment from 'jalali-moment';
-import { indexType, languageType } from '../types/generalTypes';
+import jMoment from "jalali-moment";
+import { indexType, LanguageEnum } from "types/generalTypes";
 
 export const removeElementFromArray = (array: Array<any>, element: any) => {
   const index = array.indexOf(element);
@@ -10,7 +10,7 @@ export const removeElementFromArray = (array: Array<any>, element: any) => {
 };
 
 export const twoDigitNumber = (time: string) => {
-  return ('0' + time).slice(-2);
+  return ("0" + time).slice(-2);
 };
 
 export const clockFormat = (time: number): string => {
@@ -25,11 +25,11 @@ export const persianConverter = (
   number: indexType,
   toEnglish: boolean = false
 ): string => {
-  if (typeof number === 'number') {
+  if (typeof number === "number") {
     return number.toString();
   }
-  const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-  let convertedNumber = '';
+  const persianNumbers = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  let convertedNumber = "";
   for (let i = 0; i < number.length; i++) {
     if (toEnglish) {
       const convertedChar = persianNumbers.indexOf(number[i]);
@@ -44,22 +44,22 @@ export const IBANRegex = () =>
 
 export const timeConverter: (
   date: indexType,
-  language?: languageType
+  language?: LanguageEnum
 ) => string = (date, language) => {
   let newTime;
-  if (typeof date === 'string') {
+  if (typeof date === "string") {
     newTime = parseInt(date);
   }
 
   const localMoment = jMoment(newTime);
 
-  if (language && language === 'en') {
-    localMoment.locale('en');
+  if (language && language === "en") {
+    localMoment.locale("en");
   } else {
-    localMoment.locale('fa');
+    localMoment.locale("fa");
   }
 
-  return localMoment.format('l');
+  return localMoment.format("l");
 };
 
 // const jalaali = require('jalaali-js');

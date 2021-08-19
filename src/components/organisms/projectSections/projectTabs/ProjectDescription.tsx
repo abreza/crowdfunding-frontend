@@ -1,5 +1,5 @@
 import { Typography } from '@material-ui/core';
-import { ProjectContext } from 'pages/Project';
+import { ProjectContext } from 'contex/ProjectContext';
 import { FC, useContext } from 'react';
 
 type ProjectDescriptionProps = {

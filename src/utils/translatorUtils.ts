@@ -1,7 +1,6 @@
-import dictionary from 'constants/dictionary';
-import { languageType } from 'types/generalTypes';
+import dictionary from "constants/dictionary";
+import { LanguageEnum } from "types/generalTypes";
 
 export const translator = (word: string) => {
-  const language = localStorage.getItem('language') as languageType;
-  return (dictionary[language] as any)[word];
+  return (dictionary[LanguageEnum.fa] as any)[word];
 };

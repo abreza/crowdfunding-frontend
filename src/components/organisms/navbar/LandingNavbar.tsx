@@ -16,7 +16,7 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import clsx from 'clsx';
 import { cloneElement, FC } from 'react';
 import { useState } from 'react';
-import HideOnScroll from '../../molecules/hideOnScroll/HideOnScroll';
+import HideOnScroll from 'components/molecules/hideOnScroll/HideOnScroll';
 
 import modes from './modes';
 

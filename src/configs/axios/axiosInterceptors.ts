@@ -3,9 +3,9 @@ import {
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
-} from 'axios';
-import { translator } from 'utils/translatorUtils';
-import { toast } from 'react-toastify';
+} from "axios";
+import { translator } from "utils/translatorUtils";
+import { toast } from "react-toastify";
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
   //   console.info(`[request] [${JSON.stringify(config)}]`);
@@ -13,7 +13,7 @@ const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
 };
 const onRequestError = (error: AxiosError): Promise<AxiosError> => {
   //   console.error(`[request error] [${JSON.stringify(error)}]`);
-  toast.error(translator('thereSeemsToBeAProblemPleaseTryAgainInAFewMinutes'));
+  toast.error(translator("thereSeemsToBeAProblemPleaseTryAgainInAFewMinutes"));
   return Promise.reject(error);
 };
 const onResponse = (response: AxiosResponse): AxiosResponse => {
@@ -22,7 +22,7 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 };
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
   //   console.error(`[response error] [${JSON.stringify(error)}]`);
-  toast.error(translator('thereSeemsToBeAProblemPleaseTryAgainInAFewMinutes'));
+  toast.error(translator("thereSeemsToBeAProblemPleaseTryAgainInAFewMinutes"));
   return Promise.reject(error);
 };
 

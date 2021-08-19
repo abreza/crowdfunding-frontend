@@ -17,11 +17,10 @@ import {
   Telegram as TelegramIcon,
 } from '@material-ui/icons';
 import { BorderLinearProgress } from 'components/molecules/projectCard/ProjectCard';
+import { ProjectContext } from 'contex/ProjectContext';
 import { FC, useContext } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import 'assets/styles/gallery.css';
-import { ProjectContext } from 'pages/Project';
 
 type ProjectStatusProps = {};
 
@@ -53,11 +52,13 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
         <Paper className={classes.galleryPaper}>
           <ImageGallery
             autoPlay={false}
-            items={gallery.map((item) => ({
-              ...item,
-              originalHeight: 300,
-              thumbnailHeight: 50,
-            }))}
+            items={
+              gallery?.map((item) => ({
+                ...item,
+                originalHeight: 300,
+                thumbnailHeight: 50,
+              })) || []
+            }
             lazyLoad={true}
             isRTL={true}
           />

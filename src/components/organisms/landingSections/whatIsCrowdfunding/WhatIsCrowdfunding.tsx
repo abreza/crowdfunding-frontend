@@ -7,7 +7,7 @@ import {
   Box,
 } from '@material-ui/core';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -104,13 +104,11 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
 
           <Box clone order={{ xs: 6 }}>
             <Grid item container justify="center" xs={12} sm={12}>
-              <Button
-                variant="contained"
-                color="primary"
-                component={Link}
-                to="/projects">
-                مشاهده پروژه‌های موفق
-              </Button>
+              <Link href="/project" passHref>
+                <Button variant="contained" color="primary">
+                  مشاهده پروژه‌های موفق
+                </Button>
+              </Link>
             </Grid>
           </Box>
         </Grid>

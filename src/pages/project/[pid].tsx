@@ -1,28 +1,32 @@
 import { Container, Box } from '@material-ui/core';
 import { RootState } from 'configs/redux/store';
-import { createContext, FC } from 'react';
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import Homepage from 'templates/Homepages';
 import ProjectHead from 'components/organisms/projectSections/ProjectHead';
 import ProjectStatus from 'components/organisms/projectSections/ProjectStatus';
 import ProjectTabs from 'components/organisms/projectSections/projectTabs/ProjectTabs';
+import { useRouter } from 'next/router';
+import { ProjectContext } from 'contex/ProjectContext';
 
-type ProjectProps = {
-  match: any;
-};
+type ProjectProps = {};
 
-export const ProjectContext = createContext({});
+export type Project = {
+  id: string;
+  name: string;
+  subtitle: string;
+  gallery: any[];
+}
 
-const Project: FC<ProjectProps> = ({ match }) => {
-  const projectId = match?.params?.id;
+const Project: FC<ProjectProps> = () => {
+  const router = useRouter();
+  const { pid } = router.query;
 
-  const project: {
-    id: string;
-    name: string;
-    subtitle: string;
-    gallery: any[];
-  } = useSelector((state: RootState) =>
-    state.projects.projects.find((project) => +project.id === +projectId)
+  console.log(pid);
+
+  const project: Project = useSelector((state: RootState) =>
+    // @ts-ignore
+    state.projects.projects.find((project) => +project.id === +pid)
   ) as any;
 
   return (

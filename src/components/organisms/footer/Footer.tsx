@@ -14,7 +14,7 @@ import {
   Instagram as InstagramIcon,
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -57,7 +57,7 @@ export default function Footer() {
             justify="center"
             spacing={2}>
             <Grid item xs={4} sm={5}>
-              <Link to="/">
+              <Link href="/">
                 <img
                   src={process.env.PUBLIC_URL + '/logo2.png'}
                   alt="logo"
@@ -90,19 +90,19 @@ export default function Footer() {
               </Typography>
             </Grid>
             <Grid item>
-              <Button color="inherit" component={Link} to="/projects">
-                مهندسی کامپیوتر
-              </Button>
+              <Link href="/project" passHref>
+                <Button color="inherit">مهندسی کامپیوتر</Button>
+              </Link>
             </Grid>
             <Grid item>
-              <Button color="inherit" component={Link} to="/projects">
-                علوم شیمی
-              </Button>
+              <Link href="/project" passHref>
+                <Button color="inherit">علوم شیمی</Button>
+              </Link>
             </Grid>
             <Grid item>
-              <Button color="inherit" component={Link} to="/projects">
-                علوم فیزیک
-              </Button>
+              <Link href="/project" passHref>
+                <Button color="inherit">علوم فیزیک</Button>
+              </Link>
             </Grid>
           </Grid>
         </Grid>
@@ -118,12 +118,9 @@ export default function Footer() {
               </Typography>
             </Grid>
             <Grid item>
-              <Button
-                color="inherit"
-                component={Link}
-                to="/?sc=what-is-crowdfunding">
-                تامین‌مالی جمعی چیست؟
-              </Button>
+              <Link href="/?sc=what-is-crowdfunding" passHref>
+                <Button color="inherit">تامین‌مالی جمعی چیست؟</Button>
+              </Link>
             </Grid>
             <Grid item>
               <Button color="inherit">چرا تامین‌مالی جمعی شریف؟</Button>
@@ -148,9 +145,9 @@ export default function Footer() {
               </Typography>
             </Grid>
             <Grid item>
-              <Button color="inherit" component={Link} to="/blog">
-                بلاگ
-              </Button>
+              <Link href="/blog" passHref>
+                <Button color="inherit">بلاگ</Button>
+              </Link>
             </Grid>
             <Grid item>
               <Button color="inherit">تماس با ما</Button>

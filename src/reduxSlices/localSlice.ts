@@ -1,32 +1,17 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { directionType, languageType } from 'types/generalTypes';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { DirectionEnum, LanguageEnum } from "types/generalTypes";
 
 type localSliceStateType = {
-  language: languageType;
-  direction: directionType;
+  language: LanguageEnum;
+  direction: DirectionEnum;
 };
 
-const localStorageLanguage = localStorage.getItem('language') as languageType;
-
-const defineLanguage = () => {
-  if (!localStorageLanguage) {
-    localStorage.setItem('language', 'fa');
-    return 'fa';
-  } else {
-    return localStorageLanguage;
-  }
+const defineLanguage: () => LanguageEnum = () => {
+  return LanguageEnum.fa;
 };
 
-const defineDirection = () => {
-  if (localStorageLanguage) {
-    if (localStorageLanguage === 'fa') {
-      return 'rtl';
-    } else {
-      return 'ltr';
-    }
-  } else {
-    return 'rtl';
-  }
+const defineDirection: () => DirectionEnum = () => {
+  return DirectionEnum.rtl;
 };
 
 const initialState: localSliceStateType = {
@@ -34,19 +19,14 @@ const initialState: localSliceStateType = {
   direction: defineDirection(),
 };
 
-if (!localStorageLanguage) {
-  localStorage.setItem('language', 'fa');
-}
-
 const translatorSlice = createSlice({
-  name: 'translator',
+  name: "translator",
   initialState,
   reducers: {
-    setLocal: (_, { payload }: PayloadAction<languageType>) => {
-      localStorage.setItem('language', payload);
+    setLocal: (_, { payload }: PayloadAction<LanguageEnum>) => {
       return {
         language: payload,
-        direction: payload === 'fa' ? 'rtl' : 'ltr',
+        direction: payload === "fa" ? "rtl" : "ltr",
       } as localSliceStateType;
     },
   },

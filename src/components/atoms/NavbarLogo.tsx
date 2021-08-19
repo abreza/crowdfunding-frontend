@@ -1,18 +1,18 @@
-import UseWindowDimensions from 'components/hoc/UseWindowSize';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import UseWindowDimensions from "components/hoc/UseWindowSize";
+import { FC } from "react";
+import Link from "next/link";
 
 const NavbarLogo: FC<{}> = () => {
   const windowDimensions = UseWindowDimensions();
 
   return (
-    <Link to="/">
+    <Link href='/'>
       <img
         src={
           process.env.PUBLIC_URL +
-          (windowDimensions.width < 960 ? '/logo2.png' : '/logo3.png')
+          (windowDimensions.width < 960 ? "/logo2.png" : "/logo3.png")
         }
-        alt="logo"
+        alt='logo'
         style={{ height: 35 }}
       />
     </Link>

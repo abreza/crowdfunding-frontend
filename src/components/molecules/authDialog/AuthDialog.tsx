@@ -11,7 +11,7 @@ import {
 import { green } from '@material-ui/core/colors';
 import { Close as CloseIcon } from '@material-ui/icons';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -84,7 +84,7 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
           <Grid item>
             <Typography align="left">
               {'اگر رمزتون رو فراموش کردین، به '}
-              <Link to="#">{'این‌جا'}</Link>
+              <Link href="#">{'این‌جا'}</Link>
               {' مراجعه کنید.'}
             </Typography>
           </Grid>

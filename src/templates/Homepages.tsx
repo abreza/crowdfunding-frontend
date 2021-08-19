@@ -1,15 +1,12 @@
-import { FC, createContext, useState } from 'react';
+import { FC, useState } from 'react';
 import ResponsiveAppBar from 'components/organisms/navbar/LandingNavbar';
 import Footer from 'components/organisms/footer/Footer';
 import AuthDialog from 'components/molecules/authDialog/AuthDialog';
+import { HomepageContext } from 'contex/HompageContext';
 
 type HomepageProps = {
   children: React.ReactNode;
 };
-
-export const HomepageContext = createContext({
-  openAuthDialog: () => {},
-});
 
 const Homepage: FC<HomepageProps> = ({ children }) => {
   const [openAuthDialog, setOpenAuthDialog] = useState(false);

@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Chip, Grid, Typography } from '@material-ui/core';
 import { ArrowForward as ArrowForwardIcon } from '@material-ui/icons';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Homepage from 'templates/Homepages';
 
 type PostProps = {};
@@ -14,12 +14,9 @@ const Post: FC<PostProps> = () => {
           <Grid item xs={12} sm={10} md={8}>
             <Grid item container justify="flex-end">
               <Box mb={1}>
-                <Button
-                  endIcon={<ArrowForwardIcon />}
-                  component={Link}
-                  to="/blog">
-                  بازگشت به بلاگ
-                </Button>
+                <Link href="/blog" passHref>
+                  <Button endIcon={<ArrowForwardIcon />}>بازگشت به بلاگ</Button>
+                </Link>
               </Box>
             </Grid>
             <img

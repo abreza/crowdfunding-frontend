@@ -1,8 +1,7 @@
-import { languageType } from 'types/generalTypes';
+import { LanguageEnum } from "types/generalTypes";
 
 const getLocale = () => {
-  const language = localStorage.getItem('language') as languageType;
-  return language ? language : 'fa';
+  return LanguageEnum.fa;
 };
 
 export default getLocale;
