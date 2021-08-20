@@ -5,23 +5,24 @@ import LandingSubscribe from 'components/organisms/landingSections/landingSubscr
 import { Divider } from '@material-ui/core';
 import WhatIsCrowdfunding from 'components/organisms/landingSections/whatIsCrowdfunding/WhatIsCrowdfunding';
 import Homepage from 'templates/Homepages';
+import { useRouter } from 'next/router';
 
-type LandingProps = {
-  location: any;
-};
+type LandingProps = {};
 
-const Landing: FC<LandingProps> = ({ location }) => {
+const Landing: FC<LandingProps> = () => {
+  const router = useRouter();
+  const { sc } = router.query;
+
   const whatIsCrowdfunding = useRef() as MutableRefObject<HTMLDivElement>;
 
   useEffect(() => {
-    const sc = new URLSearchParams(location?.search).get('sc');
     if (sc === 'what-is-crowdfunding') {
       whatIsCrowdfunding.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
     }
-  }, [location]);
+  }, [sc]);
 
   return (
     <Homepage>

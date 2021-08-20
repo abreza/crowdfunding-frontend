@@ -1,9 +1,12 @@
+import { useRouter } from 'next/router';
 import { FC, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
-const ScrollToTop: FC<any> = ({ history, children, location }) => {
+const ScrollToTop: FC<any> = ({ history, children }) => {
+  const router = useRouter();
+  const { sc } = router.query;
+
   useEffect(() => {
-    const sc = new URLSearchParams(location?.search).get('sc');
     if (sc) {
       return;
     }
@@ -13,7 +16,7 @@ const ScrollToTop: FC<any> = ({ history, children, location }) => {
       left: 0,
       behavior: 'smooth',
     });
-  }, [location, history]);
+  }, [history, sc]);
 
   return <>{children}</>;
 };
