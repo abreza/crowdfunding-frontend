@@ -12,7 +12,7 @@ import MuiTheme from 'configs/theme/MuiTheme';
 
 import 'assets/styles/app.css';
 import 'assets/styles/gallery.css';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import BaseHead from 'components/organisms/BaseHead/BaseHead';
 
 const ThemeWrapper: FC<any> = ({ children }) => {
