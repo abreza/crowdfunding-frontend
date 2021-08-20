@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { FC } from 'react';
 import Link from 'next/link';
+import prof from 'assets/images/prof.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,7 +84,7 @@ const ProjectCard: FC<any> = ({ item }) => {
               <Grid item>
                 <Avatar
                   alt="Robert Jervis"
-                  src="https://media.tehrantimes.com/d/t/2020/05/17/4/3454683.jpg"
+                  src={prof}
                 />
               </Grid>
               <Grid item>

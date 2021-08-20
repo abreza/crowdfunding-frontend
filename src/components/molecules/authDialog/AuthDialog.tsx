@@ -12,10 +12,11 @@ import { green } from '@material-ui/core/colors';
 import { Close as CloseIcon } from '@material-ui/icons';
 import { FC } from 'react';
 import Link from 'next/link';
+import pic1 from 'assets/images/pic1.png';
 
 const useStyles = makeStyles((theme) => ({
   image: {
-    background: `url(${process.env.PUBLIC_URL + '/pic1.png'})`,
+    background: `url(${pic1})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
@@ -56,7 +57,12 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
                 <CloseIcon />
               </IconButton>
             </Grid>
-            <Grid item container xs={6} justifyContent="center" alignItems="center">
+            <Grid
+              item
+              container
+              xs={6}
+              justifyContent="center"
+              alignItems="center">
               <Typography component="h3" variant="h2" align="center">
                 ورود
               </Typography>

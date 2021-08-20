@@ -15,6 +15,7 @@ import {
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
+import logo2 from 'assets/images/logo2.png';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -57,12 +58,8 @@ export default function Footer() {
             justifyContent="center"
             spacing={2}>
             <Grid item xs={4} sm={5}>
-              <Link href="/">
-                <img
-                  src={process.env.PUBLIC_URL + '/logo2.png'}
-                  alt="logo"
-                  style={{ width: '100%' }}
-                />
+              <Link href="/" passHref>
+                <img src={logo2} alt="logo" style={{ width: '100%' }} />
               </Link>
             </Grid>
             <Grid item xs={12}>
@@ -165,7 +162,11 @@ export default function Footer() {
         alignItems="center"
         direction="row">
         <Grid item xs={12} sm={6}>
-          <Grid container direction="row" alignItems="center" justifyContent="center">
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="center">
             <Grid item>
               <div dir="ltr">
                 <Typography>
