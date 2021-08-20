@@ -26,7 +26,7 @@ const LandingSubscribe: FC<LandingSubscribeProps> = () => {
         <Grid
           container
           alignItems="center"
-          justify="center"
+          justifyContent="center"
           direction="column"
           spacing={3}>
           <Grid item>
@@ -40,7 +40,7 @@ const LandingSubscribe: FC<LandingSubscribeProps> = () => {
             spacing={1}
             direction="row"
             alignItems="center"
-            justify="center">
+            justifyContent="center">
             <Grid item>
               <TextField
                 placeholder="آدرس ایمیل"

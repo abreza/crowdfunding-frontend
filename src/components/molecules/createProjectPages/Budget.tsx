@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { Close, Add } from '@material-ui/icons';
 import { FC } from 'react';
-import Link from "next/link";
+import Link from 'next/link';
 
 const Budget: FC<any> = () => {
   return (

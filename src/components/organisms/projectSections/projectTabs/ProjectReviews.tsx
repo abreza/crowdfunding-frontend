@@ -22,7 +22,7 @@ type ReviewLineProps = {
 
 const RatingLine: FC<RatingLineProps> = ({ rating, percent }) => {
   return (
-    <Grid container item spacing={2} alignItems="center" justify="center">
+    <Grid container item spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={6} sm={7}>
         <BorderLinearProgress
           variant="determinate"
@@ -108,13 +108,13 @@ const ProjectReview: FC<ProjectReviewProps> = () => {
       <Box my={2}>
         <Divider />
       </Box>
-      <Grid container alignItems="center" justify="center" spacing={3}>
+      <Grid container alignItems="center" justifyContent="center" spacing={3}>
         <Grid
           item
           container
           direction="column"
           alignItems="center"
-          justify="center"
+          justifyContent="center"
           sm={3}
           xs={12}
           spacing={1}>
@@ -135,7 +135,7 @@ const ProjectReview: FC<ProjectReviewProps> = () => {
           container
           direction="row"
           alignItems="center"
-          justify="center"
+          justifyContent="center"
           sm={9}
           xs={12}>
           <RatingLine rating={5} percent={40} />

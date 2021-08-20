@@ -44,7 +44,7 @@ const ChunkedCarousel: FC<{
           container
           key={i}
           direction='row'
-          justify='space-around'
+          justifyContent='space-around'
           alignItems='center'
           spacing={3}
           style={{ padding: "10px 0" }}>

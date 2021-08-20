@@ -54,7 +54,7 @@ export default function Footer() {
             container
             direction="column"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             spacing={2}>
             <Grid item xs={4} sm={5}>
               <Link href="/">
@@ -83,7 +83,7 @@ export default function Footer() {
             container
             direction="column"
             alignItems="center"
-            justify="space-between">
+            justifyContent="space-between">
             <Grid item style={{ paddingBottom: 20 }}>
               <Typography color="primary" variant="h4" component="label">
                 تامین‌مالی برای
@@ -111,7 +111,7 @@ export default function Footer() {
             container
             direction="column"
             alignItems="center"
-            justify="space-between">
+            justifyContent="space-between">
             <Grid item style={{ paddingBottom: 20 }}>
               <Typography color="primary" variant="h4" component="label">
                 مطالعه بیشتر
@@ -138,7 +138,7 @@ export default function Footer() {
             container
             direction="column"
             alignItems="center"
-            justify="space-between">
+            justifyContent="space-between">
             <Grid item style={{ paddingBottom: 20 }}>
               <Typography color="primary" variant="h4" component="label">
                 منابع
@@ -161,11 +161,11 @@ export default function Footer() {
       <Divider />
       <Grid
         container
-        justify="space-between"
+        justifyContent="space-between"
         alignItems="center"
         direction="row">
         <Grid item xs={12} sm={6}>
-          <Grid container direction="row" alignItems="center" justify="center">
+          <Grid container direction="row" alignItems="center" justifyContent="center">
             <Grid item>
               <div dir="ltr">
                 <Typography>
@@ -181,7 +181,7 @@ export default function Footer() {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Grid container justify="center">
+          <Grid container justifyContent="center">
             <IconButton color="inherit">
               <TelegramIcon style={{ transform: 'scaleX(1)' }} />
             </IconButton>

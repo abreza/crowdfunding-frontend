@@ -111,12 +111,12 @@ const ResponsiveAppBar: FC<any> = ({
                     <MenuIcon />
                   </IconButton>
                 )}
-                <Grid container justify="space-between">
+                <Grid container justifyContent="space-between">
                   <Grid item>
                     <Grid
                       spacing={1}
                       container
-                      justify="flex-start"
+                      justifyContent="flex-start"
                       alignItems="center">
                       {rightItems.map((item, index) => (
                         <Grid key={index} item>
@@ -129,7 +129,7 @@ const ResponsiveAppBar: FC<any> = ({
                     <Grid
                       spacing={1}
                       container
-                      justify="flex-end"
+                      justifyContent="flex-end"
                       alignItems="center">
                       {leftItems.map((item, index) => (
                         <Grid key={index} item>

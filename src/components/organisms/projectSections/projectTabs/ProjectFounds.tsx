@@ -104,7 +104,7 @@ const ProjectFounds: FC<ProjectFoundsProps> = () => {
           <Chip avatar={<Avatar alt="علی احتشامی" />} label="علی احتشامی" />
         </Box>
       </Grid>
-      <Grid item xs={12} sm={4} container spacing={2} justify="center">
+      <Grid item xs={12} sm={4} container spacing={2} justifyContent="center">
         <Hidden xsDown>
           <Grid item>
             <Divider orientation="vertical" />

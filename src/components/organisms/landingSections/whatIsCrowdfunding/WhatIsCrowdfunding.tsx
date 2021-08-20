@@ -29,7 +29,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
         <Typography variant="h2" gutterBottom align="center">
           تامین‌مالی جمعی چیست؟
         </Typography>
-        <Grid container spacing={2} alignItems="center" justify="center">
+        <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Box clone order={{ xs: 0, sm: 1 }}>
             <Grid item sm={6} xs={12}>
               <img
@@ -103,7 +103,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           </Box>
 
           <Box clone order={{ xs: 6 }}>
-            <Grid item container justify="center" xs={12} sm={12}>
+            <Grid item container justifyContent="center" xs={12} sm={12}>
               <Link href="/project" passHref>
                 <Button variant="contained" color="primary">
                   مشاهده پروژه‌های موفق

@@ -118,7 +118,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
               <Box p={2}>
                 <TabPageComponent />
                 <Box pt={2}>
-                  <Grid container justify='space-between' direction='row'>
+                  <Grid container justifyContent='space-between' direction='row'>
                     <Grid item>
                       {activeStep !== 0 && (
                         <Button

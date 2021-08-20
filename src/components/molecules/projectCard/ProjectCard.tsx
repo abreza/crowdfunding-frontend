@@ -108,7 +108,7 @@ const ProjectCard: FC<any> = ({ item }) => {
             <div className={classes.linearProgress}>
               <Grid
                 container
-                justify="space-between"
+                justifyContent="space-between"
                 alignItems="center"
                 direction="row">
                 <Grid item>

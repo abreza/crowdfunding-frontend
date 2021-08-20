@@ -44,7 +44,7 @@ const BestProjects: FC<{}> = () => {
         برترین پروژه‌ها
       </Typography>
 
-      <Grid container justify="flex-end">
+      <Grid container justifyContent="flex-end">
         <Grid item>
           <IconButton onClick={goBack}>
             <ArrowBack />
@@ -68,7 +68,7 @@ const BestProjects: FC<{}> = () => {
         }}
         index={index}
       />
-      <Grid container alignItems="center" justify="center">
+      <Grid container alignItems="center" justifyContent="center">
         <Grid item>
           <Link href="/project" passHref>
             <Button variant="contained" color="primary">

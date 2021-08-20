@@ -10,9 +10,9 @@ const Post: FC<PostProps> = () => {
   return (
     <Homepage>
       <Box p={2}>
-        <Grid container alignItems="center" justify="center">
+        <Grid container alignItems="center" justifyContent="center">
           <Grid item xs={12} sm={10} md={8}>
-            <Grid item container justify="flex-end">
+            <Grid item container justifyContent="flex-end">
               <Box mb={1}>
                 <Link href="/blog" passHref>
                   <Button endIcon={<ArrowForwardIcon />}>بازگشت به بلاگ</Button>

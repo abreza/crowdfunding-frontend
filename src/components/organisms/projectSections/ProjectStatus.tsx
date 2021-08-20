@@ -46,7 +46,7 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
       container
       alignItems="stretch"
       direction="row"
-      justify="space-between"
+      justifyContent="space-between"
       spacing={3}>
       <Grid item sm={7} xs={12}>
         <Paper className={classes.galleryPaper}>
@@ -104,7 +104,7 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
             <Grid
               container
               alignItems="center"
-              justify="space-between"
+              justifyContent="space-between"
               direction="row">
               <Grid item>
                 <IconButton>

@@ -71,9 +71,9 @@ const Blog: FC<BlogProps> = () => {
   return (
     <Homepage>
       <Box p={2}>
-        <Grid container alignItems="center" justify="center">
+        <Grid container alignItems="center" justifyContent="center">
           <Grid item xs={12} sm={9} md={6}>
-            <Grid container justify="space-between">
+            <Grid container justifyContent="space-between">
               <Grid item>
                 <Typography variant="h1" gutterBottom>
                   بلاگ

@@ -22,7 +22,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
   return (
-    <Grid container alignItems="center" justify="center">
+    <Grid container alignItems="center" justifyContent="center">
       <Grid item xs={12} sm={7}>
         <TableContainer component={Paper}>
           <Table>

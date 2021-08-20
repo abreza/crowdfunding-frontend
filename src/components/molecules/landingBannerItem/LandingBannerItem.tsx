@@ -1,4 +1,4 @@
-import { Button, makeStyles, Theme, Typography } from '@material-ui/core';
+import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core';
 import { FC } from 'react';
 import Link from 'next/link';
 
@@ -55,9 +55,9 @@ const LandingBannerItem: FC<any> = ({ item }) => {
   const classes = useBannerItemStyles({ img: item.image });
 
   return (
-    <div className={classes.bannerItem}>
-      <div className={classes.bannerItemBackground}></div>
-      <div className={classes.bannerItemContent}>
+    <Box className={classes.bannerItem}>
+      <Box className={classes.bannerItemBackground}></Box>
+      <Box className={classes.bannerItemContent}>
         <Typography variant="h2">{item.name}</Typography>
         <Typography variant="body1" className={classes.description}>
           {item.description}
@@ -67,8 +67,8 @@ const LandingBannerItem: FC<any> = ({ item }) => {
             مشاهده
           </Button>
         </Link>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

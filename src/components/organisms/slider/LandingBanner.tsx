@@ -51,7 +51,7 @@ const LandingBanner: FC<{}> = () => {
         <Grid
           container
           direction="column"
-          justify="space-around"
+          justifyContent="space-around"
           style={{ height: '100%' }}
           spacing={3}>
           <Grid item>

@@ -29,7 +29,7 @@ const Projects: FC<ProjectsProps> = () => {
             direction="row"
             spacing={3}
             alignItems="center"
-            justify="flex-start">
+            justifyContent="flex-start">
             <Grid item>
               <TextField select value="all" variant="outlined">
                 <MenuItem value="all">همه موضوعات</MenuItem>
@@ -60,7 +60,7 @@ const Projects: FC<ProjectsProps> = () => {
             direction="row"
             spacing={2}
             alignItems="center"
-            justify="flex-start">
+            justifyContent="flex-start">
             <Grid item>
               <SortIcon style={{ transform: 'scaleX(1)' }} />
             </Grid>
@@ -80,7 +80,7 @@ const Projects: FC<ProjectsProps> = () => {
           <Grid
             container
             direction="row"
-            justify="space-around"
+            justifyContent="space-around"
             spacing={3}
             style={{ padding: '10px 0' }}>
             {projects.map((item: any, i: number) => (
