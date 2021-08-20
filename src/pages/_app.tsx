@@ -20,16 +20,6 @@ const ThemeWrapper: FC<any> = ({ children }) => {
     local: { language },
   } = useAppSelector((state) => state);
 
-  useEffect(() => {
-    if (language === 'fa') {
-      document.body.dir = 'rtl';
-      document.body.className = 'fa-font-family';
-    } else {
-      document.body.dir = 'ltr';
-      document.body.className = '';
-    }
-  }, [language]);
-
   return language === 'fa' ? (
     <ThemeProvider theme={RTLMuiTheme}>
       <StylesProvider jss={jss}>{children}</StylesProvider>
