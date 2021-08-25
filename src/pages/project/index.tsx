@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { Sort as SortIcon } from '@material-ui/icons';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
-import { RootState } from 'configs/redux/store';
+import { RootState } from 'app/store';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import Homepage from 'templates/Homepages';

@@ -1,24 +1,26 @@
 import type { AppProps } from 'next/app';
-import { store } from 'configs/redux/store';
-import { Provider } from 'react-redux';
+import { RootState, store } from 'app/store';
+import { Provider, useSelector } from 'react-redux';
 import { CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
 import jss from 'utils/jssRTL';
 
 import 'react-toastify/dist/ReactToastify.min.css';
-import { useAppSelector } from 'configs/redux/reduxCustomHooks';
 import { ToastContainer } from 'react-toastify';
-import RTLMuiTheme from 'configs/theme/RTLMuiTheme';
-import MuiTheme from 'configs/theme/MuiTheme';
+import RTLMuiTheme from 'app/theme/RTLMuiTheme';
+import MuiTheme from 'app/theme/MuiTheme';
 
 import 'assets/styles/app.css';
 import 'assets/styles/gallery.css';
 import { FC } from 'react';
 import BaseHead from 'components/organisms/BaseHead/BaseHead';
 
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+
+let persistor = persistStore(store);
+
 const ThemeWrapper: FC<any> = ({ children }) => {
-  const {
-    local: { language },
-  } = useAppSelector((state) => state);
+  const language = useSelector((state: RootState) => state.local.language);
 
   return language === 'fa' ? (
     <ThemeProvider theme={RTLMuiTheme}>
@@ -34,11 +36,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <BaseHead />
       <Provider store={store}>
-        <CssBaseline />
-        <ThemeWrapper>
-          <ToastContainer limit={3} />
-          <Component {...pageProps} />
-        </ThemeWrapper>
+        <PersistGate loading={null} persistor={persistor}>
+          <CssBaseline />
+          <ThemeWrapper>
+            <ToastContainer limit={3} />
+            <Component {...pageProps} />
+          </ThemeWrapper>
+        </PersistGate>
       </Provider>
     </>
   );

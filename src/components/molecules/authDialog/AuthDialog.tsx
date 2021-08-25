@@ -1,5 +1,5 @@
+import { useRouter } from 'next/router';
 import {
-  Button,
   Dialog,
   Grid,
   Hidden,
@@ -10,9 +10,15 @@ import {
 } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 import { Close as CloseIcon } from '@material-ui/icons';
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+
+import { LoginRequest, useLoginMutation } from 'app/services/auth';
 import pic1 from 'assets/images/pic1.png';
+import { toast } from 'react-toastify';
+import { LoadingButton } from 'components/atoms/LoadingButton';
+import { setCredentials } from 'app/slices/authSlice';
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -38,6 +44,22 @@ const useStyles = makeStyles((theme) => ({
 
 const AuthDialog: FC<any> = ({ open, handleClose }) => {
   const classes = useStyles();
+
+  const [formState, setFormState] = useState<LoginRequest>({
+    username: '',
+    password: '',
+  });
+
+  const dispatch = useDispatch();
+
+  const { push } = useRouter();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const handleChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement>) =>
+    setFormState((prev) => ({ ...prev, [name]: value }));
 
   return (
     <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
@@ -72,19 +94,23 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
           <Grid item>
             <TextField
               label="نام‌کاربری"
+              name="username"
               type="text"
               fullWidth
               inputProps={{ className: 'ltr-input' }}
               variant="outlined"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item>
             <TextField
               label="گذرواژه"
+              name="password"
               fullWidth
               type="password"
               inputProps={{ className: 'ltr-input' }}
               variant="outlined"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item>
@@ -95,9 +121,27 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
             </Typography>
           </Grid>
           <Grid item>
-            <Button fullWidth variant="contained" color="primary">
+            <LoadingButton
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={async () => {
+                try {
+                  const user = await login(formState).unwrap();
+                  dispatch(setCredentials(user));
+                  push('/');
+                } catch (err) {
+                  toast({
+                    status: 'error',
+                    title: 'Error',
+                    description: 'Oh no, there was an error!',
+                    isClosable: true,
+                  });
+                }
+              }}
+              loading={isLoading}>
               ورود
-            </Button>
+            </LoadingButton>
           </Grid>
         </Grid>
         <Hidden xsDown>

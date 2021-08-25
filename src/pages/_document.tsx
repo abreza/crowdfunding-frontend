@@ -1,6 +1,6 @@
-import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
+import { Children } from 'react';
 
 export default class MyDocument extends Document {
   render() {
@@ -31,7 +31,7 @@ MyDocument.getInitialProps = async (ctx) => {
   return {
     ...initialProps,
     styles: [
-      ...React.Children.toArray(initialProps.styles),
+      ...Children.toArray(initialProps.styles),
       sheets.getStyleElement(),
     ],
   };

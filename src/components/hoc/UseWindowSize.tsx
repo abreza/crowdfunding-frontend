@@ -31,7 +31,7 @@ const UseWindowDimensions = (breakPointWidth: number = 600) => {
     setWindowDimensions(getWindowDimensions(breakPointWidth));
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [breakPointWidth, windowDimensions]);
+  }, [breakPointWidth]);
 
   return windowDimensions;
 };

@@ -59,7 +59,9 @@ export default function Footer() {
             spacing={2}>
             <Grid item xs={4} sm={5}>
               <Link href="/" passHref>
-                <img src={logo2} alt="logo" style={{ width: '100%' }} />
+                <Button>
+                  <img src={logo2} alt="logo" style={{ width: '100%' }} />
+                </Button>
               </Link>
             </Grid>
             <Grid item xs={12}>

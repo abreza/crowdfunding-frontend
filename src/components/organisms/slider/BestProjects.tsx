@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { ArrowForward, ArrowBack } from '@material-ui/icons';
 import ChunkedCarousel from 'components/molecules/chunkedCarousel/ChunkedCarousel';
-import { RootState } from 'configs/redux/store';
+import { RootState } from 'app/store';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';

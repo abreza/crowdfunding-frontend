@@ -5,7 +5,7 @@ import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBan
 import { FC, useContext } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { useSelector } from 'react-redux';
-import { RootState } from 'configs/redux/store';
+import { RootState } from 'app/store';
 import Link from 'next/link';
 import { HomepageContext } from 'contex/HompageContext';
 

@@ -23,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
     width: 50,
     height: 50,
   },
+  video: {
+    '&::-webkit-media-controls-fullscreen-button': {
+      display: 'none',
+    },
+  },
 }));
 
 const Player: FC<any> = ({ videoUrl }) => {
@@ -44,6 +49,7 @@ const Player: FC<any> = ({ videoUrl }) => {
   return (
     <>
       <video
+        className={classes.video}
         ref={video}
         src={videoUrl}
         width="100%"

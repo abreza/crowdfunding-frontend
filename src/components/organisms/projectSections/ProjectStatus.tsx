@@ -16,9 +16,10 @@ import {
   Email as EmailIcon,
   Telegram as TelegramIcon,
 } from '@material-ui/icons';
+import { VideoPlayer } from 'components/atoms/VideoPlayer';
 import { BorderLinearProgress } from 'components/molecules/projectCard/ProjectCard';
 import { ProjectContext } from 'contex/ProjectContext';
-import { FC, useContext } from 'react';
+import { FC, useContext, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
@@ -39,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
 const ProjectStatus: FC<ProjectStatusProps> = () => {
   const classes = useStyles();
 
+  const [originalHeight, setOriginalHeight] = useState(300);
+
   const { gallery } = useContext(ProjectContext) as { gallery: any[] };
 
   return (
@@ -55,9 +58,14 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
             items={
               gallery?.map((item) => ({
                 ...item,
-                originalHeight: 300,
+                originalHeight: originalHeight,
                 thumbnailHeight: 50,
+                renderItem: item?.itemType === 'video' && VideoPlayer,
               })) || []
+            }
+            onScreenChange={(fullscreen) =>
+              // @ts-ignore
+              setOriginalHeight(!fullscreen && 300)
             }
             lazyLoad={true}
             isRTL={true}

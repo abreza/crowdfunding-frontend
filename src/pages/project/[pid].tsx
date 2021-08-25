@@ -1,5 +1,5 @@
 import { Container, Box } from '@material-ui/core';
-import { RootState } from 'configs/redux/store';
+import { RootState } from 'app/store';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import Homepage from 'templates/Homepages';

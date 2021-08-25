@@ -12,7 +12,7 @@ import { FC } from 'react';
 
 const Timeline: FC<any> = () => {
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} direction="column">
       <Grid item>
         <Typography variant="h2">زمان‌بندی پروژه</Typography>
       </Grid>

@@ -1,4 +1,3 @@
-import { VideoPlayer } from './../components/atoms/VideoPlayer';
 import { createSlice } from '@reduxjs/toolkit';
 
 import p3d from 'assets/images/p3d.png';
@@ -48,7 +47,7 @@ const initialState = {
           thumbnail: wss,
           videoUrl:
             'https://video-5-ir-1.dalfak.com/67/672275766-904988928.mp4',
-          renderItem: VideoPlayer,
+          itemType: 'video',
         },
         {
           original: 'https://picsum.photos/id/1018/1000/600/',
