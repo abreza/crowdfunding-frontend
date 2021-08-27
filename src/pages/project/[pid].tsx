@@ -16,7 +16,7 @@ export type Project = {
   name: string;
   subtitle: string;
   gallery: any[];
-}
+};
 
 const Project: FC<ProjectProps> = () => {
   const router = useRouter();

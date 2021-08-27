@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'app/store';
 import Link from 'next/link';
 import { HomepageContext } from 'contex/HompageContext';
+import CreateProjectButton from 'components/atoms/CreateProject';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -73,11 +74,7 @@ const LandingBanner: FC<{}> = () => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/new" passHref>
-                <Button variant="contained" color="primary">
-                  ایجاد پروژه جدید
-                </Button>
-              </Link>
+              <CreateProjectButton />
             </Grid>
           </Grid>
         </Grid>

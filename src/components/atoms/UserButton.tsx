@@ -1,4 +1,11 @@
-import { Button, Divider, Menu, MenuItem } from '@material-ui/core';
+import {
+  Avatar,
+  Button,
+  Divider,
+  makeStyles,
+  Menu,
+  MenuItem,
+} from '@material-ui/core';
 import { User } from 'app/services/auth';
 import { logout } from 'app/slices/authSlice';
 import { RootState } from 'app/store';
@@ -16,10 +23,18 @@ const LoginButton: FC = () => {
   );
 };
 
-const ProfileButton: FC<{ user: User }> = ({ user }) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+const useProfileButtonStyles = makeStyles((theme) => ({
+  smallAvatar: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+}));
 
+const ProfileButton: FC<{ user: User }> = ({ user }) => {
+  const classes = useProfileButtonStyles();
   const dispatch = useDispatch();
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -28,9 +43,13 @@ const ProfileButton: FC<{ user: User }> = ({ user }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <>
-      <Button variant="outlined" onClick={handleClick}>
+      <Button
+        variant="outlined"
+        onClick={handleClick}
+        startIcon={<Avatar className={classes.smallAvatar} />}>
         {user.firstName} {user.lastName}
       </Button>
       <Menu

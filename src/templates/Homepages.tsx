@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import ResponsiveAppBar from 'components/organisms/navbar/LandingNavbar';
 import Footer from 'components/organisms/footer/Footer';
-import AuthDialog from 'components/molecules/authDialog/AuthDialog';
+import AuthDialog from 'components/organisms/authDialog/AuthDialog';
 import { HomepageContext } from 'contex/HompageContext';
 
 type HomepageProps = {
