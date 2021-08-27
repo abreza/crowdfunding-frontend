@@ -1,7 +1,72 @@
-import { FC } from 'react';
+import { Grid, Typography } from '@material-ui/core';
+import { FC, createElement } from 'react';
+import {
+  DropzoneArea,
+  FileObject,
+  PreviewIconProps,
+} from 'material-ui-dropzone';
+
+import {
+  AttachFile,
+  Audiotrack,
+  Description,
+  PictureAsPdf,
+  Theaters,
+} from '@material-ui/icons';
 
 const Gallery: FC<any> = () => {
-  return <div>در حال تکمیل ...</div>;
+  const handlePreviewIcon = (
+    fileObject: FileObject,
+    classes: PreviewIconProps
+  ) => {
+    const { type } = fileObject.file;
+    if (type.split('/')[0] === 'image') {
+      return createElement('img', {
+        // @ts-ignore
+        className: classes.image,
+        role: 'presentation',
+        src: fileObject.data,
+      });
+    }
+
+    const iconProps = {
+      // @ts-ignore
+      className: classes.image,
+    };
+
+    if (type.startsWith('video/')) return <Theaters {...iconProps} />;
+    if (type.startsWith('audio/')) return <Audiotrack {...iconProps} />;
+
+    switch (type) {
+      case 'application/msword':
+      case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+        return <Description {...iconProps} />;
+      case 'application/pdf':
+        return <PictureAsPdf {...iconProps} />;
+      default:
+        return <AttachFile {...iconProps} />;
+    }
+  };
+
+
+
+  return (
+    <Grid container spacing={3} direction="column">
+      <Grid item>
+        <Typography variant="h2">عکس‌ها و فیلم‌ها</Typography>
+      </Grid>
+      <Grid item>
+        <DropzoneArea
+          maxFileSize={50000000}
+          dropzoneText={'عکس‌ها و یا فیلم‌های خود را بارگذاری کنید.'}
+          acceptedFiles={['image/*', 'video/*']}
+          onChange={(files) => alert(JSON.stringify(files))}
+          getPreviewIcon={handlePreviewIcon}
+          filesLimit={10}
+        />
+      </Grid>
+    </Grid>
+  );
 };
 
 export default Gallery;
