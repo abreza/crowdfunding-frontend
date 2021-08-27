@@ -65,11 +65,11 @@ const TabsData = [
     label: 'زمان‌بندی',
     component: Timeline,
   },
-  {
-    icon: <GroupIcon />,
-    label: 'تیم',
-    component: Team,
-  },
+  // {
+  //   icon: <GroupIcon />,
+  //   label: 'تیم',
+  //   component: Team,
+  // },
   {
     icon: <ViewCarouselIcon />,
     label: 'گالری',
