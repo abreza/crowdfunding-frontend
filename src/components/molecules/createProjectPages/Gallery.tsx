@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, ThemeProvider, Typography } from '@material-ui/core';
 import { FC, createElement } from 'react';
 import {
   DropzoneArea,
@@ -13,6 +13,7 @@ import {
   PictureAsPdf,
   Theaters,
 } from '@material-ui/icons';
+import MuiTheme from 'app/theme/MuiTheme';
 
 const Gallery: FC<any> = () => {
   const handlePreviewIcon = (
@@ -48,22 +49,22 @@ const Gallery: FC<any> = () => {
     }
   };
 
-
-
   return (
     <Grid container spacing={3} direction="column">
       <Grid item>
         <Typography variant="h2">عکس‌ها و فیلم‌ها</Typography>
       </Grid>
       <Grid item>
-        <DropzoneArea
-          maxFileSize={50000000}
-          dropzoneText={'عکس‌ها و یا فیلم‌های خود را بارگذاری کنید.'}
-          acceptedFiles={['image/*', 'video/*']}
-          onChange={(files) => alert(JSON.stringify(files))}
-          getPreviewIcon={handlePreviewIcon}
-          filesLimit={10}
-        />
+        <ThemeProvider theme={MuiTheme}>
+          <DropzoneArea
+            maxFileSize={50000000}
+            dropzoneText={'عکس‌ها و یا فیلم‌های خود را بارگذاری کنید.'}
+            acceptedFiles={['image/*', 'video/*']}
+            onChange={(files) => console.log(files)}
+            getPreviewIcon={handlePreviewIcon}
+            filesLimit={10}
+          />
+        </ThemeProvider>
       </Grid>
     </Grid>
   );
