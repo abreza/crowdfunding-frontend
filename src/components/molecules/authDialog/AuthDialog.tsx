@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 import { Close as CloseIcon } from '@material-ui/icons';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
@@ -60,6 +60,18 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement>) =>
     setFormState((prev) => ({ ...prev, [name]: value }));
+
+  const submitLogin = async () => {
+    try {
+      const user = await login(formState).unwrap();
+      dispatch(setCredentials(user));
+      push('/');
+      toast.success('خوش آمدید');
+      handleClose();
+    } catch {
+      toast.error('خطایی رخ‌داده است!');
+    }
+  };
 
   return (
     <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
@@ -125,20 +137,7 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
               fullWidth
               variant="contained"
               color="primary"
-              onClick={async () => {
-                try {
-                  const user = await login(formState).unwrap();
-                  dispatch(setCredentials(user));
-                  push('/');
-                } catch (err) {
-                  toast({
-                    status: 'error',
-                    title: 'Error',
-                    description: 'Oh no, there was an error!',
-                    isClosable: true,
-                  });
-                }
-              }}
+              onClick={submitLogin}
               loading={isLoading}>
               ورود
             </LoadingButton>

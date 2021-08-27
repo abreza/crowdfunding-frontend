@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { RootState } from 'app/store';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { baseQuery } from 'app/services/baseQuery';
 
 export interface User {
   email: string;
@@ -19,29 +19,16 @@ export interface LoginRequest {
 }
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: '/',
-    prepareHeaders: (headers, { getState }) => {
-      // By default, if we have a token in the store, let's use that for authenticated requests
-      const token = (getState() as RootState).auth.token;
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+  baseQuery,
   endpoints: (builder) => ({
     login: builder.mutation<UserResponse, LoginRequest>({
       query: (credentials) => ({
-        url: 'http://crowdfunding.mamalan.ir/api/v1/auth/',
+        url: 'auth/',
         method: 'POST',
         body: credentials,
       }),
     }),
-    protected: builder.mutation<{ message: string }, void>({
-      query: () => 'protected',
-    }),
   }),
 });
 
-export const { useLoginMutation, useProtectedMutation } = api;
+export const { useLoginMutation } = api;
