@@ -6,8 +6,11 @@
 
 .fa-font-family .Toastify__toast-body {
   direction: rtl;
-  font-family: IRANSans;
+  font-family: 'iransansxv';
   text-align: right;
+  -moz-font-feature-settings: 'ss02';
+  -webkit-font-feature-settings: 'ss02';
+  font-feature-settings: 'ss02';
 }
 
 .fa-font-family textarea {
@@ -42,6 +45,6 @@ input.ltr-input,
   }
 }
 
-body[dir="rtl"] .MuiTabs-scrollButtons .MuiSvgIcon-root {
+body[dir='rtl'] .MuiTabs-scrollButtons .MuiSvgIcon-root {
   transform: scaleX(1);
 }
