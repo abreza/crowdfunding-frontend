@@ -12,7 +12,7 @@ import MuiTheme from 'app/theme/MuiTheme';
 import 'assets/styles/app.css';
 import 'assets/styles/gallery.css';
 import { FC } from 'react';
-import BaseHead from 'components/organisms/BaseHead/BaseHead';
+import BaseHead from 'components/organisms/head/BaseHead';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
