@@ -48,3 +48,18 @@ input.ltr-input,
 body[dir='rtl'] .MuiTabs-scrollButtons .MuiSvgIcon-root {
   transform: scaleX(1);
 }
+
+html {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body,
+#root {
+  position: absolute;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto !important
+}

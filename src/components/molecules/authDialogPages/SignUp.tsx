@@ -35,6 +35,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage }) => {
       toast.success('خوش آمدید');
       handleClose();
     } catch (err) {
+      // @ts-ignore
       toast.error(err?.data?.message?.toString());
     }
   };

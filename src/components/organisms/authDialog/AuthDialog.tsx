@@ -1,5 +1,6 @@
 import {
   Dialog,
+  DialogContent,
   Grid,
   Hidden,
   IconButton,
@@ -79,41 +80,43 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
 
   return (
     <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
-      <Grid container direction="row" justifyContent="center">
-        <Grid
-          item
-          xs={12}
-          sm={7}
-          container
-          direction="column"
-          justifyContent="space-between"
-          alignItems="stretch"
-          className={classes.leftContainer}
-          spacing={2}>
-          <Grid container item direction="row">
-            <Grid item xs={1}>
-              <IconButton aria-label="close" onClick={handleClose}>
-                <CloseIcon />
-              </IconButton>
+      <DialogContent>
+        <Grid container direction="row" justifyContent="center">
+          <Grid
+            item
+            xs={12}
+            sm={7}
+            container
+            direction="column"
+            justifyContent="space-between"
+            alignItems="stretch"
+            className={classes.leftContainer}
+            spacing={2}>
+            <Grid container item direction="row">
+              <Grid item xs={1}>
+                <IconButton aria-label="close" onClick={handleClose}>
+                  <CloseIcon />
+                </IconButton>
+              </Grid>
+              <Grid
+                item
+                container
+                xs={10}
+                justifyContent="center"
+                alignItems="center">
+                <Typography component="h3" variant="h2" align="center">
+                  {title}
+                </Typography>
+              </Grid>
+              <Grid item xs={3} />
             </Grid>
-            <Grid
-              item
-              container
-              xs={10}
-              justifyContent="center"
-              alignItems="center">
-              <Typography component="h3" variant="h2" align="center">
-                {title}
-              </Typography>
-            </Grid>
-            <Grid item xs={3} />
+            <PageComponent handleClose={handleClose} changePage={setPageName} />
           </Grid>
-          <PageComponent handleClose={handleClose} changePage={setPageName} />
+          <Hidden xsDown>
+            <Grid item sm={5} className={classes.image}></Grid>
+          </Hidden>
         </Grid>
-        <Hidden xsDown>
-          <Grid item sm={5} className={classes.image}></Grid>
-        </Hidden>
-      </Grid>
+      </DialogContent>
     </Dialog>
   );
 };
