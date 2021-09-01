@@ -7,9 +7,13 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Add, Close } from '@material-ui/icons';
+import { CreateProjectRequest } from 'app/services/project';
 import { FC } from 'react';
 
-const Research: FC<any> = () => {
+const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+  handleChange,
+  project,
+}) => {
   return (
     <Grid container spacing={3} direction="column">
       <Grid item>
@@ -29,6 +33,9 @@ const Research: FC<any> = () => {
         </Typography>
         <Box pt={1}>
           <TextField
+            name="projectFirstIdea"
+            value={project.projectFirstIdea}
+            onChange={handleChange}
             placeholder="توضیحی مختصر در رابطه با ایده اصلی پشت این پروژه."
             fullWidth
             multiline
@@ -43,6 +50,9 @@ const Research: FC<any> = () => {
         </Typography>
         <Box pt={1}>
           <TextField
+            name="projectMainIdea"
+            value={project.projectMainIdea}
+            onChange={handleChange}
             placeholder="توضیح دهید که با تکمیل این پروژه به چه ارزش‌هایی خواهیم رسید."
             fullWidth
             multiline
@@ -57,6 +67,9 @@ const Research: FC<any> = () => {
         </Typography>
         <Box pt={1}>
           <TextField
+            name="projectGoal"
+            value={project.projectGoal}
+            onChange={handleChange}
             placeholder="دلایل و اهداف تیمتان برای انجام این پروژه چیست؟"
             fullWidth
             multiline
@@ -109,6 +122,9 @@ const Research: FC<any> = () => {
         </Typography>
         <Box pt={1}>
           <TextField
+            name="projectAdditionalInfo"
+            value={project.projectAdditionalInfo}
+            onChange={handleChange}
             placeholder="توضیحات تکمیلی مدنظرتان را شرح دهید."
             fullWidth
             multiline

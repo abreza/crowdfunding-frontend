@@ -14,8 +14,12 @@ import {
   Theaters,
 } from '@material-ui/icons';
 import MuiTheme from 'app/theme/MuiTheme';
+import { CreateProjectRequest } from 'app/services/project';
 
-const Gallery: FC<any> = () => {
+const Gallery: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+  handleChange,
+  project,
+}) => {
   const handlePreviewIcon = (
     fileObject: FileObject,
     classes: PreviewIconProps

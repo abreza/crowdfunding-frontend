@@ -10,8 +10,12 @@ import {
 import { Close, Add } from '@material-ui/icons';
 import { FC } from 'react';
 import Link from 'next/link';
+import { CreateProjectRequest } from 'app/services/project';
 
-const Budget: FC<any> = () => {
+const Budget: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+  handleChange,
+  project,
+}) => {
   return (
     <Grid container direction="column" spacing={3}>
       <Grid item>
@@ -81,6 +85,9 @@ const Budget: FC<any> = () => {
         </Typography>
         <Box pt={1}>
           <TextField
+            name="budgetReason"
+            value={project.budgetReason}
+            onChange={handleChange}
             placeholder="تیم ما در نظر دارد با تکمیل زنجیره ..."
             fullWidth
             multiline

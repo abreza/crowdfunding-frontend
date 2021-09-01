@@ -22,10 +22,14 @@ import BasicDetails from 'components/molecules/createProjectPages/BasicDetails';
 import Budget from 'components/molecules/createProjectPages/Budget';
 import Gallery from 'components/molecules/createProjectPages/Gallery';
 import Research from 'components/molecules/createProjectPages/Research';
-import Team from 'components/molecules/createProjectPages/Team';
 import { FC, useEffect, useState } from 'react';
 import Panel from 'templates/Panel';
 import Timeline from 'components/molecules/createProjectPages/Timeline';
+import {
+  CreateProjectRequest,
+  ProjectCategory,
+  useCreateProjectMutation,
+} from 'app/services/project';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -81,6 +85,26 @@ const CreateProject: FC<CreateProjectProps> = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
+  const [project, setProject] = useState<CreateProjectRequest>({
+    subject: '',
+    institution: '',
+    category: ProjectCategory.COMPUTER,
+    summary: '',
+    budgets: [],
+    budgetReason: '',
+    projectFirstIdea: '',
+    projectMainIdea: '',
+    projectGoal: '',
+    technicalDescriptions: [],
+    projectAdditionalInfo: '',
+    timeDescription: '',
+    timelines: [],
+    imageUrls: [],
+    state: false,
+  });
+
+  const [createProject, { isLoading }] = useCreateProjectMutation();
+
   const TabPageComponent = TabsData[activeStep].component;
 
   useEffect(() => {
@@ -90,6 +114,25 @@ const CreateProject: FC<CreateProjectProps> = () => {
       behavior: 'smooth',
     });
   }, [activeStep]);
+
+  const onClickNext = () => {
+    if (activeStep < TabsData.length - 1) {
+      setActiveStep(activeStep + 1);
+    } else {
+      createProject(project);
+    }
+  };
+
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | { target: { name: string; value: any } }
+  ) => {
+    setProject((p: CreateProjectRequest) => ({
+      ...p,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   return (
     <Panel>
@@ -110,7 +153,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
               </Tabs>
             </div>
             <Box p={2}>
-              <TabPageComponent />
+              <TabPageComponent handleChange={handleChange} project={project} />
               <Box pt={2}>
                 <Grid container justifyContent="space-between" direction="row">
                   <Grid item>
@@ -128,8 +171,11 @@ const CreateProject: FC<CreateProjectProps> = () => {
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => setActiveStep(activeStep + 1)}
-                      className={classes.nextButton}>
+                      onClick={onClickNext}
+                      className={classes.nextButton}
+                      type={
+                        activeStep === TabsData.length - 1 ? 'submit' : 'button'
+                      }>
                       {activeStep === TabsData.length - 1
                         ? 'ثبت نهایی'
                         : 'ثبت و ادامه'}

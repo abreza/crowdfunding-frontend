@@ -8,9 +8,13 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Add, Close, DateRange } from '@material-ui/icons';
+import { CreateProjectRequest } from 'app/services/project';
 import { FC } from 'react';
 
-const Timeline: FC<any> = () => {
+const Timeline: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+  handleChange,
+  project,
+}) => {
   return (
     <Grid container spacing={3} direction="column">
       <Grid item>
@@ -28,6 +32,9 @@ const Timeline: FC<any> = () => {
         </Typography>
         <Box pt={1}>
           <TextField
+            name="timeDescription"
+            value={project.timeDescription}
+            onChange={handleChange}
             placeholder="توضیحی در رابطه با زمان‌بندی مدنظر."
             fullWidth
             multiline
