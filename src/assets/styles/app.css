@@ -4,15 +4,6 @@
   letter-spacing: normal;
 }
 
-.fa-font-family .Toastify__toast-body {
-  direction: rtl;
-  font-family: 'iransansxv';
-  text-align: right;
-  -moz-font-feature-settings: 'ss02';
-  -webkit-font-feature-settings: 'ss02';
-  font-feature-settings: 'ss02';
-}
-
 .fa-font-family textarea {
   font-family: IRANSans;
 }
@@ -51,6 +42,11 @@ body[dir='rtl'] .MuiTabs-scrollButtons .MuiSvgIcon-root {
 
 body[dir='rtl'] .Toastify__toast {
   direction: rtl;
+  font-family: IRANSans;
+  text-align: right;
+  -moz-font-feature-settings: 'ss02';
+  -webkit-font-feature-settings: 'ss02';
+  font-feature-settings: 'ss02';
 }
 
 html {
