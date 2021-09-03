@@ -1,11 +1,5 @@
-import {
-  Grid,
-  ThemeProvider,
-  Typography,
-  makeStyles,
-  createStyles,
-} from '@material-ui/core';
-import { FC, createElement, useState, useEffect, useCallback } from 'react';
+import { Grid, Typography, makeStyles, createStyles } from '@material-ui/core';
+import { FC, createElement, useEffect, useCallback, useState } from 'react';
 import {
   DropzoneArea,
   FileObject,
@@ -19,7 +13,6 @@ import {
   PictureAsPdf,
   Theaters,
 } from '@material-ui/icons';
-import MuiTheme from 'app/theme/MuiTheme';
 import { CreateProjectRequest } from 'app/services/project';
 import axios from 'axios';
 
@@ -87,16 +80,16 @@ const Gallery: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
       }
     );
     // @ts-ignore
-    return res.path;
+    return res.data.path;
   };
 
   const updateLinks = () => {
     const imageUrls: string[] = [];
     loadedFiles.forEach((file) => {
       // @ts-ignore
-      const path = uploadedFiles[file.path];
-      if (path) {
-        imageUrls.push(path);
+      const url = uploadedFiles[file.path];
+      if (url) {
+        imageUrls.push(url);
       }
     });
     handleChange({ target: { name: 'imageUrls', value: imageUrls } });
@@ -108,11 +101,18 @@ const Gallery: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
       // @ts-ignore
       const path = file.path;
       if (!uploadedFiles[path]) {
-        setUploadedFiles({ ...uploadedFiles, [path]: await upload(file) });
-        updateLinks();
+        const url = await upload(file);
+        alert(path);
+        alert(url);
+        setUploadedFiles({ ...uploadedFiles, [path]: url });
       }
     }
   }, [loadedFiles]);
+
+  useEffect(() => {
+    alert(JSON.stringify(uploadedFiles));
+    updateLinks();
+  }, [uploadedFiles]);
 
   useEffect(() => {
     onChange();
