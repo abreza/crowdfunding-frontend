@@ -55,7 +55,7 @@ export const api = createApi({
           ...project,
           timelines: project.timelines.map((item: TimelineItem) => ({
             name: item.name,
-            value: jMoment(
+            date: jMoment(
               // @ts-ignore
               `${item.date.year}-${item.date.month}-${item.date.day}`,
               'jYYYY-jM-jD'
