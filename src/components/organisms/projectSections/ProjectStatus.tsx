@@ -42,7 +42,7 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
 
   const [originalHeight, setOriginalHeight] = useState(300);
 
-  const { gallery } = useContext(ProjectContext) as { gallery: any[] };
+  const { imageUrls } = useContext(ProjectContext);
 
   return (
     <Grid
@@ -56,11 +56,12 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
           <ImageGallery
             autoPlay={false}
             items={
-              gallery?.map((item) => ({
-                ...item,
+              imageUrls?.map((img) => ({
+                original: img,
+                thumbnail: img,
                 originalHeight: originalHeight,
                 thumbnailHeight: 50,
-                renderItem: item?.itemType === 'video' && VideoPlayer,
+                // renderItem: item?.itemType === 'video' && VideoPlayer,
               })) || []
             }
             onScreenChange={(fullscreen) =>

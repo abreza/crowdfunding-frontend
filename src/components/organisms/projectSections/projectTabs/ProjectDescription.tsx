@@ -7,11 +7,11 @@ type ProjectDescriptionProps = {
 };
 
 const ProjectDescription: FC<ProjectDescriptionProps> = () => {
-  const { description } = useContext(ProjectContext) as any;
+  const { summary } = useContext(ProjectContext);
 
   return (
     <div>
-      <Typography variant="body1">{description}</Typography>
+      <Typography variant="body1">{summary}</Typography>
     </div>
   );
 };

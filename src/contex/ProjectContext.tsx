@@ -1,11 +1,29 @@
-import { Project } from 'pages/project/[pid]';
 import { Context, createContext } from 'react';
+import { CategoryEnum, ProjectRo } from 'types/project';
 
-const init: Project = {
+const init: ProjectRo = {
   id: '',
-  name: '',
-  subtitle: '',
-  gallery: [],
+  subject: '',
+  institution: '',
+  category: CategoryEnum.COMPUTER,
+  summary: '',
+  budgets: [],
+  budgetReason: '',
+  projectFirstIdea: '',
+  projectMainIdea: '',
+  projectGoal: '',
+  technicalDescriptions: [],
+  projectAdditionalInfo: '',
+  timeDescription: '',
+  timelines: [],
+  imageUrls: [],
+  state: false,
+  owner: {
+    email: '',
+    firstName: '',
+    lastName: '',
+    roles: [],
+  },
 };
 
-export const ProjectContext: Context<Project> = createContext(init);
+export const ProjectContext: Context<ProjectRo> = createContext(init);
