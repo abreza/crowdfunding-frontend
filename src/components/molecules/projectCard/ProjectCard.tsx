@@ -84,13 +84,15 @@ const ProjectCard: FC<{ item: ProjectRo }> = ({ item }) => {
               spacing={2}
               className={classes.grid}>
               <Grid item>
-                <Avatar alt="Robert Jervis" src={prof} />
+                <Avatar
+                  alt={item.owner.firstName + ' ' + item.owner.lastName}
+                />
               </Grid>
               <Grid item>
                 <Grid container direction="column">
                   <Grid item>
                     <Typography variant="body2" component="p">
-                      Robert Jervis
+                      {item.owner.firstName + ' ' + item.owner.lastName}
                     </Typography>
                   </Grid>
                   <Grid item>
@@ -98,7 +100,7 @@ const ProjectCard: FC<{ item: ProjectRo }> = ({ item }) => {
                       variant="caption"
                       color="textSecondary"
                       component="p">
-                      Professor of Columbia University
+                      دانشجوی دانشگاه صنعتی شریف
                     </Typography>
                   </Grid>
                 </Grid>
