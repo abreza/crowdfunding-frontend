@@ -1,11 +1,7 @@
-.fa-font-family {
-  font-family: IRANSans !important;
+body[dir='rtl'] {
+  font-family: IRANSans;
   font-weight: 300;
   letter-spacing: normal;
-}
-
-.fa-font-family textarea {
-  font-family: IRANSans;
 }
 
 input.ltr-input,
@@ -31,7 +27,7 @@ input.ltr-input,
 }
 
 @media (max-width: 480px) {
-  .fa-font-family .Toastify__toast-container {
+  body[dir='rtl'] .Toastify__toast-container {
     right: 0;
   }
 }
