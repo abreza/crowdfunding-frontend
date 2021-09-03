@@ -75,27 +75,29 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           </Grid>
         </Grid>
       </Paper>
-      <Carousel
-        fullHeightHover={true}
-        autoPlay={false}
-        indicatorIconButtonProps={{
-          className: '',
-          style: {},
-        }}
-        activeIndicatorIconButtonProps={
-          {
-            className: classes.activeIndicatorIconButton,
-          } as any
-        }
-        indicatorContainerProps={
-          {
-            className: classes.indicatorContainer,
-          } as any
-        }>
-        {projects.map((item: any, i: number) => (
-          <LandingBannerItem key={i} item={item} />
-        ))}
-      </Carousel>
+      {projects.length > 0 && (
+        <Carousel
+          fullHeightHover={true}
+          autoPlay={false}
+          indicatorIconButtonProps={{
+            className: '',
+            style: {},
+          }}
+          activeIndicatorIconButtonProps={
+            {
+              className: classes.activeIndicatorIconButton,
+            } as any
+          }
+          indicatorContainerProps={
+            {
+              className: classes.indicatorContainer,
+            } as any
+          }>
+          {projects.map((item: any, i: number) => (
+            <LandingBannerItem key={i} item={item} />
+          ))}
+        </Carousel>
+      )}
     </div>
   );
 };

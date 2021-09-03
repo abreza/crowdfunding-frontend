@@ -57,18 +57,21 @@ const BestProjects: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           </IconButton>
         </Grid>
       </Grid>
-      <ChunkedCarousel
-        items={projects}
-        rtl
-        setting={{
-          fullHeightHover: true,
-          autoPlay: false,
-          indicators: false,
-          navButtonsAlwaysInvisible: true,
-          animation: 'slide',
-        }}
-        index={index}
-      />
+      {projects.length > 0 && (
+        <ChunkedCarousel
+          items={projects}
+          rtl
+          setting={{
+            fullHeightHover: true,
+            autoPlay: false,
+            indicators: false,
+            navButtonsAlwaysInvisible: true,
+            animation: 'slide',
+          }}
+          index={index}
+        />
+      )}
+
       <Grid container alignItems="center" justifyContent="center">
         <Grid item>
           <Link href="/project" passHref>
