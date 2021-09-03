@@ -9,6 +9,7 @@ import { RootState } from 'app/store';
 import Link from 'next/link';
 import { HomepageContext } from 'contex/HompageContext';
 import CreateProjectButton from 'components/atoms/CreateProject';
+import { ProjectRo } from 'types/project';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,13 +39,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LandingBanner: FC<{}> = () => {
+const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
   const classes = useStyles();
-
-  // @ts-ignore
-  const projects = useSelector((state: RootState) => state.projects.projects);
-
-  const { openAuthDialog } = useContext(HomepageContext);
 
   return (
     <div style={{ position: 'relative' }}>

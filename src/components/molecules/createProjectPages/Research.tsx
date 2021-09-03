@@ -8,13 +8,13 @@ import {
 } from '@material-ui/core';
 import { Add, Close } from '@material-ui/icons';
 import {
-  CreateProjectRequest,
-  TechnicalDescription,
-} from 'app/services/project';
+  ProjectDto,
+  TechnicalDescriptiontDto,
+} from 'types/project';
 import { FC } from 'react';
 import { toast } from 'react-toastify';
 
-const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
   project,
 }) => {
@@ -31,7 +31,7 @@ const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
       toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
       return;
     }
-    const newTechnicalDescription: TechnicalDescription = {
+    const newTechnicalDescription: TechnicalDescriptiontDto = {
       name: '',
       value: '',
     };

@@ -1,59 +1,19 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'app/services/baseQuery';
-import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
 import jMoment from 'jalali-moment';
-
-export enum ProjectCategory {
-  COMPUTER = 'COMPUTER',
-  PHYSICS = 'PHYSICS',
-  CHEMISTRY = 'CHEMISTRY',
-  MATHEMATICS = 'MATHEMATICS',
-}
-
-export interface BudgetItem {
-  title: string;
-  value: number;
-}
-
-export interface TechnicalDescription {
-  name: string;
-  value: string;
-}
-
-export interface TimelineItem {
-  name: string;
-  date: DayValue | string;
-}
-
-export interface CreateProjectRequest {
-  subject: string;
-  institution: string;
-  category: ProjectCategory;
-  summary: string;
-  budgets: BudgetItem[];
-  budgetReason: string;
-  projectFirstIdea: string;
-  projectMainIdea: string;
-  projectGoal: string;
-  technicalDescriptions: TechnicalDescription[];
-  projectAdditionalInfo: string;
-  timeDescription: string;
-  timelines: TimelineItem[];
-  imageUrls: string[];
-  state: boolean;
-}
+import { ProjectDto, TimelinetDto } from 'types/project';
 
 export const api = createApi({
   baseQuery,
   endpoints: (builder) => ({
-    upload: builder.mutation<void, CreateProjectRequest>({
-      query: (body) => ({ url: 'project', method: 'POST', body }),
+    getProjects: builder.mutation<void, ProjectDto>({
+      query: (name) => (name ? `project/${name}` : 'project/'),
     }),
-    createProject: builder.mutation<void, CreateProjectRequest>({
+    createProject: builder.mutation<void, ProjectDto>({
       query: (project) => {
         const body = {
           ...project,
-          timelines: project.timelines.map((item: TimelineItem) => ({
+          timelines: project.timelines.map((item: TimelinetDto) => ({
             name: item.name,
             date: jMoment(
               // @ts-ignore
@@ -72,4 +32,4 @@ export const api = createApi({
   }),
 });
 
-export const { useCreateProjectMutation } = api;
+export const { useCreateProjectMutation, useGetProjectsMutation } = api;

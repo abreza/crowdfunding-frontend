@@ -13,8 +13,9 @@ import {
   PictureAsPdf,
   Theaters,
 } from '@material-ui/icons';
-import { CreateProjectRequest } from 'app/services/project';
+import { ProjectDto } from 'types/project';
 import axios from 'axios';
+import { baseUrl } from 'app/services/baseQuery';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const Gallery: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+const Gallery: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
   project,
 }) => {
@@ -70,15 +71,11 @@ const Gallery: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
   const upload = async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
-    const res = await axios.post(
-      'https://crowdfunding.mamalan.ir/api/v1/media/image/upload',
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      }
-    );
+    const res = await axios.post(baseUrl + 'media/image/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     // @ts-ignore
     return res.data.path;
   };

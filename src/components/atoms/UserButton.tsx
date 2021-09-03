@@ -6,7 +6,7 @@ import {
   Menu,
   MenuItem,
 } from '@material-ui/core';
-import { User } from 'app/services/auth';
+import { UserRo } from 'types/auth';
 import { logout } from 'app/slices/authSlice';
 import { RootState } from 'app/store';
 import { HomepageContext } from 'contex/HompageContext';
@@ -30,7 +30,7 @@ const useProfileButtonStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProfileButton: FC<{ user: User }> = ({ user }) => {
+const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
   const classes = useProfileButtonStyles();
   const dispatch = useDispatch();
 

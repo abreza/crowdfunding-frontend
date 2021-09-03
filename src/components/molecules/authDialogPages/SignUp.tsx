@@ -1,5 +1,6 @@
 import { Grid, Link, TextField, Typography } from '@material-ui/core';
-import { SignUpRequest, useSignUpMutation } from 'app/services/auth';
+import { SignUpRequest } from 'types/auth';
+import { useSignUpMutation } from 'app/services/auth';
 import { setCredentials } from 'app/slices/authSlice';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {

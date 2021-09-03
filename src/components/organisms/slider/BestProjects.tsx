@@ -12,6 +12,7 @@ import { RootState } from 'app/store';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import { ProjectRo } from 'types/project';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -22,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BestProjects: FC<{}> = () => {
+const BestProjects: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
   const classes = useStyles();
 
   // @ts-ignore
-  const projects = useSelector((state: RootState) => state.projects.projects);
+  // const projects = useSelector((state: RootState) => state.projects.projects);
 
   const [index, setIndex] = useState(0);
 

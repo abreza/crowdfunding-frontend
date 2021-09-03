@@ -1,6 +1,8 @@
 import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core';
 import { FC } from 'react';
 import Link from 'next/link';
+import { ProjectRo } from 'types/project';
+import { baseUrl } from 'app/services/baseQuery';
 
 const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
   bannerItem: {
@@ -51,16 +53,16 @@ const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
   },
 }));
 
-const LandingBannerItem: FC<any> = ({ item }) => {
-  const classes = useBannerItemStyles({ img: item.image });
+const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
+  const classes = useBannerItemStyles({ img: baseUrl + item.imageUrls?.[0] });
 
   return (
     <Box className={classes.bannerItem}>
       <Box className={classes.bannerItemBackground}></Box>
       <Box className={classes.bannerItemContent}>
-        <Typography variant="h2">{item.name}</Typography>
+        <Typography variant="h2">{item.subject}</Typography>
         <Typography variant="body1" className={classes.description}>
-          {item.description}
+          {item.summary}
         </Typography>
         <Link href={`/project/${item.id}`} passHref>
           <Button variant="outlined" color="inherit">

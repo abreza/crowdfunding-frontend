@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Create as CreateIcon } from '@material-ui/icons';
-import { CreateProjectRequest } from 'app/services/project';
+import { ProjectDto } from 'types/project';
 import { FC } from 'react';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Team: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+const Team: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
   project,
 }) => {

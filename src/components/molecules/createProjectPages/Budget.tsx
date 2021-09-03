@@ -10,10 +10,10 @@ import {
 import { Close, Add } from '@material-ui/icons';
 import React, { FC } from 'react';
 import Link from 'next/link';
-import { BudgetItem, CreateProjectRequest } from 'app/services/project';
+import { BudgetDto, ProjectDto } from 'types/project';
 import { toast } from 'react-toastify';
 
-const Budget: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
   project,
 }) => {
@@ -30,7 +30,7 @@ const Budget: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
       toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
       return;
     }
-    const newBudget: BudgetItem = {
+    const newBudget: BudgetDto = {
       title: '',
       value: 0,
     };

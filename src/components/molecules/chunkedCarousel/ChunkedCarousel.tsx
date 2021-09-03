@@ -1,11 +1,12 @@
-import { Grid } from "@material-ui/core";
-import UseWindowDimensions from "components/hoc/UseWindowSize";
-import { FC, useEffect, useState } from "react";
-import Carousel from "react-material-ui-carousel";
-import ProjectCard from "components/molecules/projectCard/ProjectCard";
+import { Grid } from '@material-ui/core';
+import UseWindowDimensions from 'components/hoc/UseWindowSize';
+import { FC, useEffect, useState } from 'react';
+import Carousel from 'react-material-ui-carousel';
+import ProjectCard from 'components/molecules/projectCard/ProjectCard';
+import { ProjectRo } from 'types/project';
 
 const ChunkedCarousel: FC<{
-  items: any[];
+  items: ProjectRo[];
   rtl: boolean;
   index: number;
   setting: any;
@@ -43,11 +44,11 @@ const ChunkedCarousel: FC<{
         <Grid
           container
           key={i}
-          direction='row'
-          justifyContent='space-around'
-          alignItems='center'
+          direction="row"
+          justifyContent="space-around"
+          alignItems="center"
           spacing={3}
-          style={{ padding: "10px 0" }}>
+          style={{ padding: '10px 0' }}>
           {cis.map((item, j) => (
             <Grid item key={j} xs={chunk !== 1 && itemSize}>
               <ProjectCard item={item} />

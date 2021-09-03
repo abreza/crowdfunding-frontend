@@ -14,8 +14,8 @@ import {
   Functions as FunctionsIcon,
   OutdoorGrill,
 } from '@material-ui/icons';
-import { CreateProjectRequest, ProjectCategory } from 'app/services/project';
 import { FC } from 'react';
+import { ProjectDto, CategoryEnum } from 'types/project';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,11 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const BasicDetails: FC<{ handleChange: any; project: CreateProjectRequest }> =
+const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> =
   ({ handleChange, project }) => {
     const classes = useStyles();
 
-    const onClickBadge = (badge: ProjectCategory) => {
+    const onClickBadge = (badge: CategoryEnum) => {
       handleChange({ target: { name: 'category', value: badge } });
     };
 
@@ -68,9 +68,9 @@ const BasicDetails: FC<{ handleChange: any; project: CreateProjectRequest }> =
           </Box>
           <div>
             <Typography gutterBottom>
-              یک دسته را برای تحقیقات خود انتخاب کنید. اینها به عنوان
-              فیلتر در صفحه کشف ما استفاده می شوند و می توانند به افراد در پیدا
-              کردن پروژه شما کمک کنند.
+              یک دسته را برای تحقیقات خود انتخاب کنید. اینها به عنوان فیلتر در
+              صفحه کشف ما استفاده می شوند و می توانند به افراد در پیدا کردن
+              پروژه شما کمک کنند.
             </Typography>
             <Typography>
               برای انتخاب یک دسته ، روی آن کلیک کنید و مجدداً برای لغو انتخاب آن
@@ -83,9 +83,9 @@ const BasicDetails: FC<{ handleChange: any; project: CreateProjectRequest }> =
                 label={'کامپیوتر'}
                 clickable
                 color="secondary"
-                onClick={() => onClickBadge(ProjectCategory.COMPUTER)}
+                onClick={() => onClickBadge(CategoryEnum.COMPUTER)}
                 variant={
-                  project.category === ProjectCategory.COMPUTER
+                  project.category === CategoryEnum.COMPUTER
                     ? 'default'
                     : 'outlined'
                 }
@@ -96,9 +96,9 @@ const BasicDetails: FC<{ handleChange: any; project: CreateProjectRequest }> =
                 label={'فیزیک'}
                 clickable
                 color="secondary"
-                onClick={() => onClickBadge(ProjectCategory.PHYSICS)}
+                onClick={() => onClickBadge(CategoryEnum.PHYSICS)}
                 variant={
-                  project.category === ProjectCategory.PHYSICS
+                  project.category === CategoryEnum.PHYSICS
                     ? 'default'
                     : 'outlined'
                 }
@@ -109,9 +109,9 @@ const BasicDetails: FC<{ handleChange: any; project: CreateProjectRequest }> =
                 label={'شیمی'}
                 clickable
                 color="secondary"
-                onClick={() => onClickBadge(ProjectCategory.CHEMISTRY)}
+                onClick={() => onClickBadge(CategoryEnum.CHEMISTRY)}
                 variant={
-                  project.category === ProjectCategory.CHEMISTRY
+                  project.category === CategoryEnum.CHEMISTRY
                     ? 'default'
                     : 'outlined'
                 }
@@ -122,9 +122,9 @@ const BasicDetails: FC<{ handleChange: any; project: CreateProjectRequest }> =
                 label={'ریاضی'}
                 clickable
                 color="secondary"
-                onClick={() => onClickBadge(ProjectCategory.MATHEMATICS)}
+                onClick={() => onClickBadge(CategoryEnum.MATHEMATICS)}
                 variant={
-                  project.category === ProjectCategory.MATHEMATICS
+                  project.category === CategoryEnum.MATHEMATICS
                     ? 'default'
                     : 'outlined'
                 }

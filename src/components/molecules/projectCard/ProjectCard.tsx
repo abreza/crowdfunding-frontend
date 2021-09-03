@@ -14,6 +14,8 @@ import {
 import { FC } from 'react';
 import Link from 'next/link';
 import prof from 'assets/images/prof.jpg';
+import { ProjectRo } from 'types/project';
+import { baseUrl } from 'app/services/baseQuery';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +51,7 @@ export const BorderLinearProgress = withStyles((theme) => ({
   },
 }))(LinearProgress);
 
-const ProjectCard: FC<any> = ({ item }) => {
+const ProjectCard: FC<{ item: ProjectRo }> = ({ item }) => {
   const classes = useStyles();
 
   return (
@@ -58,14 +60,14 @@ const ProjectCard: FC<any> = ({ item }) => {
         <CardActionArea disableRipple>
           <CardMedia
             component="img"
-            alt={item.name}
+            alt={item.subject}
             height="140"
-            image={item.image}
-            title={item.name}
+            image={baseUrl + item.imageUrls?.[0]}
+            title={item.subject}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {item.name}
+              {item.subject}
             </Typography>
             <Typography
               gutterBottom
@@ -73,7 +75,7 @@ const ProjectCard: FC<any> = ({ item }) => {
               color="textSecondary"
               component="p"
               className={classes.description}>
-              {item.description}
+              {item.summary}
             </Typography>
             <Grid
               container
@@ -82,10 +84,7 @@ const ProjectCard: FC<any> = ({ item }) => {
               spacing={2}
               className={classes.grid}>
               <Grid item>
-                <Avatar
-                  alt="Robert Jervis"
-                  src={prof}
-                />
+                <Avatar alt="Robert Jervis" src={prof} />
               </Grid>
               <Grid item>
                 <Grid container direction="column">

@@ -8,14 +8,14 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Add, Close } from '@material-ui/icons';
-import { CreateProjectRequest, TimelineItem } from 'app/services/project';
+import { ProjectDto, TimelinetDto } from 'types/project';
 import React, { FC } from 'react';
 import { toast } from 'react-toastify';
 import { LanguageEnum } from 'types/generalTypes';
 import { maxMinDate } from 'utils/calendarUtils';
 import CustomDatePicker from '../customDatePicker/CustomDatePicker';
 
-const Timeline: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
+const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
   project,
 }) => {
@@ -32,7 +32,7 @@ const Timeline: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
       toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
       return;
     }
-    const newTimeline: TimelineItem = {
+    const newTimeline: TimelinetDto = {
       name: '',
       date: undefined,
     };
@@ -98,7 +98,7 @@ const Timeline: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
         </Typography>
         <Box py={2}>
           <Grid container>
-            {project.timelines.map((item: TimelineItem, index) => (
+            {project.timelines.map((item: TimelinetDto, index) => (
               <Grid
                 item
                 container

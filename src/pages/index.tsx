@@ -6,10 +6,15 @@ import { Divider } from '@material-ui/core';
 import WhatIsCrowdfunding from 'components/organisms/landingSections/whatIsCrowdfunding/WhatIsCrowdfunding';
 import Homepage from 'templates/Homepages';
 import { useRouter } from 'next/router';
+import axios from 'axios';
+import { baseUrl } from 'app/services/baseQuery';
+import { ProjectRo } from 'types/project';
 
-type LandingProps = {};
+type LandingProps = {
+  projects: ProjectRo[];
+};
 
-const Landing: FC<LandingProps> = () => {
+const Landing: FC<LandingProps> = ({ projects }) => {
   const router = useRouter();
   const { sc } = router.query;
 
@@ -26,8 +31,8 @@ const Landing: FC<LandingProps> = () => {
 
   return (
     <Homepage>
-      <LandingBanner />
-      <BestProjects />
+      <LandingBanner projects={projects} />
+      <BestProjects projects={projects} />
       <Divider />
       <LandingSubscribe />
       <Divider />
@@ -39,5 +44,17 @@ const Landing: FC<LandingProps> = () => {
     </Homepage>
   );
 };
+
+export async function getStaticProps() {
+  const res = await axios(baseUrl + 'project/');
+  const { projects } = await res.data;
+
+  return {
+    props: {
+      projects,
+    },
+    revalidate: 100,
+  };
+}
 
 export default Landing;

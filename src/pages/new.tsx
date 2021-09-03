@@ -25,11 +25,8 @@ import Research from 'components/molecules/createProjectPages/Research';
 import { FC, useLayoutEffect, useState } from 'react';
 import Panel from 'templates/Panel';
 import Timeline from 'components/molecules/createProjectPages/Timeline';
-import {
-  CreateProjectRequest,
-  ProjectCategory,
-  useCreateProjectMutation,
-} from 'app/services/project';
+import { ProjectDto, CategoryEnum } from 'types/project';
+import { useCreateProjectMutation } from 'app/services/project';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -85,10 +82,10 @@ const CreateProject: FC<CreateProjectProps> = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
-  const [project, setProject] = useState<CreateProjectRequest>({
+  const [project, setProject] = useState<ProjectDto>({
     subject: '',
     institution: '',
-    category: ProjectCategory.COMPUTER,
+    category: CategoryEnum.COMPUTER,
     summary: '',
     budgets: [{ title: '', value: 0 }],
     budgetReason: '',
@@ -138,7 +135,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       | React.ChangeEvent<HTMLInputElement>
       | { target: { name: string; value: any } }
   ) => {
-    setProject((p: CreateProjectRequest) => ({
+    setProject((p: ProjectDto) => ({
       ...p,
       [e.target.name]: e.target.value,
     }));
