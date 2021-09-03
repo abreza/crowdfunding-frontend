@@ -99,7 +99,7 @@ const Gallery: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
         imageUrls.push(path);
       }
     });
-    handleChange({ name: 'imageUrls', value: imageUrls });
+    handleChange({ target: { name: 'imageUrls', value: imageUrls } });
   };
 
   const onChange = useCallback(async () => {
