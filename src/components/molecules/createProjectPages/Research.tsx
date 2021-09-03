@@ -21,7 +21,7 @@ const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
   const haveNotFieldItem: () => boolean = () => {
     for (let i = 0; i < project.technicalDescriptions.length; i++) {
       const item = project.technicalDescriptions[i];
-      if (item.title === '' || item.value === '') return true;
+      if (item.name === '' || item.value === '') return true;
     }
     return false;
   };
@@ -32,7 +32,7 @@ const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
       return;
     }
     const newTechnicalDescription: TechnicalDescription = {
-      title: '',
+      name: '',
       value: '',
     };
 
@@ -143,8 +143,8 @@ const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
                 key={index}>
                 <Grid item xs={6}>
                   <TextField
-                    value={item.title}
-                    onChange={(e) => onChange(index, 'title', e.target.value)}
+                    value={item.name}
+                    onChange={(e) => onChange(index, 'name', e.target.value)}
                     variant="outlined"
                     fullWidth
                     size="small"

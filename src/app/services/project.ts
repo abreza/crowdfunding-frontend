@@ -16,7 +16,7 @@ export interface BudgetItem {
 }
 
 export interface TechnicalDescription {
-  title: string;
+  name: string;
   value: string;
 }
 
