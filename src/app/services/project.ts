@@ -19,7 +19,7 @@ export const api = createApi({
               // @ts-ignore
               `${item.date.year}-${item.date.month}-${item.date.day}`,
               'jYYYY-jM-jD'
-            ),
+            ).toISOString(),
           })),
         };
         return {
