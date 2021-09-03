@@ -1,5 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'app/services/baseQuery';
+import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
+import jMoment from 'jalali-moment';
 
 export enum ProjectCategory {
   COMPUTER = 'COMPUTER',
@@ -8,7 +10,7 @@ export enum ProjectCategory {
   MATHEMATICS = 'MATHEMATICS',
 }
 
-export interface Budget {
+export interface BudgetItem {
   title: string;
   value: number;
 }
@@ -18,9 +20,9 @@ export interface TechnicalDescription {
   value: string;
 }
 
-export interface Timeline {
+export interface TimelineItem {
   name: string;
-  date: Date;
+  date: DayValue | string;
 }
 
 export interface CreateProjectRequest {
@@ -28,7 +30,7 @@ export interface CreateProjectRequest {
   institution: string;
   category: ProjectCategory;
   summary: string;
-  budgets: Budget[];
+  budgets: BudgetItem[];
   budgetReason: string;
   projectFirstIdea: string;
   projectMainIdea: string;
@@ -36,7 +38,7 @@ export interface CreateProjectRequest {
   technicalDescriptions: TechnicalDescription[];
   projectAdditionalInfo: string;
   timeDescription: string;
-  timelines: Timeline[];
+  timelines: TimelineItem[];
   imageUrls: string[];
   state: boolean;
 }
@@ -44,12 +46,28 @@ export interface CreateProjectRequest {
 export const api = createApi({
   baseQuery,
   endpoints: (builder) => ({
+    upload: builder.mutation<void, CreateProjectRequest>({
+      query: (body) => ({ url: 'project', method: 'POST', body }),
+    }),
     createProject: builder.mutation<void, CreateProjectRequest>({
-      query: (project) => ({
-        url: 'project',
-        method: 'POST',
-        body: project,
-      }),
+      query: (project) => {
+        const body = {
+          ...project,
+          timelines: project.timelines.map((item: TimelineItem) => ({
+            name: item.name,
+            value: jMoment(
+              // @ts-ignore
+              `${item.date.year}-${item.date.month}-${item.date.day}`,
+              'jYYYY-jM-jD'
+            ),
+          })),
+        };
+        return {
+          url: 'project',
+          method: 'POST',
+          body,
+        };
+      },
     }),
   }),
 });

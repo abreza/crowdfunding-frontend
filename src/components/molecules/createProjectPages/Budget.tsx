@@ -8,14 +8,54 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Close, Add } from '@material-ui/icons';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
-import { CreateProjectRequest } from 'app/services/project';
+import { BudgetItem, CreateProjectRequest } from 'app/services/project';
+import { toast } from 'react-toastify';
 
 const Budget: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
   handleChange,
   project,
 }) => {
+  const haveNotFieldItem: () => boolean = () => {
+    for (let i = 0; i < project.budgets.length; i++) {
+      const budget = project.budgets[i];
+      if (budget.title === '' || budget.value === 0) return true;
+    }
+    return false;
+  };
+
+  const addNewBudget = () => {
+    if (haveNotFieldItem()) {
+      toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
+      return;
+    }
+    const newBudget: BudgetItem = {
+      title: '',
+      value: 0,
+    };
+
+    handleChange({
+      target: { name: 'budgets', value: [...project.budgets, newBudget] },
+    });
+  };
+
+  const onChange = (index: number, name: string, value: string | number) => {
+    const budgets = [...project.budgets];
+    budgets[index] = { ...budgets[index], [name]: value };
+    handleChange({
+      target: { name: 'budgets', value: budgets },
+    });
+  };
+
+  const deleteItem = (index: number) => {
+    const budgets = [...project.budgets];
+    budgets.splice(index, 1);
+    handleChange({
+      target: { name: 'budgets', value: budgets },
+    });
+  };
+
   return (
     <Grid container direction="column" spacing={3}>
       <Grid item>
@@ -43,39 +83,55 @@ const Budget: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
         </Typography>
         <Box py={2}>
           <Grid container>
-            <Grid item container xs={12} spacing={1} alignItems="center">
-              <Grid item xs={7}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  label="مورد بودجه"
-                  placeholder="تبلیغات"
-                />
+            {project.budgets.map((budget, index) => (
+              <Grid
+                item
+                container
+                xs={12}
+                spacing={1}
+                alignItems="center"
+                key={index}>
+                <Grid item xs={7}>
+                  <TextField
+                    value={budget.title}
+                    onChange={(e) => onChange(index, 'title', e.target.value)}
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    label="مورد بودجه"
+                    placeholder="تبلیغات"
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    value={budget.value}
+                    onChange={(e) => onChange(index, 'value', e.target.value)}
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    label="مبلغ"
+                    placeholder="۱۰۰٫۰۰۰٫۰۰۰"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">تومان</InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={1}>
+                  <IconButton onClick={() => deleteItem(index)}>
+                    <Close fontSize="small" />
+                  </IconButton>
+                </Grid>
               </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  label="مبلغ"
-                  placeholder="۱۰۰٫۰۰۰٫۰۰۰"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">تومان</InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
-              <Grid item xs={1}>
-                <IconButton>
-                  <Close fontSize="small" />
-                </IconButton>
-              </Grid>
-            </Grid>
+            ))}
           </Grid>
         </Box>
-        <Button variant="outlined" color="secondary" startIcon={<Add />}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          startIcon={<Add />}
+          onClick={addNewBudget}>
           اضافه کردن مورد جدید
         </Button>
       </Grid>

@@ -68,7 +68,7 @@ const BasicDetails: FC<{ handleChange: any; project: CreateProjectRequest }> =
           </Box>
           <div>
             <Typography gutterBottom>
-              حداکثر دو دسته را برای تحقیقات خود انتخاب کنید. اینها به عنوان
+              یک دسته را برای تحقیقات خود انتخاب کنید. اینها به عنوان
               فیلتر در صفحه کشف ما استفاده می شوند و می توانند به افراد در پیدا
               کردن پروژه شما کمک کنند.
             </Typography>

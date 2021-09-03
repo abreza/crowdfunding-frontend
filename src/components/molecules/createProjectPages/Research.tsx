@@ -7,13 +7,62 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Add, Close } from '@material-ui/icons';
-import { CreateProjectRequest } from 'app/services/project';
+import {
+  CreateProjectRequest,
+  TechnicalDescription,
+} from 'app/services/project';
 import { FC } from 'react';
+import { toast } from 'react-toastify';
 
 const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
   handleChange,
   project,
 }) => {
+  const haveNotFieldItem: () => boolean = () => {
+    for (let i = 0; i < project.technicalDescriptions.length; i++) {
+      const item = project.technicalDescriptions[i];
+      if (item.title === '' || item.value === '') return true;
+    }
+    return false;
+  };
+
+  const addNewTechnicalDescription = () => {
+    if (haveNotFieldItem()) {
+      toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
+      return;
+    }
+    const newTechnicalDescription: TechnicalDescription = {
+      title: '',
+      value: '',
+    };
+
+    handleChange({
+      target: {
+        name: 'technicalDescriptions',
+        value: [...project.technicalDescriptions, newTechnicalDescription],
+      },
+    });
+  };
+
+  const onChange = (index: number, name: string, value: string) => {
+    const technicalDescriptions = [...project.technicalDescriptions];
+    technicalDescriptions[index] = {
+      ...technicalDescriptions[index],
+      [name]: value,
+    };
+    handleChange({
+      target: { name: 'technicalDescriptions', value: technicalDescriptions },
+    });
+  };
+
+  const deleteItem = (index: number) => {
+    const technicalDescriptions = [...project.technicalDescriptions];
+    technicalDescriptions.splice(index, 1);
+    handleChange({
+      target: { name: 'technicalDescriptions', value: technicalDescriptions },
+    });
+  };
+
   return (
     <Grid container spacing={3} direction="column">
       <Grid item>
@@ -84,34 +133,50 @@ const Research: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
         </Typography>
         <Box py={2}>
           <Grid container>
-            <Grid item container xs={12} spacing={1} alignItems="center">
-              <Grid item xs={6}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  label="مورد"
-                  placeholder="ابعاد"
-                />
+            {project.technicalDescriptions.map((item, index) => (
+              <Grid
+                item
+                container
+                xs={12}
+                spacing={1}
+                alignItems="center"
+                key={index}>
+                <Grid item xs={6}>
+                  <TextField
+                    value={item.title}
+                    onChange={(e) => onChange(index, 'title', e.target.value)}
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    label="مورد"
+                    placeholder="ابعاد"
+                  />
+                </Grid>
+                <Grid item xs={5}>
+                  <TextField
+                    value={item.value}
+                    onChange={(e) => onChange(index, 'value', e.target.value)}
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    label="مقدار"
+                    placeholder="۲۰ × ۳۰ × ۵۰"
+                  />
+                </Grid>
+                <Grid item xs={1}>
+                  <IconButton onClick={() => deleteItem(index)}>
+                    <Close fontSize="small" />
+                  </IconButton>
+                </Grid>
               </Grid>
-              <Grid item xs={5}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  label="مقدار"
-                  placeholder="۲۰ × ۳۰ × ۵۰"
-                />
-              </Grid>
-              <Grid item xs={1}>
-                <IconButton>
-                  <Close fontSize="small" />
-                </IconButton>
-              </Grid>
-            </Grid>
+            ))}
           </Grid>
         </Box>
-        <Button variant="outlined" color="secondary" startIcon={<Add />}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          startIcon={<Add />}
+          onClick={addNewTechnicalDescription}>
           اضافه کردن مورد جدید
         </Button>
       </Grid>

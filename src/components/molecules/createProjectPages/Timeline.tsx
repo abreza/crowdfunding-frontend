@@ -1,20 +1,69 @@
+import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
 import {
   Box,
   Button,
   Grid,
   IconButton,
-  InputAdornment,
   TextField,
   Typography,
 } from '@material-ui/core';
-import { Add, Close, DateRange } from '@material-ui/icons';
-import { CreateProjectRequest } from 'app/services/project';
-import { FC } from 'react';
+import { Add, Close } from '@material-ui/icons';
+import { CreateProjectRequest, TimelineItem } from 'app/services/project';
+import React, { FC } from 'react';
+import { toast } from 'react-toastify';
+import { LanguageEnum } from 'types/generalTypes';
+import { maxMinDate } from 'utils/calendarUtils';
+import CustomDatePicker from '../customDatePicker/CustomDatePicker';
 
 const Timeline: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
   handleChange,
   project,
 }) => {
+  const haveNotFieldItem: () => boolean = () => {
+    for (let i = 0; i < project.timelines.length; i++) {
+      const item = project.timelines[i];
+      if (item.name === '' || !item.date) return true;
+    }
+    return false;
+  };
+
+  const addNewTimeline = () => {
+    if (haveNotFieldItem()) {
+      toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
+      return;
+    }
+    const newTimeline: TimelineItem = {
+      name: '',
+      date: undefined,
+    };
+
+    handleChange({
+      target: {
+        name: 'timelines',
+        value: [...project.timelines, newTimeline],
+      },
+    });
+  };
+
+  const onChange = (index: number, name: string, value: any) => {
+    const timelines = [...project.timelines];
+    timelines[index] = {
+      ...timelines[index],
+      [name]: value,
+    };
+    handleChange({
+      target: { name: 'timelines', value: timelines },
+    });
+  };
+
+  const deleteItem = (index: number) => {
+    const timelines = [...project.timelines];
+    timelines.splice(index, 1);
+    handleChange({
+      target: { name: 'timelines', value: timelines },
+    });
+  };
+
   return (
     <Grid container spacing={3} direction="column">
       <Grid item>
@@ -49,41 +98,55 @@ const Timeline: FC<{ handleChange: any; project: CreateProjectRequest }> = ({
         </Typography>
         <Box py={2}>
           <Grid container>
-            <Grid item container xs={12} spacing={1} alignItems="center">
-              <Grid item xs={8}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  label="مورد قابل تحویل و یا میزان پیشرفت پروژه"
-                  placeholder="تکمیل وب‌سایت محصول"
-                />
+            {project.timelines.map((item: TimelineItem, index) => (
+              <Grid
+                item
+                container
+                xs={12}
+                spacing={1}
+                alignItems="center"
+                key={index}>
+                <Grid item xs={8}>
+                  <TextField
+                    value={item.name}
+                    onChange={(e) => onChange(index, 'name', e.target.value)}
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    label="مورد قابل تحویل و یا میزان پیشرفت پروژه"
+                    placeholder="تکمیل وب‌سایت محصول"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <CustomDatePicker
+                    textFieldProps={{
+                      variant: 'outlined',
+                      fullWidth: true,
+                      size: 'small',
+                      label: 'تاریخ',
+                    }}
+                    value={item.date as DayValue}
+                    onChange={(value) => onChange(index, 'date', value)}
+                    minimumDate={maxMinDate({
+                      language: LanguageEnum.fa,
+                    })}
+                  />
+                </Grid>
+                <Grid item xs={1}>
+                  <IconButton onClick={() => deleteItem(index)}>
+                    <Close fontSize="small" />
+                  </IconButton>
+                </Grid>
               </Grid>
-              <Grid item xs={3}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  label="تاریخ"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <DateRange />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
-              <Grid item xs={1}>
-                <IconButton>
-                  <Close fontSize="small" />
-                </IconButton>
-              </Grid>
-            </Grid>
+            ))}
           </Grid>
         </Box>
 
-        <Button variant="outlined" color="secondary" startIcon={<Add />}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          startIcon={<Add />}
+          onClick={addNewTimeline}>
           اضافه کردن مورد جدید
         </Button>
       </Grid>

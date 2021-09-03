@@ -36,6 +36,10 @@ body[dir='rtl'] .MuiTabs-scrollButtons .MuiSvgIcon-root {
   transform: scaleX(1);
 }
 
+body[dir='rtl'] .MuiDropzoneSnackbar-icon.MuiSvgIcon-root {
+  transform: scaleX(1);
+}
+
 body[dir='rtl'] .Toastify__toast {
   direction: rtl;
   font-family: IRANSans;

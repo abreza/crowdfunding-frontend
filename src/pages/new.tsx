@@ -22,7 +22,7 @@ import BasicDetails from 'components/molecules/createProjectPages/BasicDetails';
 import Budget from 'components/molecules/createProjectPages/Budget';
 import Gallery from 'components/molecules/createProjectPages/Gallery';
 import Research from 'components/molecules/createProjectPages/Research';
-import { FC, useEffect, useState } from 'react';
+import { FC, useLayoutEffect, useState } from 'react';
 import Panel from 'templates/Panel';
 import Timeline from 'components/molecules/createProjectPages/Timeline';
 import {
@@ -90,7 +90,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
     institution: '',
     category: ProjectCategory.COMPUTER,
     summary: '',
-    budgets: [],
+    budgets: [{ title: '', value: 0 }],
     budgetReason: '',
     projectFirstIdea: '',
     projectMainIdea: '',
@@ -107,8 +107,18 @@ const CreateProject: FC<CreateProjectProps> = () => {
 
   const TabPageComponent = TabsData[activeStep].component;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    document.getElementById('__next')?.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
