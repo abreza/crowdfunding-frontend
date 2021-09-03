@@ -62,7 +62,7 @@ const ProjectCard: FC<{ item: ProjectRo }> = ({ item }) => {
             component="img"
             alt={item.subject}
             height="140"
-            image={baseUrl + item.imageUrls?.[0]}
+            image={item.imageUrls?.[0]}
             title={item.subject}
           />
           <CardContent>

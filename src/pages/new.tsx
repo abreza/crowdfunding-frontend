@@ -22,7 +22,7 @@ import BasicDetails from 'components/molecules/createProjectPages/BasicDetails';
 import Budget from 'components/molecules/createProjectPages/Budget';
 import Gallery from 'components/molecules/createProjectPages/Gallery';
 import Research from 'components/molecules/createProjectPages/Research';
-import { FC, useLayoutEffect, useState } from 'react';
+import { FC, useEffect, useLayoutEffect, useState } from 'react';
 import Panel from 'templates/Panel';
 import Timeline from 'components/molecules/createProjectPages/Timeline';
 import { ProjectDto, CategoryEnum } from 'types/project';
@@ -78,6 +78,12 @@ const TabsData = [
   },
 ];
 
+export type LoadedFile = {
+  file: File;
+  name: string;
+  url: string | undefined;
+};
+
 const CreateProject: FC<CreateProjectProps> = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
@@ -99,6 +105,15 @@ const CreateProject: FC<CreateProjectProps> = () => {
     imageUrls: [],
     state: false,
   });
+
+  const [loadedFiles, setLoadedFiles] = useState<LoadedFile[]>([]);
+
+  useEffect(() => {
+    const imageUrls = loadedFiles
+      .filter((f) => f.url)
+      .map((f) => f.url) as string[];
+    setProject({ ...project, imageUrls });
+  }, [loadedFiles]);
 
   const [createProject, { isLoading }] = useCreateProjectMutation();
 
@@ -141,6 +156,11 @@ const CreateProject: FC<CreateProjectProps> = () => {
     }));
   };
 
+  const props = TabsData[activeStep].label === 'گالری' && {
+    loadedFiles,
+    setLoadedFiles,
+  };
+
   return (
     <Panel>
       <Box py={2}>
@@ -160,7 +180,12 @@ const CreateProject: FC<CreateProjectProps> = () => {
               </Tabs>
             </div>
             <Box p={2}>
-              <TabPageComponent handleChange={handleChange} project={project} />
+              {/* @ts-ignore */}
+              <TabPageComponent
+                handleChange={handleChange}
+                project={project}
+                {...props}
+              />
               <Box pt={2}>
                 <Grid container justifyContent="space-between" direction="row">
                   <Grid item>

@@ -54,7 +54,7 @@ const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
 }));
 
 const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
-  const classes = useBannerItemStyles({ img: baseUrl + item.imageUrls?.[0] });
+  const classes = useBannerItemStyles({ img: item.imageUrls?.[0] });
 
   return (
     <Box className={classes.bannerItem}>

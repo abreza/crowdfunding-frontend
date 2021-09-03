@@ -16,6 +16,8 @@ import {
 import { ProjectDto } from 'types/project';
 import axios from 'axios';
 import { baseUrl } from 'app/services/baseQuery';
+import { LoadedFile } from 'pages/new';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -26,14 +28,15 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const Gallery: FC<{ handleChange: any; project: ProjectDto }> = ({
-  handleChange,
-  project,
-}) => {
+const Gallery: FC<{
+  handleChange: any;
+  project: ProjectDto;
+  loadedFiles: LoadedFile[];
+  setLoadedFiles: any;
+}> = ({ handleChange, project, loadedFiles, setLoadedFiles }) => {
   const classes = useStyles();
 
-  const [loadedFiles, setLoadedFiles] = useState<File[]>([]);
-  const [uploadedFiles, setUploadedFiles] = useState<any>({});
+  const [uploading, setUploading] = useState(false);
 
   const handlePreviewIcon = (
     fileObject: FileObject,
@@ -80,40 +83,56 @@ const Gallery: FC<{ handleChange: any; project: ProjectDto }> = ({
     return res.data.path;
   };
 
-  const updateLinks = () => {
-    const imageUrls: string[] = [];
-    loadedFiles.forEach((file) => {
-      // @ts-ignore
-      const url = uploadedFiles[file.path];
-      if (url) {
-        imageUrls.push(url);
+  const onChange = async (files: File[]) => {
+    const lFiles: LoadedFile[] = [...loadedFiles];
+
+    let haveChange = false;
+
+    for (let i = 0; i < lFiles.length; i++) {
+      if (!files.find((f) => f.name === lFiles[i].name)) {
+        lFiles.splice(i, 1);
+        haveChange = true;
       }
-    });
-    handleChange({ target: { name: 'imageUrls', value: imageUrls } });
+    }
+
+    for (let i = 0; i < files.length; i++) {
+      if (!lFiles.find((f) => f.name === files[i].name)) {
+        lFiles.push({
+          file: files[i],
+          name: files[i].name,
+          url: undefined,
+        });
+        haveChange = true;
+        toast.success('در حال ارسال فایل!');
+      }
+    }
+
+    if (haveChange) {
+      setUploading(true);
+      setLoadedFiles(lFiles);
+    }
   };
 
-  const onChange = useCallback(async () => {
-    for (let i = 0; i < loadedFiles.length; i++) {
-      const file = loadedFiles[i];
-      // @ts-ignore
-      const path = file.path;
-      if (!uploadedFiles[path]) {
-        const url = await upload(file);
-        alert(path);
-        alert(url);
-        setUploadedFiles({ ...uploadedFiles, [path]: url });
+  const onChangeLoadedFiles = useCallback(async () => {
+    const lFiles: LoadedFile[] = [...loadedFiles];
+    let haveChange = false;
+
+    for (let i = 0; i < lFiles.length; i++) {
+      if (!lFiles[i].url) {
+        lFiles[i].url = baseUrl + (await upload(lFiles[i].file));
+        haveChange = true;
       }
+    }
+    if (haveChange) {
+      setUploading(false);
+      toast.success('ارسال با موفقیت انجام شد!');
+      setLoadedFiles(lFiles);
     }
   }, [loadedFiles]);
 
   useEffect(() => {
-    alert(JSON.stringify(uploadedFiles));
-    updateLinks();
-  }, [uploadedFiles]);
-
-  useEffect(() => {
-    onChange();
-  }, [onChange]);
+    onChangeLoadedFiles();
+  }, [onChangeLoadedFiles]);
 
   return (
     <Grid container spacing={3} direction="column">
@@ -122,10 +141,12 @@ const Gallery: FC<{ handleChange: any; project: ProjectDto }> = ({
       </Grid>
       <Grid item>
         <DropzoneArea
+          showAlerts={false}
+          initialFiles={loadedFiles.map((f: any) => f.file)}
           maxFileSize={50000000}
           dropzoneText={'عکس‌ها و یا فیلم‌های خود را بارگذاری کنید.'}
           acceptedFiles={['image/*', 'video/*']}
-          onChange={setLoadedFiles}
+          onChange={onChange}
           getPreviewIcon={handlePreviewIcon}
           showPreviews={true}
           showPreviewsInDropzone={false}
