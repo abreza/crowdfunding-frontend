@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { ProjectContext } from 'contex/ProjectContext';
+import { FC, useContext, useState } from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from 'recharts';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -76,15 +77,10 @@ const renderActiveShape = (props: any) => {
 
 type ProjectBudgetProps = {};
 
-const data = [
-  { name: 'ساخت محصول اولیه', value: 400 },
-  { name: 'تکمیل نواقص طرح', value: 300 },
-  { name: 'شرکت در همایش', value: 300 },
-  { name: 'بازاریابی', value: 600 },
-];
-
 const ProjectBudget: FC<ProjectBudgetProps> = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const { budgets } = useContext(ProjectContext);
 
   return (
     <div style={{ height: 250 }}>
@@ -93,7 +89,10 @@ const ProjectBudget: FC<ProjectBudgetProps> = () => {
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
-            data={data}
+            data={budgets.map((budget) => ({
+              name: budget.title,
+              value: budget.value,
+            }))}
             cx="50%"
             cy="50%"
             innerRadius={60}
@@ -101,7 +100,7 @@ const ProjectBudget: FC<ProjectBudgetProps> = () => {
             fill="#8884d8"
             dataKey="value"
             onMouseEnter={(_, index) => setActiveIndex(index)}>
-            {data.map((entry, index) => (
+            {budgets.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

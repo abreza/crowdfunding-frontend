@@ -54,6 +54,11 @@ export const BorderLinearProgress = withStyles((theme) => ({
 const ProjectCard: FC<{ item: ProjectRo }> = ({ item }) => {
   const classes = useStyles();
 
+  const totalBudget = item.budgets.reduce(
+    (partial_sum, budget) => partial_sum + budget.value,
+    0
+  );
+
   return (
     <Card className={classes.root}>
       <Link href={`/project/${item.id}`} passHref>
@@ -115,7 +120,7 @@ const ProjectCard: FC<{ item: ProjectRo }> = ({ item }) => {
                 direction="row">
                 <Grid item>
                   <Typography align="center" className={classes.bold}>
-                    ۵۰ میلیون تومان
+                    {`${totalBudget} تومان`}
                   </Typography>
                 </Grid>
                 <Grid item>

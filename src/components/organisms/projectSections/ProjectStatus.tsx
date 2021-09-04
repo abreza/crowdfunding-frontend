@@ -42,7 +42,12 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
 
   const [originalHeight, setOriginalHeight] = useState(300);
 
-  const { imageUrls } = useContext(ProjectContext);
+  const { imageUrls, budgets } = useContext(ProjectContext);
+
+  const totalBudget = budgets.reduce(
+    (partial_sum, budget) => partial_sum + budget.value,
+    0
+  );
 
   return (
     <Grid
@@ -78,7 +83,7 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
           <Box p={2}>
             <Typography variant="h3">۲۳ میلیون تومان</Typography>
             <Typography variant="h5" color="textSecondary">
-              از ۵۰ میلیون تومان تامین شده است.
+              {`از ${totalBudget} تومان تامین شده است.`}
             </Typography>
             <Box my={2}>
               <BorderLinearProgress
