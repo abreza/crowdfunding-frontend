@@ -18,7 +18,7 @@ export interface TechnicalDescriptiontDto {
   value: string;
 }
 
-export interface TimelinetDto {
+export interface TimelineDto {
   name: string;
   date: DayValue | string;
 }
@@ -36,7 +36,7 @@ export interface ProjectDto {
   technicalDescriptions: TechnicalDescriptiontDto[];
   projectAdditionalInfo: string;
   timeDescription: string;
-  timelines: TimelinetDto[];
+  timelines: TimelineDto[];
   imageUrls: string[];
   state: boolean;
 }
@@ -55,7 +55,7 @@ export interface ProjectRo {
   technicalDescriptions: TechnicalDescriptiontDto[];
   projectAdditionalInfo: string;
   timeDescription: string;
-  timelines: TimelinetDto[];
+  timelines: TimelineDto[];
   imageUrls: string[];
   state: boolean;
   owner: UserRo;
