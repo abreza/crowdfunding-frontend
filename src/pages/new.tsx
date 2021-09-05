@@ -27,6 +27,9 @@ import Panel from 'templates/Panel';
 import Timeline from 'components/molecules/createProjectPages/Timeline';
 import { ProjectDto, CategoryEnum } from 'types/project';
 import { useCreateProjectMutation } from 'app/services/project';
+import { LoadingButton } from 'components/atoms/LoadingButton';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -85,6 +88,8 @@ export type LoadedFile = {
 };
 
 const CreateProject: FC<CreateProjectProps> = () => {
+  const { push } = useRouter();
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -137,11 +142,20 @@ const CreateProject: FC<CreateProjectProps> = () => {
     });
   }, [activeStep]);
 
-  const onClickNext = () => {
+  const onClickNext = async () => {
     if (activeStep < TabsData.length - 1) {
       setActiveStep(activeStep + 1);
     } else {
-      createProject(project);
+      try {
+        const res = await createProject(project).unwrap();
+        toast.success('پروژه شما با موفقیت ثبت شد!');
+        setTimeout(() => {
+          push('/project/' + res.id);
+        }, 0.5);
+      } catch (err) {
+        // @ts-ignore
+        toast.error(err?.data?.message?.toString());
+      }
     }
   };
 
@@ -200,10 +214,11 @@ const CreateProject: FC<CreateProjectProps> = () => {
                     )}
                   </Grid>
                   <Grid item>
-                    <Button
+                    <LoadingButton
                       variant="contained"
                       color="primary"
                       onClick={onClickNext}
+                      loading={isLoading}
                       className={classes.nextButton}
                       type={
                         activeStep === TabsData.length - 1 ? 'submit' : 'button'
@@ -211,7 +226,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
                       {activeStep === TabsData.length - 1
                         ? 'ثبت نهایی'
                         : 'ثبت و ادامه'}
-                    </Button>
+                    </LoadingButton>
                   </Grid>
                 </Grid>
               </Box>
