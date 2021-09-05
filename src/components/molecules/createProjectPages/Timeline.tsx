@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Add, Close } from '@material-ui/icons';
-import { ProjectDto, TimelinetDto } from 'types/project';
+import { ProjectDto, TimelineDto } from 'types/project';
 import React, { FC } from 'react';
 import { toast } from 'react-toastify';
 import { LanguageEnum } from 'types/generalTypes';
@@ -32,7 +32,7 @@ const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
       toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
       return;
     }
-    const newTimeline: TimelinetDto = {
+    const newTimeline: TimelineDto = {
       name: '',
       date: undefined,
     };
@@ -98,7 +98,7 @@ const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
         </Typography>
         <Box py={2}>
           <Grid container>
-            {project.timelines.map((item: TimelinetDto, index) => (
+            {project.timelines.map((item: TimelineDto, index) => (
               <Grid
                 item
                 container

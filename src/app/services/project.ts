@@ -1,19 +1,19 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'app/services/baseQuery';
 import jMoment from 'jalali-moment';
-import { ProjectDto, TimelinetDto } from 'types/project';
+import { ProjectDto, ProjectRo, TimelineDto } from 'types/project';
 
 export const api = createApi({
   baseQuery,
   endpoints: (builder) => ({
-    getProjects: builder.mutation<void, ProjectDto>({
+    getProjects: builder.mutation<ProjectRo[], string | undefined>({
       query: (name) => (name ? `project/${name}` : 'project/'),
     }),
-    createProject: builder.mutation<void, ProjectDto>({
+    createProject: builder.mutation<ProjectRo, ProjectDto>({
       query: (project) => {
         const body = {
           ...project,
-          timelines: project.timelines.map((item: TimelinetDto) => ({
+          timelines: project.timelines.map((item: TimelineDto) => ({
             name: item.name,
             date: jMoment(
               // @ts-ignore
