@@ -14,7 +14,7 @@ type LandingProps = {
   projects: ProjectRo[];
 };
 
-const Landing: FC<LandingProps> = ({ projects }) => {
+const Landing: FC<LandingProps> = ({ projects = [] }) => {
   const router = useRouter();
   const { sc } = router.query;
 
