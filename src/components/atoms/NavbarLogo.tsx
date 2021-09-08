@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import logo2 from 'assets/images/logo2.png';
 import logo3 from 'assets/images/logo3.png';
 import Link from 'components/atoms/Link';
-import SImage from './image/Image';
+import SImage from 'components/atoms/image/Image';
 
 const NavbarLogo: FC = () => {
   const windowDimensions = UseWindowDimensions();
