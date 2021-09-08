@@ -1,10 +1,13 @@
 import { ImageProps } from 'next/image';
-import { CloudflareImage } from '../cloudFlareImage/cloudFlareImage';
+import {
+  CloudflareImage,
+  CloudflareImageProps,
+} from '../cloudFlareImage/cloudFlareImage';
 import styles from './SImage.module.css';
 import { FC } from 'react';
 
 const SImage: FC<
-  ImageProps & {
+  CloudflareImageProps & {
     width?: string | number;
     maxWidth?: string | number;
   }

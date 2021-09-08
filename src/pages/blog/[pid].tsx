@@ -37,7 +37,8 @@ const Post: FC<PostProps> = () => {
               </Box>
             </Grid>
             <SImage
-              src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
+              base="https://bankautomationnews.com"
+              src="/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
               alt="crowdfunding"
               layout="fill"
               maxWidth="500px"
