@@ -2,13 +2,13 @@
 import { FC } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { CloudflareImageLoader } from './cloudflareImage.loader';
-import { baseUrl } from 'app/services/baseQuery';
+import { frontUrl } from 'config';
 
 export type CloudflareImageProps = ImageProps & { base?: string };
 
 export const CloudflareImage: FC<CloudflareImageProps> = ({
   src,
-  base = baseUrl,
+  base = frontUrl,
   ...props
 }) => {
   return process.env.NODE_ENV === 'development' ? (

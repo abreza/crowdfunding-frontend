@@ -11,7 +11,7 @@ import { ArrowForward as ArrowForwardIcon } from '@material-ui/icons';
 import { FC } from 'react';
 import Link from 'next/link';
 import Homepage from 'templates/Homepages';
-import SImage from 'components/atoms/sImage/SImage';
+import SImage from 'components/atoms/image/SImage';
 
 const useStyles = makeStyles(() => ({
   postHead: {

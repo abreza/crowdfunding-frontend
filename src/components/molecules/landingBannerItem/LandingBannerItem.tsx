@@ -2,7 +2,6 @@ import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core';
 import { FC } from 'react';
 import Link from 'next/link';
 import { ProjectRo } from 'types/project';
-import { baseUrl } from 'app/services/baseQuery';
 
 const useBannerItemStyles = makeStyles<Theme, any>((theme: Theme) => ({
   bannerItem: {

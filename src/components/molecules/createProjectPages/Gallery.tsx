@@ -15,7 +15,7 @@ import {
 } from '@material-ui/icons';
 import { ProjectDto } from 'types/project';
 import axios from 'axios';
-import { baseUrl } from 'app/services/baseQuery';
+import { baseUrl } from 'config';
 import { LoadedFile } from 'pages/new';
 import { toast } from 'react-toastify';
 

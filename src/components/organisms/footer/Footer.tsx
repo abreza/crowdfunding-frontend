@@ -16,7 +16,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import logo2 from 'assets/images/logo2.png';
-import SImage from 'components/atoms/sImage/SImage';
+import SImage from 'components/atoms/image/SImage';
 
 const useStyles = makeStyles((theme) => ({
   footer: {

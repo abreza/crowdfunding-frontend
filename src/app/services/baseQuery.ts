@@ -1,7 +1,6 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query';
 import { RootState } from 'app/store';
-
-export const baseUrl = 'https://crowdfunding.mamalan.ir/api/v1/';
+import { baseUrl } from 'config';
 
 export const baseQuery = fetchBaseQuery({
   baseUrl,

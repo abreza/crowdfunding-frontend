@@ -7,7 +7,7 @@ import ProjectTabs from 'components/organisms/projectSections/projectTabs/Projec
 import { ProjectContext } from 'contex/ProjectContext';
 import { ProjectRo } from 'types/project';
 import axios from 'axios';
-import { baseUrl } from 'app/services/baseQuery';
+import { baseUrl } from 'config';
 
 type ProjectProps = {
   project: ProjectRo;

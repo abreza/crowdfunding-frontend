@@ -12,7 +12,7 @@ import Link from 'next/link';
 import pic2 from 'assets/images/pic2.png';
 import pic6 from 'assets/images/pic6.png';
 import pic7 from 'assets/images/pic7.png';
-import SImage from 'components/atoms/sImage/SImage';
+import SImage from 'components/atoms/image/SImage';
 
 const useStyles = makeStyles((theme) => ({
   container: {

@@ -7,7 +7,7 @@ import WhatIsCrowdfunding from 'components/organisms/landingSections/whatIsCrowd
 import Homepage from 'templates/Homepages';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { baseUrl } from 'app/services/baseQuery';
+import { baseUrl } from 'config';
 import { ProjectRo } from 'types/project';
 
 type LandingProps = {

@@ -15,7 +15,6 @@ import { FC } from 'react';
 import Link from 'next/link';
 import prof from 'assets/images/prof.jpg';
 import { ProjectRo } from 'types/project';
-import { baseUrl } from 'app/services/baseQuery';
 
 const useStyles = makeStyles((theme) => ({
   root: {
