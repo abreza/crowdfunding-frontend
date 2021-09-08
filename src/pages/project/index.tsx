@@ -13,13 +13,15 @@ import { RootState } from 'app/store';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import Homepage from 'templates/Homepages';
+import axios from 'axios';
+import { baseUrl } from 'config';
+import { ProjectRo } from 'types/project';
 
-type ProjectsProps = {};
+type ProjectsProps = {
+  projects: ProjectRo[];
+};
 
-const Projects: FC<ProjectsProps> = () => {
-  // @ts-ignore
-  const projects = useSelector((state: RootState) => state.projects.projects);
-
+const Projects: FC<ProjectsProps> = ({ projects }) => {
   return (
     <Homepage>
       <Box pt={2}>
@@ -94,5 +96,17 @@ const Projects: FC<ProjectsProps> = () => {
     </Homepage>
   );
 };
+
+export async function getStaticProps() {
+  const res = await axios(baseUrl + 'project/');
+  const { projects } = await res.data;
+
+  return {
+    props: {
+      projects,
+    },
+    revalidate: 60,
+  };
+}
 
 export default Projects;
