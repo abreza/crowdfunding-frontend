@@ -1,6 +1,6 @@
 import { ImageProps } from 'next/image';
 import { CloudflareImage } from '../cloudFlareImage/cloudFlareImage';
-import styles from './Image.module.css';
+import styles from './SImage.module.css';
 import { FC } from 'react';
 
 const SImage: FC<
