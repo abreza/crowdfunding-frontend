@@ -16,6 +16,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import logo2 from 'assets/images/logo2.png';
+import SImage from 'components/atoms/image/image';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -60,7 +61,7 @@ export default function Footer() {
             <Grid item xs={4} sm={5}>
               <Link href="/" passHref>
                 <Button>
-                  <img src={logo2} alt="logo" style={{ width: '100%' }} />
+                  <SImage src={logo2} alt="logo" layout="fill" />
                 </Button>
               </Link>
             </Grid>

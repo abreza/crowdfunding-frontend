@@ -1,18 +1,20 @@
 import UseWindowDimensions from 'components/hoc/UseWindowSize';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import logo2 from 'assets/images/logo2.png';
 import logo3 from 'assets/images/logo3.png';
 import Link from 'components/atoms/Link';
+import SImage from './image/image';
 
-const NavbarLogo: FC<{}> = () => {
+const NavbarLogo: FC = () => {
   const windowDimensions = UseWindowDimensions();
 
   return (
     <Link href="/" passHref>
-      <img
+      <SImage
         src={windowDimensions.width < 960 ? logo2 : logo3}
         alt="logo"
-        style={{ height: 35 }}
+        width={70}
+        layout="fill"
       />
     </Link>
   );

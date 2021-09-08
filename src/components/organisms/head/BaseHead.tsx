@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-css-tags */
 import Head from 'next/head';
 
-import logo from 'assets/images/logo.png';
-
 const BaseHead = () => {
   return (
     <Head>
       <meta charSet="utf-8" />
-      <link rel="icon" href={logo} />
+      <link rel="icon" href={process.env.PUBLIC_URL + 'logo.png'} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
 
@@ -93,11 +91,6 @@ const BaseHead = () => {
       <meta
         name="msapplication-TileImage"
         content={process.env.PUBLIC_URL + '/favicon/ms-icon-144x144.png'}
-      />
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href={process.env.PUBLIC_URL + '/fonts/fontiran.css'}
       />
       <meta name="theme-color" content="#ffffff" />
       <title>تامین مالی جمعی شریف</title>

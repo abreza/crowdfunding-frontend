@@ -12,13 +12,11 @@ import Link from 'next/link';
 import pic2 from 'assets/images/pic2.png';
 import pic6 from 'assets/images/pic6.png';
 import pic7 from 'assets/images/pic7.png';
+import SImage from 'components/atoms/image/image';
 
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: theme.spacing(4, 0),
-  },
-  img: {
-    width: '100%',
   },
 }));
 
@@ -36,7 +34,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Box clone order={{ xs: 0, sm: 1 }}>
             <Grid item sm={6} xs={12}>
-              <img src={pic2} alt="crowdfunding" className={classes.img} />
+              <SImage src={pic2} alt="crowdfunding" layout="fill" />
             </Grid>
           </Box>
           <Box clone order={{ xs: 1, sm: 0 }}>
@@ -59,7 +57,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           </Box>
           <Box clone order={{ xs: 2, sm: 2 }}>
             <Grid item sm={6} xs={12}>
-              <img src={pic6} alt="crowdfunding" className={classes.img} />
+              <SImage src={pic6} alt="crowdfunding" layout="fill" />
             </Grid>
           </Box>
           <Box clone order={{ xs: 3, sm: 3 }}>
@@ -77,7 +75,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           </Box>
           <Box clone order={{ xs: 4, sm: 5 }}>
             <Grid item sm={6} xs={12}>
-              <img src={pic7} alt="crowdfunding" className={classes.img} />
+              <SImage src={pic7} alt="crowdfunding" layout="fill" />
             </Grid>
           </Box>
 

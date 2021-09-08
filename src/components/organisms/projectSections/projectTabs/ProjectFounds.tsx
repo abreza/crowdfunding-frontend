@@ -41,31 +41,66 @@ const ProjectFounds: FC<ProjectFoundsProps> = () => {
         <Typography variant="h2">سرمایه‌گذاران</Typography>
         <Box p={2} className={classes.root}>
           <Chip
-            avatar={<Avatar alt="مرتضی ابوالقاسمی" src={sponsor} />}
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + 'sponsor.jpeg'}
+              />
+            }
             label="مرتضی ابوالقاسمی"
           />
           <Chip
-            avatar={<Avatar alt="مرتضی ابوالقاسمی" src={sponsor} />}
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + 'sponsor.jpeg'}
+              />
+            }
             label="مرتضی ابوالقاسمی"
           />
           <Chip
-            avatar={<Avatar alt="مرتضی ابوالقاسمی" src={sponsor} />}
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + 'sponsor.jpeg'}
+              />
+            }
             label="مرتضی ابوالقاسمی"
           />
           <Chip
-            avatar={<Avatar alt="مرتضی ابوالقاسمی" src={sponsor} />}
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + 'sponsor.jpeg'}
+              />
+            }
             label="مرتضی ابوالقاسمی"
           />
           <Chip
-            avatar={<Avatar alt="مرتضی ابوالقاسمی" src={sponsor} />}
+            avatar={
+              <Avatar
+                alt="مرتضی ابوالقاسمی"
+                src={process.env.PUBLIC_URL + 'sponsor.jpeg'}
+              />
+            }
             label="مرتضی ابوالقاسمی"
           />
           <Chip
-            avatar={<Avatar alt="علی احتشامی" src={sponsor} />}
+            avatar={
+              <Avatar
+                alt="علی احتشامی"
+                src={process.env.PUBLIC_URL + 'sponsor.jpeg'}
+              />
+            }
             label="علی احتشامی"
           />
           <Chip
-            avatar={<Avatar alt="علی احتشامی" src={sponsor} />}
+            avatar={
+              <Avatar
+                alt="علی احتشامی"
+                src={process.env.PUBLIC_URL + 'sponsor.jpeg'}
+              />
+            }
             label="علی احتشامی"
           />
           <Chip avatar={<Avatar alt="علی احتشامی" />} label="علی احتشامی" />

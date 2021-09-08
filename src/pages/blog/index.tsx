@@ -1,19 +1,38 @@
-import { Avatar, Box, Button, Chip, Grid, Typography } from '@material-ui/core';
+import {
+  Avatar,
+  Box,
+  Button,
+  Chip,
+  Grid,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
 import { ArrowForward as ArrowForwardIcon } from '@material-ui/icons';
 import { FC } from 'react';
 import Link from 'next/link';
 import Homepage from 'templates/Homepages';
+import SImage from 'components/atoms/image/image';
 
 type BlogProps = {};
 type BlogCardProps = {};
 
+const useStyles = makeStyles(() => ({
+  postHead: {
+    width: '100%',
+    borderRadius: '5px 5px 0 0',
+  },
+}));
+
 const BlogCard: FC<BlogCardProps> = () => {
+  const classes = useStyles();
+
   return (
     <div>
-      <img
+      <SImage
         src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
         alt="crowdfunding"
-        style={{ width: '100%', borderRadius: '5px 5px 0 0' }}
+        layout="fill"
+        className={classes.postHead}
       />
       <Chip avatar={<Avatar />} label="علی محمدی" color="primary" />
       <Box my={1}>
