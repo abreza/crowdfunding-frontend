@@ -13,7 +13,7 @@ const NavbarLogo: FC = () => {
       <SImage
         src={windowDimensions.width < 960 ? logo2 : logo3}
         alt="logo"
-        width={70}
+        width={windowDimensions.width < 960 ? 40 : 70}
         layout="fill"
       />
     </Link>

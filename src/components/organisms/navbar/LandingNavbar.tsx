@@ -111,7 +111,10 @@ const ResponsiveAppBar: FC<any> = ({
                     <MenuIcon />
                   </IconButton>
                 )}
-                <Grid container justifyContent="space-between">
+                <Grid
+                  container
+                  alignItems="center"
+                  justifyContent="space-between">
                   <Grid item>
                     <Grid
                       spacing={1}
