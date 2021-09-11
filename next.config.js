@@ -1,9 +1,10 @@
-const withOptimizedImages = require('next-optimized-images');
+/**
+ * @type {import('next').NextConfig}
+ */
 
-module.exports = withOptimizedImages({
-  reactStrictMode: true,
+const withImages = require('next-images');
+module.exports = withImages({
   images: {
-    loader: 'custom',
     disableStaticImages: true,
   },
   env: {

@@ -1,13 +1,9 @@
-import { ImageProps } from 'next/image';
-import {
-  CloudflareImage,
-  CloudflareImageProps,
-} from '../cloudFlareImage/cloudFlareImage';
+import Image, { ImageProps } from 'next/image';
 import styles from './SImage.module.css';
 import { FC } from 'react';
 
 const SImage: FC<
-  CloudflareImageProps & {
+  ImageProps & {
     width?: string | number;
     maxWidth?: string | number;
   }
@@ -19,7 +15,7 @@ const SImage: FC<
         width: width || '100%',
         maxWidth: maxWidth || '100%',
       }}>
-      <CloudflareImage className={styles.image} {...rest} />
+      <Image className={styles.image} {...rest} />
     </div>
   );
 };
