@@ -9,7 +9,7 @@ import {
 import { UserRo } from 'types/auth';
 import { logout } from 'app/slices/authSlice';
 import { RootState } from 'app/store';
-import { HomepageContext } from 'contex/HompageContext';
+import { HomepageContext } from 'context/HomepageContext';
 import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

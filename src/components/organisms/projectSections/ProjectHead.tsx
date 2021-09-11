@@ -1,5 +1,5 @@
 import { Typography, Box } from '@material-ui/core';
-import { ProjectContext } from 'contex/ProjectContext';
+import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext } from 'react';
 
 type ProjectHeadProps = {};

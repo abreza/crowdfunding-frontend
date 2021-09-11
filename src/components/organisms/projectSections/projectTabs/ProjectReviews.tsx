@@ -2,7 +2,7 @@ import { Box, Button, Grid, Hidden, Avatar } from '@material-ui/core';
 import { Typography, Divider } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
 import { BorderLinearProgress } from 'components/molecules/projectCard/ProjectCard';
-import { HomepageContext } from 'contex/HompageContext';
+import { HomepageContext } from 'context/HomepageContext';
 import { FC, useContext } from 'react';
 import { dateFormatter } from 'utils/dateFormatterUtils';
 

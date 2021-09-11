@@ -18,7 +18,7 @@ import {
 } from '@material-ui/icons';
 import { VideoPlayer } from 'components/atoms/VideoPlayer';
 import { BorderLinearProgress } from 'components/molecules/projectCard/ProjectCard';
-import { ProjectContext } from 'contex/ProjectContext';
+import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';

@@ -1,4 +1,4 @@
-import { ProjectContext } from 'contex/ProjectContext';
+import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from 'recharts';
 

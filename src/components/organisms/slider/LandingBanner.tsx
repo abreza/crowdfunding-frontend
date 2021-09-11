@@ -7,7 +7,7 @@ import Carousel from 'react-material-ui-carousel';
 import { useSelector } from 'react-redux';
 import { RootState } from 'app/store';
 import Link from 'next/link';
-import { HomepageContext } from 'contex/HompageContext';
+import { HomepageContext } from 'context/HomepageContext';
 import CreateProjectButton from 'components/atoms/CreateProject';
 import { ProjectRo } from 'types/project';
 
