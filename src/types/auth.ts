@@ -22,3 +22,7 @@ export interface SignUpRequest {
   lastName: string;
   email: string;
 }
+
+export interface VerifyTokenRequest {
+  token: string;
+}

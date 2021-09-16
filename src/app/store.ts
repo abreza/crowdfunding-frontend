@@ -18,6 +18,7 @@ import storage from 'redux-persist/lib/storage';
 import { translatorReducer } from 'app/slices/localSlice';
 import { projectsReducer } from 'app/slices/projectsSlice';
 import authReducer from 'app/slices/authSlice';
+import { rtkQueryErrorHandler } from './rtkQueryError';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -39,7 +40,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(rtkQueryErrorHandler),
   devTools: isDevelopment,
 });
 

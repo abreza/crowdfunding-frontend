@@ -3,7 +3,7 @@ import { baseQuery } from 'app/services/baseQuery';
 import jMoment from 'jalali-moment';
 import { ProjectDto, ProjectRo, TimelineDto } from 'types/project';
 
-export const api = createApi({
+export const projectApi = createApi({
   baseQuery,
   endpoints: (builder) => ({
     getProjects: builder.mutation<ProjectRo[], string | undefined>({
@@ -32,4 +32,4 @@ export const api = createApi({
   }),
 });
 
-export const { useCreateProjectMutation, useGetProjectsMutation } = api;
+export const { useCreateProjectMutation, useGetProjectsMutation } = projectApi;

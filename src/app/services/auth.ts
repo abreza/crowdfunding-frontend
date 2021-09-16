@@ -1,10 +1,22 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'app/services/baseQuery';
-import { LoginRequest, SignUpRequest, UserResponse } from 'types/auth';
+import {
+  LoginRequest,
+  SignUpRequest,
+  UserResponse,
+  VerifyTokenRequest,
+} from 'types/auth';
 
-export const api = createApi({
+export const authApi = createApi({
   baseQuery,
   endpoints: (builder) => ({
+    verifyToken: builder.mutation<void, VerifyTokenRequest>({
+      query: (tokenDto) => ({
+        url: 'auth/verifyToken/',
+        method: 'POST',
+        body: tokenDto,
+      }),
+    }),
     login: builder.mutation<UserResponse, LoginRequest>({
       query: (credentials) => ({
         url: 'auth/',
@@ -22,4 +34,5 @@ export const api = createApi({
   }),
 });
 
-export const { useLoginMutation, useSignUpMutation } = api;
+export const { useLoginMutation, useSignUpMutation, useVerifyTokenMutation } =
+  authApi;
