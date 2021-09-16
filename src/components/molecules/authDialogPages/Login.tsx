@@ -1,7 +1,6 @@
 import { Grid, Link, TextField, Typography } from '@material-ui/core';
 import { LoginRequest } from 'types/auth';
 import { useLoginMutation } from 'app/services/auth';
-import { setCredentials } from 'app/slices/authSlice';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
   PageName,
@@ -28,8 +27,7 @@ const Login: FC<PageProps> = ({ handleClose, changePage }) => {
 
   const submitLogin = async () => {
     try {
-      const user = await login(formState).unwrap();
-      dispatch(setCredentials(user));
+      await login(formState).unwrap();
       toast.success('خوش آمدید');
       handleClose();
     } catch (err) {

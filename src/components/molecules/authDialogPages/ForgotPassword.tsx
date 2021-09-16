@@ -42,13 +42,13 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
         />
       </Grid>
       <Grid item>
-        <LoadingButton
+        {/* <LoadingButton
           fullWidth
           variant="contained"
           color="primary"
           onClick={submitForgot}>
           بازیابی
-        </LoadingButton>
+        </LoadingButton> */}
       </Grid>
       <Grid container item direction="row">
         <Grid item xs={6}>

@@ -1,7 +1,6 @@
 import { Grid, Link, TextField, Typography } from '@material-ui/core';
 import { SignUpRequest } from 'types/auth';
 import { useSignUpMutation } from 'app/services/auth';
-import { setCredentials } from 'app/slices/authSlice';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
   PageName,
@@ -31,8 +30,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage }) => {
 
   const submitSignUp = async () => {
     try {
-      const user = await signUp(formState).unwrap();
-      dispatch(setCredentials(user));
+      await signUp(formState).unwrap();
       toast.success('خوش آمدید');
       handleClose();
     } catch (err) {

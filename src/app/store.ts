@@ -19,6 +19,9 @@ import { translatorReducer } from 'app/slices/localSlice';
 import { projectsReducer } from 'app/slices/projectsSlice';
 import authReducer from 'app/slices/authSlice';
 import { rtkQueryErrorHandler } from './rtkQueryError';
+import { authApi } from './services/auth';
+import { projectApi } from './services/project';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -31,6 +34,8 @@ const persistAuthReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: combineReducers({
+    [authApi.reducerPath]: authApi.reducer,
+    [projectApi.reducerPath]: projectApi.reducer,
     auth: persistAuthReducer,
     projects: projectsReducer,
     local: translatorReducer,
@@ -40,9 +45,14 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(rtkQueryErrorHandler),
+    })
+      .concat(authApi.middleware)
+      .concat(projectApi.middleware)
+      .concat(rtkQueryErrorHandler),
   devTools: isDevelopment,
 });
+
+setupListeners(store.dispatch);
 
 // "ReturnType" set type based on returned value from function
 export type AppDispatch = typeof store.dispatch;

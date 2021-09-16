@@ -1,15 +1,17 @@
-import { toast } from 'react-toastify';
 import {
   MiddlewareAPI,
   isRejectedWithValue,
   Middleware,
 } from '@reduxjs/toolkit';
+import { logout } from './slices/authSlice';
 
 export const rtkQueryErrorHandler: Middleware =
   (api: MiddlewareAPI) => (next) => (action) => {
     if (isRejectedWithValue(action)) {
-      alert('We got a rejected action!');
-      toast.warn({ title: 'Async error!', message: action.error.data.message });
+      const { payload } = action;
+      if (payload.status === 401) {
+        next(logout());
+      }
     }
 
     return next(action);

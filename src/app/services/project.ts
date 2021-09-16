@@ -4,6 +4,7 @@ import jMoment from 'jalali-moment';
 import { ProjectDto, ProjectRo, TimelineDto } from 'types/project';
 
 export const projectApi = createApi({
+  reducerPath: 'projectApi',
   baseQuery,
   endpoints: (builder) => ({
     getProjects: builder.mutation<ProjectRo[], string | undefined>({

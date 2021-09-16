@@ -1,10 +1,14 @@
-import { Button, CircularProgress } from '@material-ui/core';
+import { Button, ButtonProps, CircularProgress } from '@material-ui/core';
 import React, { FC } from 'react';
 
-export const LoadingButton: FC<any> = (props) => {
-  const { loading, children } = props;
+export const LoadingButton: FC<
+  {
+    loading: boolean;
+    children: React.ReactNode;
+  } & ButtonProps
+> = ({ loading, children, ...buttonProps }) => {
   return (
-    <Button disabled={loading} {...props}>
+    <Button disabled={loading} {...buttonProps}>
       {loading && <CircularProgress size={14} />}
       {!loading && children}
     </Button>

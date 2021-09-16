@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { RootState, store } from 'app/store';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
 import jss from 'utils/jssRTL';
 
@@ -37,13 +37,10 @@ const ThemeWrapper: FC<any> = ({ children }) => {
 const InnerApp = ({ Component, pageProps }: AppProps) => {
   const [verifyToken] = useVerifyTokenMutation();
   const token = useSelector((state: RootState) => state.auth.token);
-  const dispatch = useDispatch();
 
   const checkToken = useCallback(async () => {
-    try {
+    if (token) {
       await verifyToken({ token }).unwrap();
-    } catch (err) {
-      dispatch(logout());
     }
   }, []);
 

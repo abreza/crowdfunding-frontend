@@ -8,6 +8,7 @@ import {
 } from 'types/auth';
 
 export const authApi = createApi({
+  reducerPath: 'authApi',
   baseQuery,
   endpoints: (builder) => ({
     verifyToken: builder.mutation<void, VerifyTokenRequest>({
