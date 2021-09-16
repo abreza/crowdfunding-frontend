@@ -18,8 +18,8 @@ type BlogCardProps = {};
 
 const useStyles = makeStyles(() => ({
   postHead: {
-    width: '100%',
     borderRadius: '5px 5px 0 0',
+    overflow: 'hidden',
   },
 }));
 
@@ -28,12 +28,13 @@ const BlogCard: FC<BlogCardProps> = () => {
 
   return (
     <div>
-      <SImage
-        src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
-        alt="crowdfunding"
-        layout="fill"
-        className={classes.postHead}
-      />
+      <Box mb={1} className={classes.postHead}>
+        <SImage
+          src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
+          alt="crowdfunding"
+          layout="fill"
+        />
+      </Box>
       <Chip avatar={<Avatar />} label="علی محمدی" color="primary" />
       <Box my={1}>
         <Typography variant="h2" gutterBottom>

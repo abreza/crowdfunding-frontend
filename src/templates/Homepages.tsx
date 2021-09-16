@@ -10,17 +10,24 @@ type HomepageProps = {
 
 const Homepage: FC<HomepageProps> = ({ children }) => {
   const [openAuthDialog, setOpenAuthDialog] = useState(false);
+  const [afterAuth, setAfterAuth] = useState<string | undefined>('');
 
   return (
     <>
       <HomepageContext.Provider
-        value={{ openAuthDialog: () => setOpenAuthDialog(true) }}>
+        value={{
+          openAuthDialog: ({ after }: { after: string | undefined }) => {
+            setAfterAuth(after);
+            setOpenAuthDialog(true);
+          },
+        }}>
         <ResponsiveAppBar />
         {children}
         <Footer />
       </HomepageContext.Provider>
       <AuthDialog
         open={openAuthDialog}
+        afterAuth={afterAuth}
         handleClose={() => setOpenAuthDialog(false)}
       />
     </>

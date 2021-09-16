@@ -16,7 +16,10 @@ const CreateProjectButton: FC = () => {
       </Button>
     </Link>
   ) : (
-    <Button onClick={openAuthDialog} variant="contained" color="primary">
+    <Button
+      onClick={() => openAuthDialog({ after: '/new' })}
+      variant="contained"
+      color="primary">
       ایجاد پروژه جدید
     </Button>
   );

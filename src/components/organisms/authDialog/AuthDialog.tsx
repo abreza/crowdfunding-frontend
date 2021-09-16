@@ -25,6 +25,7 @@ export enum PageName {
 export type PageProps = {
   handleClose: () => void;
   changePage: (pageName: PageName) => void;
+  afterAuth: string | undefined;
 };
 
 type PagesData = {
@@ -71,7 +72,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AuthDialog: FC<any> = ({ open, handleClose }) => {
+type AuthDialogProps = {
+  open: boolean;
+  handleClose: any;
+  afterAuth: string | undefined;
+};
+
+const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
   const classes = useStyles();
 
   const [pageName, setPageName] = useState(PageName.LOGIN);
@@ -110,7 +117,11 @@ const AuthDialog: FC<any> = ({ open, handleClose }) => {
               </Grid>
               <Grid item xs={3} />
             </Grid>
-            <PageComponent handleClose={handleClose} changePage={setPageName} />
+            <PageComponent
+              handleClose={handleClose}
+              changePage={setPageName}
+              afterAuth={afterAuth}
+            />
           </Grid>
           <Hidden xsDown>
             <Grid item sm={5} className={classes.image}></Grid>

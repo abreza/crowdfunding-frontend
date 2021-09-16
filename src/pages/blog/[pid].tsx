@@ -16,6 +16,7 @@ import SImage from 'components/atoms/sImage/SImage';
 const useStyles = makeStyles(() => ({
   postHead: {
     borderRadius: '5px 5px 0 0',
+    overflow: 'hidden',
   },
 }));
 
@@ -36,13 +37,13 @@ const Post: FC<PostProps> = () => {
                 </Link>
               </Box>
             </Grid>
-            <SImage
-              src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
-              alt="crowdfunding"
-              layout="fill"
-              maxWidth="500px"
-              className={classes.postHead}
-            />
+            <Box mb={1} className={classes.postHead}>
+              <SImage
+                src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
+                alt="crowdfunding"
+                layout="fill"
+              />
+            </Box>
             <Chip avatar={<Avatar />} label="علی محمدی" color="primary" />
             <Box my={1}>
               <Typography variant="h2" gutterBottom>

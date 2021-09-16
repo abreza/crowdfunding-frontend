@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
 export const HomepageContext = createContext({
-  openAuthDialog: () => {},
+  openAuthDialog: ({ after }: { after: string }) => {},
 });

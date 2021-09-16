@@ -9,8 +9,10 @@ import {
 import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
-const SignUp: FC<PageProps> = ({ handleClose, changePage }) => {
+const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
+  const { push } = useRouter();
   const [formState, setFormState] = useState<SignUpRequest>({
     username: '',
     password: '',
@@ -32,6 +34,9 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage }) => {
     try {
       await signUp(formState).unwrap();
       toast.success('خوش آمدید');
+      if (afterAuth) {
+        push(afterAuth);
+      }
       handleClose();
     } catch (err) {
       // @ts-ignore
