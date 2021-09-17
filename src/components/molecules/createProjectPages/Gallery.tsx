@@ -63,7 +63,7 @@ const Gallery: FC<{
   const upload = async (file: File, id: number): Promise<string> => {
     const formData = new FormData();
     formData.append('file', file);
-    const res = await axios.post(baseUrl + 'media/image/upload', formData, {
+    const res = await axios.post(baseUrl + 'media/', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
