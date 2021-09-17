@@ -8,6 +8,29 @@ import {
 import { FC } from 'react';
 import { ProjectDto, CategoryEnum } from 'types/project';
 
+const chips = [
+  {
+    icon: ComputerIcon,
+    label: 'کامپیوتر',
+    category: CategoryEnum.COMPUTER,
+  },
+  {
+    icon: Category,
+    label: 'فیزیک',
+    category: CategoryEnum.PHYSICS,
+  },
+  {
+    icon: OutdoorGrill,
+    label: 'شیمی',
+    category: CategoryEnum.CHEMISTRY,
+  },
+  {
+    icon: FunctionsIcon,
+    label: 'ریاضی',
+    category: CategoryEnum.MATHEMATICS,
+  },
+];
+
 const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
   project,
@@ -55,64 +78,23 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
               display: 'flex',
               justifyContent: 'center',
               flexWrap: 'wrap',
-              '> *': {
-                m: 0.5,
-                py: 0.2,
-                px: 1,
-              },
+              m: 1,
             }}>
-            <Chip
-              size="small"
-              icon={<ComputerIcon />}
-              label={'کامپیوتر'}
-              clickable
-              color="secondary"
-              onClick={() => onClickBadge(CategoryEnum.COMPUTER)}
-              variant={
-                project.category === CategoryEnum.COMPUTER
-                  ? 'filled'
-                  : 'outlined'
-              }
-            />
-            <Chip
-              size="small"
-              icon={<Category />}
-              label={'فیزیک'}
-              clickable
-              color="secondary"
-              onClick={() => onClickBadge(CategoryEnum.PHYSICS)}
-              variant={
-                project.category === CategoryEnum.PHYSICS
-                  ? 'filled'
-                  : 'outlined'
-              }
-            />
-            <Chip
-              size="small"
-              icon={<OutdoorGrill />}
-              label={'شیمی'}
-              clickable
-              color="secondary"
-              onClick={() => onClickBadge(CategoryEnum.CHEMISTRY)}
-              variant={
-                project.category === CategoryEnum.CHEMISTRY
-                  ? 'filled'
-                  : 'outlined'
-              }
-            />
-            <Chip
-              size="small"
-              icon={<FunctionsIcon />}
-              label={'ریاضی'}
-              clickable
-              color="secondary"
-              onClick={() => onClickBadge(CategoryEnum.MATHEMATICS)}
-              variant={
-                project.category === CategoryEnum.MATHEMATICS
-                  ? 'filled'
-                  : 'outlined'
-              }
-            />
+            {chips.map((chip) => (
+              <Chip
+                key={chip.category}
+                size="small"
+                icon={<chip.icon />}
+                label={chip.label}
+                clickable
+                color="secondary"
+                onClick={() => onClickBadge(chip.category)}
+                variant={
+                  project.category === chip.category ? 'filled' : 'outlined'
+                }
+                sx={{ mx: 1, px: 0.5 }}
+              />
+            ))}
           </Box>
         </div>
       </Grid>
