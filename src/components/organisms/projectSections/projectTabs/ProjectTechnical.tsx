@@ -13,7 +13,7 @@ import { FC, useContext } from 'react';
 type ProjectTechnicalProps = {};
 
 const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
-  const { technicalDescriptions } = useContext(ProjectContext);
+  const { technicalDescriptions = [] } = useContext(ProjectContext);
 
   return (
     <Grid container alignItems="center" justifyContent="center">

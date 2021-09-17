@@ -80,7 +80,7 @@ type ProjectBudgetProps = {};
 const ProjectBudget: FC<ProjectBudgetProps> = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { budgets } = useContext(ProjectContext);
+  const { budgets = [] } = useContext(ProjectContext);
 
   return (
     <div style={{ height: 250 }}>

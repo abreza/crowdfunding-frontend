@@ -26,7 +26,7 @@ type ProjectStatusProps = {};
 const ProjectStatus: FC<ProjectStatusProps> = () => {
   const [originalHeight, setOriginalHeight] = useState(300);
 
-  const { imageUrls, budgets } = useContext(ProjectContext);
+  const { imageUrls = [], budgets = [] } = useContext(ProjectContext);
 
   const totalBudget = budgets.reduce(
     (partial_sum, budget) => partial_sum + budget.value,

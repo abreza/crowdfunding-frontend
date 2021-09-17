@@ -70,10 +70,10 @@ const ReviewLine: FC<ReviewLineProps> = ({
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="h5">{name}</Typography>
+            <Typography variant="subtitle1">{name}</Typography>
           </Grid>
           <Grid item>
-            <Typography variant="subtitle1" color="textSecondary">
+            <Typography variant="caption" color="textSecondary">
               سرمایه‌گذار
             </Typography>
           </Grid>
