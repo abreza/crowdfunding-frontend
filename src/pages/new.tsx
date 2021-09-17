@@ -74,6 +74,7 @@ export type MyFile = {
   id: number;
   file: File;
   url?: string;
+  progress?: number;
 };
 
 const CreateProject: FC<CreateProjectProps> = () => {
@@ -99,19 +100,33 @@ const CreateProject: FC<CreateProjectProps> = () => {
   });
 
   const [files, setFiles] = useState<MyFile[]>([]);
+  const [needUpdateUrls, setNeedUpdateUrls] = useState(false);
+
+  useEffect(() => {
+    if (needUpdateUrls) {
+      const imageUrls = files
+        .filter((f) => f.url)
+        .map((f) => f.url) as string[];
+      setProject((prs) => ({ ...prs, imageUrls }));
+    }
+    setNeedUpdateUrls(false);
+  }, [needUpdateUrls]);
 
   const addFile = (newFile: MyFile) => setFiles((fls) => [...fls, newFile]);
-  const removeFile = (id: number) =>
+  const removeFile = (id: number) => {
     setFiles((fls) => fls.filter((file) => file.id !== id));
-  const setUrl = ({ id, url }: { id: number; url: string }) =>
+    setNeedUpdateUrls(true);
+  };
+  const setUrl = ({ id, url }: { id: number; url: string }) => {
     setFiles((fls) =>
       fls.map((file) => (file.id === id ? { ...file, url } : file))
     );
-
-  useEffect(() => {
-    const imageUrls = files.filter((f) => f.url).map((f) => f.url) as string[];
-    setProject((prs) => ({ ...prs, imageUrls }));
-  }, [files]);
+    setNeedUpdateUrls(true);
+  };
+  const setProgress = ({ id, progress }: { id: number; progress: number }) =>
+    setFiles((fls) =>
+      fls.map((file) => (file.id === id ? { ...file, progress } : file))
+    );
 
   const [createProject, { isLoading }] = useCreateProjectMutation();
 
@@ -170,6 +185,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
           addFile,
           setUrl,
           removeFile,
+          setProgress,
         }
       : {};
 

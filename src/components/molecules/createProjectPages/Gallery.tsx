@@ -1,4 +1,9 @@
-import { CircularProgress, Grid, Typography } from '@mui/material';
+import {
+  Grid,
+  Typography,
+  CircularProgress,
+  CircularProgressProps,
+} from '@mui/material';
 import { FC } from 'react';
 
 import { MyFile } from 'pages/new';
@@ -10,18 +15,63 @@ import { baseUrl } from 'config';
 import IconButton from '@mui/material/IconButton';
 import { Cancel as CancelIcon } from '@mui/icons-material';
 
+function CircularProgressWithLabel(
+  props: CircularProgressProps & { value: number }
+) {
+  return (
+    <Box
+      sx={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        mt: '-12px',
+        ml: '-12px',
+      }}>
+      <CircularProgress
+        variant="determinate"
+        {...props}
+        sx={{ borderRadius: '50%', background: '#ccccccaa' }}
+      />
+      <Box
+        sx={{
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Typography variant="caption" color="primary">{`${Math.round(
+          props.value
+        )}%`}</Typography>
+      </Box>
+    </Box>
+  );
+}
+
 const Gallery: FC<{
   files: MyFile[];
   addFile: (uploadingFiles: MyFile) => void;
   setUrl: (params: { id: number; url: string }) => void;
+  setProgress: (params: { id: number; progress: number }) => void;
   removeFile: (id: number) => void;
-}> = ({ files, addFile, setUrl, removeFile }) => {
-  const upload = async (file: File): Promise<string> => {
+}> = ({ files, addFile, setUrl, setProgress, removeFile }) => {
+  const upload = async (file: File, id: number): Promise<string> => {
     const formData = new FormData();
     formData.append('file', file);
     const res = await axios.post(baseUrl + 'media/image/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+      },
+      onUploadProgress: function (progressEvent) {
+        setProgress({
+          id,
+          progress: (progressEvent.loaded * 100) / progressEvent.total,
+        });
       },
     });
     // @ts-ignore
@@ -29,18 +79,19 @@ const Gallery: FC<{
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
+    accept: 'image/*, video/*',
     onDrop: (acceptedFiles: File[]) => {
       acceptedFiles.forEach((file) => {
         const id = Math.random();
         addFile({ file, id });
-        upload(file)
+        upload(file, id)
           .then((url) => setUrl({ id, url: baseUrl + url }))
-          .catch(() =>
+          .catch(() => {
             toast.error(
               `در ارسال فایل ${file.name} مشکلی رخ‌داده است. لطفا دوباره تلاش کنید.`
-            )
-          );
+            );
+            removeFile(id);
+          });
       });
     },
   });
@@ -113,15 +164,9 @@ const Gallery: FC<{
                     alt={file.file.name}
                   />
                   {!file.url && (
-                    <CircularProgress
-                      size={24}
-                      sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        mt: '-12px',
-                        ml: '-12px',
-                      }}
+                    <CircularProgressWithLabel
+                      value={file.progress ? file.progress : 0}
+                      size={40}
                     />
                   )}
                 </Box>
