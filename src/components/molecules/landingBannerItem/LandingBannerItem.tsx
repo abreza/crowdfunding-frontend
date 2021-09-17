@@ -18,7 +18,7 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
           top: 0,
           width: '100%',
           transition: 'opacity .2s ease-in-out',
-          '::before': {
+          '&::before': {
             position: 'absolute',
             top: 0,
             width: '100%',

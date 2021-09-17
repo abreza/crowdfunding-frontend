@@ -25,7 +25,7 @@ const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
                 <TableRow
                   key={item.name}
                   sx={{
-                    ':nth-of-type(odd)': {
+                    '&:nth-of-type(odd)': {
                       backgroundColor: 'action.hover',
                     },
                   }}>

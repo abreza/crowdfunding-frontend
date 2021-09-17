@@ -41,7 +41,7 @@ const Player: FC<any> = ({ videoUrl }) => {
           <Pause
             sx={{
               color: 'transparent',
-              ':hover': {
+              '&:hover': {
                 color: 'white',
               },
               width: 50,

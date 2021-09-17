@@ -33,11 +33,10 @@ const NavbarSearch: FC = () => {
         placeholder="جستجو..."
         sx={{
           color: 'inherit',
-          p: 1,
-          pl: 7,
+          pl: 5,
           transition: (theme) => theme.transitions.create('width'),
           width: { sm: 120, md: 200 },
-          ':focus': {
+          '&:focus': {
             width: { sm: 170, md: 220 },
           },
         }}

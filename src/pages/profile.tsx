@@ -1,13 +1,4 @@
-import {
-  Paper,
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Tabs,
-  Tab,
-  Theme,
-} from '@mui/material';
+import { Paper, Container, Typography, Grid, Tabs, Tab } from '@mui/material';
 import { FC } from 'react';
 import Panel from 'templates/Panel';
 
@@ -25,7 +16,7 @@ const Profile: FC<ProfileProps> = () => {
                   label="پروفایل"
                   sx={{
                     maxWidth: '100%',
-                    ':.Mui-selected': {
+                    '&:.Mui-selected': {
                       color: '#1890ff',
                     },
                   }}
@@ -34,7 +25,7 @@ const Profile: FC<ProfileProps> = () => {
                   label="تنظیمات ایمیل"
                   sx={{
                     maxWidth: '100%',
-                    ':.Mui-selected': {
+                    '&:.Mui-selected': {
                       color: '#1890ff',
                     },
                   }}
@@ -43,7 +34,7 @@ const Profile: FC<ProfileProps> = () => {
                   label="تغییر گذرواژه"
                   sx={{
                     maxWidth: '100%',
-                    ':.Mui-selected': {
+                    '&:.Mui-selected': {
                       color: '#1890ff',
                     },
                   }}
