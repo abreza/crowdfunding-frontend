@@ -24,7 +24,7 @@ export default function Footer() {
       <Box
         sx={{
           borderTop: '1px solid black',
-          background: '#304b50',
+          background: (theme) => theme.palette.grey[700],
           pt: 3,
           px: 5,
           pb: 1,
