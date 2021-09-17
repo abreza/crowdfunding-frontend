@@ -96,7 +96,6 @@ const CreateProject: FC<CreateProjectProps> = () => {
     timeDescription: '',
     timelines: [],
     imageUrls: [],
-    state: false,
   });
 
   const [files, setFiles] = useState<MyFile[]>([]);
