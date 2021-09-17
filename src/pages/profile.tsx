@@ -16,52 +16,50 @@ type ProfileProps = {};
 const Profile: FC<ProfileProps> = () => {
   return (
     <Panel>
-      <Box py={2}>
-        <Container maxWidth="md">
-          <Grid container justifyContent="center" spacing={2}>
-            <Grid item xs={12} sm={3}>
-              <Paper>
-                <Tabs orientation="vertical" variant="scrollable" value={0}>
-                  <Tab
-                    label="پروفایل"
-                    sx={{
-                      maxWidth: '100%',
-                      ':.Mui-selected': {
-                        color: '#1890ff',
-                      },
-                    }}
-                  />
-                  <Tab
-                    label="تنظیمات ایمیل"
-                    sx={{
-                      maxWidth: '100%',
-                      ':.Mui-selected': {
-                        color: '#1890ff',
-                      },
-                    }}
-                  />
-                  <Tab
-                    label="تغییر گذرواژه"
-                    sx={{
-                      maxWidth: '100%',
-                      ':.Mui-selected': {
-                        color: '#1890ff',
-                      },
-                    }}
-                  />
-                </Tabs>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={9}>
-              <Paper>
-                <Typography variant="h2" align="center">
-                  پروفایل
-                </Typography>
-              </Paper>
-            </Grid>
+      <Container maxWidth="md" sx={{ py: 2 }}>
+        <Grid container justifyContent="center" spacing={2}>
+          <Grid item xs={12} sm={3}>
+            <Paper>
+              <Tabs orientation="vertical" variant="scrollable" value={0}>
+                <Tab
+                  label="پروفایل"
+                  sx={{
+                    maxWidth: '100%',
+                    ':.Mui-selected': {
+                      color: '#1890ff',
+                    },
+                  }}
+                />
+                <Tab
+                  label="تنظیمات ایمیل"
+                  sx={{
+                    maxWidth: '100%',
+                    ':.Mui-selected': {
+                      color: '#1890ff',
+                    },
+                  }}
+                />
+                <Tab
+                  label="تغییر گذرواژه"
+                  sx={{
+                    maxWidth: '100%',
+                    ':.Mui-selected': {
+                      color: '#1890ff',
+                    },
+                  }}
+                />
+              </Tabs>
+            </Paper>
           </Grid>
-        </Container>
-      </Box>
+          <Grid item xs={12} sm={9}>
+            <Paper>
+              <Typography variant="h2" align="center">
+                پروفایل
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
     </Panel>
   );
 };

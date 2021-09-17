@@ -1,4 +1,4 @@
-import { Container, Box } from '@mui/material';
+import { Container } from '@mui/material';
 import { FC } from 'react';
 import Homepage from 'templates/Homepages';
 import ProjectHead from 'components/organisms/projectSections/ProjectHead';
@@ -17,13 +17,11 @@ const Project: FC<ProjectProps> = ({ project }) => {
   return (
     <Homepage>
       <ProjectContext.Provider value={{ ...project }}>
-        <Box py={3}>
-          <Container maxWidth="md">
-            <ProjectHead />
-            <ProjectStatus />
-            <ProjectTabs />
-          </Container>
-        </Box>
+        <Container maxWidth="md" sx={{ py: 3 }}>
+          <ProjectHead />
+          <ProjectStatus />
+          <ProjectTabs />
+        </Container>
       </ProjectContext.Provider>
     </Homepage>
   );

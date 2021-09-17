@@ -64,18 +64,17 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
       </Grid>
       <Grid item sm={5} xs={12}>
         <Paper>
-          <Box p={2}>
+          <Box sx={{ p: 2 }}>
             <Typography variant="h3">۲۳ میلیون تومان</Typography>
             <Typography variant="h5" color="textSecondary">
               {`از ${totalBudget} تومان تامین شده است.`}
             </Typography>
-            <Box my={2}>
-              <LinearProgress
-                variant="determinate"
-                value={50}
-                color="secondary"
-              />
-            </Box>
+            <LinearProgress
+              sx={{ my: 2 }}
+              variant="determinate"
+              value={50}
+              color="secondary"
+            />
             <Grid container alignItems="center" direction="row" spacing={2}>
               <Grid item>
                 <EvStationIcon />
@@ -94,11 +93,13 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Box my={2}>
-              <Button fullWidth variant="contained" color="primary">
-                سرمایه‌گذاری
-              </Button>
-            </Box>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              sx={{ my: 2 }}>
+              سرمایه‌گذاری
+            </Button>
             <Grid
               container
               alignItems="center"

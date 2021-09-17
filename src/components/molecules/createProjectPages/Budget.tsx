@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Grid,
   IconButton,
@@ -81,53 +80,51 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
           بودجه پروژه شما به طور خودکار به عنوان مجموع تمام هزینه های بودجه
           محاسبه می شود.
         </Typography>
-        <Box py={2}>
-          <Grid container>
-            {project.budgets.map((budget, index) => (
-              <Grid
-                item
-                container
-                xs={12}
-                spacing={1}
-                alignItems="center"
-                key={index}>
-                <Grid item xs={7}>
-                  <TextField
-                    value={budget.title}
-                    onChange={(e) => onChange(index, 'title', e.target.value)}
-                    variant="outlined"
-                    fullWidth
-                    size="small"
-                    label="مورد بودجه"
-                    placeholder="تبلیغات"
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <TextField
-                    type="number"
-                    value={budget.value}
-                    onChange={(e) => onChange(index, 'value', +e.target.value)}
-                    variant="outlined"
-                    fullWidth
-                    size="small"
-                    label="مبلغ"
-                    placeholder="۱۰۰٫۰۰۰٫۰۰۰"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">تومان</InputAdornment>
-                      ),
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={1}>
-                  <IconButton onClick={() => deleteItem(index)} size="large">
-                    <Close fontSize="small" />
-                  </IconButton>
-                </Grid>
+        <Grid container sx={{ py: 2 }}>
+          {project.budgets.map((budget, index) => (
+            <Grid
+              item
+              container
+              xs={12}
+              spacing={1}
+              alignItems="center"
+              key={index}>
+              <Grid item xs={7}>
+                <TextField
+                  value={budget.title}
+                  onChange={(e) => onChange(index, 'title', e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  label="مورد بودجه"
+                  placeholder="تبلیغات"
+                />
               </Grid>
-            ))}
-          </Grid>
-        </Box>
+              <Grid item xs={4}>
+                <TextField
+                  type="number"
+                  value={budget.value}
+                  onChange={(e) => onChange(index, 'value', +e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  label="مبلغ"
+                  placeholder="۱۰۰٫۰۰۰٫۰۰۰"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">تومان</InputAdornment>
+                    ),
+                  }}
+                />
+              </Grid>
+              <Grid item xs={1}>
+                <IconButton onClick={() => deleteItem(index)} size="large">
+                  <Close fontSize="small" />
+                </IconButton>
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
         <Button
           variant="outlined"
           color="secondary"
@@ -140,18 +137,17 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
         <Typography variant="h6" component="label" gutterBottom>
           این موارد بودجه چگونه به شما در تکمیل پروژه، کمک خواهد کرد؟
         </Typography>
-        <Box pt={1}>
-          <TextField
-            name="budgetReason"
-            value={project.budgetReason}
-            onChange={handleChange}
-            placeholder="تیم ما در نظر دارد با تکمیل زنجیره ..."
-            fullWidth
-            multiline
-            rows={4}
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="budgetReason"
+          value={project.budgetReason}
+          onChange={handleChange}
+          placeholder="تیم ما در نظر دارد با تکمیل زنجیره ..."
+          fullWidth
+          multiline
+          rows={4}
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
     </Grid>
   );

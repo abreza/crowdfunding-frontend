@@ -1,4 +1,4 @@
-import { Box, Chip, Grid, TextField, Typography, Theme } from '@mui/material';
+import { Box, Chip, Grid, TextField, Typography } from '@mui/material';
 import {
   Category,
   Computer as ComputerIcon,
@@ -26,23 +26,20 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
           موضوع
         </Typography>
 
-        <Box pt={1}>
-          <TextField
-            name="subject"
-            value={project.subject}
-            onChange={handleChange}
-            placeholder="توضیح یک جمله‌ای از فعالیتی که می‌کنید."
-            fullWidth
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="subject"
+          value={project.subject}
+          onChange={handleChange}
+          placeholder="توضیح یک جمله‌ای از فعالیتی که می‌کنید."
+          fullWidth
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
       <Grid item xs={12}>
-        <Box py={1}>
-          <Typography variant="h6" component="label" gutterBottom>
-            دسته‌بندی
-          </Typography>
-        </Box>
+        <Typography variant="h6" component="label" gutterBottom sx={{ pt: 1 }}>
+          دسته‌بندی
+        </Typography>
         <div>
           <Typography gutterBottom>
             یک دسته را برای تحقیقات خود انتخاب کنید. اینها به عنوان فیلتر در
@@ -54,7 +51,6 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
             کلیک کنید.
           </Typography>
           <Box
-            p={2}
             sx={{
               display: 'flex',
               justifyContent: 'center',
@@ -125,34 +121,32 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
           مرکز علمی (اختیاری)
         </Typography>
 
-        <Box pt={1}>
-          <TextField
-            name="institution"
-            value={project.institution}
-            onChange={handleChange}
-            placeholder="مکان اجرایی فعالیت"
-            fullWidth
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="institution"
+          value={project.institution}
+          onChange={handleChange}
+          placeholder="مکان اجرایی فعالیت"
+          fullWidth
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h6" component="label" gutterBottom>
           خلاصه
         </Typography>
 
-        <Box pt={1}>
-          <TextField
-            name="summary"
-            value={project.summary}
-            onChange={handleChange}
-            placeholder="توضیح مختصر در رابطه با فعالیت مورد نظر"
-            fullWidth
-            multiline
-            rows={4}
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="summary"
+          value={project.summary}
+          onChange={handleChange}
+          placeholder="توضیح مختصر در رابطه با فعالیت مورد نظر"
+          fullWidth
+          multiline
+          rows={4}
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
     </Grid>
   );

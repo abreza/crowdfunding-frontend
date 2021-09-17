@@ -22,7 +22,7 @@ const BestProjects: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
         برترین پروژه‌ها
       </Typography>
 
-      <Grid container justifyContent="flex-end">
+      <Grid container justifyContent="flex-end" sx={{ minHeight: 250 }}>
         <Grid item>
           <IconButton onClick={goBack} size="large">
             <ArrowBack />

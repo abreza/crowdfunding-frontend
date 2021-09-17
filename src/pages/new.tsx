@@ -158,63 +158,61 @@ const CreateProject: FC<CreateProjectProps> = () => {
 
   return (
     <Panel>
-      <Box py={2}>
-        <Container maxWidth="md">
-          <Paper>
-            <Box>
-              <Tabs
-                value={activeStep}
-                indicatorColor="secondary"
-                textColor="secondary"
-                onChange={(e, value) => setActiveStep(value)}
-                variant="scrollable"
-                scrollButtons="auto">
-                {TabsData.map((tab) => (
-                  <Tab key={tab.label} icon={tab.icon} label={tab.label} />
-                ))}
-              </Tabs>
-            </Box>
-            <Box p={2}>
-              {/* @ts-ignore */}
-              <TabPageComponent
-                handleChange={handleChange}
-                project={project}
-                {...props}
-              />
-              <Box pt={2}>
-                <Grid container justifyContent="space-between" direction="row">
-                  <Grid item>
-                    {activeStep !== 0 && (
-                      <Button
-                        variant="outlined"
-                        color="primary"
-                        onClick={() => setActiveStep(activeStep - 1)}
-                        sx={{ mr: 9 }}>
-                        قبلی
-                      </Button>
-                    )}
-                  </Grid>
-                  <Grid item>
-                    <LoadingButton
-                      variant="contained"
-                      color="primary"
-                      onClick={onClickNext}
-                      loading={isLoading}
-                      sx={{ mr: 9 }}
-                      type={
-                        activeStep === TabsData.length - 1 ? 'submit' : 'button'
-                      }>
-                      {activeStep === TabsData.length - 1
-                        ? 'ثبت نهایی'
-                        : 'ثبت و ادامه'}
-                    </LoadingButton>
-                  </Grid>
-                </Grid>
-              </Box>
-            </Box>
-          </Paper>
-        </Container>
-      </Box>
+      <Container maxWidth="md" sx={{ py: 2 }}>
+        <Paper>
+          <Tabs
+            value={activeStep}
+            indicatorColor="secondary"
+            textColor="secondary"
+            onChange={(e, value) => setActiveStep(value)}
+            variant="scrollable"
+            scrollButtons="auto">
+            {TabsData.map((tab) => (
+              <Tab key={tab.label} icon={tab.icon} label={tab.label} />
+            ))}
+          </Tabs>
+          <Box sx={{ p: 2 }}>
+            {/* @ts-ignore */}
+            <TabPageComponent
+              handleChange={handleChange}
+              project={project}
+              {...props}
+            />
+            <Grid
+              container
+              justifyContent="space-between"
+              direction="row"
+              sx={{ pt: 2 }}>
+              <Grid item>
+                {activeStep !== 0 && (
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => setActiveStep(activeStep - 1)}
+                    sx={{ mr: 9 }}>
+                    قبلی
+                  </Button>
+                )}
+              </Grid>
+              <Grid item>
+                <LoadingButton
+                  variant="contained"
+                  color="primary"
+                  onClick={onClickNext}
+                  loading={isLoading}
+                  sx={{ mr: 9 }}
+                  type={
+                    activeStep === TabsData.length - 1 ? 'submit' : 'button'
+                  }>
+                  {activeStep === TabsData.length - 1
+                    ? 'ثبت نهایی'
+                    : 'ثبت و ادامه'}
+                </LoadingButton>
+              </Grid>
+            </Grid>
+          </Box>
+        </Paper>
+      </Container>
     </Panel>
   );
 };

@@ -1,16 +1,6 @@
-import {
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { Add, Close } from '@mui/icons-material';
-import {
-  ProjectDto,
-  TechnicalDescriptiontDto,
-} from 'types/project';
+import { ProjectDto, TechnicalDescriptiontDto } from 'types/project';
 import { FC } from 'react';
 import { toast } from 'react-toastify';
 
@@ -80,98 +70,93 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
         <Typography variant="h6" component="label" gutterBottom>
           ایده اولیه شکل‌گیری این پروژه چیست؟
         </Typography>
-        <Box pt={1}>
-          <TextField
-            name="projectFirstIdea"
-            value={project.projectFirstIdea}
-            onChange={handleChange}
-            placeholder="توضیحی مختصر در رابطه با ایده اصلی پشت این پروژه."
-            fullWidth
-            multiline
-            rows={3}
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="projectFirstIdea"
+          value={project.projectFirstIdea}
+          onChange={handleChange}
+          placeholder="توضیحی مختصر در رابطه با ایده اصلی پشت این پروژه."
+          fullWidth
+          multiline
+          rows={3}
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h6" component="label" gutterBottom>
           اهمیت اصلی این پروژه چیست؟
         </Typography>
-        <Box pt={1}>
-          <TextField
-            name="projectMainIdea"
-            value={project.projectMainIdea}
-            onChange={handleChange}
-            placeholder="توضیح دهید که با تکمیل این پروژه به چه ارزش‌هایی خواهیم رسید."
-            fullWidth
-            multiline
-            rows={3}
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="projectMainIdea"
+          value={project.projectMainIdea}
+          onChange={handleChange}
+          placeholder="توضیح دهید که با تکمیل این پروژه به چه ارزش‌هایی خواهیم رسید."
+          fullWidth
+          multiline
+          rows={3}
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h6" component="label" gutterBottom>
           هدف شما از انجام این پروژه چیست؟
         </Typography>
-        <Box pt={1}>
-          <TextField
-            name="projectGoal"
-            value={project.projectGoal}
-            onChange={handleChange}
-            placeholder="دلایل و اهداف تیمتان برای انجام این پروژه چیست؟"
-            fullWidth
-            multiline
-            rows={3}
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="projectGoal"
+          value={project.projectGoal}
+          onChange={handleChange}
+          placeholder="دلایل و اهداف تیمتان برای انجام این پروژه چیست؟"
+          fullWidth
+          multiline
+          rows={3}
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
       <Grid item>
         <Typography variant="h3" gutterBottom>
           مشخصات فنی
         </Typography>
-        <Box py={2}>
-          <Grid container>
-            {project.technicalDescriptions.map((item, index) => (
-              <Grid
-                item
-                container
-                xs={12}
-                spacing={1}
-                alignItems="center"
-                key={index}>
-                <Grid item xs={6}>
-                  <TextField
-                    value={item.name}
-                    onChange={(e) => onChange(index, 'name', e.target.value)}
-                    variant="outlined"
-                    fullWidth
-                    size="small"
-                    label="مورد"
-                    placeholder="ابعاد"
-                  />
-                </Grid>
-                <Grid item xs={5}>
-                  <TextField
-                    value={item.value}
-                    onChange={(e) => onChange(index, 'value', e.target.value)}
-                    variant="outlined"
-                    fullWidth
-                    size="small"
-                    label="مقدار"
-                    placeholder="۲۰ × ۳۰ × ۵۰"
-                  />
-                </Grid>
-                <Grid item xs={1}>
-                  <IconButton onClick={() => deleteItem(index)} size="large">
-                    <Close fontSize="small" />
-                  </IconButton>
-                </Grid>
+        <Grid container sx={{ py: 2 }}>
+          {project.technicalDescriptions.map((item, index) => (
+            <Grid
+              item
+              container
+              xs={12}
+              spacing={1}
+              alignItems="center"
+              key={index}>
+              <Grid item xs={6}>
+                <TextField
+                  value={item.name}
+                  onChange={(e) => onChange(index, 'name', e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  label="مورد"
+                  placeholder="ابعاد"
+                />
               </Grid>
-            ))}
-          </Grid>
-        </Box>
+              <Grid item xs={5}>
+                <TextField
+                  value={item.value}
+                  onChange={(e) => onChange(index, 'value', e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  label="مقدار"
+                  placeholder="۲۰ × ۳۰ × ۵۰"
+                />
+              </Grid>
+              <Grid item xs={1}>
+                <IconButton onClick={() => deleteItem(index)} size="large">
+                  <Close fontSize="small" />
+                </IconButton>
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
         <Button
           variant="outlined"
           color="secondary"
@@ -185,18 +170,17 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
         <Typography variant="h6" component="label" gutterBottom>
           اطلاعات اضافی (اختیاری)
         </Typography>
-        <Box pt={1}>
-          <TextField
-            name="projectAdditionalInfo"
-            value={project.projectAdditionalInfo}
-            onChange={handleChange}
-            placeholder="توضیحات تکمیلی مدنظرتان را شرح دهید."
-            fullWidth
-            multiline
-            rows={3}
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="projectAdditionalInfo"
+          value={project.projectAdditionalInfo}
+          onChange={handleChange}
+          placeholder="توضیحات تکمیلی مدنظرتان را شرح دهید."
+          fullWidth
+          multiline
+          rows={3}
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
     </Grid>
   );

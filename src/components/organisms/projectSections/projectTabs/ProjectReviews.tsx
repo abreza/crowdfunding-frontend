@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Hidden,
-  Avatar,
-  LinearProgress,
-} from '@mui/material';
+import { Button, Grid, Hidden, Avatar, LinearProgress } from '@mui/material';
 import { Typography, Divider } from '@mui/material';
 import { Rating } from '@mui/material';
 import { HomepageContext } from 'context/HomepageContext';
@@ -116,9 +109,7 @@ const ProjectReview: FC<ProjectReviewProps> = () => {
         <br />
         تنها نیاز به تامین‌مالی برای رشد سریعتر دارند.
       </Typography>
-      <Box my={2}>
-        <Divider />
-      </Box>
+      <Divider sx={{ my: 2 }} />
       <Grid container alignItems="center" justifyContent="center" spacing={3}>
         <Grid
           item
@@ -165,25 +156,23 @@ const ProjectReview: FC<ProjectReviewProps> = () => {
           </Button>
         </Grid>
       </Grid>
-      <Box mt={4} mb={2}>
-        <Typography variant="h3" gutterBottom>
-          دیدگاه‌ها
-        </Typography>
-        <Grid container direction="row" spacing={2}>
-          <ReviewLine
-            name="علی احتشامی"
-            date={new Date()}
-            rate={4}
-            review="بنظر به همه جوانب کار دقت شده. واقعا از تیم طراحی محصول تشکر می‌کنم."
-          />
-          <ReviewLine
-            name="مرتضی ابوالقاسمی"
-            date={new Date()}
-            rate={4}
-            review="بنظر به همه جوانب کار دقت شده. واقعا از تیم طراحی محصول تشکر می‌کنم."
-          />
-        </Grid>
-      </Box>
+      <Typography variant="h3" gutterBottom sx={{ mt: 4 }}>
+        دیدگاه‌ها
+      </Typography>
+      <Grid container direction="row" spacing={2} sx={{ mb: 2 }}>
+        <ReviewLine
+          name="علی احتشامی"
+          date={new Date()}
+          rate={4}
+          review="بنظر به همه جوانب کار دقت شده. واقعا از تیم طراحی محصول تشکر می‌کنم."
+        />
+        <ReviewLine
+          name="مرتضی ابوالقاسمی"
+          date={new Date()}
+          rate={4}
+          review="بنظر به همه جوانب کار دقت شده. واقعا از تیم طراحی محصول تشکر می‌کنم."
+        />
+      </Grid>
     </div>
   );
 };

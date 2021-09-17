@@ -1,4 +1,4 @@
-import { Typography, Box } from '@mui/material';
+import { Typography } from '@mui/material';
 import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext } from 'react';
 
@@ -8,14 +8,14 @@ const ProjectHead: FC<ProjectHeadProps> = () => {
   const { subject, summary } = useContext(ProjectContext);
 
   return (
-    <Box mb={4}>
+    <>
       <Typography variant="h1" align="center" gutterBottom>
         {subject}
       </Typography>
-      <Typography variant="h5" align="center" gutterBottom>
+      <Typography variant="h5" align="center" gutterBottom sx={{ mb: 4 }}>
         {summary}
       </Typography>
-    </Box>
+    </>
   );
 };
 

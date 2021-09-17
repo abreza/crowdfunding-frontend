@@ -1,12 +1,5 @@
 import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
-import {
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { Add, Close } from '@mui/icons-material';
 import { ProjectDto, TimelineDto } from 'types/project';
 import React, { FC } from 'react';
@@ -79,68 +72,65 @@ const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
         <Typography variant="h6" component="label" gutterBottom>
           شرح زمانی
         </Typography>
-        <Box pt={1}>
-          <TextField
-            name="timeDescription"
-            value={project.timeDescription}
-            onChange={handleChange}
-            placeholder="توضیحی در رابطه با زمان‌بندی مدنظر."
-            fullWidth
-            multiline
-            rows={3}
-            variant="outlined"
-          />
-        </Box>
+        <TextField
+          name="timeDescription"
+          value={project.timeDescription}
+          onChange={handleChange}
+          placeholder="توضیحی در رابطه با زمان‌بندی مدنظر."
+          fullWidth
+          multiline
+          rows={3}
+          variant="outlined"
+          sx={{ pt: 1 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h3" gutterBottom>
           مراحل تکمیل پروژه را تعیین کنید.
         </Typography>
-        <Box py={2}>
-          <Grid container>
-            {project.timelines.map((item: TimelineDto, index) => (
-              <Grid
-                item
-                container
-                xs={12}
-                spacing={1}
-                alignItems="center"
-                key={index}>
-                <Grid item xs={8}>
-                  <TextField
-                    value={item.name}
-                    onChange={(e) => onChange(index, 'name', e.target.value)}
-                    variant="outlined"
-                    fullWidth
-                    size="small"
-                    label="مورد قابل تحویل و یا میزان پیشرفت پروژه"
-                    placeholder="تکمیل وب‌سایت محصول"
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <CustomDatePicker
-                    textFieldProps={{
-                      variant: 'outlined',
-                      fullWidth: true,
-                      size: 'small',
-                      label: 'تاریخ',
-                    }}
-                    value={item.date as DayValue}
-                    onChange={(value) => onChange(index, 'date', value)}
-                    minimumDate={maxMinDate({
-                      language: LanguageEnum.fa,
-                    })}
-                  />
-                </Grid>
-                <Grid item xs={1}>
-                  <IconButton onClick={() => deleteItem(index)} size="large">
-                    <Close fontSize="small" />
-                  </IconButton>
-                </Grid>
+        <Grid container sx={{ py: 2 }}>
+          {project.timelines.map((item: TimelineDto, index) => (
+            <Grid
+              item
+              container
+              xs={12}
+              spacing={1}
+              alignItems="center"
+              key={index}>
+              <Grid item xs={8}>
+                <TextField
+                  value={item.name}
+                  onChange={(e) => onChange(index, 'name', e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  label="مورد قابل تحویل و یا میزان پیشرفت پروژه"
+                  placeholder="تکمیل وب‌سایت محصول"
+                />
               </Grid>
-            ))}
-          </Grid>
-        </Box>
+              <Grid item xs={3}>
+                <CustomDatePicker
+                  textFieldProps={{
+                    variant: 'outlined',
+                    fullWidth: true,
+                    size: 'small',
+                    label: 'تاریخ',
+                  }}
+                  value={item.date as DayValue}
+                  onChange={(value) => onChange(index, 'date', value)}
+                  minimumDate={maxMinDate({
+                    language: LanguageEnum.fa,
+                  })}
+                />
+              </Grid>
+              <Grid item xs={1}>
+                <IconButton onClick={() => deleteItem(index)} size="large">
+                  <Close fontSize="small" />
+                </IconButton>
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
 
         <Button
           variant="outlined"

@@ -40,7 +40,7 @@ export default function Footer() {
               spacing={2}>
               <Grid item xs={4} sm={5}>
                 <Link href="/" passHref>
-                  <Button>
+                  <Button sx={{ maxWidth: 90 }}>
                     <SImage src={logo2} alt="logo" layout="fill" />
                   </Button>
                 </Link>

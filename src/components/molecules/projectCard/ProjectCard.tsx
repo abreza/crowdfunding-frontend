@@ -1,4 +1,4 @@
-import { Box, Divider } from '@mui/material';
+import { Divider } from '@mui/material';
 import {
   Avatar,
   Card,
@@ -83,45 +83,43 @@ const ProjectCard: FC<{ item: ProjectRo }> = ({ item }) => {
               </Grid>
             </Grid>
             <Divider />
-            <Box sx={{ mt: 2 }}>
-              <Grid
-                container
-                justifyContent="space-between"
-                alignItems="center"
-                direction="row">
-                <Grid item>
-                  <Typography
-                    align="center"
-                    sx={{
-                      fontWeight: 600,
-                    }}>
-                    {`${totalBudget} تومان`}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography
-                    align="center"
-                    sx={{
-                      fontWeight: 600,
-                    }}>
-                    ۳۲٪
-                  </Typography>
-                </Grid>
+            <Grid
+              container
+              justifyContent="space-between"
+              alignItems="center"
+              direction="row"
+              sx={{ mt: 2 }}>
+              <Grid item>
+                <Typography
+                  align="center"
+                  sx={{
+                    fontWeight: 600,
+                  }}>
+                  {`${totalBudget} تومان`}
+                </Typography>
               </Grid>
-              <Box my={3}>
-                <LinearProgress
-                  variant="determinate"
-                  value={50}
-                  color="secondary"
-                />
-              </Box>
-              <Typography
-                sx={{
-                  fontWeight: 600,
-                }}>
-                ۱۰ روز
-              </Typography>
-            </Box>
+              <Grid item>
+                <Typography
+                  align="center"
+                  sx={{
+                    fontWeight: 600,
+                  }}>
+                  ۳۲٪
+                </Typography>
+              </Grid>
+            </Grid>
+            <LinearProgress
+              sx={{ my: 3 }}
+              variant="determinate"
+              value={50}
+              color="secondary"
+            />
+            <Typography
+              sx={{
+                fontWeight: 600,
+              }}>
+              ۱۰ روز
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Link>
