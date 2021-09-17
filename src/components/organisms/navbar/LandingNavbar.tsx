@@ -17,7 +17,7 @@ import { useState } from 'react';
 import HideOnScroll from 'components/molecules/hideOnScroll/HideOnScroll';
 
 import modes from './modes';
-import { Box } from '@mui/system';
+import { Box, useTheme } from '@mui/system';
 
 const ElevationScroll: FC<any> = ({ children, disable = false }) => {
   const trigger = useScrollTrigger({
@@ -49,7 +49,8 @@ const ResponsiveAppBar: FC<any> = ({
     mobileMenuListItems,
   } = modes['LANDING']();
 
-  const isXs = useMediaQuery('(min-width:600px)');
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down('sm'));
 
   const rightItems = isXs ? mobileRightItems : desktopRightItems;
   const leftItems = isXs ? mobileLeftItems : desktopLeftItems;

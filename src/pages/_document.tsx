@@ -1,7 +1,7 @@
-import createEmotionServer from '@emotion/server/types/create-instance';
+import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from 'createEmotionCache';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { theme } from 'constants/theme';
+import { sLightTheme } from 'constants/theme';
 import React from 'react';
 
 export default class MyDocument extends Document {
@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="fa">
         <Head>
-          <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta name="theme-color" content={sLightTheme.palette.primary.main} />
         </Head>
         {/* Todo: fix ltr later */}
         <body dir="rtl">

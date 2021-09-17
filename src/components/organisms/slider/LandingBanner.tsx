@@ -27,7 +27,7 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           style={{ height: '100%' }}
           spacing={3}>
           <Grid item>
-            <Typography variant="h1" gutterBottom>
+            <Typography variant="h2" gutterBottom>
               تامین‌مالی جمعی شریف
             </Typography>
           </Grid>
