@@ -13,7 +13,7 @@ export interface BudgetDto {
   value: number;
 }
 
-export interface TechnicalDescriptiontDto {
+export interface TechnicalDescriptionDto {
   name: string;
   value: string;
 }
@@ -33,12 +33,11 @@ export interface ProjectDto {
   projectFirstIdea: string;
   projectMainIdea: string;
   projectGoal: string;
-  technicalDescriptions: TechnicalDescriptiontDto[];
+  technicalDescriptions: TechnicalDescriptionDto[];
   projectAdditionalInfo: string;
   timeDescription: string;
   timelines: TimelineDto[];
   imageUrls: string[];
-  state: boolean;
 }
 
 export interface ProjectRo {
@@ -52,7 +51,7 @@ export interface ProjectRo {
   projectFirstIdea: string;
   projectMainIdea: string;
   projectGoal: string;
-  technicalDescriptions: TechnicalDescriptiontDto[];
+  technicalDescriptions: TechnicalDescriptionDto[];
   projectAdditionalInfo: string;
   timeDescription: string;
   timelines: TimelineDto[];

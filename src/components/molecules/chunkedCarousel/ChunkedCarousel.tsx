@@ -3,13 +3,14 @@ import UseWindowDimensions from 'components/hoc/UseWindowSize';
 import { FC, useEffect, useState } from 'react';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { ProjectRo } from 'types/project';
+import SwipeableViews from 'react-swipeable-views';
+import { Box } from '@mui/system';
 
 const ChunkedCarousel: FC<{
   items: ProjectRo[];
   rtl: boolean;
   index: number;
-  setting: any;
-}> = ({ items, rtl = false, index = 0, setting }) => {
+}> = ({ items, rtl = false, index = 0 }) => {
   const windowDimensions = UseWindowDimensions(600);
 
   const [chunk, setChunk] = useState(3);
@@ -38,25 +39,25 @@ const ChunkedCarousel: FC<{
   const itemSize = Math.floor(12 / chunk) as any;
 
   return (
-    // <Carousel {...setting} index={realIndex}>
-    //   {chunkedItems.map((cis: any[], i) => (
-    //     <Grid
-    //       container
-    //       key={i}
-    //       direction="row"
-    //       justifyContent="space-around"
-    //       alignItems="center"
-    //       spacing={3}
-    //       style={{ padding: '10px 0' }}>
-    //       {cis.map((item, j) => (
-    //         <Grid item key={j} xs={chunk !== 1 && itemSize}>
-    //           <ProjectCard item={item} />
-    //         </Grid>
-    //       ))}
-    //     </Grid>
-    //   ))}
-    // </Carousel>
-    <div></div>
+    <SwipeableViews index={realIndex}>
+      {chunkedItems.map((cis: any[], i) => (
+        <Box key={i} dir="rtl">
+          <Grid
+            container
+            direction="row"
+            justifyContent="space-around"
+            alignItems="center"
+            spacing={3}
+            sx={{ p: 2 }}>
+            {cis.map((item, j) => (
+              <Grid item key={j} xs={chunk !== 1 && itemSize}>
+                <ProjectCard item={item} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      ))}
+    </SwipeableViews>
   );
 };
 

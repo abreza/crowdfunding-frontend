@@ -5,11 +5,7 @@ import { ProjectRo } from 'types/project';
 
 const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
   return (
-    <Box
-      sx={{
-        height: { sm: 486, xs: 300 },
-        position: 'relative',
-      }}>
+    <Box sx={{ height: { sm: 486, xs: 300 }, position: 'relative' }}>
       <Box
         sx={{
           background: `url("${item.imageUrls?.[0]}") 50% center / cover no-repeat`,
@@ -23,7 +19,8 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
             top: 0,
             width: '100%',
             height: '100%',
-            backgroundImage: 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6))',
+            backgroundImage:
+              'linear-gradient(rgba(80,80,80,.6),rgba(80,80,80,.6))',
             content: '""',
           },
         }}></Box>
@@ -32,9 +29,9 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
           p: 1,
           pl: 3,
           position: 'absolute',
-          top: { sm: '40%', xl: '30%' },
-          left: { sm: '10%', xl: '5%' },
-          width: { sm: '40%', xl: '90%' },
+          top: { sm: '40%', xs: '30%' },
+          left: { sm: '10%', xs: '5%' },
+          width: { sm: '40%', xs: '90%' },
           height: '30%',
           color: 'white',
         }}>

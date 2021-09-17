@@ -1,6 +1,6 @@
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { Add, Close } from '@mui/icons-material';
-import { ProjectDto, TechnicalDescriptiontDto } from 'types/project';
+import { ProjectDto, TechnicalDescriptionDto } from 'types/project';
 import { FC } from 'react';
 import { toast } from 'react-toastify';
 
@@ -21,7 +21,7 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
       toast.error('لطفا مورد بودجه‌های قبلی به صورت کامل را تکمیل کنید!');
       return;
     }
-    const newTechnicalDescription: TechnicalDescriptiontDto = {
+    const newTechnicalDescription: TechnicalDescriptionDto = {
       name: '',
       value: '',
     };

@@ -95,6 +95,7 @@ export const getMetaThemeColor = (mode: 'light' | 'dark') => {
 
 export const getDesignTokens = (mode: 'light' | 'dark') =>
   ({
+    direction: 'rtl',
     palette: {
       primary: {
         ...blue,

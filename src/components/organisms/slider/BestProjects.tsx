@@ -22,31 +22,20 @@ const BestProjects: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
         برترین پروژه‌ها
       </Typography>
 
-      <Grid container justifyContent="flex-end" sx={{ minHeight: 250 }}>
+      <Grid container justifyContent="flex-end" sx={{ mb: 1 }}>
         <Grid item>
           <IconButton onClick={goBack} size="large">
-            <ArrowBack />
+            <ArrowForward />
           </IconButton>
         </Grid>
         <Grid item>
           <IconButton onClick={goNext} size="large">
-            <ArrowForward />
+            <ArrowBack />
           </IconButton>
         </Grid>
       </Grid>
       {projects.length > 0 && (
-        <ChunkedCarousel
-          items={projects}
-          rtl
-          setting={{
-            fullHeightHover: true,
-            autoPlay: false,
-            indicators: false,
-            navButtonsAlwaysInvisible: true,
-            animation: 'slide',
-          }}
-          index={index}
-        />
+        <ChunkedCarousel items={projects} rtl index={index} />
       )}
 
       <Grid container alignItems="center" justifyContent="center">
