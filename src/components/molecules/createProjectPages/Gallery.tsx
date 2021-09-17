@@ -1,10 +1,5 @@
-import { Grid, Typography, makeStyles, createStyles } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
 import { FC, createElement, useEffect, useCallback, useState } from 'react';
-import {
-  DropzoneArea,
-  FileObject,
-  PreviewIconProps,
-} from 'material-ui-dropzone';
 
 import {
   AttachFile,
@@ -12,21 +7,12 @@ import {
   Description,
   PictureAsPdf,
   Theaters,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import { ProjectDto } from 'types/project';
 import axios from 'axios';
 import { baseUrl } from 'config';
 import { LoadedFile } from 'pages/new';
 import { toast } from 'react-toastify';
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    previewChip: {
-      minWidth: 160,
-      maxWidth: 210,
-    },
-  })
-);
 
 const Gallery: FC<{
   handleChange: any;
@@ -34,42 +20,7 @@ const Gallery: FC<{
   loadedFiles: LoadedFile[];
   setLoadedFiles: any;
 }> = ({ handleChange, project, loadedFiles, setLoadedFiles }) => {
-  const classes = useStyles();
-
   const [uploading, setUploading] = useState(false);
-
-  const handlePreviewIcon = (
-    fileObject: FileObject,
-    classes: PreviewIconProps
-  ) => {
-    const { type } = fileObject.file;
-    if (type.split('/')[0] === 'image') {
-      return createElement('img', {
-        // @ts-ignore
-        className: classes.image,
-        role: 'presentation',
-        src: fileObject.data,
-      });
-    }
-
-    const iconProps = {
-      // @ts-ignore
-      className: classes.image,
-    };
-
-    if (type.startsWith('video/')) return <Theaters {...iconProps} />;
-    if (type.startsWith('audio/')) return <Audiotrack {...iconProps} />;
-
-    switch (type) {
-      case 'application/msword':
-      case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-        return <Description {...iconProps} />;
-      case 'application/pdf':
-        return <PictureAsPdf {...iconProps} />;
-      default:
-        return <AttachFile {...iconProps} />;
-    }
-  };
 
   const upload = async (file: File) => {
     const formData = new FormData();
@@ -139,24 +90,7 @@ const Gallery: FC<{
       <Grid item>
         <Typography variant="h2">عکس‌ها و فیلم‌ها</Typography>
       </Grid>
-      <Grid item>
-        <DropzoneArea
-          showAlerts={false}
-          initialFiles={loadedFiles.map((f: any) => f.file)}
-          maxFileSize={50000000}
-          dropzoneText={'عکس‌ها و یا فیلم‌های خود را بارگذاری کنید.'}
-          acceptedFiles={['image/*', 'video/*']}
-          onChange={onChange}
-          getPreviewIcon={handlePreviewIcon}
-          showPreviews={true}
-          showPreviewsInDropzone={false}
-          previewText="فایل‌های انتخاب شده:"
-          previewGridProps={{ container: { spacing: 2, direction: 'row' } }}
-          useChipsForPreview
-          previewChipProps={{ classes: { root: classes.previewChip } }}
-          filesLimit={10}
-        />
-      </Grid>
+      <Grid item></Grid>
     </Grid>
   );
 };

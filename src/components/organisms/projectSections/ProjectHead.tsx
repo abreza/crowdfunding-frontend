@@ -1,4 +1,4 @@
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box } from '@mui/material';
 import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext } from 'react';
 

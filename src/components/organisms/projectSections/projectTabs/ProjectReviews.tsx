@@ -1,7 +1,13 @@
-import { Box, Button, Grid, Hidden, Avatar } from '@material-ui/core';
-import { Typography, Divider } from '@material-ui/core';
-import { Rating } from '@material-ui/lab';
-import { BorderLinearProgress } from 'components/molecules/projectCard/ProjectCard';
+import {
+  Box,
+  Button,
+  Grid,
+  Hidden,
+  Avatar,
+  LinearProgress,
+} from '@mui/material';
+import { Typography, Divider } from '@mui/material';
+import { Rating } from '@mui/material';
 import { HomepageContext } from 'context/HomepageContext';
 import { FC, useContext } from 'react';
 import { dateFormatter } from 'utils/dateFormatterUtils';
@@ -22,9 +28,14 @@ type ReviewLineProps = {
 
 const RatingLine: FC<RatingLineProps> = ({ rating, percent }) => {
   return (
-    <Grid container item spacing={2} alignItems="center" justifyContent="center">
+    <Grid
+      container
+      item
+      spacing={2}
+      alignItems="center"
+      justifyContent="center">
       <Grid item xs={6} sm={7}>
-        <BorderLinearProgress
+        <LinearProgress
           variant="determinate"
           value={percent}
           color="secondary"
@@ -34,7 +45,7 @@ const RatingLine: FC<RatingLineProps> = ({ rating, percent }) => {
         <Grid item>
           <Rating value={rating} readOnly />
         </Grid>
-        <Hidden smDown>
+        <Hidden lgDown>
           <Grid item>
             <Typography variant="h5">{percent}%</Typography>
           </Grid>

@@ -1,38 +1,10 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { IconButton, makeStyles } from '@material-ui/core';
-import { Pause, PlayArrow } from '@material-ui/icons';
+import { IconButton } from '@mui/material';
+import { Pause, PlayArrow } from '@mui/icons-material';
 import { FC, useRef, useState } from 'react';
-
-const useStyles = makeStyles((theme) => ({
-  playerButtonIcon: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-  playerIcon: {
-    color: 'white',
-    width: 50,
-    height: 50,
-  },
-  pauseIcon: {
-    color: 'transparent',
-    '&:hover': {
-      color: 'white',
-    },
-    width: 50,
-    height: 50,
-  },
-  video: {
-    '&::-webkit-media-controls-fullscreen-button': {
-      display: 'none',
-    },
-  },
-}));
 
 const Player: FC<any> = ({ videoUrl }) => {
   const video = useRef(null) as any;
-  const classes = useStyles();
 
   const [playing, setPlaying] = useState(false);
 
@@ -48,20 +20,42 @@ const Player: FC<any> = ({ videoUrl }) => {
 
   return (
     <>
+      {/* TODO: don't display control */}
       <video
-        className={classes.video}
         ref={video}
         src={videoUrl}
         width="100%"
         height="100%"
         controls={playing}
       />
-      <IconButton onClick={playVideo} className={classes.playerButtonIcon}>
+      <IconButton
+        onClick={playVideo}
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+        size="large">
         {playing ? (
-          <Pause className={classes.pauseIcon} fontSize="large" />
+          <Pause
+            sx={{
+              color: 'transparent',
+              ':hover': {
+                color: 'white',
+              },
+              width: 50,
+              height: 50,
+            }}
+            fontSize="large"
+          />
         ) : (
           <PlayArrow
-            className={classes.playerIcon}
+            sx={{
+              color: 'white',
+              width: 50,
+              height: 50,
+            }}
             fontSize="large"
             style={{
               transform: 'scaleX(1)',

@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import { RootState } from 'app/store';
 import { HomepageContext } from 'context/HomepageContext';
 import Link from 'next/link';

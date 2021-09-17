@@ -1,13 +1,11 @@
 import type { AppProps } from 'next/app';
 import { RootState, store } from 'app/store';
 import { Provider, useSelector } from 'react-redux';
-import { CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
-import jss from 'utils/jssRTL';
+import { ThemeProvider } from '@mui/material';
+import { CacheProvider, EmotionCache } from '@emotion/react';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
-import RTLMuiTheme from 'app/theme/RTLMuiTheme';
-import MuiTheme from 'app/theme/MuiTheme';
 import { FC, useCallback, useEffect } from 'react';
 import BaseHead from 'components/organisms/head/BaseHead';
 
@@ -18,23 +16,19 @@ import 'assets/styles/app.css';
 import 'assets/styles/gallery.css';
 import 'assets/fonts/fontiran.css';
 import { useVerifyTokenMutation } from 'app/services/auth';
-import { logout } from 'app/slices/authSlice';
+import createEmotionCache from 'createEmotionCache';
+import { theme } from 'constants/theme';
 
 let persistor = persistStore(store);
+const clientSideEmotionCache = createEmotionCache();
 
-const ThemeWrapper: FC<any> = ({ children }) => {
-  const language = useSelector((state: RootState) => state.local.language);
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
 
-  return language === 'fa' ? (
-    <ThemeProvider theme={RTLMuiTheme}>
-      <StylesProvider jss={jss}>{children}</StylesProvider>
-    </ThemeProvider>
-  ) : (
-    <ThemeProvider theme={MuiTheme}>{children}</ThemeProvider>
-  );
-};
+const MyApp: FC<MyAppProps> = (props) => {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-const InnerApp = ({ Component, pageProps }: AppProps) => {
   const [verifyToken] = useVerifyTokenMutation();
   const token = useSelector((state: RootState) => state.auth.token);
 
@@ -49,26 +43,17 @@ const InnerApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return (
-    <>
-      <CssBaseline />
-      <ThemeWrapper>
-        <ToastContainer limit={3} />
-        <Component {...pageProps} />
-      </ThemeWrapper>
-    </>
-  );
-};
-
-const MyApp = (appProps: AppProps) => {
-  return (
-    <>
-      <BaseHead />
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <InnerApp {...appProps} />
-        </PersistGate>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BaseHead />
+        <CacheProvider value={emotionCache}>
+          <ThemeProvider theme={theme}>
+            <ToastContainer limit={3} />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </CacheProvider>
+      </PersistGate>
+    </Provider>
   );
 };
 

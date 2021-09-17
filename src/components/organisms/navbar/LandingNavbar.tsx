@@ -7,51 +7,17 @@ import {
   IconButton,
   List,
   ListItem,
-  makeStyles,
   Toolbar,
+  useMediaQuery,
   useScrollTrigger,
-  withWidth,
-} from '@material-ui/core';
-import { Menu as MenuIcon } from '@material-ui/icons';
-import clsx from 'clsx';
+} from '@mui/material';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import { cloneElement, FC } from 'react';
 import { useState } from 'react';
 import HideOnScroll from 'components/molecules/hideOnScroll/HideOnScroll';
 
 import modes from './modes';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: '0.2s',
-  },
-  menuButton: {
-    marginRight: 5,
-    color: theme.palette.primary.main,
-    display: 'none',
-    [theme.breakpoints.down('xs')]: {
-      display: 'flex',
-    },
-  },
-  list: {
-    width: 250,
-  },
-  hideBack: {
-    background: 'transparent',
-    boxShadow: 'none',
-    paddingTop: theme.spacing(4),
-  },
-}));
+import { Box } from '@mui/system';
 
 const ElevationScroll: FC<any> = ({ children, disable = false }) => {
   const trigger = useScrollTrigger({
@@ -71,9 +37,7 @@ const ResponsiveAppBar: FC<any> = ({
   showBackOnScroll = false,
   disableHideOnScroll = true,
   disableElevationScroll = false,
-  width,
 }) => {
-  const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 30 });
 
@@ -85,8 +49,10 @@ const ResponsiveAppBar: FC<any> = ({
     mobileMenuListItems,
   } = modes['LANDING']();
 
-  const rightItems = width === 'xs' ? mobileRightItems : desktopRightItems;
-  const leftItems = width === 'xs' ? mobileLeftItems : desktopLeftItems;
+  const isXs = useMediaQuery('(min-width:600px)');
+
+  const rightItems = isXs ? mobileRightItems : desktopRightItems;
+  const leftItems = isXs ? mobileLeftItems : desktopLeftItems;
 
   return (
     <>
@@ -94,10 +60,16 @@ const ResponsiveAppBar: FC<any> = ({
         <ElevationScroll disable={disableElevationScroll}>
           <AppBar
             id="appBar"
-            className={clsx(
-              classes.appBar,
-              showBackOnScroll && !trigger && classes.hideBack
-            )}
+            sx={{
+              zIndex: (theme) => theme.zIndex.drawer + 1,
+              transition: '0.2s',
+              ...(showBackOnScroll &&
+                !trigger && {
+                  background: 'transparent',
+                  boxShadow: 'none',
+                  pt: 4,
+                }),
+            }}
             color="inherit">
             <Container>
               <Toolbar disableGutters>
@@ -106,8 +78,13 @@ const ResponsiveAppBar: FC<any> = ({
                     edge="start"
                     color="inherit"
                     aria-label="open drawer"
-                    className={classes.menuButton}
-                    onClick={() => setDrawerOpen(true)}>
+                    sx={{
+                      mr: 5,
+                      color: 'primary.main',
+                      display: { sm: 'flex', md: 'none' },
+                    }}
+                    onClick={() => setDrawerOpen(true)}
+                    size="large">
                     <MenuIcon />
                   </IconButton>
                 )}
@@ -153,13 +130,16 @@ const ResponsiveAppBar: FC<any> = ({
             anchor="left"
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}>
-            <div className={classes.list}>
+            <Box
+              sx={{
+                width: 250,
+              }}>
               <List>
                 {mobileMenuListItems.map((item, index) => (
                   <ListItem key={index}>{item}</ListItem>
                 ))}
               </List>
-            </div>
+            </Box>
           </Drawer>
         </Hidden>
       )}
@@ -168,4 +148,4 @@ const ResponsiveAppBar: FC<any> = ({
   );
 };
 
-export default withWidth()(ResponsiveAppBar);
+export default ResponsiveAppBar;

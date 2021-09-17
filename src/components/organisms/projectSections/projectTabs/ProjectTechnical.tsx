@@ -6,20 +6,11 @@ import {
   TableCell,
   TableContainer,
   Paper,
-  withStyles,
-} from '@material-ui/core';
+} from '@mui/material';
 import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext } from 'react';
 
 type ProjectTechnicalProps = {};
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
 
 const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
   const { technicalDescriptions } = useContext(ProjectContext);
@@ -31,10 +22,16 @@ const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
           <Table>
             <TableBody>
               {technicalDescriptions.map((item) => (
-                <StyledTableRow key={item.name}>
+                <TableRow
+                  key={item.name}
+                  sx={{
+                    ':nth-of-type(odd)': {
+                      backgroundColor: 'action.hover',
+                    },
+                  }}>
                   <TableCell align="center">{item.name}</TableCell>
                   <TableCell align="center">{item.value}</TableCell>
-                </StyledTableRow>
+                </TableRow>
               ))}
             </TableBody>
           </Table>

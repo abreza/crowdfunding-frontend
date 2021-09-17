@@ -9,51 +9,16 @@ import {
   Button,
   Grid,
   InputAdornment,
-  makeStyles,
   TextField,
   TextFieldProps,
   Theme,
-} from '@material-ui/core';
-import { CalendarToday } from '@material-ui/icons';
+} from '@mui/material';
+import { CalendarToday } from '@mui/icons-material';
 import { humanReadableDate } from 'utils/calendarUtils';
-import { blue } from '@material-ui/core/colors';
+import { blue } from '@mui/material/colors';
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  backgroundCalendar: {
-    backgroundColor: 'rgba(0,0,0,0.3)',
-    width: '100%',
-    height: '100%',
-    position: 'fixed',
-    left: '0',
-    top: '0',
-    right: '0',
-    bottom: '0',
-    backdropFilter: 'blur(2px)',
-    zIndex: 100,
-  },
-  calendarBox: {
-    position: 'fixed',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-    boxShadow: '2px 2px 10px grey',
-    zIndex: 100,
-    backgroundColor: 'white',
-    borderRadius: theme.spacing(1),
-    overflow: 'hidden',
-    paddingBottom: theme.spacing(1),
-  },
-  calendar: {
-    boxShadow: 'none',
-    border: 'none',
-  },
-  btn: {
-    width: theme.spacing(7 * 2),
-    marginBottom: theme.spacing(2),
-  },
-}));
+import { Box } from '@mui/system';
 
 type CustomDatePickerProps = {
   textFieldProps?: TextFieldProps;
@@ -72,8 +37,6 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
 }) => {
   const [date, setDate] = useState(value);
   const [showCalendar, setShowCalendar] = useState(false);
-
-  const classes = useStyles();
 
   const inputValueHandler = () => {
     let result: string = '';
@@ -136,11 +99,33 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
         <div>
           <Grid
             container
-            className={classes.backgroundCalendar}
+            sx={{
+              backgroundColor: 'rgba(0,0,0,0.3)',
+              width: '100%',
+              height: '100%',
+              position: 'fixed',
+              left: '0',
+              top: '0',
+              right: '0',
+              bottom: '0',
+              backdropFilter: 'blur(2px)',
+              zIndex: 100,
+            }}
             onClick={() => setShowCalendar(false)}></Grid>
-          <div className={classes.calendarBox}>
+          <Box
+            sx={{
+              position: 'fixed',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              boxShadow: '2px 2px 10px grey',
+              zIndex: 100,
+              backgroundColor: 'white',
+              borderRadius: 1,
+              overflow: 'hidden',
+              pb: 1,
+            }}>
             <Calendar
-              calendarClassName={classes.calendar}
               value={date as DayValue}
               onChange={dateChangeHandler}
               shouldHighlightWeekends
@@ -156,17 +141,27 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
               alignItems="center"
               alignContent="center">
               <Grid item>
-                <Button onClick={cancelClickHandler} className={classes.btn}>
+                <Button
+                  onClick={cancelClickHandler}
+                  sx={{
+                    width: 80,
+                    marginBottom: 2,
+                  }}>
                   پاک کردن
                 </Button>
               </Grid>
               <Grid item>
-                <Button onClick={confirmClickHandler} className={classes.btn}>
+                <Button
+                  onClick={confirmClickHandler}
+                  sx={{
+                    width: 80,
+                    marginBottom: 2,
+                  }}>
                   ادامه
                 </Button>
               </Grid>
             </Grid>
-          </div>
+          </Box>
         </div>
       )}
     </div>

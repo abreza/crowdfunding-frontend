@@ -1,12 +1,16 @@
+import createEmotionServer from '@emotion/server/types/create-instance';
+import createEmotionCache from 'createEmotionCache';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
-import { Children } from 'react';
+import { theme } from 'constants/theme';
+import React from 'react';
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
-        <Head />
+      <Html lang="fa">
+        <Head>
+          <meta name="theme-color" content={theme.palette.primary.main} />
+        </Head>
         {/* Todo: fix ltr later */}
         <body dir="rtl">
           <Main />
@@ -18,21 +22,33 @@ export default class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-  const sheets = new ServerStyleSheets();
+  const cache = createEmotionCache();
+  const { extractCriticalToChunks } = createEmotionServer(cache);
+
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceApp: (App: any) => (props) =>
+        <App emotionCache={cache} {...props} />,
     });
 
   const initialProps = await Document.getInitialProps(ctx);
+  const emotionStyles = extractCriticalToChunks(initialProps.html);
+  const emotionStyleTags = emotionStyles.styles.map((style) => (
+    <style
+      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      key={style.key}
+      dangerouslySetInnerHTML={{ __html: style.css }}
+    />
+  ));
 
   return {
     ...initialProps,
+    // Styles fragment is rendered after the app and page rendering finish.
     styles: [
-      ...Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
+      ...React.Children.toArray(initialProps.styles),
+      ...emotionStyleTags,
     ],
   };
 };

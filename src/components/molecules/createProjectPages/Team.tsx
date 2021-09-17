@@ -1,42 +1,19 @@
 import {
   Avatar,
   Badge,
-  createStyles,
   Grid,
   IconButton,
-  makeStyles,
   TextField,
-  Theme,
   Typography,
-} from '@material-ui/core';
-import { Create as CreateIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Create as CreateIcon } from '@mui/icons-material';
 import { ProjectDto } from 'types/project';
 import { FC } from 'react';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
-    large: {
-      width: theme.spacing(10),
-      height: theme.spacing(10),
-    },
-    edit: {
-      'body[dir=rtl] & .MuiSvgIcon-root': { transform: 'scaleX(1)' },
-    },
-  })
-);
 
 const Team: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
   project,
 }) => {
-  const classes = useStyles();
-
   return (
     <Grid container spacing={3} direction="column">
       <Grid item>
@@ -64,18 +41,22 @@ const Team: FC<{ handleChange: any; project: ProjectDto }> = ({
             justifyContent="center">
             <Grid item>
               <Badge
-                overlap="circle"
+                overlap="circular"
                 anchorOrigin={{
                   vertical: 'bottom',
                   horizontal: 'right',
                 }}
-                className={classes.edit}
                 badgeContent={
-                  <IconButton>
+                  <IconButton size="large">
                     <CreateIcon />
                   </IconButton>
                 }>
-                <Avatar className={classes.large} />
+                <Avatar
+                  sx={{
+                    width: 56,
+                    height: 56,
+                  }}
+                />
               </Badge>
             </Grid>
             <Grid item>

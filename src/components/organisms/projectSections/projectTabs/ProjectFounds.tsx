@@ -5,41 +5,30 @@ import {
   Divider,
   Grid,
   Hidden,
-  makeStyles,
   Theme,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import { FC } from 'react';
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing';
 import { fakeData } from 'constants/fakeData';
 
-import sponsor from 'assets/images/sponsor.jpeg';
-
 type ProjectFoundsProps = {};
 
-const useStyles = makeStyles((theme: Theme) => ({
-  packingCanvasContainer: {
-    height: 250,
-    width: '100%',
-  },
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
-
 const ProjectFounds: FC<ProjectFoundsProps> = () => {
-  const classes = useStyles();
-
   return (
     <Grid container>
       <Grid item xs={12} sm={8}>
         <Typography variant="h2">سرمایه‌گذاران</Typography>
-        <Box p={2} className={classes.root}>
+        <Box
+          sx={{
+            p: 2,
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            '> *': {
+              m: 1,
+            },
+          }}>
           <Chip
             avatar={
               <Avatar
@@ -107,14 +96,18 @@ const ProjectFounds: FC<ProjectFoundsProps> = () => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={4} container spacing={2} justifyContent="center">
-        <Hidden xsDown>
+        <Hidden mdDown>
           <Grid item>
             <Divider orientation="vertical" />
           </Grid>
         </Hidden>
         <Grid item xs>
           <Typography variant="h2">نمودار مشارکت</Typography>
-          <div className={classes.packingCanvasContainer}>
+          <Box
+            sx={{
+              height: 250,
+              width: '100%',
+            }}>
             <ResponsiveCirclePackingCanvas
               data={fakeData}
               margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
@@ -131,7 +124,7 @@ const ProjectFounds: FC<ProjectFoundsProps> = () => {
               animate={true}
               valueFormat={(v) => `${v} میلیون تومان`}
             />
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </Grid>

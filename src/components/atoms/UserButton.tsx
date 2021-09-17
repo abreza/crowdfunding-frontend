@@ -1,37 +1,25 @@
-import {
-  Avatar,
-  Button,
-  Divider,
-  makeStyles,
-  Menu,
-  MenuItem,
-} from '@material-ui/core';
+import { Avatar, Button, Divider, Menu, MenuItem } from '@mui/material';
 import { UserRo } from 'types/auth';
 import { logout } from 'app/slices/authSlice';
 import { RootState } from 'app/store';
 import { HomepageContext } from 'context/HomepageContext';
 import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const LoginButton: FC = () => {
   const { openAuthDialog } = useContext(HomepageContext);
 
   return (
-    <Button onClick={openAuthDialog} variant="outlined" color="primary">
+    <Button onClick={() => openAuthDialog()} variant="outlined" color="primary">
       ورود
     </Button>
   );
 };
 
-const useProfileButtonStyles = makeStyles((theme) => ({
-  smallAvatar: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
-  },
-}));
-
 const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
-  const classes = useProfileButtonStyles();
+  const { push } = useRouter();
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -44,16 +32,32 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
     setAnchorEl(null);
   };
 
+  const goToProfile = () => {
+    push('/profile');
+    handleClose();
+  };
+
+  const goToMyProjects = () => {
+    push('/profile');
+    handleClose();
+  };
+
   return (
     <>
       <Button
         variant="outlined"
         onClick={handleClick}
-        startIcon={<Avatar className={classes.smallAvatar} />}>
+        startIcon={
+          <Avatar
+            sx={{
+              width: 24,
+              height: 24,
+            }}
+          />
+        }>
         {user.firstName} {user.lastName}
       </Button>
       <Menu
-        getContentAnchorEl={null}
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -66,8 +70,8 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
           vertical: 'top',
           horizontal: 'center',
         }}>
-        <MenuItem onClick={handleClose}>پروفایل</MenuItem>
-        <MenuItem onClick={handleClose}>پروژه‌های من</MenuItem>
+        <MenuItem onClick={goToProfile}>پروفایل</MenuItem>
+        <MenuItem onClick={goToMyProjects}>پروژه‌های من</MenuItem>
         <Divider />
         <MenuItem onClick={() => dispatch(logout())}>خروج</MenuItem>
       </Menu>

@@ -1,11 +1,4 @@
-import {
-  Container,
-  Button,
-  Typography,
-  makeStyles,
-  Grid,
-  Box,
-} from '@material-ui/core';
+import { Container, Button, Typography, Grid, Box } from '@mui/material';
 import { FC } from 'react';
 import Link from 'next/link';
 
@@ -14,30 +7,22 @@ import pic6 from 'assets/images/pic6.png';
 import pic7 from 'assets/images/pic7.png';
 import SImage from 'components/atoms/sImage/SImage';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: theme.spacing(4, 0),
-  },
-}));
-
 type WhatIsCrowdfundingProps = {};
 
 const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.container}>
+    <Box sx={{ py: 4 }}>
       <Container maxWidth="md">
         <Typography variant="h2" gutterBottom align="center">
           تامین‌مالی جمعی چیست؟
         </Typography>
         <Grid container spacing={2} alignItems="center" justifyContent="center">
-          <Box clone order={{ xs: 0, sm: 1 }}>
+          <Box>
             <Grid item sm={6} xs={12}>
               <SImage src={pic2} alt="crowdfunding" layout="fill" />
             </Grid>
           </Box>
-          <Box clone order={{ xs: 1, sm: 0 }}>
+          <Box>
             <Grid item sm={6} xs={12}>
               <Typography variant="body1" gutterBottom>
                 یکی از چالش‌های اساسی شرکت‌ها یا گروه‌های مختلف، تامین سرمایه
@@ -55,12 +40,12 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
               </Typography>
             </Grid>
           </Box>
-          <Box clone order={{ xs: 2, sm: 2 }}>
+          <Box>
             <Grid item sm={6} xs={12}>
               <SImage src={pic6} alt="crowdfunding" layout="fill" />
             </Grid>
           </Box>
-          <Box clone order={{ xs: 3, sm: 3 }}>
+          <Box>
             <Grid item sm={6} xs={12}>
               <Typography variant="body1" gutterBottom>
                 با گسترش روز افزون استفاده از فناوری‌های نوین، تامین مالی جمعی
@@ -73,13 +58,13 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
               </Typography>
             </Grid>
           </Box>
-          <Box clone order={{ xs: 4, sm: 5 }}>
+          <Box>
             <Grid item sm={6} xs={12}>
               <SImage src={pic7} alt="crowdfunding" layout="fill" />
             </Grid>
           </Box>
 
-          <Box clone order={{ xs: 5, sm: 4 }}>
+          <Box>
             <Grid item sm={6} xs={12}>
               <Typography variant="body1" gutterBottom>
                 تامین مالی جمعی به عنوان یک پدیده‌ی در حال رشد شناخته شده و
@@ -92,7 +77,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
             </Grid>
           </Box>
 
-          <Box clone order={{ xs: 6 }}>
+          <Box>
             <Grid item container justifyContent="center" xs={12} sm={12}>
               <Link href="/project" passHref>
                 <Button variant="contained" color="primary">
@@ -103,7 +88,7 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           </Box>
         </Grid>
       </Container>
-    </div>
+    </Box>
   );
 };
 

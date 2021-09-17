@@ -1,4 +1,4 @@
-import { Grid, Link, TextField, Typography } from '@material-ui/core';
+import { Grid, Link, TextField, Typography } from '@mui/material';
 import { SignUpRequest } from 'types/auth';
 import { useSignUpMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';

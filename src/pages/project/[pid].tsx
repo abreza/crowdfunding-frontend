@@ -1,4 +1,4 @@
-import { Container, Box } from '@material-ui/core';
+import { Container, Box } from '@mui/material';
 import { FC } from 'react';
 import Homepage from 'templates/Homepages';
 import ProjectHead from 'components/organisms/projectSections/ProjectHead';

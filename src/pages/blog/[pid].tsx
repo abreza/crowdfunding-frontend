@@ -1,30 +1,13 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Chip,
-  Grid,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
-import { ArrowForward as ArrowForwardIcon } from '@material-ui/icons';
+import { Avatar, Box, Button, Chip, Grid, Typography } from '@mui/material';
+import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
 import { FC } from 'react';
 import Link from 'next/link';
 import Homepage from 'templates/Homepages';
 import SImage from 'components/atoms/sImage/SImage';
 
-const useStyles = makeStyles(() => ({
-  postHead: {
-    borderRadius: '5px 5px 0 0',
-    overflow: 'hidden',
-  },
-}));
-
 type PostProps = {};
 
 const Post: FC<PostProps> = () => {
-  const classes = useStyles();
-
   return (
     <Homepage>
       <Box p={2}>
@@ -37,7 +20,12 @@ const Post: FC<PostProps> = () => {
                 </Link>
               </Box>
             </Grid>
-            <Box mb={1} className={classes.postHead}>
+            <Box
+              sx={{
+                mb: 1,
+                borderRadius: '5px 5px 0 0',
+                overflow: 'hidden',
+              }}>
               <SImage
                 src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
                 alt="crowdfunding"

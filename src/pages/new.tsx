@@ -2,14 +2,12 @@ import {
   Paper,
   Box,
   Container,
-  makeStyles,
-  createStyles,
   Button,
   Theme,
   Tabs,
   Tab,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   Assignment as AssignmentIcon,
   AccountBalanceWallet as AccountBalanceWalletIcon,
@@ -17,7 +15,7 @@ import {
   Timeline as TimelineIcon,
   Group as GroupIcon,
   ViewCarousel as ViewCarouselIcon,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import BasicDetails from 'components/molecules/createProjectPages/BasicDetails';
 import Budget from 'components/molecules/createProjectPages/Budget';
 import Gallery from 'components/molecules/createProjectPages/Gallery';
@@ -30,21 +28,6 @@ import { useCreateProjectMutation } from 'app/services/project';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      'body[dir=rtl] & .MuiSvgIcon-root': { transform: 'scaleX(1)' },
-    },
-    nextButton: {
-      marginRight: theme.spacing(9),
-    },
-    instructions: {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1),
-    },
-  })
-);
 
 type CreateProjectProps = {};
 
@@ -89,8 +72,6 @@ export type LoadedFile = {
 
 const CreateProject: FC<CreateProjectProps> = () => {
   const { push } = useRouter();
-
-  const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
   const [project, setProject] = useState<ProjectDto>({
@@ -180,7 +161,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       <Box py={2}>
         <Container maxWidth="md">
           <Paper>
-            <div className={classes.root}>
+            <Box>
               <Tabs
                 value={activeStep}
                 indicatorColor="secondary"
@@ -192,7 +173,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
                   <Tab key={tab.label} icon={tab.icon} label={tab.label} />
                 ))}
               </Tabs>
-            </div>
+            </Box>
             <Box p={2}>
               {/* @ts-ignore */}
               <TabPageComponent
@@ -208,7 +189,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
                         variant="outlined"
                         color="primary"
                         onClick={() => setActiveStep(activeStep - 1)}
-                        className={classes.nextButton}>
+                        sx={{ mr: 9 }}>
                         قبلی
                       </Button>
                     )}
@@ -219,7 +200,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
                       color="primary"
                       onClick={onClickNext}
                       loading={isLoading}
-                      className={classes.nextButton}
+                      sx={{ mr: 9 }}
                       type={
                         activeStep === TabsData.length - 1 ? 'submit' : 'button'
                       }>

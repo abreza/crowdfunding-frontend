@@ -1,34 +1,11 @@
-import {
-  makeStyles,
-  Container,
-  Typography,
-  Grid,
-  Button,
-  IconButton,
-} from '@material-ui/core';
-import { ArrowForward, ArrowBack } from '@material-ui/icons';
+import { Container, Typography, Grid, Button, IconButton } from '@mui/material';
+import { ArrowForward, ArrowBack } from '@mui/icons-material';
 import ChunkedCarousel from 'components/molecules/chunkedCarousel/ChunkedCarousel';
-import { RootState } from 'app/store';
 import { FC, useState } from 'react';
-import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { ProjectRo } from 'types/project';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: theme.spacing(3),
-  },
-  unaffected: {
-    flip: false,
-  },
-}));
-
 const BestProjects: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
-  const classes = useStyles();
-
-  // @ts-ignore
-  // const projects = useSelector((state: RootState) => state.projects.projects);
-
   const [index, setIndex] = useState(0);
 
   const goNext = () => {
@@ -40,19 +17,19 @@ const BestProjects: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
   };
 
   return (
-    <Container className={classes.container}>
+    <Container sx={{ p: 3 }}>
       <Typography variant="h3" component="h3" gutterBottom>
         برترین پروژه‌ها
       </Typography>
 
       <Grid container justifyContent="flex-end">
         <Grid item>
-          <IconButton onClick={goBack}>
+          <IconButton onClick={goBack} size="large">
             <ArrowBack />
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton onClick={goNext}>
+          <IconButton onClick={goNext} size="large">
             <ArrowForward />
           </IconButton>
         </Grid>

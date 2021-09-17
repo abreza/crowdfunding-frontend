@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import NavbarLogo from 'components/atoms/NavbarLogo';
 import NavbarSearch from 'components/atoms/NavbarSearch';
 import { ReactElement } from 'react';

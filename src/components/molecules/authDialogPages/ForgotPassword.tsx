@@ -1,4 +1,4 @@
-import { Grid, Link, TextField, Typography } from '@material-ui/core';
+import { Grid, Link, TextField, Typography } from '@mui/material';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
   PageName,

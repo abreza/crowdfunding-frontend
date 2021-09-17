@@ -1,12 +1,12 @@
 import {
-  makeStyles,
   Typography,
   Grid,
   Paper,
   Box,
   Button,
   IconButton,
-} from '@material-ui/core';
+  LinearProgress,
+} from '@mui/material';
 import {
   EvStation as EvStationIcon,
   AccessTime as AccessTimeIcon,
@@ -15,9 +15,7 @@ import {
   Twitter as TwitterIcon,
   Email as EmailIcon,
   Telegram as TelegramIcon,
-} from '@material-ui/icons';
-import { VideoPlayer } from 'components/atoms/VideoPlayer';
-import { BorderLinearProgress } from 'components/molecules/projectCard/ProjectCard';
+} from '@mui/icons-material';
 import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
@@ -25,21 +23,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 
 type ProjectStatusProps = {};
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(3, 0),
-  },
-  image: {
-    width: '100%',
-  },
-  galleryPaper: {
-    overflow: 'hidden',
-  },
-}));
-
 const ProjectStatus: FC<ProjectStatusProps> = () => {
-  const classes = useStyles();
-
   const [originalHeight, setOriginalHeight] = useState(300);
 
   const { imageUrls, budgets } = useContext(ProjectContext);
@@ -57,7 +41,7 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
       justifyContent="space-between"
       spacing={3}>
       <Grid item sm={7} xs={12}>
-        <Paper className={classes.galleryPaper}>
+        <Paper sx={{ overflow: 'hidden' }}>
           <ImageGallery
             autoPlay={false}
             items={
@@ -86,7 +70,7 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
               {`از ${totalBudget} تومان تامین شده است.`}
             </Typography>
             <Box my={2}>
-              <BorderLinearProgress
+              <LinearProgress
                 variant="determinate"
                 value={50}
                 color="secondary"
@@ -121,27 +105,27 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
               justifyContent="space-between"
               direction="row">
               <Grid item>
-                <IconButton>
+                <IconButton size="large">
                   <LinkIcon style={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
-                <IconButton>
+                <IconButton size="large">
                   <FacebookIcon style={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
-                <IconButton>
+                <IconButton size="large">
                   <TwitterIcon style={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
-                <IconButton>
+                <IconButton size="large">
                   <EmailIcon style={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
-                <IconButton>
+                <IconButton size="large">
                   <TelegramIcon style={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>

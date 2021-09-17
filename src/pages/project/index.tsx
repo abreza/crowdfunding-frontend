@@ -6,12 +6,10 @@ import {
   MenuItem,
   TextField,
   Typography,
-} from '@material-ui/core';
-import { Sort as SortIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Sort as SortIcon } from '@mui/icons-material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
-import { RootState } from 'app/store';
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import Homepage from 'templates/Homepages';
 import axios from 'axios';
 import { baseUrl } from 'config';

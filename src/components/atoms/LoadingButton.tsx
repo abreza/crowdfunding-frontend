@@ -1,4 +1,4 @@
-import { Button, ButtonProps, CircularProgress } from '@material-ui/core';
+import { Button, ButtonProps, CircularProgress } from '@mui/material';
 import React, { FC } from 'react';
 
 export const LoadingButton: FC<

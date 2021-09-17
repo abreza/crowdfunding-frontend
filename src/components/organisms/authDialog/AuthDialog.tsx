@@ -4,11 +4,9 @@ import {
   Grid,
   Hidden,
   IconButton,
-  makeStyles,
   Typography,
-} from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Close as CloseIcon } from '@mui/icons-material';
 import React, { FC, useState } from 'react';
 
 import pic1 from 'assets/images/pic1.png';
@@ -50,28 +48,6 @@ const pages: PagesData = {
   },
 };
 
-const useStyles = makeStyles((theme) => ({
-  image: {
-    background: `url(${pic1})`,
-    backgroundSize: '160% auto',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center center',
-  },
-  leftContainer: {
-    minHeight: 300,
-    padding: theme.spacing(2),
-  },
-  leftGrid: {
-    height: '100%',
-  },
-  buttonProgress: {
-    color: green[500],
-  },
-  notStarted: {
-    margin: theme.spacing(3),
-  },
-}));
-
 type AuthDialogProps = {
   open: boolean;
   handleClose: any;
@@ -79,8 +55,6 @@ type AuthDialogProps = {
 };
 
 const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
-  const classes = useStyles();
-
   const [pageName, setPageName] = useState(PageName.LOGIN);
 
   const { component: PageComponent, title } = pages[pageName];
@@ -97,11 +71,17 @@ const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
             direction="column"
             justifyContent="space-between"
             alignItems="stretch"
-            className={classes.leftContainer}
+            sx={{
+              minHeight: 300,
+              padding: 2,
+            }}
             spacing={2}>
             <Grid container item direction="row">
               <Grid item xs={1}>
-                <IconButton aria-label="close" onClick={handleClose}>
+                <IconButton
+                  aria-label="close"
+                  onClick={handleClose}
+                  size="large">
                   <CloseIcon />
                 </IconButton>
               </Grid>
@@ -123,8 +103,16 @@ const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
               afterAuth={afterAuth}
             />
           </Grid>
-          <Hidden xsDown>
-            <Grid item sm={5} className={classes.image}></Grid>
+          <Hidden mdDown>
+            <Grid
+              item
+              sm={5}
+              sx={{
+                background: `url(${pic1})`,
+                backgroundSize: '160% auto',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center center',
+              }}></Grid>
           </Hidden>
         </Grid>
       </DialogContent>

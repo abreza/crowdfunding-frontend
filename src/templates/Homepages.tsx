@@ -10,14 +10,14 @@ type HomepageProps = {
 
 const Homepage: FC<HomepageProps> = ({ children }) => {
   const [openAuthDialog, setOpenAuthDialog] = useState(false);
-  const [afterAuth, setAfterAuth] = useState<string | undefined>('');
+  const [afterAuth, setAfterAuth] = useState<string>('');
 
   return (
     <>
       <HomepageContext.Provider
         value={{
-          openAuthDialog: ({ after }: { after: string | undefined }) => {
-            setAfterAuth(after);
+          openAuthDialog: (props?: { after: string }) => {
+            setAfterAuth(props?.after || '');
             setOpenAuthDialog(true);
           },
         }}>

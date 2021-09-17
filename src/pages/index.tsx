@@ -2,7 +2,7 @@ import { FC, MutableRefObject, useRef, useEffect } from 'react';
 import LandingBanner from 'components/organisms/slider/LandingBanner';
 import BestProjects from 'components/organisms/slider/BestProjects';
 import LandingSubscribe from 'components/organisms/landingSections/landingSubscrib/LandingSubscribe';
-import { Divider } from '@material-ui/core';
+import { Divider } from '@mui/material';
 import WhatIsCrowdfunding from 'components/organisms/landingSections/whatIsCrowdfunding/WhatIsCrowdfunding';
 import Homepage from 'templates/Homepages';
 import { useRouter } from 'next/router';

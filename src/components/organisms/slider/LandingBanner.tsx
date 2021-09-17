@@ -1,50 +1,25 @@
-import { Button, Grid } from '@material-ui/core';
-import { Paper, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import { Button, Grid } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBannerItem';
-import { FC, useContext } from 'react';
-import Carousel from 'react-material-ui-carousel';
-import { useSelector } from 'react-redux';
-import { RootState } from 'app/store';
+import { FC } from 'react';
 import Link from 'next/link';
-import { HomepageContext } from 'context/HomepageContext';
 import CreateProjectButton from 'components/atoms/CreateProject';
 import { ProjectRo } from 'types/project';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(4),
-    position: 'absolute',
-    right: 0,
-    top: '20%',
-    minHeight: '50%',
-    width: '40%',
-    borderRadius: '5px 0 0 5px',
-    zIndex: 2,
-    [theme.breakpoints.down('sm')]: {
-      position: 'relative',
-      width: '100%',
-      borderRadius: '0',
-    },
-  },
-  activeIndicatorIconButton: {
-    margin: theme.spacing(0, 1, 0.2),
-    '& svg.MuiSvgIcon-root': {
-      transform: 'scale(1.5)',
-    },
-  },
-  indicatorContainer: {
-    height: 25,
-    marginTop: -30,
-  },
-}));
-
 const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
-  const classes = useStyles();
-
   return (
     <div style={{ position: 'relative' }}>
-      <Paper className={classes.paper}>
+      <Paper
+        sx={{
+          p: 4,
+          position: { lg: 'absolute', md: 'relative' },
+          right: 0,
+          top: '20%',
+          minHeight: '50%',
+          width: { lg: '40%', md: '100%' },
+          borderRadius: { lg: '5px 0 0 5px', md: '0' },
+          zIndex: 2,
+        }}>
         <Grid
           container
           direction="column"
@@ -75,7 +50,7 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           </Grid>
         </Grid>
       </Paper>
-      {projects.length > 0 && (
+      {/* {projects.length > 0 && (
         <Carousel
           fullHeightHover={true}
           autoPlay={false}
@@ -85,19 +60,28 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           }}
           activeIndicatorIconButtonProps={
             {
-              className: classes.activeIndicatorIconButton,
+              sx: {
+                mr: 1,
+                mb: 0.2,
+                '& svg.MuiSvgIcon-root': {
+                  transform: 'scale(1.5)',
+                },
+              },
             } as any
           }
           indicatorContainerProps={
             {
-              className: classes.indicatorContainer,
+              sx: {
+                height: 25,
+                mt: -30,
+              },
             } as any
           }>
           {projects.map((item: any, i: number) => (
             <LandingBannerItem key={i} item={item} />
           ))}
         </Carousel>
-      )}
+      )} */}
     </div>
   );
 };

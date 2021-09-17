@@ -6,8 +6,8 @@ import {
   InputAdornment,
   TextField,
   Typography,
-} from '@material-ui/core';
-import { Close, Add } from '@material-ui/icons';
+} from '@mui/material';
+import { Close, Add } from '@mui/icons-material';
 import React, { FC } from 'react';
 import Link from 'next/link';
 import { BudgetDto, ProjectDto } from 'types/project';
@@ -120,7 +120,7 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
                   />
                 </Grid>
                 <Grid item xs={1}>
-                  <IconButton onClick={() => deleteItem(index)}>
+                  <IconButton onClick={() => deleteItem(index)} size="large">
                     <Close fontSize="small" />
                   </IconButton>
                 </Grid>

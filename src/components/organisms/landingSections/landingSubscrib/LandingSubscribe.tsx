@@ -1,27 +1,16 @@
-import {
-  Grid,
-  Container,
-  TextField,
-  Button,
-  Typography,
-  makeStyles,
-} from '@material-ui/core';
+import { Grid, Container, TextField, Button, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import { FC } from 'react';
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: theme.spacing(4, 0),
-    background: '#eee',
-  },
-}));
 
 type LandingSubscribeProps = {};
 
 const LandingSubscribe: FC<LandingSubscribeProps> = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.container}>
+    <Box
+      sx={{
+        py: 4,
+        background: '#eee',
+      }}>
       <Container maxWidth="md">
         <Grid
           container
@@ -56,7 +45,7 @@ const LandingSubscribe: FC<LandingSubscribeProps> = () => {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </Box>
   );
 };
 

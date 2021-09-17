@@ -1,4 +1,4 @@
-import { Paper, Box, Tabs, Tab } from "@material-ui/core";
+import { Paper, Box, Tabs, Tab } from "@mui/material";
 import { FC, useState } from "react";
 import ProjectBudget from "./ProjectBudget";
 import ProjectDescription from "./ProjectDescription";

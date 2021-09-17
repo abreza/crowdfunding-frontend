@@ -5,8 +5,8 @@ import {
   IconButton,
   TextField,
   Typography,
-} from '@material-ui/core';
-import { Add, Close } from '@material-ui/icons';
+} from '@mui/material';
+import { Add, Close } from '@mui/icons-material';
 import {
   ProjectDto,
   TechnicalDescriptiontDto,
@@ -164,7 +164,7 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
                   />
                 </Grid>
                 <Grid item xs={1}>
-                  <IconButton onClick={() => deleteItem(index)}>
+                  <IconButton onClick={() => deleteItem(index)} size="large">
                     <Close fontSize="small" />
                   </IconButton>
                 </Grid>
