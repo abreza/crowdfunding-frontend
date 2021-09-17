@@ -70,6 +70,12 @@ export type LoadedFile = {
   url: string | undefined;
 };
 
+export type MyFile = {
+  id: number;
+  file: File;
+  url?: string;
+};
+
 const CreateProject: FC<CreateProjectProps> = () => {
   const { push } = useRouter();
   const [activeStep, setActiveStep] = useState(0);
@@ -92,14 +98,20 @@ const CreateProject: FC<CreateProjectProps> = () => {
     state: false,
   });
 
-  const [loadedFiles, setLoadedFiles] = useState<LoadedFile[]>([]);
+  const [files, setFiles] = useState<MyFile[]>([]);
+
+  const addFile = (newFile: MyFile) => setFiles((fls) => [...fls, newFile]);
+  const removeFile = (id: number) =>
+    setFiles((fls) => fls.filter((file) => file.id !== id));
+  const setUrl = ({ id, url }: { id: number; url: string }) =>
+    setFiles((fls) =>
+      fls.map((file) => (file.id === id ? { ...file, url } : file))
+    );
 
   useEffect(() => {
-    const imageUrls = loadedFiles
-      .filter((f) => f.url)
-      .map((f) => f.url) as string[];
-    setProject({ ...project, imageUrls });
-  }, [loadedFiles]);
+    const imageUrls = files.filter((f) => f.url).map((f) => f.url) as string[];
+    setProject((prs) => ({ ...prs, imageUrls }));
+  }, [files]);
 
   const [createProject, { isLoading }] = useCreateProjectMutation();
 
@@ -151,10 +163,15 @@ const CreateProject: FC<CreateProjectProps> = () => {
     }));
   };
 
-  const props = TabsData[activeStep].label === 'گالری' && {
-    loadedFiles,
-    setLoadedFiles,
-  };
+  const props =
+    TabsData[activeStep].label === 'گالری'
+      ? {
+          files,
+          addFile,
+          setUrl,
+          removeFile,
+        }
+      : {};
 
   return (
     <Panel>
