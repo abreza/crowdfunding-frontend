@@ -5,7 +5,6 @@ import {
   Divider,
   Grid,
   Hidden,
-  Theme,
   Typography,
 } from '@mui/material';
 import { FC } from 'react';

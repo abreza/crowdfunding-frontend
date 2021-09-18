@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import { Pause, PlayArrow } from '@mui/icons-material';
 import { FC, useRef, useState } from 'react';
 
@@ -69,8 +69,8 @@ const Player: FC<any> = ({ videoUrl }) => {
 
 export const VideoPlayer: FC<any> = ({ videoUrl, originalHeight }) => {
   return (
-    <div style={{ position: 'relative', height: originalHeight }}>
+    <Box sx={{ position: 'relative', height: originalHeight }}>
       <Player videoUrl={videoUrl} />
-    </div>
+    </Box>
   );
 };
