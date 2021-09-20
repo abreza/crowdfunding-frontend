@@ -5,7 +5,7 @@ import { Profile } from 'components/organisms/ProfilePages/Profile';
 import { FC, useState } from 'react';
 import Panel from 'templates/Panel';
 
-type ProfileProps = {};
+type AccountProps = {};
 
 const tabs = [
   {
@@ -22,7 +22,7 @@ const tabs = [
   },
 ];
 
-const Account: FC<ProfileProps> = () => {
+const Account: FC<AccountProps> = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const CurrentComponent = tabs[activeTab].component;
