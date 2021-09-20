@@ -39,9 +39,9 @@ const ChunkedCarousel: FC<{
   const itemSize = Math.floor(12 / chunk) as any;
 
   return (
-    <SwipeableViews index={realIndex}>
+    <SwipeableViews index={realIndex} enableMouseEvents>
       {chunkedItems.map((cis: any[], i) => (
-        <Box key={i} dir="rtl">
+        <Box key={i} dir="rtl" sx={{ overflow: 'hidden' }}>
           <Grid
             container
             direction="row"
