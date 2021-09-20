@@ -44,6 +44,7 @@ const ProjectTabs: FC<ProjectTabsProps> = () => {
           indicatorColor="primary"
           textColor="primary"
           onChange={(event, value) => setTabIndex(value)}
+          scrollButtons="auto"
           centered>
           {tabs.map((tab) => (
             <Tab key={tab.name} label={tab.name} />
