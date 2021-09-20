@@ -33,12 +33,12 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
   };
 
   const goToProfile = () => {
-    push('/profile');
+    push('/account');
     handleClose();
   };
 
   const goToMyProjects = () => {
-    push('/profile');
+    push('/dashboard');
     handleClose();
   };
 
