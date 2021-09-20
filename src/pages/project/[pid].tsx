@@ -46,7 +46,7 @@ export async function getStaticProps({ params }: any) {
   const project = res.data;
   return {
     props: { project },
-    revalidate: 60,
+    revalidate: 30,
   };
 }
 

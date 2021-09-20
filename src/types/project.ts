@@ -40,6 +40,14 @@ export interface ProjectDto {
   imageUrls: string[];
 }
 
+export enum ProjectState {
+  FAILED = 'FAILED',
+  FINISHED = 'FINISHED',
+  FINANCING = 'FINANCING',
+  REVIEWING = 'REVIEWING',
+  START = 'START',
+}
+
 export interface ProjectRo {
   id: string;
   subject: string;
@@ -56,7 +64,7 @@ export interface ProjectRo {
   timeDescription: string;
   timelines: TimelineDto[];
   imageUrls: string[];
-  state: boolean;
+  state: ProjectState;
   owner: UserRo;
   //   rewards: RewardRo[];
 }

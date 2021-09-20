@@ -1,4 +1,4 @@
-import { CategoryEnum, ProjectRo } from 'types/project';
+import { CategoryEnum, ProjectRo, ProjectState } from 'types/project';
 
 export const fakeData = {
   name: 'root',
@@ -80,7 +80,7 @@ export const fakeProject: ProjectRo = {
     'https://crowdfunding.mamalan.ir/api/v1/media/image/da1faf97a31462c088a601fad83d7681.jpg',
     'https://crowdfunding.mamalan.ir/api/v1/media/image/c27f45bcab90682227044a14e0bfaf0c.png',
   ],
-  state: false,
+  state: ProjectState.START,
   owner: {
     email: '',
     firstName: 'Morteza',

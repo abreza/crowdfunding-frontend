@@ -1,5 +1,5 @@
 import { Context, createContext } from 'react';
-import { CategoryEnum, ProjectRo } from 'types/project';
+import { CategoryEnum, ProjectRo, ProjectState } from 'types/project';
 
 const init: ProjectRo = {
   id: '',
@@ -17,7 +17,7 @@ const init: ProjectRo = {
   timeDescription: '',
   timelines: [],
   imageUrls: [],
-  state: false,
+  state: ProjectState.START,
   owner: {
     email: '',
     firstName: '',

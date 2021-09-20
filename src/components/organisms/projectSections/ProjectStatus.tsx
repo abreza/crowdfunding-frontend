@@ -20,6 +20,7 @@ import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
+import { VideoPlayer } from 'components/atoms/VideoPlayer';
 
 type ProjectStatusProps = {};
 
@@ -33,6 +34,30 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
     0
   );
 
+  const isVideo = (url: string) => url.endsWith('.mp4');
+
+  const getImageGalleryItem = (url: string) => {
+    if (!isVideo(url)) {
+      return {
+        original: url,
+        thumbnail: url,
+        originalHeight,
+        thumbnailHeight: 50,
+      };
+    } else {
+      return {
+        original:
+          'https://res.cloudinary.com/dclfeq8cv/image/upload/v1631957634/crowdfunding/video.png',
+        thumbnail:
+          'https://res.cloudinary.com/dclfeq8cv/image/upload/v1631957634/crowdfunding/video.png',
+        originalHeight,
+        thumbnailHeight: 50,
+        videoUrl: url,
+        renderItem: url.endsWith('.mp4') && (VideoPlayer as any),
+      };
+    }
+  };
+
   return (
     <Grid
       container
@@ -44,15 +69,7 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
         <Paper sx={{ overflow: 'hidden' }}>
           <ImageGallery
             autoPlay={false}
-            items={
-              imageUrls?.map((img) => ({
-                original: img,
-                thumbnail: img,
-                originalHeight: originalHeight,
-                thumbnailHeight: 50,
-                // renderItem: item?.itemType === 'video' && VideoPlayer,
-              })) || []
-            }
+            items={imageUrls?.map(getImageGalleryItem) || []}
             onScreenChange={(fullscreen) =>
               // @ts-ignore
               setOriginalHeight(!fullscreen && 300)
