@@ -84,7 +84,7 @@ const ResponsiveAppBar: FC<any> = ({
                       color: 'primary.main',
                       display: { sm: 'flex', md: 'none' },
                     }}
-                    onClick={() => setDrawerOpen(true)}
+                    onClick={() => setDrawerOpen(!drawerOpen)}
                     size="large">
                     <MenuIcon />
                   </IconButton>
