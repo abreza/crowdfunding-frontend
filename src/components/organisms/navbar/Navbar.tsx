@@ -80,7 +80,6 @@ const ResponsiveAppBar: FC<any> = ({
                     color="inherit"
                     aria-label="open drawer"
                     sx={{
-                      mr: 5,
                       color: 'primary.main',
                       display: { sm: 'flex', md: 'none' },
                     }}
