@@ -1,7 +1,7 @@
 import { Paper, Container, Typography, Grid, Tabs, Tab } from '@mui/material';
-import { ChangePassword } from 'components/organisms/ProfilePages/ChangePassword';
-import { MailSettings } from 'components/organisms/ProfilePages/MailSettings';
-import { Profile } from 'components/organisms/ProfilePages/Profile';
+import { ChangePassword } from 'components/organisms/accountTabs/ChangePassword';
+import { MailSettings } from 'components/organisms/accountTabs/MailSettings';
+import { Profile } from 'components/organisms/accountTabs/Profile';
 import { FC, useState } from 'react';
 import Panel from 'templates/Panel';
 
