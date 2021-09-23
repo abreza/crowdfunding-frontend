@@ -54,7 +54,6 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
             name="firstName"
             type="text"
             fullWidth
-            variant="outlined"
             onChange={handleChange}
           />
         </Grid>
@@ -65,7 +64,6 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
             name="lastName"
             type="text"
             fullWidth
-            variant="outlined"
             onChange={handleChange}
           />
         </Grid>
@@ -78,7 +76,6 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           type="email"
           fullWidth
           inputProps={{ className: 'ltr-input' }}
-          variant="outlined"
           onChange={handleChange}
         />
       </Grid>
@@ -90,7 +87,6 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           type="text"
           fullWidth
           inputProps={{ className: 'ltr-input' }}
-          variant="outlined"
           onChange={handleChange}
         />
       </Grid>
@@ -102,7 +98,6 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           fullWidth
           type="password"
           inputProps={{ className: 'ltr-input' }}
-          variant="outlined"
           onChange={handleChange}
         />
       </Grid>

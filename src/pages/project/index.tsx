@@ -29,7 +29,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
           alignItems="center"
           justifyContent="flex-start">
           <Grid item>
-            <TextField select value="all" variant="outlined">
+            <TextField select value="all">
               <MenuItem value="all">همه موضوعات</MenuItem>
               <MenuItem value="co">علوم کامپیوتر</MenuItem>
               <MenuItem value="ph">فیزیک</MenuItem>
@@ -37,7 +37,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
             </TextField>
           </Grid>
           <Grid item>
-            <TextField select value="all" variant="outlined">
+            <TextField select value="all">
               <MenuItem value="all">همه مراکز علمی</MenuItem>
               <MenuItem value="sh">دانشگاه شریف</MenuItem>
               <MenuItem value="te">دانشگاه تهران</MenuItem>
@@ -45,7 +45,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
             </TextField>
           </Grid>
           <Grid item>
-            <TextField select value="all" variant="outlined">
+            <TextField select value="all">
               <MenuItem value="all">همه مراحل سرمایه‌گذاری</MenuItem>
               <MenuItem value="fu">در حال سرمایه‌گذاری</MenuItem>
               <MenuItem value="su">سرمایه‌گذاری موفق</MenuItem>

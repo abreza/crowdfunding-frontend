@@ -80,7 +80,6 @@ const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
           fullWidth
           multiline
           rows={3}
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>
@@ -101,7 +100,6 @@ const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
                 <TextField
                   value={item.name}
                   onChange={(e) => onChange(index, 'name', e.target.value)}
-                  variant="outlined"
                   fullWidth
                   size="small"
                   label="مورد قابل تحویل و یا میزان پیشرفت پروژه"

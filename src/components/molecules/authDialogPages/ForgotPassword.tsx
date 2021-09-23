@@ -37,7 +37,6 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
           type="text"
           fullWidth
           inputProps={{ className: 'ltr-input' }}
-          variant="outlined"
           onChange={handleChange}
         />
       </Grid>

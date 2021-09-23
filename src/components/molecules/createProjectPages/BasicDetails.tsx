@@ -55,7 +55,6 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
           onChange={handleChange}
           placeholder="توضیح یک جمله‌ای از فعالیتی که می‌کنید."
           fullWidth
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>
@@ -109,7 +108,6 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
           onChange={handleChange}
           placeholder="مکان اجرایی فعالیت"
           fullWidth
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>
@@ -126,7 +124,6 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
           fullWidth
           multiline
           rows={4}
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>

@@ -37,29 +37,14 @@ export const Profile = () => {
           <Grid item xs={12} sm={8} container direction="column" spacing={2}>
             <Grid item container spacing={2}>
               <Grid item xs={6}>
-                <TextField
-                  fullWidth
-                  variant={isXs ? 'outlined' : 'standard'}
-                  size="small"
-                  label="نام"
-                />
+                <TextField fullWidth size="small" label="نام" />
               </Grid>
               <Grid item xs={6}>
-                <TextField
-                  fullWidth
-                  variant={isXs ? 'outlined' : 'standard'}
-                  size="small"
-                  label="نام‌خانوادگی"
-                />
+                <TextField fullWidth size="small" label="نام‌خانوادگی" />
               </Grid>
             </Grid>
             <Grid item>
-              <TextField
-                fullWidth
-                variant={isXs ? 'outlined' : 'standard'}
-                size="small"
-                label="نام کاربری"
-              />
+              <TextField fullWidth size="small" label="نام کاربری" />
             </Grid>
           </Grid>
         </Grid>

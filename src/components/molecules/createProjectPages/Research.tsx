@@ -78,7 +78,6 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
           fullWidth
           multiline
           rows={3}
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>
@@ -94,7 +93,6 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
           fullWidth
           multiline
           rows={3}
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>
@@ -110,7 +108,6 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
           fullWidth
           multiline
           rows={3}
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>
@@ -131,7 +128,6 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
                 <TextField
                   value={item.name}
                   onChange={(e) => onChange(index, 'name', e.target.value)}
-                  variant="outlined"
                   fullWidth
                   size="small"
                   label="مورد"
@@ -142,7 +138,6 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
                 <TextField
                   value={item.value}
                   onChange={(e) => onChange(index, 'value', e.target.value)}
-                  variant="outlined"
                   fullWidth
                   size="small"
                   label="مقدار"
@@ -178,7 +173,6 @@ const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
           fullWidth
           multiline
           rows={3}
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>

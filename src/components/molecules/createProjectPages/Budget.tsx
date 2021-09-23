@@ -93,7 +93,6 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
                 <TextField
                   value={budget.title}
                   onChange={(e) => onChange(index, 'title', e.target.value)}
-                  variant="outlined"
                   fullWidth
                   size="small"
                   label="مورد بودجه"
@@ -105,7 +104,6 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
                   type="number"
                   value={budget.value}
                   onChange={(e) => onChange(index, 'value', +e.target.value)}
-                  variant="outlined"
                   fullWidth
                   size="small"
                   label="مبلغ"
@@ -145,7 +143,6 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
           fullWidth
           multiline
           rows={4}
-          variant="outlined"
           sx={{ pt: 1 }}
         />
       </Grid>

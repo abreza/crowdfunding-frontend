@@ -72,26 +72,15 @@ const Team: FC<{ handleChange: any; project: ProjectDto }> = ({
                 placeholder="توضیحی مختصر در رابطه با خودتان!"
                 multiline
                 minRows={4}
-                variant="outlined"
                 size="small"
                 fullWidth
               />
             </Grid>
             <Grid item>
-              <TextField
-                label="عنوان (اختیاری)"
-                variant="outlined"
-                size="small"
-                fullWidth
-              />
+              <TextField label="عنوان (اختیاری)" size="small" fullWidth />
             </Grid>
             <Grid item>
-              <TextField
-                label="مرکز علمی (اختیاری)"
-                variant="outlined"
-                size="small"
-                fullWidth
-              />
+              <TextField label="مرکز علمی (اختیاری)" size="small" fullWidth />
             </Grid>
           </Grid>
         </Grid>

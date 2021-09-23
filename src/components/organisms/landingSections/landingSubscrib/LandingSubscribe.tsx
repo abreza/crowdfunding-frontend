@@ -31,11 +31,7 @@ const LandingSubscribe: FC<LandingSubscribeProps> = () => {
             alignItems="center"
             justifyContent="center">
             <Grid item>
-              <TextField
-                placeholder="آدرس ایمیل"
-                variant="outlined"
-                size="small"
-              />
+              <TextField placeholder="آدرس ایمیل" size="small" />
             </Grid>
             <Grid item>
               <Button variant="contained" color="primary">

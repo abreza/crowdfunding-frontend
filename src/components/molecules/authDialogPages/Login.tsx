@@ -48,7 +48,6 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           type="text"
           fullWidth
           inputProps={{ className: 'ltr-input' }}
-          variant="outlined"
           onChange={handleChange}
         />
       </Grid>
@@ -60,7 +59,6 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           fullWidth
           type="password"
           inputProps={{ className: 'ltr-input' }}
-          variant="outlined"
           onChange={handleChange}
         />
       </Grid>

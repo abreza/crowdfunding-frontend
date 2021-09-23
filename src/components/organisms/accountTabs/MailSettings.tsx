@@ -12,7 +12,7 @@ export const MailSettings = () => {
   return (
     <Grid container sx={{ pt: 2 }} spacing={2}>
       <Grid item xs={12} sm={6}>
-        <TextField fullWidth variant="standard" size="small" label="ایمیل" />
+        <TextField fullWidth size="small" label="ایمیل" />
       </Grid>
       <Grid item xs={12}>
         <Typography>

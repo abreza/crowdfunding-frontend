@@ -49,7 +49,6 @@ export default function Footer() {
                 <TextField
                   select
                   value={'fa'}
-                  variant="outlined"
                   size="small"
                   sx={{
                     color: 'white',

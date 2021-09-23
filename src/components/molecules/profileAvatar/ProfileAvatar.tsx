@@ -1,8 +1,11 @@
 import { Edit } from '@mui/icons-material';
 import { Avatar, IconButton } from '@mui/material';
 import { Box } from '@mui/system';
+import { FC } from 'react';
 
-export const ProfileAvatar = () => {
+export const ProfileAvatar: FC<{ editable?: boolean }> = ({
+  editable = true,
+}) => {
   return (
     <Box
       sx={{
@@ -24,9 +27,11 @@ export const ProfileAvatar = () => {
           right: 0,
         }}>
         <Avatar sx={{ width: '100%', height: '100%' }} />
-        <IconButton sx={{ position: 'absolute', bottom: '0', right: '0' }}>
-          <Edit />
-        </IconButton>
+        {editable && (
+          <IconButton sx={{ position: 'absolute', bottom: '0', right: '0' }}>
+            <Edit />
+          </IconButton>
+        )}
       </Box>
     </Box>
   );
