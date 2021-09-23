@@ -8,46 +8,46 @@ import ProjectTechnical from './ProjectTechnical';
 
 type ProjectTabsProps = {};
 
-const tabs: { name: string; component: FC<any> }[] = [
+const tabs: { label: string; component: FC<any> }[] = [
   {
-    name: 'توضیحات',
+    label: 'توضیحات',
     component: ProjectDescription,
   },
   {
-    name: 'اطلاعات فنی',
+    label: 'اطلاعات فنی',
     component: ProjectTechnical,
   },
   {
-    name: 'بودجه',
+    label: 'بودجه',
     component: ProjectBudget,
   },
   {
-    name: 'سرمایه‌گذاری',
+    label: 'سرمایه‌گذاری',
     component: ProjectFounds,
   },
   {
-    name: 'نظرات',
+    label: 'نظرات',
     component: ProjectReviews,
   },
 ];
 
 const ProjectTabs: FC<ProjectTabsProps> = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const [activeTav, setActiveTav] = useState(0);
 
-  const TabComponent = tabs[tabIndex].component;
+  const TabComponent = tabs[activeTav].component;
 
   return (
     <>
       <Paper sx={{ my: 3 }}>
         <Tabs
-          value={tabIndex}
+          value={activeTav}
           indicatorColor="primary"
           textColor="primary"
-          onChange={(event, value) => setTabIndex(value)}
+          onChange={(event, value) => setActiveTav(value)}
           scrollButtons="auto"
           centered>
           {tabs.map((tab) => (
-            <Tab key={tab.name} label={tab.name} />
+            <Tab key={tab.label} label={tab.label} />
           ))}
         </Tabs>
       </Paper>

@@ -64,12 +64,6 @@ const TabsData = [
   },
 ];
 
-export type LoadedFile = {
-  file: File;
-  name: string;
-  url: string | undefined;
-};
-
 export type MyFile = {
   id: number;
   file: File;

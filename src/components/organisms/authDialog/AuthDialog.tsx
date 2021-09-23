@@ -23,7 +23,7 @@ export enum PageName {
 export type PageProps = {
   handleClose: () => void;
   changePage: (pageName: PageName) => void;
-  afterAuth: string | undefined;
+  afterAuth?: string;
 };
 
 type PagesData = {
