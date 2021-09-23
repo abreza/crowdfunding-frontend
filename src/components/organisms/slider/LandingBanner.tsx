@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Box } from '@mui/material';
 import { Paper, Typography } from '@mui/material';
 import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBannerItem';
 import { FC } from 'react';
@@ -9,7 +9,7 @@ import MuiCarousel from 'components/molecules/landingBannerItem/MuiCarousel';
 
 const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
   return (
-    <div style={{ position: 'relative' }}>
+    <Box sx={{ position: 'relative' }}>
       <Paper
         sx={{
           p: 4,
@@ -24,7 +24,7 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           container
           direction="column"
           justifyContent="space-around"
-          style={{ height: '100%' }}
+          sx={{ height: '100%' }}
           spacing={3}>
           <Grid item>
             <Typography variant="h2" gutterBottom>
@@ -57,7 +57,7 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           ))}
         </MuiCarousel>
       )}
-    </div>
+    </Box>
   );
 };
 

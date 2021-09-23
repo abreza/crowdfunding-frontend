@@ -124,27 +124,27 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
               direction="row">
               <Grid item>
                 <IconButton size="large">
-                  <LinkIcon style={{ transform: 'scaleX(1)' }} />
+                  <LinkIcon sx={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
                 <IconButton size="large">
-                  <FacebookIcon style={{ transform: 'scaleX(1)' }} />
+                  <FacebookIcon sx={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
                 <IconButton size="large">
-                  <TwitterIcon style={{ transform: 'scaleX(1)' }} />
+                  <TwitterIcon sx={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
                 <IconButton size="large">
-                  <EmailIcon style={{ transform: 'scaleX(1)' }} />
+                  <EmailIcon sx={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
               <Grid item>
                 <IconButton size="large">
-                  <TelegramIcon style={{ transform: 'scaleX(1)' }} />
+                  <TelegramIcon sx={{ transform: 'scaleX(1)' }} />
                 </IconButton>
               </Grid>
             </Grid>

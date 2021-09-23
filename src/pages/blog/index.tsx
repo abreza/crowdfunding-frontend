@@ -29,7 +29,7 @@ const BlogCard: FC<BlogCardProps> = () => {
       </Typography>
       <Typography
         variant="body1"
-        style={{
+        sx={{
           display: '-webkit-box',
           maxWidth: '100%',
           WebkitLineClamp: '4' as any,

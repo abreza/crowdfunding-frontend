@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { baseUrl } from 'config';
 import { ProjectRo } from 'types/project';
+import { Box } from '@mui/system';
 
 type LandingProps = {
   projects: ProjectRo[];
@@ -36,11 +37,11 @@ const Landing: FC<LandingProps> = ({ projects = [] }) => {
       <Divider />
       <LandingSubscribe />
       <Divider />
-      <div
+      <Box
         ref={whatIsCrowdfunding}
-        style={{ scrollMarginTop: 50, scrollSnapMargin: 50 }}>
+        sx={{ scrollMarginTop: 50, scrollSnapMargin: 50 }}>
         <WhatIsCrowdfunding />
-      </div>
+      </Box>
     </Homepage>
   );
 };

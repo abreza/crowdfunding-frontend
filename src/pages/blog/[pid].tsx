@@ -66,13 +66,13 @@ const Post: FC<PostProps> = () => {
           </Typography>
           <Grid container spacing={1}>
             <Grid item>
-              <Chip label="سرمایه‌گذاری" style={{ background: '#ddd' }} />
+              <Chip label="سرمایه‌گذاری" sx={{ background: '#ddd' }} />
             </Grid>
             <Grid item>
-              <Chip label="تامین مالی جمعی" style={{ background: '#ddd' }} />
+              <Chip label="تامین مالی جمعی" sx={{ background: '#ddd' }} />
             </Grid>
             <Grid item>
-              <Chip label="اشتغال" style={{ background: '#ddd' }} />
+              <Chip label="اشتغال" sx={{ background: '#ddd' }} />
             </Grid>
           </Grid>
         </Grid>

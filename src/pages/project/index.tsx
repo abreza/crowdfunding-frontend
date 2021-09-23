@@ -60,7 +60,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
           alignItems="center"
           justifyContent="flex-start">
           <Grid item>
-            <SortIcon style={{ transform: 'scaleX(1)' }} />
+            <SortIcon sx={{ transform: 'scaleX(1)' }} />
           </Grid>
           <Grid item>
             <Typography variant="subtitle1">مرتب‌سازی بر اساس:</Typography>
@@ -80,7 +80,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
           direction="row"
           justifyContent="space-around"
           spacing={3}
-          style={{ padding: '10px 0' }}>
+          sx={{ py: 1 }}>
           {projects.map((item: any, i: number) => (
             <Grid item key={i}>
               <ProjectCard item={item} />

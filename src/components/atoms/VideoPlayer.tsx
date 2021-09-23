@@ -55,11 +55,9 @@ const Player: FC<any> = ({ videoUrl }) => {
               color: 'white',
               width: 50,
               height: 50,
-            }}
-            fontSize="large"
-            style={{
               transform: 'scaleX(1)',
             }}
+            fontSize="large"
           />
         )}
       </IconButton>

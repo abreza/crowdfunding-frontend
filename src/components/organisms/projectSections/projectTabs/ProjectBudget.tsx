@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import { ProjectContext } from 'context/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from 'recharts';
@@ -83,7 +84,7 @@ const ProjectBudget: FC<ProjectBudgetProps> = () => {
   const { budgets = [] } = useContext(ProjectContext);
 
   return (
-    <div style={{ height: 250 }}>
+    <Box sx={{ height: 250 }}>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={250} height={250}>
           <Pie
@@ -109,7 +110,7 @@ const ProjectBudget: FC<ProjectBudgetProps> = () => {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </div>
+    </Box>
   );
 };
 
