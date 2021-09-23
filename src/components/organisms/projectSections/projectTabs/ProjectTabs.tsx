@@ -44,6 +44,8 @@ const ProjectTabs: FC<ProjectTabsProps> = () => {
           indicatorColor="primary"
           textColor="primary"
           onChange={(event, value) => setActiveTav(value)}
+          variant="scrollable"
+          allowScrollButtonsMobile
           scrollButtons="auto"
           centered>
           {tabs.map((tab) => (

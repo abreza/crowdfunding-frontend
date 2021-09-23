@@ -35,7 +35,6 @@ const Account: FC<AccountProps> = () => {
             <Paper sx={{ overflow: 'hidden' }}>
               <Tabs
                 orientation="vertical"
-                variant="scrollable"
                 value={activeTab}>
                 {tabs.map((tab, index) => (
                   <Tab

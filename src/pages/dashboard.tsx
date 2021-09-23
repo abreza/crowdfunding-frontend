@@ -72,6 +72,8 @@ const Dashboard: FC<DashboardProps> = () => {
             indicatorColor="primary"
             textColor="primary"
             onChange={(event, value) => setActiveTab(value)}
+            variant="scrollable"
+            allowScrollButtonsMobile
             scrollButtons="auto"
             centered>
             {tabs.map((tab) => (

@@ -192,6 +192,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
             textColor="secondary"
             onChange={(e, value) => setActiveStep(value)}
             variant="scrollable"
+            allowScrollButtonsMobile
             scrollButtons="auto">
             {TabsData.map((tab) => (
               <Tab key={tab.label} icon={tab.icon} label={tab.label} />
