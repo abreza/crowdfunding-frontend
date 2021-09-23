@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import ResponsiveAppBar from 'components/organisms/navbar/LandingNavbar';
+import ResponsiveAppBar from 'components/organisms/navbar/Navbar';
 import Footer from 'components/organisms/footer/Footer';
 import AuthDialog from 'components/organisms/authDialog/AuthDialog';
 import { HomepageContext } from 'context/HomepageContext';
