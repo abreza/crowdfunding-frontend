@@ -7,7 +7,10 @@ export const projectApi = createApi({
   reducerPath: 'projectApi',
   baseQuery,
   endpoints: (builder) => ({
-    getProjects: builder.mutation<ProjectRo[], string | undefined>({
+    getProjects: builder.mutation<
+      { projects: ProjectRo[] },
+      string | undefined
+    >({
       query: (name) => (name ? `project/${name}` : 'project/'),
     }),
     createProject: builder.mutation<ProjectRo, ProjectDto>({
