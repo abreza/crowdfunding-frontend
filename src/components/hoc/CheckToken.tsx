@@ -1,15 +1,17 @@
-import { useVerifyTokenMutation } from 'app/services/auth';
+import { logout } from 'app/slices/authSlice';
 import { RootState } from 'app/store';
 import { FC, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { isExpiredJwt } from 'utils/parseJWT';
 
 export const CheckToken: FC = () => {
-  const [verifyToken] = useVerifyTokenMutation();
   const token = useSelector((state: RootState) => state.auth.token);
+
+  const dispatch = useDispatch();
 
   const checkToken = useCallback(async () => {
     if (token) {
-      await verifyToken({ token }).unwrap();
+      if (isExpiredJwt(token)) dispatch(logout());
     }
   }, []);
 
