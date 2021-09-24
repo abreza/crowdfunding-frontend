@@ -1,24 +1,25 @@
 import {
-  AccountCircle,
   AssignmentInd,
   LinkedIn,
   LocalLibrary,
   PersonPinCircle,
   Web,
 } from '@mui/icons-material';
-import {
-  Button,
-  Grid,
-  InputAdornment,
-  TextField,
-  useMediaQuery,
-} from '@mui/material';
-import { useTheme } from '@mui/system';
+import { Button, Grid, InputAdornment, TextField } from '@mui/material';
+import { RootState } from 'app/store';
 import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar';
+import { baseUrl } from 'config';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
 export const Profile = () => {
-  const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down('sm'));
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  const [profileForm, setProfileForm] = useState(user);
+
+  useEffect(() => {
+    setProfileForm(user);
+  }, [user]);
 
   return (
     <Grid container sx={{ pt: 2 }} spacing={2}>
@@ -31,20 +32,38 @@ export const Profile = () => {
           justifyContent="center">
           <Grid item xs={12} sm={4}>
             <Grid container alignItems="center" justifyContent="center">
-              <ProfileAvatar />
+              <ProfileAvatar image={baseUrl + user.avatar} />
             </Grid>
           </Grid>
           <Grid item xs={12} sm={8} container direction="column" spacing={2}>
             <Grid item container spacing={2}>
               <Grid item xs={6}>
-                <TextField fullWidth size="small" label="نام" />
+                <TextField
+                  fullWidth
+                  size="small"
+                  label="نام"
+                  name="firstName"
+                  value={profileForm.firstName}
+                />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth size="small" label="نام‌خانوادگی" />
+                <TextField
+                  fullWidth
+                  size="small"
+                  label="نام‌خانوادگی"
+                  name="lastName"
+                  value={profileForm.lastName}
+                />
               </Grid>
             </Grid>
             <Grid item>
-              <TextField fullWidth size="small" label="نام کاربری" />
+              <TextField
+                fullWidth
+                size="small"
+                label="نام کاربری"
+                name="username"
+                value={profileForm.username}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -56,6 +75,8 @@ export const Profile = () => {
           rows={4}
           size="small"
           label="توضیحاتی در رابطه با شما"
+          name="bio"
+          value={profileForm.bio}
         />
       </Grid>
       <Grid item xs={12}>

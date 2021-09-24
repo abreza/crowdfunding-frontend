@@ -32,8 +32,19 @@ export const authApi = createApi({
         body: userData,
       }),
     }),
+    uploadAvatar: builder.mutation<{ path: string }, FormData>({
+      query: (formData) => ({
+        url: 'media/avatar',
+        method: 'POST',
+        body: formData,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useSignUpMutation, useVerifyTokenMutation } =
-  authApi;
+export const {
+  useLoginMutation,
+  useSignUpMutation,
+  useVerifyTokenMutation,
+  useUploadAvatarMutation,
+} = authApi;

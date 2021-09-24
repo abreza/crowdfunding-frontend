@@ -18,7 +18,7 @@ export const ChangePassword = () => {
       </Grid>
       <Grid item xs={12}>
         <Button fullWidth variant="contained">
-          ثبت اطلاعات
+          ثبت
         </Button>
       </Grid>
     </Grid>

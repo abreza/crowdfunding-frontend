@@ -1,11 +1,22 @@
 import { Edit } from '@mui/icons-material';
-import { Avatar, IconButton } from '@mui/material';
+import { Avatar, IconButton, Skeleton } from '@mui/material';
 import { Box } from '@mui/system';
+import { useUploadAvatarMutation } from 'app/services/auth';
 import { FC } from 'react';
 
-export const ProfileAvatar: FC<{ editable?: boolean }> = ({
+export const ProfileAvatar: FC<{ editable?: boolean; image: string }> = ({
   editable = true,
+  image,
 }) => {
+  const [uploadAvatar, { isLoading }] = useUploadAvatarMutation();
+
+  const upload = async (image: File | undefined) => {
+    if (!image) return;
+    const formData = new FormData();
+    formData.append('file', image);
+    await uploadAvatar(formData);
+  };
+
   return (
     <Box
       sx={{
@@ -26,10 +37,27 @@ export const ProfileAvatar: FC<{ editable?: boolean }> = ({
           left: 0,
           right: 0,
         }}>
-        <Avatar sx={{ width: '100%', height: '100%' }} />
+        {isLoading ? (
+          <Skeleton
+            animation="wave"
+            variant="circular"
+            width="100%"
+            height="100%"
+          />
+        ) : (
+          <Avatar sx={{ width: '100%', height: '100%' }} src={image} />
+        )}
         {editable && (
-          <IconButton sx={{ position: 'absolute', bottom: '0', right: '0' }}>
+          <IconButton
+            sx={{ position: 'absolute', bottom: '0', right: '0' }}
+            component="label">
             <Edit />
+            <input
+              type="file"
+              hidden
+              onChange={(e) => upload(e?.target?.files?.[0])}
+              accept="image/*"
+            />
           </IconButton>
         )}
       </Box>

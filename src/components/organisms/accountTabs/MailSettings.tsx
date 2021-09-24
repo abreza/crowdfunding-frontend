@@ -52,7 +52,7 @@ export const MailSettings = () => {
       </Grid>
       <Grid item xs={12}>
         <Button fullWidth variant="contained">
-          ثبت اطلاعات
+          ثبت تنظیمات
         </Button>
       </Grid>
     </Grid>

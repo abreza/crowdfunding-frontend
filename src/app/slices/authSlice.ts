@@ -28,6 +28,15 @@ const slice = createSlice({
       state.token = payload.token;
       state.user = payload.user;
     });
+    builder.addMatcher(
+      authApi.endpoints.uploadAvatar.matchFulfilled,
+      (state, { payload }) => {
+        state.user = {
+          ...state.user,
+          avatar: payload.path,
+        } as UserRo;
+      }
+    );
   },
 });
 

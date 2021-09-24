@@ -5,8 +5,8 @@ import { RootState } from 'app/store';
 import { HomepageContext } from 'context/HomepageContext';
 import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { baseUrl } from 'config';
 
 const LoginButton: FC = () => {
   const { openAuthDialog } = useContext(HomepageContext);
@@ -53,6 +53,7 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
               width: 24,
               height: 24,
             }}
+            src={baseUrl + user.avatar}
           />
         }>
         {user.firstName} {user.lastName}
