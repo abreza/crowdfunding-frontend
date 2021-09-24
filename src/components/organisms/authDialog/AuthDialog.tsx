@@ -10,9 +10,9 @@ import { Close as CloseIcon } from '@mui/icons-material';
 import React, { FC, useState } from 'react';
 
 import pic1 from 'assets/images/pic1.png';
-import Login from 'components/molecules/authDialogPages/Login';
-import SignUp from 'components/molecules/authDialogPages/SignUp';
-import ForgotPassword from 'components/molecules/authDialogPages/ForgotPassword';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import ForgotPassword from './pages/ForgotPassword';
 
 export enum PageName {
   LOGIN,

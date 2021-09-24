@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import { toast } from 'react-toastify';
 import { LanguageEnum } from 'types/generalTypes';
 import { maxMinDate } from 'utils/calendarUtils';
-import CustomDatePicker from '../customDatePicker/CustomDatePicker';
+import CustomDatePicker from '../../molecules/customDatePicker/CustomDatePicker';
 
 const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,

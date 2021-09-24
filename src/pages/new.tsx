@@ -13,16 +13,15 @@ import {
   AccountBalanceWallet as AccountBalanceWalletIcon,
   DeviceHub as DeviceHubIcon,
   Timeline as TimelineIcon,
-  Group as GroupIcon,
   ViewCarousel as ViewCarouselIcon,
 } from '@mui/icons-material';
-import BasicDetails from 'components/molecules/createProjectPages/BasicDetails';
-import Budget from 'components/molecules/createProjectPages/Budget';
-import Gallery from 'components/molecules/createProjectPages/Gallery';
-import Research from 'components/molecules/createProjectPages/Research';
+import BasicDetails from 'components/organisms/createProjectPages/BasicDetails';
+import Budget from 'components/organisms/createProjectPages/Budget';
+import Gallery from 'components/organisms/createProjectPages/Gallery';
+import Research from 'components/organisms/createProjectPages/Research';
 import { FC, useEffect, useLayoutEffect, useState } from 'react';
 import Panel from 'templates/Panel';
-import Timeline from 'components/molecules/createProjectPages/Timeline';
+import Timeline from 'components/organisms/createProjectPages/Timeline';
 import { ProjectDto, CategoryEnum } from 'types/project';
 import { useCreateProjectMutation } from 'app/services/project';
 import { LoadingButton } from 'components/atoms/LoadingButton';
@@ -52,11 +51,6 @@ const TabsData = [
     label: 'زمان‌بندی',
     component: Timeline,
   },
-  // {
-  //   icon: <GroupIcon />,
-  //   label: 'تیم',
-  //   component: Team,
-  // },
   {
     icon: <ViewCarouselIcon />,
     label: 'گالری',
