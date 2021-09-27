@@ -9,12 +9,11 @@ type PanelProps = {
 
 const Panel: FC<PanelProps> = ({ children }) => {
   return (
-    <>
-      <ProtectedPage />
+    <ProtectedPage>
       <ResponsiveAppBar />
       {children}
       <Footer />
-    </>
+    </ProtectedPage>
   );
 };
 

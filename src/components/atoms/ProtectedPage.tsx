@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'app/store';
 import { useRouter } from 'next/router';
 
-const ProtectedPage: FC = () => {
+const ProtectedPage: FC = ({ children }) => {
   const { push } = useRouter();
 
   const token = useSelector((state: RootState) => state.auth.token);
@@ -14,7 +14,7 @@ const ProtectedPage: FC = () => {
     }
   }, [token, push]);
 
-  return <></>;
+  return <>{token && children}</>;
 };
 
 export default ProtectedPage;
