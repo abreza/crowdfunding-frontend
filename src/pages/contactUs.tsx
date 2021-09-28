@@ -51,7 +51,7 @@ const ContactUs: FC<ContactUsProps> = () => {
             <Box
               lat={35.7025623}
               lng={51.3510847}
-              sx={{ transform: 'translateY(-100%)' }}>
+              sx={{ transform: 'translate(-20px, -110%)' }}>
               <Box className={styles.pin}></Box>
             </Box>
           </GoogleMapReact>
