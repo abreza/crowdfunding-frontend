@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 import { useGetProfileQuery, useSetProfileMutation } from 'app/services/auth';
 import { UserRo } from 'types/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
+import { toast } from 'react-toastify';
 
 export const Profile = () => {
   const { user } = useSelector((state: RootStateType) => state.auth);
@@ -33,7 +34,7 @@ export const Profile = () => {
       setProfileForm((pf: UserRo) => ({ ...pf, [name]: value }));
 
   const onSubmit = () => {
-    setProfile(profileForm);
+    setProfile(profileForm).then(() => toast.success('تغییرات ثبت شد!'));
   };
 
   return (
