@@ -4,9 +4,9 @@ import { Box } from '@mui/system';
 import { useUploadAvatarMutation } from 'app/services/auth';
 import { FC } from 'react';
 
-export const ProfileAvatar: FC<{ editable?: boolean; image: string }> = ({
+export const ProfileAvatar: FC<{ editable?: boolean; src: string }> = ({
   editable = true,
-  image,
+  src,
 }) => {
   const [uploadAvatar, { isLoading }] = useUploadAvatarMutation();
 
@@ -45,7 +45,7 @@ export const ProfileAvatar: FC<{ editable?: boolean; image: string }> = ({
             height="100%"
           />
         ) : (
-          <Avatar sx={{ width: '100%', height: '100%' }} src={image} />
+          <Avatar sx={{ width: '100%', height: '100%' }} src={src} />
         )}
         {editable && (
           <IconButton

@@ -1,17 +1,6 @@
-import {
-  Typography,
-  Grid,
-  Tabs,
-  Tab,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Button,
-} from '@mui/material';
-import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar';
+import { Grid, Tabs, Tab } from '@mui/material';
 import MyProjects from 'components/organisms/dashboardTabs/myProjects';
-import Link from 'next/link';
+import { UserCard } from 'components/organisms/userCard/UserCard';
 import { FC, useState } from 'react';
 import Panel from 'templates/Panel';
 
@@ -36,61 +25,12 @@ const Dashboard: FC<DashboardProps> = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const CurrentComponent = tabs[activeTab].component;
-  const image = '';
 
   return (
     <Panel>
       <Grid container sx={{ p: 2 }} justifyContent="center" spacing={2}>
         <Grid item xs={12} sm={4}>
-          <Card sx={{ maxWidth: 345, mx: 'auto' }}>
-            <CardContent>
-              <Grid
-                container
-                spacing={2}
-                direction="row"
-                alignItems="center"
-                justifyContent="center">
-                <Grid item xs={12} sm={4}>
-                  <Grid container alignItems="center" justifyContent="center">
-                    <ProfileAvatar editable={false} image={image} />
-                  </Grid>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={8}
-                  container
-                  direction="column"
-                  alignItems="center"
-                  justifyContent="center"
-                  spacing={1}>
-                  <Grid item>
-                    <Typography variant="h5" component="div">
-                      مرتضی ابوالقاسمی
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="body2" color="text.secondary">
-                      دانشجوی دانشگاه صنعتی شریف
-                    </Typography>
-                  </Grid>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="subtitle2"
-                    color="text.secondary"
-                    sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
-                    علاقه‌مند به تحقیقات علمی و پژوهشی
-                  </Typography>
-                </Grid>
-              </Grid>
-            </CardContent>
-            <CardActions>
-              <Link href="/account" passHref>
-                <Button size="small">ویرایش</Button>
-              </Link>
-            </CardActions>
-          </Card>
+          <UserCard />
         </Grid>
         <Grid item xs={12} sm={8}>
           <Tabs
