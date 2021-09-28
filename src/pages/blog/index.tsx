@@ -1,9 +1,9 @@
 import { Avatar, Box, Button, Chip, Grid, Typography } from '@mui/material';
-import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { FC } from 'react';
 import Link from 'next/link';
 import Homepage from 'templates/Homepages';
-import SImage from 'components/atoms/sImage/SImage';
+import Image from 'next/image';
 
 type BlogProps = {};
 type BlogCardProps = {};
@@ -16,11 +16,14 @@ const BlogCard: FC<BlogCardProps> = () => {
           mb: 1,
           borderRadius: '5px 5px 0 0',
           overflow: 'hidden',
+          position: 'relative',
+          height: 400,
         }}>
-        <SImage
+        <Image
           src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
           alt="crowdfunding"
           layout="fill"
+          objectFit="cover"
         />
       </Box>
       <Chip avatar={<Avatar />} label="علی محمدی" color="primary" />
@@ -65,7 +68,7 @@ const BlogCard: FC<BlogCardProps> = () => {
         اقتصاد و اشتغال و زندگی عامه جامعه گذاشته می‌شود.
       </Typography>
       <Link href="/blog/0" passHref>
-        <Button variant="outlined" fullWidth size="large">
+        <Button variant="outlined" fullWidth size="large" sx={{ mt: 2 }}>
           مطالعه بیشتر
         </Button>
       </Link>
@@ -86,7 +89,7 @@ const Blog: FC<BlogProps> = () => {
             </Grid>
             <Grid item>
               <Link href="/" passHref>
-                <Button endIcon={<ArrowForwardIcon />}>بازگشت به خانه</Button>
+                <Button endIcon={<ArrowBackIcon />}>بازگشت به خانه</Button>
               </Link>
             </Grid>
           </Grid>

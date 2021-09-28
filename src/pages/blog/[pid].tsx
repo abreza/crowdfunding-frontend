@@ -1,9 +1,9 @@
 import { Avatar, Box, Button, Chip, Grid, Typography } from '@mui/material';
-import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { FC } from 'react';
 import Link from 'next/link';
 import Homepage from 'templates/Homepages';
-import SImage from 'components/atoms/sImage/SImage';
+import Image from 'next/image';
 
 type PostProps = {};
 
@@ -15,7 +15,7 @@ const Post: FC<PostProps> = () => {
           <Grid item container justifyContent="flex-end">
             <Box sx={{ mb: 1 }}>
               <Link href="/blog" passHref>
-                <Button endIcon={<ArrowForwardIcon />}>بازگشت به بلاگ</Button>
+                <Button endIcon={<ArrowBackIcon />}>بازگشت به بلاگ</Button>
               </Link>
             </Box>
           </Grid>
@@ -24,11 +24,14 @@ const Post: FC<PostProps> = () => {
               mb: 1,
               borderRadius: '5px 5px 0 0',
               overflow: 'hidden',
+              position: 'relative',
+              height: 400,
             }}>
-            <SImage
+            <Image
               src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
               alt="crowdfunding"
               layout="fill"
+              objectFit="cover"
             />
           </Box>
           <Chip avatar={<Avatar />} label="علی محمدی" color="primary" />

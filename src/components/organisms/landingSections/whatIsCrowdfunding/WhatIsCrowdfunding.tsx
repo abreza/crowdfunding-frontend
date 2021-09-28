@@ -5,7 +5,7 @@ import Link from 'next/link';
 import pic2 from 'assets/images/pic2.png';
 import pic6 from 'assets/images/pic6.png';
 import pic7 from 'assets/images/pic7.png';
-import SImage from 'components/atoms/sImage/SImage';
+import Image from 'next/image';
 
 type WhatIsCrowdfundingProps = {};
 
@@ -16,8 +16,18 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
         تامین‌مالی جمعی چیست؟
       </Typography>
       <Grid container spacing={2} alignItems="center" justifyContent="center">
-        <Grid item sm={6} xs={12} sx={{ order: { xs: 0, sm: 1 } }}>
-          <SImage src={pic2} alt="crowdfunding" layout="fill" />
+        <Grid
+          item
+          sm={6}
+          xs={12}
+          sx={{ order: { xs: 0, sm: 1 }, position: 'relative' }}>
+          <Image
+            src={pic2}
+            alt="crowdfunding"
+            layout="responsive"
+            width="100%"
+            height="100%"
+          />
         </Grid>
         <Grid item sm={6} xs={12} sx={{ order: { xs: 1, sm: 0 } }}>
           <Typography variant="body1" gutterBottom>
@@ -34,8 +44,14 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
             که مراحل اولیه را پشت سر گذاشته‌ اند، متمرکز کرده‌ اند.
           </Typography>
         </Grid>
-        <Grid item sm={6} xs={12} sx={{ order: 2 }}>
-          <SImage src={pic6} alt="crowdfunding" layout="fill" />
+        <Grid item sm={6} xs={12} sx={{ order: 2, position: 'relative' }}>
+          <Image
+            src={pic6}
+            alt="crowdfunding"
+            layout="responsive"
+            width="100%"
+            height="70%"
+          />
         </Grid>
         <Grid item sm={6} xs={12} sx={{ order: 3 }}>
           <Typography variant="body1" gutterBottom>
@@ -47,8 +63,18 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
             مالی جمعی برای مرتفع سازی نیازهای مالی آنها و درآمدزایی می باشیم.
           </Typography>
         </Grid>
-        <Grid item sm={6} xs={12} sx={{ order: { xs: 4, sm: 5 } }}>
-          <SImage src={pic7} alt="crowdfunding" layout="fill" />
+        <Grid
+          item
+          sm={6}
+          xs={12}
+          sx={{ order: { xs: 4, sm: 5 }, position: 'relative' }}>
+          <Image
+            src={pic7}
+            alt="crowdfunding"
+            layout="responsive"
+            width="100%"
+            height="70%"
+          />
         </Grid>
 
         <Grid item sm={6} xs={12} sx={{ order: { xs: 5, sm: 4 } }}>

@@ -1,21 +1,25 @@
-import UseWindowDimensions from 'components/hoc/UseWindowSize';
 import React, { FC } from 'react';
 import logo2 from 'assets/images/logo2.png';
 import logo3 from 'assets/images/logo3.png';
 import Link from 'components/atoms/Link';
-import SImage from 'components/atoms/sImage/SImage';
+import Image from 'next/image';
+import { Box, useTheme } from '@mui/system';
+import { useMediaQuery } from '@mui/material';
 
 const NavbarLogo: FC = () => {
-  const windowDimensions = UseWindowDimensions();
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Link href="/" passHref>
-      <SImage
-        src={windowDimensions.width < 960 ? logo2 : logo3}
-        alt="logo"
-        width={windowDimensions.width < 960 ? 40 : 70}
-        layout="fill"
-      />
+      <Box sx={{ width: { xs: 30, sm: 90 }, height: 30, position: 'relative' }}>
+        <Image
+          src={isXs ? logo2 : logo3}
+          layout="fill"
+          alt="logo"
+          width="100%"
+        />
+      </Box>
     </Link>
   );
 };
