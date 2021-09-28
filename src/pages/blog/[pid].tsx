@@ -38,7 +38,7 @@ const Post: FC<PostProps> = () => {
           <Typography variant="h2" gutterBottom sx={{ my: 1 }}>
             چرا باید در تامین مالی جمعی شرکت کنیم؟
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" align="justify">
             برای خیلی از سرمایه‌گذاران ممکن است این سوال پیش بیاید که با وجود
             بازدهی بالای خرید و فروش سهام، چرا باید بخشی از سرمایه خود را به
             سرمایه‌گذاری در تامین مالی جمعی اختصاص دهیم؟ در این مطلب سعی

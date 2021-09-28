@@ -39,7 +39,8 @@ const BlogCard: FC<BlogCardProps> = () => {
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
-        }}>
+        }}
+        align="justify">
         برای خیلی از سرمایه‌گذاران ممکن است این سوال پیش بیاید که با وجود بازدهی
         بالای خرید و فروش سهام، چرا باید بخشی از سرمایه خود را به سرمایه‌گذاری
         در تامین مالی جمعی اختصاص دهیم؟ در این مطلب سعی کرده‌ایم به چهار مزیت
