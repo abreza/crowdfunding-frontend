@@ -43,8 +43,6 @@ const Dashboard: FC<DashboardProps> = () => {
       <Grid container sx={{ p: 2 }} justifyContent="center" spacing={2}>
         <Grid item xs={12} sm={4}>
           <Card sx={{ maxWidth: 345, mx: 'auto' }}>
-            {image && <CardMedia component="img" height="140" image={image} />}
-
             <CardContent>
               <Grid
                 container
@@ -54,7 +52,7 @@ const Dashboard: FC<DashboardProps> = () => {
                 justifyContent="center">
                 <Grid item xs={12} sm={4}>
                   <Grid container alignItems="center" justifyContent="center">
-                    <ProfileAvatar editable={false} />
+                    <ProfileAvatar editable={false} image={image} />
                   </Grid>
                 </Grid>
                 <Grid
@@ -88,8 +86,7 @@ const Dashboard: FC<DashboardProps> = () => {
               </Grid>
             </CardContent>
             <CardActions>
-              <Button size="small">مطالعه بیشتر</Button>
-              <Link href="/account">
+              <Link href="/account" passHref>
                 <Button size="small">ویرایش</Button>
               </Link>
             </CardActions>
