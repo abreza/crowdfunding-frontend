@@ -37,6 +37,12 @@ const slice = createSlice({
         } as UserRo;
       }
     );
+    builder.addMatcher(
+      authApi.endpoints.getProfile.matchFulfilled,
+      (state, { payload }) => {
+        state.user = payload;
+      }
+    );
   },
 });
 

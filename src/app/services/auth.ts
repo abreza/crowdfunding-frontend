@@ -4,6 +4,7 @@ import {
   LoginRequest,
   SignUpRequest,
   UserResponse,
+  UserRo,
   VerifyTokenRequest,
 } from 'types/auth';
 
@@ -32,6 +33,9 @@ export const authApi = createApi({
         body: userData,
       }),
     }),
+    getProfile: builder.query<UserRo, void>({
+      query: () => 'auth/profile/',
+    }),
     uploadAvatar: builder.mutation<{ path: string }, FormData>({
       query: (formData) => ({
         url: 'media/avatar',
@@ -47,4 +51,5 @@ export const {
   useSignUpMutation,
   useVerifyTokenMutation,
   useUploadAvatarMutation,
+  useGetProfileQuery,
 } = authApi;

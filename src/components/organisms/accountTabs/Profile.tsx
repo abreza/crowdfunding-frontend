@@ -11,9 +11,12 @@ import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar'
 import { baseUrl } from 'config';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { useGetProfileQuery } from 'app/services/auth';
 
 export const Profile = () => {
   const { user } = useSelector((state: RootState) => state.auth);
+
+  useGetProfileQuery();
 
   const [profileForm, setProfileForm] = useState(user);
 
