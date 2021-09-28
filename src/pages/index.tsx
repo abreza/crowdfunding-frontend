@@ -47,8 +47,13 @@ const Landing: FC<LandingProps> = ({ projects = [] }) => {
 };
 
 export async function getStaticProps() {
-  const res = await axios(baseUrl + 'project/');
-  const { projects } = await res.data;
+  let projects = [];
+  try {
+    const res = await axios(baseUrl + 'project/');
+    projects = res.data.projects;
+  } catch (err) {
+    console.log(err);
+  }
 
   return {
     props: {
