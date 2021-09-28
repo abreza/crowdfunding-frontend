@@ -35,7 +35,9 @@ export const Profile = () => {
           justifyContent="center">
           <Grid item xs={12} sm={4}>
             <Grid container alignItems="center" justifyContent="center">
-              <ProfileAvatar image={baseUrl + user.avatar} />
+              <ProfileAvatar
+                image={user.avatarAddress && baseUrl + user.avatarAddress}
+              />
             </Grid>
           </Grid>
           <Grid item xs={12} sm={8} container direction="column" spacing={2}>

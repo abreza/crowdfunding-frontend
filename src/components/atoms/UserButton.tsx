@@ -53,7 +53,7 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
               width: 24,
               height: 24,
             }}
-            src={baseUrl + user.avatar}
+            src={user.avatarAddress && baseUrl + user.avatarAddress}
           />
         }>
         {user.firstName} {user.lastName}

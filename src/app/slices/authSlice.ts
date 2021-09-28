@@ -33,7 +33,7 @@ const slice = createSlice({
       (state, { payload }) => {
         state.user = {
           ...state.user,
-          avatar: payload.path,
+          avatarAddress: payload.path,
         } as UserRo;
       }
     );
