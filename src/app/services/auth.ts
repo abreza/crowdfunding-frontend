@@ -34,7 +34,7 @@ export const authApi = createApi({
       }),
     }),
     getProfile: builder.query<UserRo, void>({
-      query: () => 'auth/profile/',
+      query: () => 'users/profile/',
     }),
     uploadAvatar: builder.mutation<{ path: string }, FormData>({
       query: (formData) => ({
