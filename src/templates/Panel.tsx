@@ -3,9 +3,7 @@ import ResponsiveAppBar from 'components/organisms/navbar/Navbar';
 import Footer from 'components/organisms/footer/Footer';
 import ProtectedPage from 'components/atoms/ProtectedPage';
 
-type PanelProps = {
-  children: React.ReactNode;
-};
+type PanelProps = {};
 
 const Panel: FC<PanelProps> = ({ children }) => {
   return (

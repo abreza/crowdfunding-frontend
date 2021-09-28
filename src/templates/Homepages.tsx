@@ -4,9 +4,7 @@ import Footer from 'components/organisms/footer/Footer';
 import AuthDialog from 'components/organisms/authDialog/AuthDialog';
 import { HomepageContext } from 'context/HomepageContext';
 
-type HomepageProps = {
-  children: React.ReactNode;
-};
+type HomepageProps = {};
 
 const Homepage: FC<HomepageProps> = ({ children }) => {
   const [openAuthDialog, setOpenAuthDialog] = useState(false);

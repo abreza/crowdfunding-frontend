@@ -4,7 +4,6 @@ import React, { FC } from 'react';
 export const LoadingButton: FC<
   {
     loading: boolean;
-    children: React.ReactNode;
   } & ButtonProps
 > = ({ loading, children, ...buttonProps }) => {
   return (
