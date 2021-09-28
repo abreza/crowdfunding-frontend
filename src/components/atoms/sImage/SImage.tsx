@@ -1,22 +1,26 @@
 import Image, { ImageProps } from 'next/image';
-import styles from './SImage.module.css';
 import { FC } from 'react';
+import { Box } from '@mui/system';
 
 const SImage: FC<
   ImageProps & {
-    width?: string | number;
     maxWidth?: string | number;
   }
-> = ({ width, maxWidth, ...rest }) => {
+> = ({ maxWidth, ...rest }) => {
+  const { width, height, alt } = rest;
   return (
-    <div
-      className={styles.imageContainer}
-      style={{
+    <Box
+      sx={{
         width: width || '100%',
+        height: height || '100%',
         maxWidth: maxWidth || '100%',
+        position: 'relative',
+        '> div': {
+          position: 'unset',
+        },
       }}>
-      <Image className={styles.image} {...rest} />
-    </div>
+      <Image {...rest} alt={alt} />
+    </Box>
   );
 };
 
