@@ -48,6 +48,13 @@ export enum ProjectState {
   START = 'START',
 }
 
+export interface RewardRo {
+  id: string;
+  title: string;
+  description: string;
+  value: string;
+}
+
 export interface ProjectRo {
   id: string;
   subject: string;
@@ -66,5 +73,5 @@ export interface ProjectRo {
   imageUrls: string[];
   state: ProjectState;
   owner: UserRo;
-  //   rewards: RewardRo[];
+  rewards: RewardRo[];
 }
