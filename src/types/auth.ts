@@ -8,13 +8,14 @@ export interface MailConfig {
 }
 
 export interface UserRo {
+  username: string;
   email: string;
   firstName: string;
   lastName: string;
   avatarAddress: string;
   roles: string[];
   description: string;
-  professionalName: string;
+  headline: string;
   address: string;
   website: string;
   linkedinAddress: string;

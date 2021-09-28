@@ -1,28 +1,40 @@
 import {
   AssignmentInd,
   LinkedIn,
-  LocalLibrary,
   PersonPinCircle,
   Web,
 } from '@mui/icons-material';
-import { Button, Grid, InputAdornment, TextField } from '@mui/material';
+import { Grid, InputAdornment, TextField } from '@mui/material';
 import { RootState } from 'app/store';
 import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar';
 import { baseUrl } from 'config';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useGetProfileQuery } from 'app/services/auth';
+import { useGetProfileQuery, useSetProfileMutation } from 'app/services/auth';
+import { UserRo } from 'types/auth';
+import { LoadingButton } from 'components/atoms/LoadingButton';
 
 export const Profile = () => {
   const { user } = useSelector((state: RootState) => state.auth);
 
   useGetProfileQuery();
 
-  const [profileForm, setProfileForm] = useState(user);
+  const [setProfile, { isLoading }] = useSetProfileMutation();
+
+  const [profileForm, setProfileForm] = useState<UserRo>(user);
 
   useEffect(() => {
-    setProfileForm(user);
+    const { roles, mailConfig, avatar, ...newProfile } = user;
+    setProfileForm(newProfile);
   }, [user]);
+
+  const onChange: (e: React.ChangeEvent<{ name: string; value: any }>) => void =
+    ({ target: { name, value } }) =>
+      setProfileForm((pf: UserRo) => ({ ...pf, [name]: value }));
+
+  const onSubmit = () => {
+    setProfile(profileForm);
+  };
 
   return (
     <Grid container sx={{ pt: 2 }} spacing={2}>
@@ -49,6 +61,7 @@ export const Profile = () => {
                   label="نام"
                   name="firstName"
                   value={profileForm.firstName}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid item xs={6}>
@@ -58,6 +71,7 @@ export const Profile = () => {
                   label="نام‌خانوادگی"
                   name="lastName"
                   value={profileForm.lastName}
+                  onChange={onChange}
                 />
               </Grid>
             </Grid>
@@ -68,6 +82,7 @@ export const Profile = () => {
                 label="نام کاربری"
                 name="username"
                 value={profileForm.username}
+                onChange={onChange}
               />
             </Grid>
           </Grid>
@@ -80,8 +95,9 @@ export const Profile = () => {
           rows={4}
           size="small"
           label="توضیحاتی در رابطه با شما"
-          name="bio"
-          value={profileForm.bio}
+          name="description"
+          value={profileForm.description}
+          onChange={onChange}
         />
       </Grid>
       <Grid item xs={12}>
@@ -96,20 +112,9 @@ export const Profile = () => {
               </InputAdornment>
             ),
           }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          fullWidth
-          size="small"
-          label="موئسسه علمی"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <LocalLibrary />
-              </InputAdornment>
-            ),
-          }}
+          name="headline"
+          value={profileForm.headline}
+          onChange={onChange}
         />
       </Grid>
       <Grid item xs={12}>
@@ -124,6 +129,9 @@ export const Profile = () => {
               </InputAdornment>
             ),
           }}
+          name="address"
+          value={profileForm.address}
+          onChange={onChange}
         />
       </Grid>
       <Grid item xs={12}>
@@ -138,6 +146,9 @@ export const Profile = () => {
               </InputAdornment>
             ),
           }}
+          name="website"
+          value={profileForm.website}
+          onChange={onChange}
         />
       </Grid>
       <Grid item xs={12}>
@@ -152,12 +163,19 @@ export const Profile = () => {
               </InputAdornment>
             ),
           }}
+          name="linkedinAddress"
+          value={profileForm.linkedinAddress}
+          onChange={onChange}
         />
       </Grid>
       <Grid item xs={12}>
-        <Button fullWidth variant="contained">
+        <LoadingButton
+          fullWidth
+          variant="contained"
+          onClick={onSubmit}
+          loading={isLoading}>
           ثبت اطلاعات
-        </Button>
+        </LoadingButton>
       </Grid>
     </Grid>
   );

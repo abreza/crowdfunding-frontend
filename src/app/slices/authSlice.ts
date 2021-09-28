@@ -43,6 +43,15 @@ const slice = createSlice({
         state.user = payload;
       }
     );
+    builder.addMatcher(
+      authApi.endpoints.setProfile.matchFulfilled,
+      (state, { meta }) => {
+        state.user = {
+          ...state.user,
+          ...meta?.arg?.originalArgs,
+        };
+      }
+    );
   },
 });
 

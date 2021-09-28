@@ -43,6 +43,13 @@ export const authApi = createApi({
         body: formData,
       }),
     }),
+    setProfile: builder.mutation<void, UserRo>({
+      query: (user) => ({
+        url: 'users/profile/',
+        method: 'POST',
+        body: user,
+      }),
+    }),
   }),
 });
 
@@ -52,4 +59,5 @@ export const {
   useVerifyTokenMutation,
   useUploadAvatarMutation,
   useGetProfileQuery,
+  useSetProfileMutation,
 } = authApi;
