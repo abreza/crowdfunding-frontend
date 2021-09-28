@@ -143,10 +143,14 @@ export default function Footer() {
                 </Link>
               </Grid>
               <Grid item>
-                <Button color="inherit">تماس با ما</Button>
+                <Link href="/contactUs" passHref>
+                  <Button color="inherit">تماس با ما</Button>
+                </Link>
               </Grid>
               <Grid item>
-                <Button color="inherit">درباره ما</Button>
+                <Link href="/about" passHref>
+                  <Button color="inherit">درباره ما</Button>
+                </Link>
               </Grid>
             </Grid>
           </Grid>
