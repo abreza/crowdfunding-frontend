@@ -56,10 +56,10 @@ setupListeners(store.dispatch);
 
 // "ReturnType" set type based on returned value from function
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export type RootStateType = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
-  RootState,
+  RootStateType,
   unknown,
   Action<string>
 >;

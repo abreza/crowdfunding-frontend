@@ -5,7 +5,7 @@ import {
   Web,
 } from '@mui/icons-material';
 import { Grid, InputAdornment, TextField } from '@mui/material';
-import { RootState } from 'app/store';
+import { RootStateType } from 'app/store';
 import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar';
 import { baseUrl } from 'config';
 import { useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ import { UserRo } from 'types/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 
 export const Profile = () => {
-  const { user } = useSelector((state: RootState) => state.auth);
+  const { user } = useSelector((state: RootStateType) => state.auth);
 
   useGetProfileQuery();
 

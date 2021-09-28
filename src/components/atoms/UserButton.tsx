@@ -1,7 +1,7 @@
 import { Avatar, Button, Divider, Menu, MenuItem } from '@mui/material';
 import { UserRo } from 'types/auth';
 import { logout } from 'app/slices/authSlice';
-import { RootState } from 'app/store';
+import { RootStateType } from 'app/store';
 import { HomepageContext } from 'context/HomepageContext';
 import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -81,7 +81,7 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
 };
 
 const UserButton: FC = () => {
-  const { user, token } = useSelector((state: RootState) => state.auth);
+  const { user, token } = useSelector((state: RootStateType) => state.auth);
   return token ? <ProfileButton user={user} /> : <LoginButton />;
 };
 

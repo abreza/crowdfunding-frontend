@@ -1,14 +1,13 @@
 import { createSlice, AnyAction } from '@reduxjs/toolkit';
 import type { UserRo } from 'types/auth';
-import type { RootState } from 'app/store';
 import { authApi } from 'app/services/auth';
 
 type AuthState = {
-  user: UserRo | null;
-  token: string | null;
+  user?: UserRo;
+  token?: string;
 };
 
-const initialState: AuthState = { user: null, token: null };
+const initialState: AuthState = {};
 
 const isAuthenticated = (action: AnyAction) => {
   return (
@@ -58,5 +57,3 @@ const slice = createSlice({
 export const { logout } = slice.actions;
 
 export default slice.reducer;
-
-export const selectCurrentUser = (state: RootState) => state.auth.user;

@@ -1,12 +1,12 @@
 import { Button } from '@mui/material';
-import { RootState } from 'app/store';
+import { RootStateType } from 'app/store';
 import { HomepageContext } from 'context/HomepageContext';
 import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 import { useSelector } from 'react-redux';
 
 const CreateProjectButton: FC = () => {
-  const token = useSelector((state: RootState) => state.auth.token);
+  const token = useSelector((state: RootStateType) => state.auth.token);
   const { openAuthDialog } = useContext(HomepageContext);
 
   return token ? (

@@ -1,12 +1,12 @@
 import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from 'app/store';
+import { RootStateType } from 'app/store';
 import { useRouter } from 'next/router';
 
 const ProtectedPage: FC = ({ children }) => {
   const { push } = useRouter();
 
-  const token = useSelector((state: RootState) => state.auth.token);
+  const token = useSelector((state: RootStateType) => state.auth.token);
 
   useEffect(() => {
     if (!token) {
