@@ -3,6 +3,7 @@ import ResponsiveAppBar from 'components/organisms/navbar/Navbar';
 import Footer from 'components/organisms/footer/Footer';
 import AuthDialog from 'components/organisms/authDialog/AuthDialog';
 import { HomepageContext } from 'context/HomepageContext';
+import { Box } from '@mui/system';
 
 type HomepageProps = {};
 
@@ -20,7 +21,7 @@ const Homepage: FC<HomepageProps> = ({ children }) => {
           },
         }}>
         <ResponsiveAppBar />
-        {children}
+        <Box sx={{ minHeight: '70vh' }}>{children}</Box>
         <Footer />
       </HomepageContext.Provider>
       <AuthDialog
