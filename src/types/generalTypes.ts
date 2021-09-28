@@ -1,10 +1,10 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
 export type indexType = string | number;
 
 export enum LanguageEnum {
-  "fa" = "fa",
-  "en" = "en",
+  'fa' = 'fa',
+  'en' = 'en',
 }
 
 export type reduxAction = {
@@ -13,8 +13,8 @@ export type reduxAction = {
 };
 
 export enum DirectionEnum {
-  "rtl" = "rtl",
-  "ltr" = "ltr",
+  'rtl' = 'rtl',
+  'ltr' = 'ltr',
 }
 
 export type inputEventType = ChangeEvent<
