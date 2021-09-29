@@ -1,5 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'app/services/baseQuery';
+import { MailSettings } from 'components/organisms/accountTabs/MailSettings';
 import {
   LoginRequest,
   SignUpRequest,
@@ -50,6 +51,13 @@ export const authApi = createApi({
         body: user,
       }),
     }),
+    setMailSettings: builder.mutation<void, MailSettings>({
+      query: (user) => ({
+        url: 'users/profile/',
+        method: 'POST',
+        body: user,
+      }),
+    }),
     changePassword: builder.mutation<
       void,
       { currentPassword: string; newPassword: string }
@@ -70,5 +78,6 @@ export const {
   useUploadAvatarMutation,
   useGetProfileQuery,
   useSetProfileMutation,
+  useSetMailSettingsMutation,
   useChangePasswordMutation,
 } = authApi;

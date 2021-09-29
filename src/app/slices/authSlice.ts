@@ -16,6 +16,13 @@ const isAuthenticated = (action: AnyAction) => {
   );
 };
 
+const isProfileEdit = (action: AnyAction) => {
+  return (
+    authApi.endpoints.setProfile.matchFulfilled(action) ||
+    authApi.endpoints.setMailSettings.matchFulfilled(action)
+  );
+};
+
 const slice = createSlice({
   name: 'auth',
   initialState,
@@ -42,15 +49,12 @@ const slice = createSlice({
         state.user = payload;
       }
     );
-    builder.addMatcher(
-      authApi.endpoints.setProfile.matchFulfilled,
-      (state, { meta }) => {
-        state.user = {
-          ...state.user,
-          ...meta?.arg?.originalArgs,
-        };
-      }
-    );
+    builder.addMatcher(isProfileEdit, (state, { meta }) => {
+      state.user = {
+        ...state.user,
+        ...meta?.arg?.originalArgs,
+      };
+    });
   },
 });
 

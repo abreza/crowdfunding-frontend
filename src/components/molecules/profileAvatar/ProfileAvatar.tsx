@@ -51,7 +51,7 @@ export const ProfileAvatar: FC<{ editable?: boolean; src: string }> = ({
           <IconButton
             sx={{ position: 'absolute', bottom: '0', right: '0' }}
             component="label">
-            <Edit />
+            <Edit color="primary" />
             <input
               type="file"
               hidden
