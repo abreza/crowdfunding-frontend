@@ -1,10 +1,10 @@
 export interface MailConfig {
-  profile: Boolean;
-  supportedProjects: Boolean;
-  createdProjects: Boolean;
-  crowdfundingUpdates: Boolean;
-  projectReviews: Boolean;
-  magazine: Boolean;
+  profile: boolean;
+  supportedProjects: boolean;
+  createdProjects: boolean;
+  crowdfundingUpdates: boolean;
+  projectReviews: boolean;
+  magazine: boolean;
 }
 
 export interface UserRo {
