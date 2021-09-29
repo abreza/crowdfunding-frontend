@@ -39,6 +39,7 @@ const init: ProjectRo = {
       magazine: true,
     },
   },
+  rewards: [],
 };
 
 export const ProjectContext: Context<ProjectRo> = createContext(init);
