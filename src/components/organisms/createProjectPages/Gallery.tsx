@@ -14,6 +14,8 @@ import axios from 'axios';
 import { baseUrl } from 'config';
 import IconButton from '@mui/material/IconButton';
 import { Cancel as CancelIcon } from '@mui/icons-material';
+import { RootStateType } from 'app/store';
+import { useSelector } from 'react-redux';
 
 function CircularProgressWithLabel(
   props: CircularProgressProps & { value: number }
@@ -60,12 +62,15 @@ const Gallery: FC<{
   setProgress: (params: { id: number; progress: number }) => void;
   removeFile: (id: number) => void;
 }> = ({ files, addFile, setUrl, setProgress, removeFile }) => {
+  const token = useSelector((state: RootStateType) => state.auth.token);
+
   const upload = async (file: File, id: number): Promise<string> => {
     const formData = new FormData();
     formData.append('file', file);
     const res = await axios.post(baseUrl + 'media/', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        authorization: `Bearer ${token}`,
       },
       onUploadProgress: function (progressEvent) {
         setProgress({
