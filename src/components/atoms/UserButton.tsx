@@ -2,7 +2,7 @@ import { Avatar, Button, Divider, Menu, MenuItem } from '@mui/material';
 import { UserRo } from 'types/auth';
 import { logout } from 'app/slices/authSlice';
 import { RootStateType } from 'app/store';
-import { HomepageContext } from 'context/HomepageContext';
+import { HomepageContext } from 'contexts/HomepageContext';
 import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';

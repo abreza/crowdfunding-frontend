@@ -16,7 +16,7 @@ import {
   Email as EmailIcon,
   Telegram as TelegramIcon,
 } from '@mui/icons-material';
-import { ProjectContext } from 'context/ProjectContext';
+import { ProjectContext } from 'contexts/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';

@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import { RootStateType } from 'app/store';
-import { HomepageContext } from 'context/HomepageContext';
+import { HomepageContext } from 'contexts/HomepageContext';
 import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 import { useSelector } from 'react-redux';

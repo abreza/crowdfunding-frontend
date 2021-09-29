@@ -4,7 +4,7 @@ import Homepage from 'templates/Homepages';
 import ProjectHead from 'components/organisms/projectSections/ProjectHead';
 import ProjectStatus from 'components/organisms/projectSections/ProjectStatus';
 import ProjectTabs from 'components/organisms/projectSections/projectTabs/ProjectTabs';
-import { ProjectContext } from 'context/ProjectContext';
+import { ProjectContext } from 'contexts/ProjectContext';
 import { ProjectRo } from 'types/project';
 import axios from 'axios';
 import { baseUrl } from 'config';

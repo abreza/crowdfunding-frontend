@@ -1,7 +1,7 @@
 import { Button, Grid, Hidden, Avatar, LinearProgress } from '@mui/material';
 import { Typography, Divider } from '@mui/material';
 import { Rating } from '@mui/material';
-import { HomepageContext } from 'context/HomepageContext';
+import { HomepageContext } from 'contexts/HomepageContext';
 import { FC, useContext } from 'react';
 import { dateFormatter } from 'utils/dateFormatterUtils';
 
