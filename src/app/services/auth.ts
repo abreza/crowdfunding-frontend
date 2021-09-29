@@ -62,10 +62,10 @@ export const authApi = createApi({
       void,
       { currentPassword: string; newPassword: string }
     >({
-      query: (passwords) => ({
+      query: ({ newPassword }) => ({
         url: 'users/changePassword/',
         method: 'POST',
-        body: passwords,
+        body: { password: newPassword }, // TODO: fix schema in back
       }),
     }),
   }),
