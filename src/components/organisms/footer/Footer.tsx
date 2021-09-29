@@ -11,6 +11,7 @@ import logo2 from 'assets/images/logo2.png';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import { SocialNetwork } from 'components/molecules/socialNetworks/socialNetworks';
+import ThemeModeToggle from './ThemeModeToggle';
 
 export default function Footer() {
   return (
@@ -74,6 +75,9 @@ export default function Footer() {
                   <MenuItem value={'fa'}>فارسی</MenuItem>
                 </TextField>
               </Grid>
+              {/* <Grid item xs={12}>
+                <ThemeModeToggle />
+              </Grid> */}
             </Grid>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
