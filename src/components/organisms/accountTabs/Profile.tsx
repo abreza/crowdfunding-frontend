@@ -18,8 +18,6 @@ import { toast } from 'react-toastify';
 export const Profile = () => {
   const { user } = useSelector((state: RootStateType) => state.auth);
 
-  useGetProfileQuery();
-
   const [setProfile, { isLoading }] = useSetProfileMutation();
 
   const [profileForm, setProfileForm] = useState<UserRo>(user);
