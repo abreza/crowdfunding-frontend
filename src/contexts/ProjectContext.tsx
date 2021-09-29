@@ -19,10 +19,25 @@ const init: ProjectRo = {
   imageUrls: [],
   state: ProjectState.START,
   owner: {
+    username: '',
     email: '',
     firstName: '',
     lastName: '',
+    avatarAddress: '',
     roles: [],
+    description: '',
+    headline: '',
+    address: '',
+    website: '',
+    linkedinAddress: '',
+    mailConfig: {
+      profile: true,
+      supportedProjects: true,
+      createdProjects: true,
+      crowdfundingUpdates: true,
+      projectReviews: true,
+      magazine: true,
+    },
   },
 };
 
