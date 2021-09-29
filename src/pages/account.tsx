@@ -1,4 +1,5 @@
 import { Paper, Container, Typography, Grid, Tabs, Tab } from '@mui/material';
+import { useGetProfileQuery } from 'app/services/auth';
 import { ChangePassword } from 'components/organisms/accountTabs/ChangePassword';
 import { MailSettings } from 'components/organisms/accountTabs/MailSettings';
 import { Profile } from 'components/organisms/accountTabs/Profile';
@@ -25,6 +26,8 @@ const tabs = [
 const Account: FC<AccountProps> = () => {
   const [activeTab, setActiveTab] = useState(0);
 
+  useGetProfileQuery();
+
   const CurrentComponent = tabs[activeTab].component;
 
   return (
@@ -33,9 +36,7 @@ const Account: FC<AccountProps> = () => {
         <Grid container justifyContent="center" spacing={2}>
           <Grid item xs={12} sm={3}>
             <Paper sx={{ overflow: 'hidden' }}>
-              <Tabs
-                orientation="vertical"
-                value={activeTab}>
+              <Tabs orientation="vertical" value={activeTab}>
                 {tabs.map((tab, index) => (
                   <Tab
                     key={tab.label}

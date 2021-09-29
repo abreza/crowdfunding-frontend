@@ -10,7 +10,7 @@ import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar'
 import { baseUrl } from 'config';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useGetProfileQuery, useSetProfileMutation } from 'app/services/auth';
+import { useSetProfileMutation } from 'app/services/auth';
 import { UserRo } from 'types/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import { toast } from 'react-toastify';
