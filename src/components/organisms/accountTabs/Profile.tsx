@@ -32,7 +32,10 @@ export const Profile = () => {
       setProfileForm((pf: UserRo) => ({ ...pf, [name]: value }));
 
   const onSubmit = () => {
-    setProfile(profileForm).then(() => toast.success('تغییرات ثبت شد!'));
+    setProfile(profileForm)
+      .unwrap()
+      .then(() => toast.success('تغییرات ثبت شد!'))
+      .catch((err) => err && toast.error(JSON.stringify(err)));
   };
 
   return (

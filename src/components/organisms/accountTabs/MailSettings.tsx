@@ -57,7 +57,10 @@ export const MailSettings = () => {
     }));
 
   const onSubmit = () => {
-    setMailSettings(form).then(() => toast.success('تغییرات ثبت شد!'));
+    setMailSettings(form)
+      .unwrap()
+      .then(() => toast.success('تغییرات ثبت شد!'))
+      .catch((err) => err && toast.error(JSON.stringify(err)));
   };
 
   return (

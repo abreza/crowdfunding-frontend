@@ -34,7 +34,7 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
       handleClose();
     } catch (err) {
       // @ts-ignore
-      toast.error(err?.data?.message?.toString());
+      toast.error(err?.data?.message?.toString() || err?.error?.toString());
     }
   };
 
