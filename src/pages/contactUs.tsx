@@ -14,6 +14,7 @@ import GoogleMapReact from 'google-map-react';
 import styles from 'assets/styles/map.module.css';
 import { Box, useTheme } from '@mui/system';
 import { SocialNetwork } from 'components/molecules/socialNetworks/socialNetworks';
+import { LocationOn } from '@mui/icons-material';
 
 type ContactUsProps = {};
 
@@ -55,6 +56,20 @@ const ContactUs: FC<ContactUsProps> = () => {
               <Box className={styles.pin}></Box>
             </Box>
           </GoogleMapReact>
+          <Button
+            sx={{
+              m: 1,
+              position: 'absolute',
+              top: 0,
+              right: 0,
+            }}
+            variant="contained"
+            endIcon={<LocationOn />}
+            component="a"
+            href="https://goo.gl/maps/xecM1MpCkEb9687Q8"
+            target="_blank">
+            مشاهده در نقشه
+          </Button>
           <Box
             sx={{
               mt: 18,
