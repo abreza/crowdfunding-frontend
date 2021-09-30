@@ -1,5 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'app/services/baseQuery';
+import { ChangePasswordRequest } from 'components/organisms/accountTabs/ChangePassword';
 import { MailSettings } from 'components/organisms/accountTabs/MailSettings';
 import {
   LoginRequest,
@@ -58,10 +59,7 @@ export const authApi = createApi({
         body: user,
       }),
     }),
-    changePassword: builder.mutation<
-      void,
-      { currentPassword: string; newPassword: string }
-    >({
+    changePassword: builder.mutation<void, ChangePasswordRequest>({
       query: ({ newPassword }) => ({
         url: 'users/changePassword/',
         method: 'POST',
