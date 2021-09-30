@@ -8,8 +8,7 @@ export const LoadingButton: FC<
 > = ({ loading, children, ...buttonProps }) => {
   return (
     <Button disabled={loading} {...buttonProps}>
-      {loading && <CircularProgress size={14} />}
-      {!loading && children}
+      {loading ? <CircularProgress size={24} /> : children}
     </Button>
   );
 };
