@@ -3,18 +3,29 @@ import { useSelector } from 'react-redux';
 import { RootStateType } from 'app/store';
 import { useRouter } from 'next/router';
 
-const ProtectedPage: FC = ({ children }) => {
+const ProtectedPage: FC<{ onlyAdmin?: boolean }> = ({
+  children,
+  onlyAdmin = false,
+}) => {
   const { push } = useRouter();
 
-  const token = useSelector((state: RootStateType) => state.auth.token);
+  const { token, isAdmin } = useSelector<
+    RootStateType,
+    { token: string; isAdmin: boolean }
+  >((state) => ({
+    token: state.auth.token,
+    isAdmin: state.auth.user?.roles?.includes('ADMIN'),
+  }));
+
+  const haveAccess = token && (!onlyAdmin || isAdmin); // TODO: check user roles
 
   useEffect(() => {
-    if (!token) {
+    if (!haveAccess) {
       push('/');
     }
-  }, [token, push]);
+  }, [haveAccess, push]);
 
-  return <>{token && children}</>;
+  return <>{haveAccess && children}</>;
 };
 
 export default ProtectedPage;

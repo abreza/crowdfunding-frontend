@@ -4,11 +4,13 @@ import Footer from 'components/organisms/footer/Footer';
 import ProtectedPage from 'components/atoms/ProtectedPage';
 import { Box } from '@mui/system';
 
-type PanelProps = {};
+type PanelProps = {
+  onlyAdmin?: boolean;
+};
 
-const Panel: FC<PanelProps> = ({ children }) => {
+const Panel: FC<PanelProps> = ({ children, onlyAdmin = false }) => {
   return (
-    <ProtectedPage>
+    <ProtectedPage onlyAdmin={onlyAdmin}>
       <ResponsiveAppBar />
       <Box sx={{ minHeight: '70vh' }}>{children}</Box>
       <Footer />
