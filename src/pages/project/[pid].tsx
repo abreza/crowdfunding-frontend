@@ -4,16 +4,16 @@ import Homepage from 'templates/Homepages';
 import ProjectHead from 'components/organisms/projectSections/ProjectHead';
 import ProjectStatus from 'components/organisms/projectSections/ProjectStatus';
 import ProjectTabs from 'components/organisms/projectSections/projectTabs/ProjectTabs';
-import { ProjectContext } from 'contexts/ProjectContext';
+import { initProjectContext, ProjectContext } from 'contexts/ProjectContext';
 import { ProjectRo } from 'types/project';
 import axios from 'axios';
 import { baseUrl } from 'config';
 
 type ProjectProps = {
-  project: ProjectRo;
+  project?: ProjectRo;
 };
 
-const Project: FC<ProjectProps> = ({ project }) => {
+const Project: FC<ProjectProps> = ({ project = initProjectContext }) => {
   return (
     <Homepage>
       <ProjectContext.Provider value={{ ...project }}>
@@ -28,8 +28,13 @@ const Project: FC<ProjectProps> = ({ project }) => {
 };
 
 export async function getStaticPaths() {
-  const res = await axios(baseUrl + 'project/');
-  const { projects } = await res.data;
+  let projects = [];
+  try {
+    const res = await axios(baseUrl + 'project/');
+    projects = res.data;
+  } catch (err) {
+    console.log(err);
+  }
 
   const paths = projects.map((project: ProjectRo) => ({
     params: { pid: project.id },
@@ -42,10 +47,17 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const res = await axios(baseUrl + 'project/' + params.pid);
-  const project = res.data;
+  try {
+    const res = await axios(baseUrl + 'project/' + params.pid);
+    const project = res.data;
+    return {
+      props: { project },
+      revalidate: 30,
+    };
+  } catch (err) {
+    console.log(err);
+  }
   return {
-    props: { project },
     revalidate: 30,
   };
 }

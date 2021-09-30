@@ -1,7 +1,7 @@
 import { Context, createContext } from 'react';
 import { CategoryEnum, ProjectRo, ProjectState } from 'types/project';
 
-const init: ProjectRo = {
+export const initProjectContext: ProjectRo = {
   id: '',
   subject: '',
   institution: '',
@@ -42,4 +42,4 @@ const init: ProjectRo = {
   rewards: [],
 };
 
-export const ProjectContext: Context<ProjectRo> = createContext(init);
+export const ProjectContext: Context<ProjectRo> = createContext(initProjectContext);
