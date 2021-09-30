@@ -13,6 +13,7 @@ import pic1 from 'assets/images/pic1.png';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
+import { Box } from '@mui/system';
 
 export enum PageName {
   LOGIN,
@@ -61,6 +62,11 @@ const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
 
   return (
     <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
+      <Box sx={{ position: 'absolute', top: 5, left: 5 }}>
+        <IconButton aria-label="close" onClick={handleClose} size="large">
+          <CloseIcon />
+        </IconButton>
+      </Box>
       <DialogContent>
         <Grid container direction="row" justifyContent="center">
           <Grid
@@ -76,26 +82,10 @@ const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
               padding: 2,
             }}
             spacing={2}>
-            <Grid container item direction="row">
-              <Grid item xs={1}>
-                <IconButton
-                  aria-label="close"
-                  onClick={handleClose}
-                  size="large">
-                  <CloseIcon />
-                </IconButton>
-              </Grid>
-              <Grid
-                item
-                container
-                xs={10}
-                justifyContent="center"
-                alignItems="center">
-                <Typography component="h3" variant="h2" align="center">
-                  {title}
-                </Typography>
-              </Grid>
-              <Grid item xs={3} />
+            <Grid item>
+              <Typography component="h3" variant="h2" align="center">
+                {title}
+              </Typography>
             </Grid>
             <PageComponent
               handleClose={handleClose}
