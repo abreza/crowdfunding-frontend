@@ -33,7 +33,7 @@ const ContactUs: FC<ContactUsProps> = () => {
           }}>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: 'AIzaSyC6nlGw86xpoijb2miwL1DwUtp8TTvaUd4',
+              key: 'AIzaSyAwAOGAxY5PZ8MshDtaJFk2KgK7VYxArPA',
             }}
             defaultCenter={
               isXs
