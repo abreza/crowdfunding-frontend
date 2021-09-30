@@ -1,41 +1,42 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from 'app/services/baseQuery';
-import { ChangePasswordRequest } from 'components/organisms/accountTabs/ChangePassword';
-import { MailSettings } from 'components/organisms/accountTabs/MailSettings';
 import {
-  LoginRequest,
-  SignUpRequest,
-  UserResponse,
-  UserRo,
-  VerifyTokenRequest,
+  LoginDto,
+  SignUpDto,
+  AuthRo,
+  Account,
+  TokenDto,
+  MailSettingsDto,
+  ProfileDto,
+  ChangePasswordDto,
 } from 'types/auth';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery,
   endpoints: (builder) => ({
-    verifyToken: builder.mutation<void, VerifyTokenRequest>({
+    verifyToken: builder.mutation<void, TokenDto>({
       query: (tokenDto) => ({
         url: 'auth/verifyToken/',
         method: 'POST',
         body: tokenDto,
       }),
     }),
-    login: builder.mutation<UserResponse, LoginRequest>({
+    login: builder.mutation<AuthRo, LoginDto>({
       query: (credentials) => ({
         url: 'auth/',
         method: 'POST',
         body: credentials,
       }),
     }),
-    signUp: builder.mutation<UserResponse, SignUpRequest>({
+    signUp: builder.mutation<AuthRo, SignUpDto>({
       query: (userData) => ({
         url: 'auth/signup',
         method: 'POST',
         body: userData,
       }),
     }),
-    getProfile: builder.query<UserRo, void>({
+    getAccount: builder.query<Account, void>({
       query: () => 'users/profile/',
     }),
     uploadAvatar: builder.mutation<{ path: string }, FormData>({
@@ -45,21 +46,21 @@ export const authApi = createApi({
         body: formData,
       }),
     }),
-    setProfile: builder.mutation<void, UserRo>({
+    setProfile: builder.mutation<void, ProfileDto>({
       query: (user) => ({
         url: 'users/profile/',
         method: 'POST',
         body: user,
       }),
     }),
-    setMailSettings: builder.mutation<void, MailSettings>({
+    setMailSettings: builder.mutation<void, MailSettingsDto>({
       query: (user) => ({
         url: 'users/profile/',
         method: 'POST',
         body: user,
       }),
     }),
-    changePassword: builder.mutation<void, ChangePasswordRequest>({
+    changePassword: builder.mutation<void, ChangePasswordDto>({
       query: ({ newPassword }) => ({
         url: 'users/changePassword/',
         method: 'POST',
@@ -74,7 +75,7 @@ export const {
   useSignUpMutation,
   useVerifyTokenMutation,
   useUploadAvatarMutation,
-  useGetProfileQuery,
+  useGetAccountQuery,
   useSetProfileMutation,
   useSetMailSettingsMutation,
   useChangePasswordMutation,

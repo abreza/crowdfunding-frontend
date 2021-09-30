@@ -11,25 +11,25 @@ import { baseUrl } from 'config';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useSetProfileMutation } from 'app/services/auth';
-import { UserRo } from 'types/auth';
+import { Account, ProfileDto } from 'types/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import { toast } from 'react-toastify';
 
 export const Profile = () => {
-  const { user } = useSelector((state: RootStateType) => state.auth);
+  const user = useSelector<RootStateType, Account>((state) => state.auth.user);
 
   const [setProfile, { isLoading }] = useSetProfileMutation();
 
-  const [profileForm, setProfileForm] = useState<UserRo>(user);
+  const [profileForm, setProfileForm] = useState<ProfileDto>(user);
 
   useEffect(() => {
-    const { roles, mailConfig, avatar, email, ...newProfile } = user;
+    const { roles, mailConfig, avatarAddress, email, ...newProfile } = user;
     setProfileForm(newProfile);
   }, [user]);
 
   const onChange: (e: React.ChangeEvent<{ name: string; value: any }>) => void =
     ({ target: { name, value } }) =>
-      setProfileForm((pf: UserRo) => ({ ...pf, [name]: value }));
+      setProfileForm((pf: ProfileDto) => ({ ...pf, [name]: value }));
 
   const onSubmit = () => {
     setProfile(profileForm)

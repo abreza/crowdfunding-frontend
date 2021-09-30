@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isExpiredJwt } from 'utils/parseJwt';
 
 export const CheckToken: FC = () => {
-  const token = useSelector((state: RootStateType) => state.auth.token);
+  const token = useSelector<RootStateType, string>((state) => state.auth.token);
 
   const dispatch = useDispatch();
 

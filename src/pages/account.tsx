@@ -1,5 +1,5 @@
 import { Paper, Container, Typography, Grid, Tabs, Tab } from '@mui/material';
-import { useGetProfileQuery } from 'app/services/auth';
+import { useGetAccountQuery } from 'app/services/auth';
 import { ChangePassword } from 'components/organisms/accountTabs/ChangePassword';
 import { MailSettings } from 'components/organisms/accountTabs/MailSettings';
 import { Profile } from 'components/organisms/accountTabs/Profile';
@@ -26,7 +26,7 @@ const tabs = [
 const Account: FC<AccountProps> = () => {
   const [activeTab, setActiveTab] = useState(0);
 
-  useGetProfileQuery();
+  useGetAccountQuery();
 
   const CurrentComponent = tabs[activeTab].component;
 

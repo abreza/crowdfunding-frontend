@@ -1,5 +1,5 @@
 import { Avatar, Button, Divider, Menu, MenuItem } from '@mui/material';
-import { UserRo } from 'types/auth';
+import { Account, AuthRo } from 'types/auth';
 import { logout } from 'app/slices/authSlice';
 import { RootStateType } from 'app/store';
 import { HomepageContext } from 'contexts/HomepageContext';
@@ -18,7 +18,7 @@ const LoginButton: FC = () => {
   );
 };
 
-const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
+const ProfileButton: FC<{ user: Account }> = ({ user }) => {
   const { push } = useRouter();
   const dispatch = useDispatch();
 
@@ -81,7 +81,9 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
 };
 
 const UserButton: FC = () => {
-  const { user, token } = useSelector((state: RootStateType) => state.auth);
+  const { user, token } = useSelector<RootStateType, AuthRo>(
+    (state) => state.auth
+  );
   return token ? <ProfileButton user={user} /> : <LoginButton />;
 };
 

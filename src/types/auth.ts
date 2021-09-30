@@ -1,3 +1,14 @@
+export interface ProfileDto {
+  username: string;
+  firstName: string;
+  lastName: string;
+  description: string;
+  headline: string;
+  address: string;
+  website: string;
+  linkedinAddress: string;
+}
+
 export interface MailConfig {
   profile: boolean;
   supportedProjects: boolean;
@@ -7,32 +18,28 @@ export interface MailConfig {
   magazine: boolean;
 }
 
-export interface UserRo {
+export interface MailSettingsDto {
   username: string;
+  mailConfig: MailConfig;
   email: string;
-  firstName: string;
-  lastName: string;
+}
+
+export interface Account extends ProfileDto, MailSettingsDto {
   avatarAddress: string;
   roles: string[];
-  description: string;
-  headline: string;
-  address: string;
-  website: string;
-  linkedinAddress: string;
-  mailConfig: MailConfig;
 }
 
-export interface UserResponse {
-  user: UserRo;
+export interface AuthRo {
+  user: Account;
   token: string;
 }
 
-export interface LoginRequest {
+export interface LoginDto {
   username: string;
   password: string;
 }
 
-export interface SignUpRequest {
+export interface SignUpDto {
   username: string;
   password: string;
   firstName: string;
@@ -40,6 +47,11 @@ export interface SignUpRequest {
   email: string;
 }
 
-export interface VerifyTokenRequest {
+export interface TokenDto {
   token: string;
+}
+
+export interface ChangePasswordDto {
+  currentPassword: string;
+  newPassword: string;
 }

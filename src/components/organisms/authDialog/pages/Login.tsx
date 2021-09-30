@@ -1,5 +1,5 @@
 import { Grid, Link, TextField, Typography } from '@mui/material';
-import { LoginRequest } from 'types/auth';
+import { LoginDto } from 'types/auth';
 import { useLoginMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 
 const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
   const { push } = useRouter();
-  const [formState, setFormState] = useState<LoginRequest>({
+  const [formState, setFormState] = useState<LoginDto>({
     username: '',
     password: '',
   });
@@ -32,8 +32,7 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
         push(afterAuth);
       }
       handleClose();
-    } catch (err) {
-      // @ts-ignore
+    } catch (err: any) {
       toast.error(err?.data?.message?.toString() || err?.error?.toString());
     }
   };

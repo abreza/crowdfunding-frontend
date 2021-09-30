@@ -6,7 +6,7 @@ import React, { FC, useContext } from 'react';
 import { useSelector } from 'react-redux';
 
 const CreateProjectButton: FC = () => {
-  const token = useSelector((state: RootStateType) => state.auth.token);
+  const token = useSelector<RootStateType, string>((state) => state.auth.token);
   const { openAuthDialog } = useContext(HomepageContext);
 
   return token ? (

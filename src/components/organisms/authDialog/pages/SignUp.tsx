@@ -1,5 +1,5 @@
 import { Grid, Link, TextField, Typography } from '@mui/material';
-import { SignUpRequest } from 'types/auth';
+import { SignUpDto } from 'types/auth';
 import { useSignUpMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 
 const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
   const { push } = useRouter();
-  const [formState, setFormState] = useState<SignUpRequest>({
+  const [formState, setFormState] = useState<SignUpDto>({
     username: '',
     password: '',
     firstName: '',
@@ -38,9 +38,8 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
         push(afterAuth);
       }
       handleClose();
-    } catch (err) {
-      // @ts-ignore
-      toast.error(err?.data?.message?.toString());
+    } catch (err: any) {
+      toast.error(err?.data?.message?.toString() || err?.error?.toString());
     }
   };
 

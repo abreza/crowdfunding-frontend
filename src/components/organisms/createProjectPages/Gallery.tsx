@@ -62,7 +62,7 @@ const Gallery: FC<{
   setProgress: (params: { id: number; progress: number }) => void;
   removeFile: (id: number) => void;
 }> = ({ files, addFile, setUrl, setProgress, removeFile }) => {
-  const token = useSelector((state: RootStateType) => state.auth.token);
+  const token = useSelector<RootStateType, string>((state) => state.auth.token);
 
   const upload = async (file: File, id: number): Promise<string> => {
     const formData = new FormData();
@@ -79,7 +79,6 @@ const Gallery: FC<{
         });
       },
     });
-    // @ts-ignore
     return res.data.path;
   };
 

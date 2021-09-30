@@ -1,5 +1,4 @@
 import {
-  Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
@@ -9,25 +8,20 @@ import {
 } from '@mui/material';
 import { useSetMailSettingsMutation } from 'app/services/auth';
 import { RootStateType } from 'app/store';
+import { LoadingButton } from 'components/atoms/LoadingButton';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { MailConfig } from 'types/auth';
-
-export type MailSettings = {
-  username: string;
-  mailConfig: MailConfig;
-  email: string;
-};
+import { Account, MailSettingsDto } from 'types/auth';
 
 export const MailSettings = () => {
-  const { mailConfig, email, username } = useSelector(
-    (state: RootStateType) => state.auth.user
+  const { mailConfig, email, username } = useSelector<RootStateType, Account>(
+    (state) => state.auth.user
   );
 
   const [setMailSettings, { isLoading }] = useSetMailSettingsMutation();
 
-  const [form, setForm] = useState<MailSettings>({
+  const [form, setForm] = useState<MailSettingsDto>({
     mailConfig,
     email,
     username,
@@ -39,7 +33,7 @@ export const MailSettings = () => {
 
   const onChange: (e: React.ChangeEvent<{ name: string; value: any }>) => void =
     ({ target: { name, value } }) =>
-      setForm((pf: MailSettings) => ({
+      setForm((pf: MailSettingsDto) => ({
         ...pf,
         [name]: value,
       }));
@@ -48,7 +42,7 @@ export const MailSettings = () => {
     e: React.ChangeEvent<{ name: string; value: any }>,
     checked: boolean
   ) => void = ({ target: { name } }, checked) =>
-    setForm((pf: MailSettings) => ({
+    setForm((pf: MailSettingsDto) => ({
       ...pf,
       mailConfig: {
         ...pf.mailConfig,
@@ -144,9 +138,13 @@ export const MailSettings = () => {
         </FormGroup>
       </Grid>
       <Grid item xs={12}>
-        <Button fullWidth variant="contained" onClick={onSubmit}>
+        <LoadingButton
+          fullWidth
+          variant="contained"
+          onClick={onSubmit}
+          loading={isLoading}>
           ثبت تنظیمات
-        </Button>
+        </LoadingButton>
       </Grid>
     </Grid>
   );

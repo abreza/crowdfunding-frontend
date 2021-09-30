@@ -3,11 +3,7 @@ import { useChangePasswordMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-
-export interface ChangePasswordRequest {
-  currentPassword: string;
-  newPassword: string;
-}
+import { ChangePasswordDto } from 'types/auth';
 
 export const ChangePassword = () => {
   const [changePassword, { isLoading }] = useChangePasswordMutation();
@@ -24,7 +20,7 @@ export const ChangePassword = () => {
 
   const onChange: (e: React.ChangeEvent<{ name: string; value: any }>) => void =
     ({ target: { name, value } }) =>
-      setForm((f: ChangePasswordRequest) => ({ ...f, [name]: value }));
+      setForm((f: ChangePasswordDto) => ({ ...f, [name]: value }));
 
   const onSubmit = () => {
     if (confirmPassword !== form.newPassword) {

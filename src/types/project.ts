@@ -1,5 +1,5 @@
 import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
-import { UserRo } from './auth';
+import { Account } from './auth';
 
 export enum CategoryEnum {
   COMPUTER = 'COMPUTER',
@@ -72,6 +72,6 @@ export interface ProjectRo {
   timelines: TimelineDto[];
   imageUrls: string[];
   state: ProjectState;
-  owner: UserRo;
+  owner: Account;
   rewards: RewardRo[];
 }

@@ -12,10 +12,10 @@ import { baseUrl } from 'config';
 
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import { UserRo } from 'types/auth';
+import { Account } from 'types/auth';
 
 export const UserCard = () => {
-  const user = useSelector<RootStateType, UserRo>((state) => state.auth.user);
+  const user = useSelector<RootStateType, Account>((state) => state.auth.user);
 
   return (
     <Card sx={{ maxWidth: 345, mx: 'auto' }}>

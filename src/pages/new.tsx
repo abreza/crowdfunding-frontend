@@ -147,9 +147,8 @@ const CreateProject: FC<CreateProjectProps> = () => {
         setTimeout(() => {
           push('/project/' + res.id);
         }, 0.5);
-      } catch (err) {
-        // @ts-ignore
-        toast.error(err?.data?.message?.toString());
+      } catch (err: any) {
+        toast.error(err?.data?.message?.toString() || err?.error?.toString());
       }
     }
   };

@@ -1,13 +1,8 @@
 import { createSlice, AnyAction } from '@reduxjs/toolkit';
-import type { UserRo } from 'types/auth';
+import { Account, AuthRo } from 'types/auth';
 import { authApi } from 'app/services/auth';
 
-type AuthState = {
-  user?: UserRo;
-  token?: string;
-};
-
-const initialState: AuthState = {};
+const initialState: AuthRo = <AuthRo>{};
 
 const isAuthenticated = (action: AnyAction) => {
   return (
@@ -40,11 +35,11 @@ const slice = createSlice({
         state.user = {
           ...state.user,
           avatarAddress: payload.path,
-        } as UserRo;
+        } as Account;
       }
     );
     builder.addMatcher(
-      authApi.endpoints.getProfile.matchFulfilled,
+      authApi.endpoints.getAccount.matchFulfilled,
       (state, { payload }) => {
         state.user = payload;
       }

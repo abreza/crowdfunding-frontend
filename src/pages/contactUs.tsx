@@ -12,11 +12,15 @@ import Homepage from 'templates/Homepages';
 import GoogleMapReact from 'google-map-react';
 
 import styles from 'assets/styles/map.module.css';
-import { Box, useTheme } from '@mui/system';
+import { Box, BoxProps, useTheme } from '@mui/system';
 import { SocialNetwork } from 'components/molecules/socialNetworks/socialNetworks';
 import { LocationOn } from '@mui/icons-material';
 
 type ContactUsProps = {};
+
+const Marker: FC<{ lat: number; lng: number } & BoxProps> = (props) => (
+  <Box {...props} />
+);
 
 const ContactUs: FC<ContactUsProps> = () => {
   const theme = useTheme();
@@ -48,13 +52,12 @@ const ContactUs: FC<ContactUsProps> = () => {
                   }
             }
             defaultZoom={18}>
-            {/* @ts-ignore */}
-            <Box
+            <Marker
               lat={35.7025623}
               lng={51.3510847}
               sx={{ transform: 'translate(-20px, -110%)' }}>
               <Box className={styles.pin}></Box>
-            </Box>
+            </Marker>
           </GoogleMapReact>
           <Button
             sx={{
