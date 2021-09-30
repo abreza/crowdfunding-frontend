@@ -58,7 +58,7 @@ const ContactUs: FC<ContactUsProps> = () => {
           <Box
             sx={{
               mt: 18,
-              px: 5,
+              px: { sm: 5, xs: 2 },
               position: 'absolute',
               top: 0,
               left: 0,
