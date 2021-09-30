@@ -1,30 +1,34 @@
 import { Grid, Link, TextField, Typography } from '@mui/material';
+import { useForgotPasswordMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
   PageName,
   PageProps,
 } from 'components/organisms/authDialog/AuthDialog';
 import React, { FC, useState } from 'react';
+import { toast } from 'react-toastify';
+import { UsernameDto } from 'types/auth';
 
 const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
-  const [formState, setFormState] = useState({
+  const [form, setForm] = useState<UsernameDto>({
     username: '',
   });
+
+  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
 
   const handleChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement>) =>
-    setFormState((prev) => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
 
   const submitForgot = async () => {
-    // try {
-    //   const user = await login(formState).unwrap();
-    //   dispatch(setCredentials(user));
-    //   toast.success('خوش آمدید');
-    //   handleClose();
-    // } catch {
-    //   toast.error('خطایی رخ‌داده است!');
-    // }
+    try {
+      await forgotPassword(form).unwrap();
+      toast.success('ایمیل تغییر رمزعبور برایتان ارسال شد!');
+      handleClose();
+    } catch (err: any) {
+      toast.error(err?.data?.message?.toString() || err?.error?.toString());
+    }
   };
 
   return (
@@ -36,18 +40,20 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
           name="username"
           type="text"
           fullWidth
+          value={form.username}
           inputProps={{ className: 'ltr-input' }}
           onChange={handleChange}
         />
       </Grid>
       <Grid item>
-        {/* <LoadingButton
+        <LoadingButton
           fullWidth
           variant="contained"
           color="primary"
-          onClick={submitForgot}>
+          onClick={submitForgot}
+          loading={isLoading}>
           بازیابی
-        </LoadingButton> */}
+        </LoadingButton>
       </Grid>
       <Grid container item direction="row">
         <Grid item xs={6}>

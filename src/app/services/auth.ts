@@ -9,6 +9,7 @@ import {
   MailSettingsDto,
   ProfileDto,
   ChangePasswordDto,
+  UsernameDto,
 } from 'types/auth';
 
 export const authApi = createApi({
@@ -67,6 +68,13 @@ export const authApi = createApi({
         body: { password: newPassword }, // TODO: fix schema in back
       }),
     }),
+    forgotPassword: builder.mutation<void, UsernameDto>({
+      query: (usernameDto) => ({
+        url: 'users/forgotPassword/',
+        method: 'POST',
+        body: usernameDto,
+      }),
+    }),
   }),
 });
 
@@ -79,4 +87,5 @@ export const {
   useSetProfileMutation,
   useSetMailSettingsMutation,
   useChangePasswordMutation,
+  useForgotPasswordMutation,
 } = authApi;
