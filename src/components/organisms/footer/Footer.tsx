@@ -131,7 +131,9 @@ export default function Footer() {
                 <Button color="inherit">سرمایه‌گذاری‌های موفق</Button>
               </Grid>
               <Grid item>
-                <Button color="inherit">سوالات متداول</Button>
+                <Link href="/faq" passHref>
+                  <Button color="inherit">سوالات متداول</Button>
+                </Link>
               </Grid>
             </Grid>
           </Grid>
