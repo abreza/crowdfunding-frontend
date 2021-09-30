@@ -97,7 +97,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       setProject((prs) => ({ ...prs, imageUrls }));
     }
     setNeedUpdateUrls(false);
-  }, [needUpdateUrls]);
+  }, [needUpdateUrls, files]);
 
   const addFile = (newFile: MyFile) => setFiles((fls) => [...fls, newFile]);
   const removeFile = (id: number) => {
