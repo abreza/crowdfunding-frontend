@@ -40,7 +40,12 @@ const NavbarSearch: FC = () => {
             width: { sm: 170, md: 220 },
           },
         }}
-        inputProps={{ 'aria-label': 'search' }}
+        inputProps={{
+          'aria-label': 'search',
+          form: {
+            autocomplete: 'off',
+          },
+        }}
       />
     </Box>
   );

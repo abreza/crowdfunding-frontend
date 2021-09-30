@@ -57,6 +57,12 @@ export const ChangePassword = () => {
               name="newPassword"
               value={form.newPassword}
               onChange={onChange}
+              inputProps={{
+                autocomplete: 'new-password',
+                form: {
+                  autocomplete: 'off',
+                },
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -68,6 +74,12 @@ export const ChangePassword = () => {
               name="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              inputProps={{
+                autocomplete: 'new-password',
+                form: {
+                  autocomplete: 'off',
+                },
+              }}
             />
           </Grid>
         </Grid>
