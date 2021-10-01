@@ -78,10 +78,15 @@ const FAQ: FC<FAQProps> = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
             id="panel1bh-header">
-            <Typography sx={{ width: '33%', flexShrink: 0 }}>
+            <Typography
+              sx={{ width: { sm: '33%', xs: '100%' }, flexShrink: 0 }}>
               تامین مالی جمعی شریف چیست؟
             </Typography>
-            <Typography sx={{ color: 'text.secondary' }}>
+            <Typography
+              sx={{
+                color: 'text.secondary',
+                display: { sm: 'unset', xs: 'none' },
+              }}>
               سامانه تامین مالی تحقیقات علمی و دانشگاهی
             </Typography>
           </AccordionSummary>
@@ -99,10 +104,15 @@ const FAQ: FC<FAQProps> = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel2bh-content"
             id="panel2bh-header">
-            <Typography sx={{ width: '33%', flexShrink: 0 }}>
+            <Typography
+              sx={{ width: { sm: '33%', xs: '100%' }, flexShrink: 0 }}>
               آیا پروژه‌ها بررسی می‌شوند؟
             </Typography>
-            <Typography sx={{ color: 'text.secondary' }}>
+            <Typography
+              sx={{
+                color: 'text.secondary',
+                display: { sm: 'unset', xs: 'none' },
+              }}>
               تیمی از اساتید دانشگاهی
             </Typography>
           </AccordionSummary>
