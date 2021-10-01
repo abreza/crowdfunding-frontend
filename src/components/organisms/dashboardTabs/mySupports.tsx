@@ -1,13 +1,9 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Typography } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
-import { useGetMyProjectsQuery } from 'app/services/project';
-import CreateProjectButton from 'components/atoms/CreateProject';
 
-const MyProjects: FC = () => {
-  const { data, isLoading } = useGetMyProjectsQuery(null, {
-    refetchOnMountOrArgChange: 30,
-  });
+const MySupports: FC = () => {
+  const { data, isLoading } = { data: { supports: [] }, isLoading: false };
 
   return (
     <Container maxWidth="md" sx={{ pt: 2 }}>
@@ -23,11 +19,9 @@ const MyProjects: FC = () => {
               <ProjectCard />
             </Grid>
           ))
-        ) : data?.projects?.length ? (
-          data?.projects.map((item: any, i: number) => (
-            <Grid item key={i}>
-              <ProjectCard item={item} />
-            </Grid>
+        ) : data?.supports?.length ? (
+          data?.supports.map((item: any, i: number) => (
+            <Grid item key={i}></Grid>
           ))
         ) : (
           <Grid item>
@@ -39,11 +33,13 @@ const MyProjects: FC = () => {
               spacing={2}>
               <Grid item>
                 <Typography align="center">
-                  متاسفانه مطلبی ایجاد نکرده‌اید.
+                  متاسفانه تاکنون حمایتی انجام نداده‌اید.
                 </Typography>
               </Grid>
               <Grid item>
-                <CreateProjectButton variant="outlined" />
+                <Button variant="outlined">
+                  بررسی پروژه‌ها
+                </Button>
               </Grid>
             </Grid>
           </Grid>
@@ -53,4 +49,4 @@ const MyProjects: FC = () => {
   );
 };
 
-export default MyProjects;
+export default MySupports;

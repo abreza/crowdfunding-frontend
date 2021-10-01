@@ -1,5 +1,7 @@
-import { Grid, Tabs, Tab } from '@mui/material';
+import { Grid, Tabs, Tab, Paper } from '@mui/material';
+import MyPosts from 'components/organisms/dashboardTabs/myPosts';
 import MyProjects from 'components/organisms/dashboardTabs/myProjects';
+import MySupports from 'components/organisms/dashboardTabs/mySupports';
 import { UserCard } from 'components/organisms/userCard/UserCard';
 import { FC, useState } from 'react';
 import Panel from 'templates/Panel';
@@ -13,11 +15,11 @@ const tabs: { label: string; component: FC<any> }[] = [
   },
   {
     label: 'حمایت‌ها',
-    component: () => <></>,
+    component: MySupports,
   },
   {
     label: 'پست‌های بلاگ',
-    component: () => <></>,
+    component: MyPosts,
   },
 ];
 
@@ -33,19 +35,21 @@ const Dashboard: FC<DashboardProps> = () => {
           <UserCard />
         </Grid>
         <Grid item xs={12} sm={8}>
-          <Tabs
-            value={activeTab}
-            indicatorColor="primary"
-            textColor="primary"
-            onChange={(event, value) => setActiveTab(value)}
-            variant="scrollable"
-            allowScrollButtonsMobile
-            scrollButtons="auto"
-            centered>
-            {tabs.map((tab) => (
-              <Tab key={tab.label} label={tab.label} />
-            ))}
-          </Tabs>
+          <Paper sx={{ mb: 2, overflow: 'hidden' }}>
+            <Tabs
+              value={activeTab}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={(event, value) => setActiveTab(value)}
+              variant="scrollable"
+              allowScrollButtonsMobile
+              scrollButtons="auto"
+              centered>
+              {tabs.map((tab) => (
+                <Tab key={tab.label} label={tab.label} />
+              ))}
+            </Tabs>
+          </Paper>
           <CurrentComponent />
         </Grid>
       </Grid>

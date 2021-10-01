@@ -1,13 +1,10 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Typography } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
-import { useGetMyProjectsQuery } from 'app/services/project';
-import CreateProjectButton from 'components/atoms/CreateProject';
+import { Add } from '@mui/icons-material';
 
-const MyProjects: FC = () => {
-  const { data, isLoading } = useGetMyProjectsQuery(null, {
-    refetchOnMountOrArgChange: 30,
-  });
+const MyPosts: FC = () => {
+  const { data, isLoading } = { data: { posts: [] }, isLoading: false };
 
   return (
     <Container maxWidth="md" sx={{ pt: 2 }}>
@@ -23,12 +20,8 @@ const MyProjects: FC = () => {
               <ProjectCard />
             </Grid>
           ))
-        ) : data?.projects?.length ? (
-          data?.projects.map((item: any, i: number) => (
-            <Grid item key={i}>
-              <ProjectCard item={item} />
-            </Grid>
-          ))
+        ) : data?.posts?.length ? (
+          data?.posts.map((item: any, i: number) => <Grid item key={i}></Grid>)
         ) : (
           <Grid item>
             <Grid
@@ -43,7 +36,9 @@ const MyProjects: FC = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <CreateProjectButton variant="outlined" />
+                <Button variant="outlined">
+                  ایجاد مطلب جدید
+                </Button>
               </Grid>
             </Grid>
           </Grid>
@@ -53,4 +48,4 @@ const MyProjects: FC = () => {
   );
 };
 
-export default MyProjects;
+export default MyPosts;

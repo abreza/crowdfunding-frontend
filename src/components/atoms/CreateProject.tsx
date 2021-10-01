@@ -1,17 +1,17 @@
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 import { RootStateType } from 'app/store';
 import { HomepageContext } from 'contexts/HomepageContext';
 import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 import { useSelector } from 'react-redux';
 
-const CreateProjectButton: FC = () => {
+const CreateProjectButton: FC<ButtonProps> = (props) => {
   const token = useSelector<RootStateType, string>((state) => state.auth.token);
   const { openAuthDialog } = useContext(HomepageContext);
 
   return token ? (
     <Link href="/new" passHref>
-      <Button variant="contained" color="primary">
+      <Button variant="contained" color="primary" {...props}>
         ایجاد پروژه جدید
       </Button>
     </Link>
@@ -19,7 +19,8 @@ const CreateProjectButton: FC = () => {
     <Button
       onClick={() => openAuthDialog({ after: '/new' })}
       variant="contained"
-      color="primary">
+      color="primary"
+      {...props}>
       ایجاد پروژه جدید
     </Button>
   );
