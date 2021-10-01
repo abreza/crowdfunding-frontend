@@ -11,7 +11,6 @@ import logo2 from 'assets/images/logo2.png';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import { SocialNetwork } from 'components/molecules/socialNetworks/socialNetworks';
-import ThemeModeToggle from './ThemeModeToggle';
 
 export default function Footer() {
   return (
@@ -186,9 +185,12 @@ export default function Footer() {
                 </div>
               </Grid>
               <Grid item>
-                <Button color="inherit">شرایط</Button>
-                <Button color="inherit">حریم خصوصی</Button>
-                <Button color="inherit">قوانین</Button>
+                <Link href="/privacy" passHref>
+                  <Button color="inherit">حریم خصوصی</Button>
+                </Link>
+                <Link href="/terms" passHref>
+                  <Button color="inherit">قوانین</Button>
+                </Link>
               </Grid>
             </Grid>
           </Grid>
