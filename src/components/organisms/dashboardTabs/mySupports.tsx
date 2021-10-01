@@ -1,6 +1,7 @@
 import { Button, Container, Grid, Typography } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
+import Link from 'next/link';
 
 const MySupports: FC = () => {
   const { data, isLoading } = { data: { supports: [] }, isLoading: false };
@@ -37,9 +38,9 @@ const MySupports: FC = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button variant="outlined">
-                  بررسی پروژه‌ها
-                </Button>
+                <Link href="/project" passHref>
+                  <Button variant="outlined">بررسی پروژه‌ها</Button>
+                </Link>
               </Grid>
             </Grid>
           </Grid>
