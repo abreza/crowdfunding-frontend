@@ -106,7 +106,7 @@ const ContactUs: FC<ContactUsProps> = () => {
                         variant="body1"
                         sx={{ direction: 'rtl' }}
                         align="left">
-                        +۹۸-۲۱-۶۶۵۰۵۰۲۳
+                        +۹۸-۲۱۶۶۱۶۶۶۰۱
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
