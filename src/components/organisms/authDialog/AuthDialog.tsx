@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Close as CloseIcon } from '@mui/icons-material';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import pic1 from 'assets/images/pic1.png';
 import Login from './pages/Login';
@@ -15,7 +15,7 @@ import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
 import { Box } from '@mui/system';
 
-export enum PageName {
+export enum AuthPageName {
   LOGIN,
   SIGN_UP,
   FORGOT_PASSWORD,
@@ -23,27 +23,27 @@ export enum PageName {
 
 export type PageProps = {
   handleClose: () => void;
-  changePage: (pageName: PageName) => void;
+  changePage: (pageName: AuthPageName) => void;
   afterAuth?: string;
 };
 
 type PagesData = {
-  [pageName in PageName]: {
+  [pageName in AuthPageName]: {
     title: string;
     component: React.FC<PageProps>;
   };
 };
 
 const pages: PagesData = {
-  [PageName.LOGIN]: {
+  [AuthPageName.LOGIN]: {
     title: 'ورود',
     component: Login,
   },
-  [PageName.SIGN_UP]: {
+  [AuthPageName.SIGN_UP]: {
     title: 'ثبت‌نام',
     component: SignUp,
   },
-  [PageName.FORGOT_PASSWORD]: {
+  [AuthPageName.FORGOT_PASSWORD]: {
     title: 'فراموشی گذرواژه',
     component: ForgotPassword,
   },
@@ -52,11 +52,23 @@ const pages: PagesData = {
 type AuthDialogProps = {
   open: boolean;
   handleClose: any;
-  afterAuth: string | undefined;
+  afterAuth?: string;
+  initPage?: AuthPageName;
 };
 
-const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
-  const [pageName, setPageName] = useState(PageName.LOGIN);
+const AuthDialog: FC<AuthDialogProps> = ({
+  open,
+  handleClose,
+  afterAuth,
+  initPage,
+}) => {
+  const [pageName, setPageName] = useState(initPage ?? AuthPageName.LOGIN);
+
+  useEffect(() => {
+    if (open && initPage !== undefined && pageName !== initPage) {
+      setPageName(initPage);
+    }
+  }, [open, initPage]);
 
   const { component: PageComponent, title } = pages[pageName];
 
@@ -81,7 +93,7 @@ const AuthDialog: FC<AuthDialogProps> = ({ open, handleClose, afterAuth }) => {
               minHeight: 300,
               padding: 2,
             }}
-            spacing={2}>
+            spacing={1}>
             <Grid item>
               <Typography component="h3" variant="h2" align="center">
                 {title}

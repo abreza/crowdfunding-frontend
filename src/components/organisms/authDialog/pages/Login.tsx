@@ -1,14 +1,22 @@
-import { Grid, Link, TextField, Typography } from '@mui/material';
+import {
+  Grid,
+  IconButton,
+  InputAdornment,
+  Link,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { LoginDto } from 'types/auth';
 import { useLoginMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
-  PageName,
+  AuthPageName,
   PageProps,
 } from 'components/organisms/authDialog/AuthDialog';
 import React, { FC, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
   const { push } = useRouter();
@@ -16,6 +24,8 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
     username: '',
     password: '',
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const [login, { isLoading }] = useLoginMutation();
 
@@ -46,7 +56,7 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           name="username"
           type="text"
           fullWidth
-          inputProps={{ className: 'ltr-input' }}
+          InputProps={{ className: 'ltr-input' }}
           onChange={handleChange}
         />
       </Grid>
@@ -56,8 +66,19 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           label="گذرواژه"
           name="password"
           fullWidth
-          type="password"
-          inputProps={{ className: 'ltr-input' }}
+          type={showPassword ? 'text' : 'password'}
+          InputProps={{
+            className: 'ltr-input',
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
           onChange={handleChange}
         />
       </Grid>
@@ -72,18 +93,20 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
         </LoadingButton>
       </Grid>
       <Grid container item direction="row">
-        <Grid item xs={6}>
-          <Typography align="left">
+        <Grid item sm={6} xs={12}>
+          <Typography sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
             {'کاربر جدید؟ '}
-            <Link href="#" onClick={() => changePage(PageName.SIGN_UP)}>
+            <Link href="#" onClick={() => changePage(AuthPageName.SIGN_UP)}>
               {'ثبت‌نام'}
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={6}>
-          <Typography align="right">
+        <Grid item sm={6} xs={12}>
+          <Typography sx={{ textAlign: { xs: 'center', sm: 'right' } }}>
             {'فراموشی '}
-            <Link href="#" onClick={() => changePage(PageName.FORGOT_PASSWORD)}>
+            <Link
+              href="#"
+              onClick={() => changePage(AuthPageName.FORGOT_PASSWORD)}>
               {'گذرواژه'}
             </Link>
           </Typography>

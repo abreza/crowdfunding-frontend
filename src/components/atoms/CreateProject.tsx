@@ -17,7 +17,7 @@ const CreateProjectButton: FC<ButtonProps> = (props) => {
     </Link>
   ) : (
     <Button
-      onClick={() => openAuthDialog({ after: '/new' })}
+      onClick={() => openAuthDialog({ afterAuth: '/new' })}
       variant="contained"
       color="primary"
       {...props}>

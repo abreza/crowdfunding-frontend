@@ -7,12 +7,16 @@ import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { baseUrl } from 'config';
+import { AuthPageName } from 'components/organisms/authDialog/AuthDialog';
 
 const LoginButton: FC = () => {
   const { openAuthDialog } = useContext(HomepageContext);
 
   return (
-    <Button onClick={() => openAuthDialog()} variant="outlined" color="primary">
+    <Button
+      onClick={() => openAuthDialog({ initPage: AuthPageName.LOGIN })}
+      variant="outlined"
+      color="primary">
       ورود
     </Button>
   );

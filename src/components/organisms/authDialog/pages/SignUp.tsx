@@ -3,11 +3,10 @@ import { SignUpDto } from 'types/auth';
 import { useSignUpMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
-  PageName,
+  AuthPageName,
   PageProps,
 } from 'components/organisms/authDialog/AuthDialog';
 import React, { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
@@ -21,7 +20,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
     email: '',
   });
 
-  const dispatch = useDispatch();
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const [signUp, { isLoading }] = useSignUpMutation();
 
@@ -31,6 +30,10 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
     setFormState((prev) => ({ ...prev, [name]: value }));
 
   const submitSignUp = async () => {
+    if (formState.password !== confirmPassword) {
+      toast.error('تکرار رمز نادرست است!');
+      return;
+    }
     try {
       await signUp(formState).unwrap();
       toast.success('خوش آمدید');
@@ -45,7 +48,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
 
   return (
     <>
-      <Grid container item spacing={2}>
+      <Grid container item spacing={1}>
         <Grid item sm={6} xs={12}>
           <TextField
             size="small"
@@ -74,7 +77,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           name="email"
           type="email"
           fullWidth
-          inputProps={{ className: 'ltr-input' }}
+          InputProps={{ className: 'ltr-input' }}
           onChange={handleChange}
         />
       </Grid>
@@ -85,7 +88,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           name="username"
           type="text"
           fullWidth
-          inputProps={{ className: 'ltr-input' }}
+          InputProps={{ className: 'ltr-input' }}
           onChange={handleChange}
         />
       </Grid>
@@ -96,8 +99,19 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           name="password"
           fullWidth
           type="password"
-          inputProps={{ className: 'ltr-input' }}
+          InputProps={{ className: 'ltr-input' }}
           onChange={handleChange}
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          size="small"
+          label="تکرار گذرواژه"
+          name="password"
+          fullWidth
+          type="password"
+          InputProps={{ className: 'ltr-input' }}
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </Grid>
       <Grid item>
@@ -111,9 +125,9 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
         </LoadingButton>
       </Grid>
       <Grid item>
-        <Typography align="left">
+        <Typography sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
           {'حساب کاربری دارید؟ '}
-          <Link href="#" onClick={() => changePage(PageName.LOGIN)}>
+          <Link href="#" onClick={() => changePage(AuthPageName.LOGIN)}>
             {'ورود'}
           </Link>
         </Typography>

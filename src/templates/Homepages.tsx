@@ -2,21 +2,21 @@ import { FC, useState } from 'react';
 import ResponsiveAppBar from 'components/organisms/navbar/Navbar';
 import Footer from 'components/organisms/footer/Footer';
 import AuthDialog from 'components/organisms/authDialog/AuthDialog';
-import { HomepageContext } from 'contexts/HomepageContext';
+import { HomepageContext, OpenAuthDialogProps } from 'contexts/HomepageContext';
 import { Box } from '@mui/system';
 
 type HomepageProps = {};
 
 const Homepage: FC<HomepageProps> = ({ children }) => {
   const [openAuthDialog, setOpenAuthDialog] = useState(false);
-  const [afterAuth, setAfterAuth] = useState<string>('');
+  const [authProps, setAuthProps] = useState<OpenAuthDialogProps | undefined>();
 
   return (
     <>
       <HomepageContext.Provider
         value={{
-          openAuthDialog: (props?: { after: string }) => {
-            setAfterAuth(props?.after || '');
+          openAuthDialog: (props?: OpenAuthDialogProps) => {
+            setAuthProps(props);
             setOpenAuthDialog(true);
           },
         }}>
@@ -26,7 +26,7 @@ const Homepage: FC<HomepageProps> = ({ children }) => {
       </HomepageContext.Provider>
       <AuthDialog
         open={openAuthDialog}
-        afterAuth={afterAuth}
+        {...authProps}
         handleClose={() => setOpenAuthDialog(false)}
       />
     </>

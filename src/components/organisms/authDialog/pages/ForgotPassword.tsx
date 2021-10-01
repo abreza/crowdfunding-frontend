@@ -2,7 +2,7 @@ import { Grid, Link, TextField, Typography } from '@mui/material';
 import { useForgotPasswordMutation } from 'app/services/auth';
 import { LoadingButton } from 'components/atoms/LoadingButton';
 import {
-  PageName,
+  AuthPageName,
   PageProps,
 } from 'components/organisms/authDialog/AuthDialog';
 import React, { FC, useState } from 'react';
@@ -41,7 +41,7 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
           type="text"
           fullWidth
           value={form.username}
-          inputProps={{ className: 'ltr-input' }}
+          InputProps={{ className: 'ltr-input' }}
           onChange={handleChange}
         />
       </Grid>
@@ -56,18 +56,18 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
         </LoadingButton>
       </Grid>
       <Grid container item direction="row">
-        <Grid item xs={6}>
-          <Typography align="left">
+        <Grid item sm={6} xs={12}>
+          <Typography sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
             {'کاربر جدید؟ '}
-            <Link href="#" onClick={() => changePage(PageName.SIGN_UP)}>
+            <Link href="#" onClick={() => changePage(AuthPageName.SIGN_UP)}>
               {'ثبت‌نام'}
             </Link>
           </Typography>
         </Grid>
-        <Grid item xs={6}>
-          <Typography align="right">
+        <Grid item sm={6} xs={12}>
+          <Typography sx={{ textAlign: { xs: 'center', sm: 'right' } }}>
             {'حساب کاربری دارید؟ '}
-            <Link href="#" onClick={() => changePage(PageName.LOGIN)}>
+            <Link href="#" onClick={() => changePage(AuthPageName.LOGIN)}>
               {'ورود'}
             </Link>
           </Typography>
