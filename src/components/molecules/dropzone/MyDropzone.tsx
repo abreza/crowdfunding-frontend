@@ -5,20 +5,24 @@ import { ExtendedFile } from 'pages/new';
 import { PreviewFile } from 'components/atoms/PreviewFile';
 
 type FileDropzoneProps = {
+  accept?: string;
   onDrop?: any;
   removeFile?: any;
   files?: ExtendedFile[];
   multiple?: boolean;
+  placeholder?: string;
 };
 
 export const MyDropzone: FC<FileDropzoneProps> = ({
+  accept = 'image/*, video/*',
   onDrop,
   removeFile,
   multiple = true,
   files = [],
+  placeholder,
 }) => {
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*, video/*',
+    accept,
     onDrop,
   });
 
@@ -43,7 +47,7 @@ export const MyDropzone: FC<FileDropzoneProps> = ({
             transition: 'border .24s ease-in-out',
           }}>
           <input {...getInputProps()} />
-          <p>عکس‌ها و فیلم‌های مورد نظر خود را ارسال کنید.</p>
+          <p>{placeholder}</p>
         </Box>
       )}
       <Box

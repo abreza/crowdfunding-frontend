@@ -46,6 +46,7 @@ const Gallery: FC<{
           }}
           files={files}
           removeFile={removeFile}
+          placeholder="عکس‌ها و فیلم‌های مورد نظر خود را ارسال کنید."
         />
       </Grid>
     </Grid>

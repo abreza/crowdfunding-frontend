@@ -36,6 +36,7 @@ const CreatePost: FC<CreatePostProps> = () => {
             <Box>
               <Typography variant="h6">عکس سرتیتر</Typography>
               <MyDropzone
+                accept="image/*"
                 multiple={false}
                 files={titleImage ? [titleImage] : []}
                 onDrop={(acceptedFiles: File[]) => {
@@ -55,6 +56,7 @@ const CreatePost: FC<CreatePostProps> = () => {
                   );
                 }}
                 removeFile={() => setTitleImage(undefined)}
+                placeholder="عکس مورد نظر خود را ارسال کنید."
               />
             </Box>
             <LoadingButton loading={false} fullWidth variant="contained">
