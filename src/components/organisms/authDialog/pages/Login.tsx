@@ -51,6 +51,7 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
     <>
       <Grid item>
         <TextField
+          autoFocus
           size="small"
           label="نام‌کاربری"
           name="username"
@@ -69,8 +70,8 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             className: 'ltr-input',
-            endAdornment: (
-              <InputAdornment position="end">
+            startAdornment: (
+              <InputAdornment position="start">
                 <IconButton
                   aria-label="toggle password visibility"
                   onClick={() => setShowPassword(!showPassword)}>
