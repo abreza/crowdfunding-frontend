@@ -39,6 +39,7 @@
     "@nivo/circle-packing": "^0.73.0",
     "@nivo/core": "^0.73.0",
     "@reduxjs/toolkit": "^1.6.1",
+    "@tinymce/tinymce-react": "^3.12.6",
     "axios": "^0.21.4",
     "google-map-react": "^2.1.10",
     "jalali-moment": "^3.3.10",
@@ -61,7 +62,8 @@
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "stylis": "^4.0.10",
-    "stylis-plugin-rtl": "^2.1.0"
+    "stylis-plugin-rtl": "^2.1.0",
+    "tinymce": "^5.9.2"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.0.2",

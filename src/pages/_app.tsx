@@ -6,7 +6,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
-import { FC, useReducer, useState } from 'react';
+import { FC, useState } from 'react';
 import BaseHead from 'components/organisms/head/BaseHead';
 
 import { PersistGate } from 'redux-persist/integration/react';
@@ -15,6 +15,8 @@ import { persistStore } from 'redux-persist';
 import 'assets/styles/app.css';
 import 'assets/styles/gallery.css';
 import 'assets/fonts/fontiran.css';
+import 'assets/styles/tiny.css';
+
 import createEmotionCache from 'createEmotionCache';
 import { sDarkTheme, sLightTheme } from 'constants/theme';
 import { CheckToken } from 'components/hoc/CheckToken';

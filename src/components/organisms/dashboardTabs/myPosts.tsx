@@ -1,7 +1,7 @@
 import { Button, Container, Grid, Typography } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
-import { Add } from '@mui/icons-material';
+import Link from 'next/link';
 
 const MyPosts: FC = () => {
   const { data, isLoading } = { data: { posts: [] }, isLoading: false };
@@ -36,9 +36,9 @@ const MyPosts: FC = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button variant="outlined">
-                  ایجاد مطلب جدید
-                </Button>
+                <Link href="/blog/new" passHref>
+                  <Button variant="outlined">ایجاد مطلب جدید</Button>
+                </Link>
               </Grid>
             </Grid>
           </Grid>
