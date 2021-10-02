@@ -93,9 +93,11 @@ const Projects: FC<ProjectsProps> = ({ projects = [] }) => {
 };
 
 export async function getStaticProps() {
-  let projects = [];
+  let projects: ProjectRo[] = [];
   try {
-    const res = await axios(baseUrl + 'project/');
+    const res = await axios.get<{ projects: ProjectRo[] }>(
+      baseUrl + 'project/'
+    );
     projects = res.data.projects;
   } catch (err) {
     console.log(err);

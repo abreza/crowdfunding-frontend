@@ -9,12 +9,16 @@ export const upload = async (
 ): Promise<string> => {
   const formData = new FormData();
   formData.append('file', file);
-  const res = (await axios.post(baseUrl + path, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      authorization: `Bearer ${token}`,
-    },
-    onUploadProgress,
-  })) as { data: { path: string } };
+  const res = await axios.post<FormData, { data: { path: string } }>(
+    baseUrl + path,
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        authorization: `Bearer ${token}`,
+      },
+      onUploadProgress,
+    }
+  );
   return res.data.path;
 };
