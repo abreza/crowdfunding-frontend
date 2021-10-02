@@ -14,10 +14,10 @@ const ProtectedPage: FC<{ onlyAdmin?: boolean }> = ({
     { token: string; isAdmin: boolean }
   >((state) => ({
     token: state.auth.token,
-    isAdmin: state.auth.user?.roles?.includes('ADMIN'),
+    isAdmin: state.auth.user?.roleNames?.includes('ADMIN'),
   }));
 
-  const haveAccess = token && (!onlyAdmin || isAdmin); // TODO: check user roles
+  const haveAccess = token && (!onlyAdmin || isAdmin);
 
   useEffect(() => {
     if (!haveAccess) {

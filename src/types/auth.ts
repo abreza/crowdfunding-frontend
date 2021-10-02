@@ -26,7 +26,7 @@ export interface MailSettingsDto {
 
 export interface Account extends ProfileDto, MailSettingsDto {
   avatarAddress: string;
-  roles: string[];
+  roleNames: string[];
 }
 
 export interface AuthRo {

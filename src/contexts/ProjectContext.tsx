@@ -24,7 +24,7 @@ export const initProjectContext: ProjectRo = {
     firstName: '',
     lastName: '',
     avatarAddress: '',
-    roles: [],
+    roleNames: [],
     description: '',
     headline: '',
     address: '',

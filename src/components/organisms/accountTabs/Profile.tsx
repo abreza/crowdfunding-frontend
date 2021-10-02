@@ -23,7 +23,7 @@ export const Profile = () => {
   const [profileForm, setProfileForm] = useState<ProfileDto>(user);
 
   useEffect(() => {
-    const { roles, mailConfig, avatarAddress, email, ...newProfile } = user;
+    const { roleNames, mailConfig, avatarAddress, email, ...newProfile } = user;
     setProfileForm(newProfile);
   }, [user]);
 
