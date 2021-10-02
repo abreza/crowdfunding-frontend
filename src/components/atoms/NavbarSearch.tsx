@@ -35,9 +35,9 @@ const NavbarSearch: FC = () => {
           color: 'inherit',
           pl: 5,
           transition: (theme) => theme.transitions.create('width'),
-          width: { sm: 120, md: 200 },
+          width: { xs: 140, md: 200 },
           '&:focus': {
-            width: { sm: 170, md: 220 },
+            width: { xs: 190, md: 220 },
           },
         }}
         inputProps={{
