@@ -3,7 +3,6 @@ import { FC } from 'react';
 
 import { ExtendedFile } from 'pages/new';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 import { baseUrl } from 'config';
 import { RootStateType } from 'app/store';
 import { useSelector } from 'react-redux';
