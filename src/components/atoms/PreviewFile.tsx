@@ -1,10 +1,12 @@
 import { Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import { Cancel as CancelIcon } from '@mui/icons-material';
+import { Cancel as CancelIcon, CheckCircleOutline } from '@mui/icons-material';
 import { CircularProgressWithLabel } from 'components/atoms/CircularProgressWithLabel';
 import { ExtendedFile } from 'pages/new';
 import { FC, useEffect, useState } from 'react';
 import { Box } from '@mui/system';
+import Image from 'next/image';
+import videoImg from 'assets/images/video.png';
 
 export const PreviewFile: FC<{ extendedFile: ExtendedFile; removeFile?: any }> =
   ({ extendedFile, removeFile }) => {
@@ -15,20 +17,26 @@ export const PreviewFile: FC<{ extendedFile: ExtendedFile; removeFile?: any }> =
         setPreviewImage(undefined);
         return;
       }
-      const pre = window.URL.createObjectURL(
-        new Blob([extendedFile.file], { type: 'image/png' })
-      );
-      setPreviewImage(pre);
+      const fileExtension = extendedFile.file.name.split('.').pop();
+
+      setPreviewImage(videoImg);
+      if (fileExtension === 'mp4') {
+      } else {
+        const pre = window.URL.createObjectURL(
+          new Blob([extendedFile.file], { type: 'image/png' })
+        );
+        setPreviewImage(pre);
+      }
     }, [extendedFile]);
 
     return (
-      <Box key={extendedFile.id} sx={{ width: 150, mx: 1 }}>
+      <Box key={extendedFile.id} sx={{ width: 130, mx: 1 }}>
         <Box
           sx={{
             display: 'inline-flex',
             borderRadius: 2,
             border: '1px solid #eaeaea',
-            maxWidth: '100%',
+            width: '100%',
             height: 140,
             p: 0.5,
             boxSizing: 'border-box',
@@ -37,7 +45,7 @@ export const PreviewFile: FC<{ extendedFile: ExtendedFile; removeFile?: any }> =
           {removeFile && (
             <IconButton
               onClick={() => removeFile(extendedFile.id)}
-              sx={{ position: 'absolute', top: -12, left: -12 }}
+              sx={{ position: 'absolute', top: -15, left: -15, zIndex: 5 }}
               color="error">
               <CancelIcon />
             </IconButton>
@@ -47,26 +55,28 @@ export const PreviewFile: FC<{ extendedFile: ExtendedFile; removeFile?: any }> =
               display: 'flex',
               minWidth: 0,
               overflow: 'hidden',
+              width: '100%',
+              height: '100%',
+              position: 'relative',
               borderRadius: 2,
             }}>
-            <img
-              src={previewImage}
-              style={{
-                display: 'block',
-                width: 'auto',
-                height: '100%',
-              }}
-              alt={extendedFile?.file?.name}
-            />
-            {!extendedFile.url && (
-              <CircularProgressWithLabel
-                value={extendedFile.progress ? extendedFile.progress : 0}
-                size={40}
+            {previewImage && (
+              <Image
+                src={previewImage}
+                layout="fill"
+                objectFit="cover"
+                alt={extendedFile?.file?.name}
               />
             )}
+
+            <CircularProgressWithLabel
+              value={extendedFile.progress ? extendedFile.progress : 0}
+              size={40}
+              finished={Boolean(extendedFile.url)}
+            />
           </Box>
         </Box>
-        <Typography variant="caption" align="center">
+        <Typography variant="caption" align="center" sx={{ width: '100%' }}>
           {extendedFile?.file?.name}
         </Typography>
       </Box>
