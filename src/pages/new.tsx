@@ -58,7 +58,7 @@ const TabsData = [
   },
 ];
 
-export type MyFile = {
+export type ExtendedFile = {
   id: number;
   file: File;
   url?: string;
@@ -86,7 +86,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
     imageUrls: [],
   });
 
-  const [files, setFiles] = useState<MyFile[]>([]);
+  const [files, setFiles] = useState<ExtendedFile[]>([]);
   const [needUpdateUrls, setNeedUpdateUrls] = useState(false);
 
   useEffect(() => {
@@ -99,7 +99,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
     setNeedUpdateUrls(false);
   }, [needUpdateUrls, files]);
 
-  const addFile = (newFile: MyFile) => setFiles((fls) => [...fls, newFile]);
+  const addFile = (newFile: ExtendedFile) => setFiles((fls) => [...fls, newFile]);
   const removeFile = (id: number) => {
     setFiles((fls) => fls.filter((file) => file.id !== id));
     setNeedUpdateUrls(true);
