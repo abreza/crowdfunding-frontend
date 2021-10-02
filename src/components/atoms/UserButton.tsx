@@ -26,6 +26,12 @@ const ProfileButton: FC<{ user: Account }> = ({ user }) => {
   const { push } = useRouter();
   const dispatch = useDispatch();
 
+  const { isAdmin } = useSelector<RootStateType, { isAdmin: boolean }>(
+    (state) => ({
+      isAdmin: state.auth.user?.roleNames?.includes('ADMIN'),
+    })
+  );
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -43,6 +49,11 @@ const ProfileButton: FC<{ user: Account }> = ({ user }) => {
 
   const goToMyProjects = () => {
     push('/dashboard');
+    handleClose();
+  };
+
+  const goToAdmin = () => {
+    push('/admin');
     handleClose();
   };
 
@@ -77,6 +88,7 @@ const ProfileButton: FC<{ user: Account }> = ({ user }) => {
         }}>
         <MenuItem onClick={goToProfile}>پروفایل</MenuItem>
         <MenuItem onClick={goToMyProjects}>پروژه‌های من</MenuItem>
+        {isAdmin && <MenuItem onClick={goToAdmin}>مدیریت</MenuItem>}
         <Divider />
         <MenuItem onClick={() => dispatch(logout())}>خروج</MenuItem>
       </Menu>
