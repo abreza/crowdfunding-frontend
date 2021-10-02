@@ -1,7 +1,7 @@
 import { Grid, Tabs, Tab, Paper } from '@mui/material';
-import MyPosts from 'components/organisms/dashboardTabs/myPosts';
-import MyProjects from 'components/organisms/dashboardTabs/myProjects';
-import MySupports from 'components/organisms/dashboardTabs/mySupports';
+import MyPosts from 'components/organisms/dashboardTabs/MyPosts';
+import MyProjects from 'components/organisms/dashboardTabs/MyProjects';
+import MySupports from 'components/organisms/dashboardTabs/MySupports';
 import { UserCard } from 'components/organisms/userCard/UserCard';
 import { FC, useState } from 'react';
 import Panel from 'templates/Panel';
