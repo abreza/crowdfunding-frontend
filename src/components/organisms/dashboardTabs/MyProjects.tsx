@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography, Stack } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
 import { useGetMyProjectsQuery } from 'app/services/project';
@@ -31,21 +31,12 @@ const MyProjects: FC = () => {
           ))
         ) : (
           <Grid item>
-            <Grid
-              container
-              alignItems="center"
-              justifyContent="center"
-              direction="column"
-              spacing={2}>
-              <Grid item>
-                <Typography align="center">
-                  متاسفانه مطلبی ایجاد نکرده‌اید.
-                </Typography>
-              </Grid>
-              <Grid item>
-                <CreateProjectButton variant="outlined" />
-              </Grid>
-            </Grid>
+            <Stack spacing={2}>
+              <Typography align="center">
+                متاسفانه مطلبی ایجاد نکرده‌اید.
+              </Typography>
+              <CreateProjectButton variant="outlined" />
+            </Stack>
           </Grid>
         )}
       </Grid>

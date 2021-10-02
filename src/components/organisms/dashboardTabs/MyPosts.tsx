@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Stack, Typography } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
 import Link from 'next/link';
@@ -24,23 +24,14 @@ const MyPosts: FC = () => {
           data?.posts.map((item: any, i: number) => <Grid item key={i}></Grid>)
         ) : (
           <Grid item>
-            <Grid
-              container
-              alignItems="center"
-              justifyContent="center"
-              direction="column"
-              spacing={2}>
-              <Grid item>
-                <Typography align="center">
-                  متاسفانه مطلبی ایجاد نکرده‌اید.
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Link href="/blog/new" passHref>
-                  <Button variant="outlined">ایجاد مطلب جدید</Button>
-                </Link>
-              </Grid>
-            </Grid>
+            <Stack spacing={2}>
+              <Typography align="center">
+                متاسفانه مطلبی ایجاد نکرده‌اید.
+              </Typography>
+              <Link href="/blog/new" passHref>
+                <Button variant="outlined">ایجاد مطلب جدید</Button>
+              </Link>
+            </Stack>
           </Grid>
         )}
       </Grid>

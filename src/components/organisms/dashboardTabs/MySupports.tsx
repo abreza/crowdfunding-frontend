@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Typography, Stack } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
 import Link from 'next/link';
@@ -26,23 +26,14 @@ const MySupports: FC = () => {
           ))
         ) : (
           <Grid item>
-            <Grid
-              container
-              alignItems="center"
-              justifyContent="center"
-              direction="column"
-              spacing={2}>
-              <Grid item>
-                <Typography align="center">
-                  متاسفانه تاکنون حمایتی انجام نداده‌اید.
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Link href="/project" passHref>
-                  <Button variant="outlined">بررسی پروژه‌ها</Button>
-                </Link>
-              </Grid>
-            </Grid>
+            <Stack spacing={2}>
+              <Typography align="center">
+                متاسفانه تاکنون حمایتی انجام نداده‌اید.
+              </Typography>
+              <Link href="/project" passHref>
+                <Button variant="outlined">بررسی پروژه‌ها</Button>
+              </Link>
+            </Stack>
           </Grid>
         )}
       </Grid>
