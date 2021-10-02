@@ -31,7 +31,7 @@ export async function getStaticPaths() {
   let projects = [];
   try {
     const res = await axios(baseUrl + 'project/');
-    projects = res.data;
+    projects = res.data.projects;
   } catch (err) {
     console.log(err);
   }

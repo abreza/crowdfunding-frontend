@@ -18,7 +18,7 @@ type ProjectsProps = {
   projects: ProjectRo[];
 };
 
-const Projects: FC<ProjectsProps> = ({ projects }) => {
+const Projects: FC<ProjectsProps> = ({ projects = [] }) => {
   return (
     <Homepage>
       <Container maxWidth="md" sx={{ pt: 2 }}>
@@ -96,7 +96,7 @@ export async function getStaticProps() {
   let projects = [];
   try {
     const res = await axios(baseUrl + 'project/');
-    projects = res.data;
+    projects = res.data.projects;
   } catch (err) {
     console.log(err);
   }
