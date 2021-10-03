@@ -6,6 +6,7 @@ import {
   Button,
   IconButton,
   LinearProgress,
+  Stack,
 } from '@mui/material';
 import {
   EvStation as EvStationIcon,
@@ -21,6 +22,9 @@ import { FC, useContext, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { VideoPlayer } from 'components/atoms/VideoPlayer';
+import videoImg from 'assets/images/video.png';
+import Image from 'next/image';
+import emptyFile from 'assets/images/empty_file.png';
 
 type ProjectStatusProps = {};
 
@@ -46,10 +50,8 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
       };
     } else {
       return {
-        original:
-          'https://res.cloudinary.com/dclfeq8cv/image/upload/v1631957634/crowdfunding/video.png',
-        thumbnail:
-          'https://res.cloudinary.com/dclfeq8cv/image/upload/v1631957634/crowdfunding/video.png',
+        original: videoImg,
+        thumbnail: videoImg,
         originalHeight,
         thumbnailHeight: 50,
         videoUrl: url,
@@ -66,17 +68,42 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
       justifyContent="space-between"
       spacing={3}>
       <Grid item sm={7} xs={12}>
-        <Paper sx={{ overflow: 'hidden' }}>
-          <ImageGallery
-            autoPlay={false}
-            items={imageUrls?.map(getImageGalleryItem) || []}
-            onScreenChange={(fullscreen) =>
-              // @ts-ignore
-              setOriginalHeight(!fullscreen && 300)
-            }
-            lazyLoad={true}
-            isRTL={true}
-          />
+        <Paper sx={{ overflow: 'hidden', height: '100%' }}>
+          {imageUrls?.length ? (
+            <ImageGallery
+              autoPlay={false}
+              items={imageUrls?.map(getImageGalleryItem) || []}
+              onScreenChange={(fullscreen) =>
+                // @ts-ignore
+                setOriginalHeight(!fullscreen && 300)
+              }
+              lazyLoad={true}
+              isRTL={true}
+            />
+          ) : (
+            <Stack
+              alignItems="center"
+              justifyContent="center"
+              sx={{ height: '100%', pb: 1 }}
+              spacing={3}>
+              <Box
+                sx={{
+                  width: { sm: '30%', xs: '50%' },
+                  position: 'relative',
+                }}>
+                <Image
+                  src={emptyFile}
+                  alt="empty"
+                  layout="responsive"
+                  width="100%"
+                  height="100%"
+                />
+              </Box>
+              <Typography align="center" variant="h6">
+                عکس یا فیلمی موجود نیست!
+              </Typography>
+            </Stack>
+          )}
         </Paper>
       </Grid>
       <Grid item sm={5} xs={12}>

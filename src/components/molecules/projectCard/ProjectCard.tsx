@@ -29,13 +29,15 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
       <Link href={item ? `/project/${item.id}` : '#'} passHref>
         <CardActionArea disableRipple>
           {item ? (
-            <CardMedia
-              component="img"
-              alt={item.subject}
-              height="140"
-              image={item.imageUrls?.[0]}
-              title={item.subject}
-            />
+            !!item?.imageUrls?.length && (
+              <CardMedia
+                component="img"
+                alt={item.subject}
+                height="140"
+                image={item.imageUrls[0]}
+                title={item.subject}
+              />
+            )
           ) : (
             <Skeleton
               sx={{ height: 140 }}
