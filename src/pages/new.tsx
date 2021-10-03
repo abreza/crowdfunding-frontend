@@ -24,7 +24,7 @@ import Panel from 'templates/Panel';
 import Timeline from 'components/organisms/createProjectPages/Timeline';
 import { ProjectDto, CategoryEnum } from 'types/project';
 import { useCreateProjectMutation } from 'app/services/project';
-import { LoadingButton } from 'components/atoms/LoadingButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 

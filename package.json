@@ -34,6 +34,7 @@
     "@fontsource/roboto": "^4.5.1",
     "@hassanmojab/react-modern-calendar-datepicker": "^3.1.7",
     "@mui/icons-material": "^5.0.1",
+    "@mui/lab": "^5.0.0-alpha.49",
     "@mui/material": "^5.0.2",
     "@mui/system": "^5.0.2",
     "@nivo/circle-packing": "^0.73.0",

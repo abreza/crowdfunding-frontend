@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useSetMailSettingsMutation } from 'app/services/auth';
 import { RootStateType } from 'app/store';
-import { LoadingButton } from 'components/atoms/LoadingButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';

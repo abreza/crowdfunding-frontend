@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useSetProfileMutation } from 'app/services/auth';
 import { Account, ProfileDto } from 'types/auth';
-import { LoadingButton } from 'components/atoms/LoadingButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { toast } from 'react-toastify';
 
 export const Profile = () => {

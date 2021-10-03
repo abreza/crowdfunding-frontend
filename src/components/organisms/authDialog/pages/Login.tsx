@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { LoginDto } from 'types/auth';
 import { useLoginMutation } from 'app/services/auth';
-import { LoadingButton } from 'components/atoms/LoadingButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import {
   AuthPageName,
   PageProps,

@@ -1,6 +1,6 @@
 import { Grid, Link, TextField, Typography } from '@mui/material';
 import { useForgotPasswordMutation } from 'app/services/auth';
-import { LoadingButton } from 'components/atoms/LoadingButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import {
   AuthPageName,
   PageProps,

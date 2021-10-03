@@ -1,6 +1,6 @@
 import { Grid, TextField } from '@mui/material';
 import { useChangePasswordMutation } from 'app/services/auth';
-import { LoadingButton } from 'components/atoms/LoadingButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { ChangePasswordDto } from 'types/auth';

@@ -2,7 +2,7 @@ import { Container, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { upload } from 'app/services/uploadFile';
 import { RootStateType } from 'app/store';
-import { LoadingButton } from 'components/atoms/LoadingButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { MyDropzone } from 'components/molecules/dropzone/MyDropzone';
 import TinyEditor from 'components/molecules/tinyEditor/reactTiny/TinyEditorComponent';
 import { ExtendedFile } from 'pages/new';
