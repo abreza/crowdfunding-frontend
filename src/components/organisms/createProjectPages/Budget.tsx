@@ -11,6 +11,7 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import { BudgetDto, ProjectDto } from 'types/project';
 import { toast } from 'react-toastify';
+import { PriceFormat } from 'components/atoms/PriceFormat';
 
 const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
   handleChange,
@@ -101,7 +102,6 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
               </Grid>
               <Grid item xs={4}>
                 <TextField
-                  type="number"
                   value={budget.value ? budget.value : ''}
                   onChange={(e) => onChange(index, 'value', +e.target.value)}
                   fullWidth
@@ -112,6 +112,7 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
                     endAdornment: (
                       <InputAdornment position="end">تومان</InputAdornment>
                     ),
+                    inputComponent: PriceFormat as any,
                   }}
                 />
               </Grid>
