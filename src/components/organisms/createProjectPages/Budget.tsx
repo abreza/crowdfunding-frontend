@@ -102,7 +102,7 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
               <Grid item xs={4}>
                 <TextField
                   type="number"
-                  value={budget.value}
+                  value={budget.value ? budget.value : ''}
                   onChange={(e) => onChange(index, 'value', +e.target.value)}
                   fullWidth
                   size="small"
