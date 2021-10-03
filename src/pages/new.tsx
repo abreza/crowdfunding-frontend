@@ -97,9 +97,12 @@ const CreateProject: FC<CreateProjectProps> = () => {
       setProject((prs) => ({ ...prs, imageUrls }));
     }
     setNeedUpdateUrls(false);
-  }, [needUpdateUrls, files]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [needUpdateUrls]);
 
-  const addFile = (newFile: ExtendedFile) => setFiles((fls) => [...fls, newFile]);
+  const addFile = (newFile: ExtendedFile) =>
+    setFiles((fls) => [...fls, newFile]);
+
   const removeFile = (id: number) => {
     setFiles((fls) => fls.filter((file) => file.id !== id));
     setNeedUpdateUrls(true);
@@ -144,7 +147,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       try {
         const res = await createProject(project).unwrap();
         toast.success('پروژه شما با موفقیت ثبت شد!');
-          push('/project/' + res.id);
+        push('/project/' + res.id);
       } catch (err: any) {
         toast.error(err?.data?.message?.toString() || err?.error?.toString());
       }
