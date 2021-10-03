@@ -1,5 +1,7 @@
 import { Grid, Paper, Tab, Tabs } from '@mui/material';
+import AllPosts from 'components/organisms/adminTabs/AllPosts';
 import AllProjects from 'components/organisms/adminTabs/AllProjects';
+import AllSupports from 'components/organisms/adminTabs/AllSupports';
 import { FC, useState } from 'react';
 import Panel from 'templates/Panel';
 
@@ -12,11 +14,11 @@ const tabs: { label: string; component: FC<any> }[] = [
   },
   {
     label: 'حمایت‌ها',
-    component: () => <></>,
+    component: AllSupports,
   },
   {
     label: 'پست‌های بلاگ',
-    component: () => <></>,
+    component: AllPosts,
   },
 ];
 
