@@ -1,4 +1,5 @@
 import { Grid, Paper, Tab, Tabs } from '@mui/material';
+import AllProjects from 'components/organisms/adminTabs/AllProjects';
 import { FC, useState } from 'react';
 import Panel from 'templates/Panel';
 
@@ -7,7 +8,7 @@ type AdminProps = {};
 const tabs: { label: string; component: FC<any> }[] = [
   {
     label: 'پروژه‌ها',
-    component: () => <></>,
+    component: AllProjects,
   },
   {
     label: 'حمایت‌ها',

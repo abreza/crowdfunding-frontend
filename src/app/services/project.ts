@@ -17,6 +17,9 @@ export const projectApi = createApi({
       query: () => 'project/myProjects',
       keepUnusedDataFor: 180,
     }),
+    getAllProjects: builder.query<{ projects: ProjectRo[] }, null>({
+      query: () => 'project/all',
+    }),
     createProject: builder.mutation<ProjectRo, ProjectDto>({
       query: (project) => {
         const body = {
@@ -44,4 +47,5 @@ export const {
   useCreateProjectMutation,
   useGetProjectsMutation,
   useGetMyProjectsQuery,
+  useGetAllProjectsQuery,
 } = projectApi;

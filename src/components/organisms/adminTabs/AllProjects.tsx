@@ -1,12 +1,10 @@
 import { Container, Grid, Typography } from '@mui/material';
 import ProjectCard from 'components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
-import { useGetMyProjectsQuery } from 'app/services/project';
+import { useGetAllProjectsQuery } from 'app/services/project';
 
 const AllProjects: FC = () => {
-  const { data, isLoading } = useGetMyProjectsQuery(null, {
-    refetchOnMountOrArgChange: 30,
-  });
+  const { data, isLoading } = useGetAllProjectsQuery(null);
 
   return (
     <Container maxWidth="md" sx={{ pt: 2 }}>
