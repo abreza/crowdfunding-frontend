@@ -12,7 +12,7 @@ const AllProjects: FC = () => {
         container
         direction="row"
         justifyContent="space-around"
-        spacing={3}
+        spacing={2}
         sx={{ py: 1 }}>
         {isLoading ? (
           [1, 1].map((item: any, i: number) => (
@@ -22,7 +22,7 @@ const AllProjects: FC = () => {
           ))
         ) : data?.projects?.length ? (
           data?.projects.map((item: any, i: number) => (
-            <Grid item key={i}>
+            <Grid item xs={12} sm={6} md={4} key={i}>
               <ProjectCard item={item} />
             </Grid>
           ))
