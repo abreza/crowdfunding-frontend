@@ -27,6 +27,8 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
       0
     ) || 0;
 
+  const image = item?.imageUrls?.find((url) => !url.includes('.mp4'));
+
   return (
     <Card
       sx={{
@@ -41,7 +43,7 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
                 component="img"
                 alt={item.subject}
                 height="140"
-                image={item.imageUrls[0]}
+                image={image}
                 title={item.subject}
               />
             )
