@@ -144,9 +144,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       try {
         const res = await createProject(project).unwrap();
         toast.success('پروژه شما با موفقیت ثبت شد!');
-        setTimeout(() => {
           push('/project/' + res.id);
-        }, 0.5);
       } catch (err: any) {
         toast.error(err?.data?.message?.toString() || err?.error?.toString());
       }
