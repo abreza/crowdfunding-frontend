@@ -24,7 +24,7 @@ const AllPosts: FC = () => {
         ) : (
           <Grid item>
             <Typography align="center">
-              متاسفانه مطلبی ایجاد نکرده‌اید.
+              متاسفانه مطلبی ایجاد نشده‌است.
             </Typography>
           </Grid>
         )}

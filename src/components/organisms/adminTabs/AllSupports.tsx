@@ -26,7 +26,7 @@ const AllSupports: FC = () => {
         ) : (
           <Grid item>
             <Typography align="center">
-              متاسفانه تاکنون حمایتی انجام نداده‌اید.
+              متاسفانه تاکنون حمایتی انجام نگرفته‌است.
             </Typography>
           </Grid>
         )}
