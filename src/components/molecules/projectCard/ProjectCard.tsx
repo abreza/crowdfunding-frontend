@@ -117,7 +117,7 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
                         variant="caption"
                         color="textSecondary"
                         component="p">
-                        دانشجوی دانشگاه صنعتی شریف
+                        {item.owner.headline}
                       </Typography>
                     ) : (
                       <Skeleton animation="wave" height={10} width={90} />
