@@ -21,7 +21,13 @@ const Homepage: FC<HomepageProps> = ({ children }) => {
           },
         }}>
         <ResponsiveAppBar />
-        <Box sx={{ minHeight: '70vh' }}>{children}</Box>
+        <Box
+          sx={{
+            minHeight: '70vh',
+            bgcolor: (theme) => theme.palette.background.default,
+          }}>
+          {children}
+        </Box>
         <Footer />
       </HomepageContext.Provider>
       <AuthDialog

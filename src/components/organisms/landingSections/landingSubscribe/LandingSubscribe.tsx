@@ -9,7 +9,7 @@ const LandingSubscribe: FC<LandingSubscribeProps> = () => {
     <Box
       sx={{
         py: 4,
-        background: '#eee',
+        bgcolor: 'background.secondary',
       }}>
       <Container maxWidth="md">
         <Grid

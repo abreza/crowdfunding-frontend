@@ -11,6 +11,7 @@ import logo2 from 'assets/images/logo2.png';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import { SocialNetwork } from 'components/molecules/socialNetworks/socialNetworks';
+import ThemeModeToggle from './ThemeModeToggle';
 
 export default function Footer() {
   return (
@@ -18,7 +19,7 @@ export default function Footer() {
       <Box
         sx={{
           borderTop: '1px solid black',
-          background: (theme) => theme.palette.grey[700],
+          bgcolor: 'background.footer',
           pt: 3,
           px: 5,
           pb: 1,
@@ -74,9 +75,9 @@ export default function Footer() {
                   <MenuItem value={'fa'}>فارسی</MenuItem>
                 </TextField>
               </Grid>
-              {/* <Grid item xs={12}>
+              <Grid item xs={12}>
                 <ThemeModeToggle />
-              </Grid> */}
+              </Grid>
             </Grid>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -86,7 +87,10 @@ export default function Footer() {
               alignItems="center"
               justifyContent="space-between">
               <Grid item sx={{ pb: 3 }}>
-                <Typography color="primary" variant="h4" component="label">
+                <Typography
+                  sx={{ color: 'grey.400' }}
+                  variant="h4"
+                  component="label">
                   تامین‌مالی برای
                 </Typography>
               </Grid>
@@ -114,7 +118,10 @@ export default function Footer() {
               alignItems="center"
               justifyContent="space-between">
               <Grid item sx={{ pb: 3 }}>
-                <Typography color="primary" variant="h4" component="label">
+                <Typography
+                  sx={{ color: 'grey.400' }}
+                  variant="h4"
+                  component="label">
                   مطالعه بیشتر
                 </Typography>
               </Grid>
@@ -143,7 +150,10 @@ export default function Footer() {
               alignItems="center"
               justifyContent="space-between">
               <Grid item sx={{ pb: 3 }}>
-                <Typography color="primary" variant="h4" component="label">
+                <Typography
+                  sx={{ color: 'grey.400' }}
+                  variant="h4"
+                  component="label">
                   منابع
                 </Typography>
               </Grid>
@@ -179,7 +189,7 @@ export default function Footer() {
               justifyContent="center">
               <Grid item>
                 <div dir="ltr">
-                  <Typography>
+                  <Typography sx={{ color: 'inherit' }}>
                     © 2021-{new Date().getFullYear()} SharifCrowdfunding
                   </Typography>
                 </div>

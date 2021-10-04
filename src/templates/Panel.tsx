@@ -12,7 +12,13 @@ const Panel: FC<PanelProps> = ({ children, onlyAdmin = false }) => {
   return (
     <ProtectedPage onlyAdmin={onlyAdmin}>
       <ResponsiveAppBar />
-      <Box sx={{ minHeight: '70vh' }}>{children}</Box>
+      <Box
+        sx={{
+          minHeight: '70vh',
+          bgcolor: (theme) => theme.palette.background.default,
+        }}>
+        {children}
+      </Box>
       <Footer />
     </ProtectedPage>
   );
