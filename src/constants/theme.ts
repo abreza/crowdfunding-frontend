@@ -44,6 +44,20 @@ declare module '@mui/material/styles/createTypography' {
 
 const defaultTheme = createTheme();
 
+const orange = {
+  50: '#fff4e1',
+  100: '#ffe2b4',
+  200: '#ffcf83',
+  300: '#ffbb52',
+  400: '#ffbb52',
+  500: '#ff9d12',
+  600: '#ff9110',
+  700: '#fa810e',
+  main: '#fa810e',
+  800: '#f4710d',
+  900: '#eb570b',
+};
+
 const blue = {
   50: '#F0F7FF',
   100: '#C2E0FF',
@@ -113,6 +127,9 @@ export const getDesignTokens = (mode: 'light' | 'dark') =>
         ...(mode === 'dark' && {
           main: blue[400],
         }),
+      },
+      secondary: {
+        ...orange,
       },
       divider: mode === 'dark' ? blueDark[700] : grey[200],
       primaryDark: blueDark,
