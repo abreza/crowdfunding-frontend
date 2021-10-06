@@ -6,19 +6,41 @@ import { ProjectDto, ProjectRo, TimelineDto } from 'types/project';
 export const projectApi = createApi({
   reducerPath: 'projectApi',
   baseQuery,
+  tagTypes: ['Project'],
   endpoints: (builder) => ({
-    getProjects: builder.mutation<
-      { projects: ProjectRo[] },
-      string | undefined
-    >({
-      query: (name) => (name ? `project/${name}` : 'project/'),
+    deleteProject: builder.mutation<void, string>({
+      query: (id) => ({
+        url: 'project/' + id,
+        method: 'DELETE',
+      }),
+      invalidatesTags: (result, error, id) => [{ type: 'Project', id }],
     }),
     getMyProjects: builder.query<{ projects: ProjectRo[] }, null>({
       query: () => 'project/myProjects',
       keepUnusedDataFor: 180,
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.projects.map(({ id }) => ({
+                type: 'Project' as const,
+                id,
+              })),
+              { type: 'Project', id: 'LIST' },
+            ]
+          : [{ type: 'Project', id: 'LIST' }],
     }),
     getAllProjects: builder.query<{ projects: ProjectRo[] }, null>({
       query: () => 'project/all',
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.projects.map(({ id }) => ({
+                type: 'Project' as const,
+                id,
+              })),
+              { type: 'Project', id: 'LIST' },
+            ]
+          : [{ type: 'Project', id: 'LIST' }],
     }),
     createProject: builder.mutation<ProjectRo, ProjectDto>({
       query: (project) => {
@@ -45,7 +67,7 @@ export const projectApi = createApi({
 
 export const {
   useCreateProjectMutation,
-  useGetProjectsMutation,
+  useDeleteProjectMutation,
   useGetMyProjectsQuery,
   useGetAllProjectsQuery,
 } = projectApi;

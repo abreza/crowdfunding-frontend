@@ -1,10 +1,4 @@
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Divider,
-  Paper,
-  Skeleton,
-} from '@mui/material';
+import { Divider, Skeleton } from '@mui/material';
 import {
   Avatar,
   Card,
@@ -18,7 +12,7 @@ import {
 import { FC } from 'react';
 import Link from 'next/link';
 import { ProjectRo } from 'types/project';
-import { Delete, Edit, Settings } from '@mui/icons-material';
+import { ManageProjectCard } from './ManageProjectCard';
 
 const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
   const totalBudget =
@@ -184,13 +178,7 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
           </CardContent>
         </CardActionArea>
       </Link>
-      <Paper elevation={2}>
-        <BottomNavigation showLabels>
-          <BottomNavigationAction icon={<Delete />} />
-          <BottomNavigationAction icon={<Edit />} />
-          <BottomNavigationAction icon={<Settings />} />
-        </BottomNavigation>
-      </Paper>
+      <ManageProjectCard project={item as ProjectRo} />
     </Card>
   );
 };
