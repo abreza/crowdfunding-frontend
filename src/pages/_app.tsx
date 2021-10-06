@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import { store } from 'app/store';
 import { Provider } from 'react-redux';
-import { ThemeProvider, useMediaQuery } from '@mui/material';
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -53,6 +53,7 @@ const MyApp: FC<MyAppProps> = (props) => {
         <CacheProvider value={emotionCache}>
           <ThemeProvider
             theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}>
+            <CssBaseline />
             <ToastContainer limit={3} />
             <CheckToken />
             <DispatchContext.Provider
