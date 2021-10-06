@@ -41,7 +41,7 @@ export const MyDropzone: FC<FileDropzoneProps> = ({
             borderRadius: 2,
             borderColor: '#eeeeee',
             borderStyle: 'dashed',
-            backgroundColor: '#fafafa',
+            backgroundColor: 'background.secondary',
             color: '#bdbdbd',
             outline: 'none',
             transition: 'border .24s ease-in-out',
