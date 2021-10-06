@@ -53,27 +53,18 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const ThemeModeToggle = () => {
-  const [mode, setMode] = useState<string>('dark');
+  const { setThemeMode, themeMode } = useContext(DispatchContext);
 
-  const changeTheme = useContext(DispatchContext);
-
-  useEffect(() => {
-    setMode(getCookie('paletteMode') || 'system');
-  }, [setMode]);
-
-  const handleChangeThemeMode = (mode: string) => {
-    const paletteMode = mode === 'light' ? 'dark' : 'light';
-    document.cookie = `paletteMode=${paletteMode};path=/;max-age=31536000`;
-    setMode(paletteMode);
-    changeTheme(paletteMode);
+  const handleChangeThemeMode = () => {
+    setThemeMode(themeMode === 'light' ? 'dark' : 'light');
   };
 
   return (
     <Box>
       <MaterialUISwitch
         sx={{ m: 1 }}
-        checked={mode === 'dark'}
-        onChange={() => handleChangeThemeMode(mode)}
+        checked={themeMode === 'dark'}
+        onChange={() => handleChangeThemeMode()}
       />
     </Box>
   );

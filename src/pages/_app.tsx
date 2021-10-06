@@ -1,12 +1,12 @@
 import type { AppProps } from 'next/app';
 import { store } from 'app/store';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider, useMediaQuery } from '@mui/material';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import BaseHead from 'components/organisms/head/BaseHead';
 
 import { PersistGate } from 'redux-persist/integration/react';
@@ -21,6 +21,7 @@ import createEmotionCache from 'createEmotionCache';
 import { sDarkTheme, sLightTheme } from 'constants/theme';
 import { CheckToken } from 'components/hoc/CheckToken';
 import { DispatchContext } from 'contexts/DispatchContext';
+import { getCookie } from 'utils/getCookies';
 
 let persistor = persistStore(store);
 const clientSideEmotionCache = createEmotionCache();
@@ -32,14 +33,17 @@ interface MyAppProps extends AppProps {
 const MyApp: FC<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  const [theme, setTheme] = useState(sLightTheme);
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const preferredMode = prefersDarkMode ? 'dark' : 'light';
+  const [themeMode, setThemeMode] = useState(preferredMode);
+
+  useEffect(() => {
+    setThemeMode(getCookie('paletteMode') || preferredMode);
+  }, [preferredMode]);
 
   const changeTheme = (mode: string): void => {
-    if (mode === 'dark') {
-      setTheme(sDarkTheme);
-    } else {
-      setTheme(sLightTheme);
-    }
+    document.cookie = `paletteMode=${mode};path=/;max-age=31536000`;
+    setThemeMode(mode);
   };
 
   return (
@@ -47,10 +51,12 @@ const MyApp: FC<MyAppProps> = (props) => {
       <PersistGate loading={null} persistor={persistor}>
         <BaseHead />
         <CacheProvider value={emotionCache}>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider
+            theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}>
             <ToastContainer limit={3} />
             <CheckToken />
-            <DispatchContext.Provider value={changeTheme}>
+            <DispatchContext.Provider
+              value={{ setThemeMode: changeTheme, themeMode }}>
               <Component {...pageProps} />
             </DispatchContext.Provider>
           </ThemeProvider>
