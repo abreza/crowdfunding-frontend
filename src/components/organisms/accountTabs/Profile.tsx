@@ -86,7 +86,7 @@ export const Profile = () => {
                 label="نام کاربری"
                 name="username"
                 value={profileForm.username}
-                onChange={onChange}
+                disabled
               />
             </Grid>
           </Grid>
