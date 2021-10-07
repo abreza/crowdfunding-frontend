@@ -7,6 +7,9 @@ import Script from 'next/script';
 import * as gtag from 'src/config/gtag';
 import { NextIntlProvider } from 'next-intl';
 
+import { DefaultSeo } from 'next-seo';
+import { seoConfig } from 'src/config/next-seo.config';
+
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
 import { FC, useEffect, useState } from 'react';
@@ -22,7 +25,7 @@ import 'src/assets/styles/tiny.css';
 import 'src/assets/styles/nprogress.css';
 
 import createEmotionCache from 'src/createEmotionCache';
-import { sDarkTheme, sLightTheme } from 'src/constants/theme';
+import { sDarkTheme, sLightTheme } from 'src/config/theme';
 import { CheckToken } from 'src/components/hoc/CheckToken';
 import { DispatchContext } from 'src/contexts/DispatchContext';
 import { getCookie } from 'src/utils/getCookies';
@@ -84,6 +87,7 @@ const MyApp: FC<MyAppProps> = (props) => {
 
   return (
     <>
+      <DefaultSeo {...seoConfig} />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <BaseHead />
