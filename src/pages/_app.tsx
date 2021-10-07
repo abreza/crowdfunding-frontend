@@ -5,7 +5,6 @@ import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import Script from 'next/script';
 import * as gtag from 'src/config/gtag';
-import { NextIntlProvider } from 'next-intl';
 
 import { DefaultSeo } from 'next-seo';
 import { seoConfig } from 'src/config/next-seo.config';
@@ -96,13 +95,11 @@ const MyApp: FC<MyAppProps> = (props) => {
               theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}>
               <CssBaseline />
               <CheckToken />
-              <NextIntlProvider>
-                <ToastContainer limit={3} />
-                <DispatchContext.Provider
-                  value={{ setThemeMode: changeTheme, themeMode }}>
-                  <Component {...pageProps} />
-                </DispatchContext.Provider>
-              </NextIntlProvider>
+              <ToastContainer limit={3} />
+              <DispatchContext.Provider
+                value={{ setThemeMode: changeTheme, themeMode }}>
+                <Component {...pageProps} />
+              </DispatchContext.Provider>
             </ThemeProvider>
           </CacheProvider>
         </PersistGate>
