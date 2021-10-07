@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import Script from 'next/script';
-import * as gtag from 'src/utils/gtag';
+import * as gtag from 'src/config/gtag';
 import { NextIntlProvider } from 'next-intl';
 
 import 'react-toastify/dist/ReactToastify.min.css';
