@@ -3,6 +3,8 @@ import { store } from 'src/app/store';
 import { Provider } from 'react-redux';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { CacheProvider, EmotionCache } from '@emotion/react';
+import Script from 'next/script';
+import * as gtag from '../utils/gtag';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
@@ -40,6 +42,10 @@ const MyApp: FC<MyAppProps> = (props) => {
   const router = useRouter();
 
   useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url);
+    };
+
     const handleStart = (url: string) => {
       console.log(`Loading: ${url}`);
       NProgress.start();
@@ -49,6 +55,7 @@ const MyApp: FC<MyAppProps> = (props) => {
       NProgress.done();
     };
 
+    router.events.on('routeChangeComplete', handleRouteChange);
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleStop);
     router.events.on('routeChangeError', handleStop);
@@ -57,6 +64,7 @@ const MyApp: FC<MyAppProps> = (props) => {
       router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleStop);
       router.events.off('routeChangeError', handleStop);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router]);
 
@@ -74,23 +82,43 @@ const MyApp: FC<MyAppProps> = (props) => {
   };
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BaseHead />
-        <CacheProvider value={emotionCache}>
-          <ThemeProvider
-            theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}>
-            <CssBaseline />
-            <ToastContainer limit={3} />
-            <CheckToken />
-            <DispatchContext.Provider
-              value={{ setThemeMode: changeTheme, themeMode }}>
-              <Component {...pageProps} />
-            </DispatchContext.Provider>
-          </ThemeProvider>
-        </CacheProvider>
-      </PersistGate>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BaseHead />
+          <CacheProvider value={emotionCache}>
+            <ThemeProvider
+              theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}>
+              <CssBaseline />
+              <ToastContainer limit={3} />
+              <CheckToken />
+              <DispatchContext.Provider
+                value={{ setThemeMode: changeTheme, themeMode }}>
+                <Component {...pageProps} />
+              </DispatchContext.Provider>
+            </ThemeProvider>
+          </CacheProvider>
+        </PersistGate>
+      </Provider>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+    </>
   );
 };
 
