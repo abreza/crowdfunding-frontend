@@ -1,12 +1,11 @@
 import {
   AppBar,
   Container,
-  Drawer,
   Grid,
-  Hidden,
   IconButton,
   List,
   ListItem,
+  SwipeableDrawer,
   Toolbar,
   useMediaQuery,
   useScrollTrigger,
@@ -62,7 +61,7 @@ const ResponsiveAppBar: FC<any> = ({
           <AppBar
             id="appBar"
             sx={{
-              zIndex: (theme) => theme.zIndex.drawer + 1,
+              zIndex: (theme) => theme.zIndex.drawer - 1,
               transition: '0.2s',
               ...(showBackOnScroll &&
                 !trigger && {
@@ -124,24 +123,24 @@ const ResponsiveAppBar: FC<any> = ({
           </AppBar>
         </ElevationScroll>
       </HideOnScroll>
-      {mobileMenuListItems.length > 0 && (
-        <Hidden smUp>
-          <Drawer
-            anchor="left"
-            open={drawerOpen}
-            onClose={() => setDrawerOpen(false)}>
-            <Box
-              sx={{
-                width: 250,
-              }}>
-              <List>
-                {mobileMenuListItems.map((item, index) => (
-                  <ListItem key={index}>{item}</ListItem>
-                ))}
-              </List>
-            </Box>
-          </Drawer>
-        </Hidden>
+      {mobileMenuListItems.length > 0 && isXs && (
+        <SwipeableDrawer
+          anchor="right"
+          PaperProps={{ sx: { right: 'unset', left: 0 } }}
+          open={drawerOpen}
+          onClose={() => setDrawerOpen(false)}
+          onOpen={() => {}}>
+          <Box
+            sx={{
+              width: 250,
+            }}>
+            <List>
+              {mobileMenuListItems.map((item, index) => (
+                <ListItem key={index}>{item}</ListItem>
+              ))}
+            </List>
+          </Box>
+        </SwipeableDrawer>
       )}
       <Toolbar />
     </>
