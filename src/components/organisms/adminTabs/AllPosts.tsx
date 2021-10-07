@@ -1,5 +1,5 @@
 import { Container, Grid, Typography } from '@mui/material';
-import ProjectCard from 'components/molecules/projectCard/ProjectCard';
+import ProjectCard from 'src/components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
 
 const AllPosts: FC = () => {

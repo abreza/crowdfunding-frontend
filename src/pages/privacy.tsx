@@ -1,8 +1,8 @@
 import { Container, Grid, Paper, Typography } from '@mui/material';
 import { FC } from 'react';
-import Homepage from 'templates/Homepages';
+import Homepage from 'src/templates/Homepages';
 
-import sharif from 'assets/images/sharif.jpg';
+import sharif from 'src/assets/images/sharif.jpg';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 

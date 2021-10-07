@@ -1,15 +1,15 @@
 import { FC, MutableRefObject, useRef, useEffect } from 'react';
-import LandingBanner from 'components/organisms/slider/LandingBanner';
-import BestProjects from 'components/organisms/slider/BestProjects';
-import LandingSubscribe from 'components/organisms/landingSections/landingSubscribe/LandingSubscribe';
+import LandingBanner from 'src/components/organisms/slider/LandingBanner';
+import BestProjects from 'src/components/organisms/slider/BestProjects';
+import LandingSubscribe from 'src/components/organisms/landingSections/landingSubscribe/LandingSubscribe';
 import { Divider } from '@mui/material';
-import WhatIsCrowdfunding from 'components/organisms/landingSections/whatIsCrowdfunding/WhatIsCrowdfunding';
-import Homepage from 'templates/Homepages';
+import WhatIsCrowdfunding from 'src/components/organisms/landingSections/whatIsCrowdfunding/WhatIsCrowdfunding';
+import Homepage from 'src/templates/Homepages';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { baseUrl } from 'config';
-import { ProjectRo } from 'types/project';
+import { baseUrl } from 'src/config';
 import { Box } from '@mui/system';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 type LandingProps = {
   projects: ProjectRo[];

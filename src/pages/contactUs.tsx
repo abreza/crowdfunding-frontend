@@ -8,12 +8,12 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { FC } from 'react';
-import Homepage from 'templates/Homepages';
+import Homepage from 'src/templates/Homepages';
 import GoogleMapReact from 'google-map-react';
 
-import styles from 'assets/styles/map.module.css';
+import styles from 'src/assets/styles/map.module.css';
 import { Box, BoxProps, useTheme } from '@mui/system';
-import { SocialNetwork } from 'components/molecules/socialNetworks/socialNetworks';
+import { SocialNetwork } from 'src/components/molecules/socialNetworks/socialNetworks';
 import { LocationOn } from '@mui/icons-material';
 
 type ContactUsProps = {};

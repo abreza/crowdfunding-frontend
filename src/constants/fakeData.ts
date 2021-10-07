@@ -1,4 +1,3 @@
-import { CategoryEnum, ProjectRo, ProjectState } from 'types/project';
 
 export const fakeData = {
   name: 'root',

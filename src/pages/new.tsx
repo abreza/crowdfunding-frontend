@@ -15,18 +15,20 @@ import {
   Timeline as TimelineIcon,
   ViewCarousel as ViewCarouselIcon,
 } from '@mui/icons-material';
-import BasicDetails from 'components/organisms/createProjectPages/BasicDetails';
-import Budget from 'components/organisms/createProjectPages/Budget';
-import Gallery from 'components/organisms/createProjectPages/Gallery';
-import Research from 'components/organisms/createProjectPages/Research';
+import BasicDetails from 'src/components/organisms/createProjectPages/BasicDetails';
+import Budget from 'src/components/organisms/createProjectPages/Budget';
+import Gallery from 'src/components/organisms/createProjectPages/Gallery';
+import Research from 'src/components/organisms/createProjectPages/Research';
 import { FC, useEffect, useLayoutEffect, useState } from 'react';
-import Panel from 'templates/Panel';
-import Timeline from 'components/organisms/createProjectPages/Timeline';
-import { ProjectDto, CategoryEnum } from 'types/project';
-import { useCreateProjectMutation } from 'app/services/project';
+import Panel from 'src/templates/Panel';
+import Timeline from 'src/components/organisms/createProjectPages/Timeline';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import {
+  ProjectCreateDto,
+  useProjectControllerCreateMutation,
+} from 'src/app/services/api.generated';
 
 type CreateProjectProps = {};
 
@@ -69,10 +71,10 @@ const CreateProject: FC<CreateProjectProps> = () => {
   const { push } = useRouter();
   const [activeStep, setActiveStep] = useState(0);
 
-  const [project, setProject] = useState<ProjectDto>({
+  const [project, setProject] = useState<ProjectCreateDto>({
     subject: '',
     institution: '',
-    category: CategoryEnum.COMPUTER,
+    category: 'COMPUTER',
     summary: '',
     budgets: [{ title: '', value: 0 }],
     budgetReason: '',
@@ -118,7 +120,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       fls.map((file) => (file.id === id ? { ...file, progress } : file))
     );
 
-  const [createProject, { isLoading }] = useCreateProjectMutation();
+  const [createProject, { isLoading }] = useProjectControllerCreateMutation();
 
   const TabPageComponent = TabsData[activeStep].component;
 
@@ -145,7 +147,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       setActiveStep(activeStep + 1);
     } else {
       try {
-        const res = await createProject(project).unwrap();
+        const res = await createProject({ projectCreateDto: project }).unwrap();
         toast.success('پروژه شما با موفقیت ثبت شد!');
         push('/project/' + res.id);
       } catch (err: any) {
@@ -159,7 +161,7 @@ const CreateProject: FC<CreateProjectProps> = () => {
       | React.ChangeEvent<HTMLInputElement>
       | { target: { name: string; value: any } }
   ) => {
-    setProject((p: ProjectDto) => ({
+    setProject((p) => ({
       ...p,
       [e.target.name]: e.target.value,
     }));

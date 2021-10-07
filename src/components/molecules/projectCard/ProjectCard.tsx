@@ -11,8 +11,8 @@ import {
 } from '@mui/material';
 import { FC } from 'react';
 import Link from 'next/link';
-import { ProjectRo } from 'types/project';
 import { ManageProjectCard } from './ManageProjectCard';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
   const totalBudget =

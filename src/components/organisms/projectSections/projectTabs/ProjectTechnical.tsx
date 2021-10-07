@@ -7,8 +7,9 @@ import {
   TableContainer,
   Paper,
 } from '@mui/material';
-import { ProjectContext } from 'contexts/ProjectContext';
+import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
+import { TechnicalDescriptionDto } from 'src/app/services/api.generated';
 
 type ProjectTechnicalProps = {};
 
@@ -21,7 +22,7 @@ const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
         <TableContainer component={Paper}>
           <Table>
             <TableBody>
-              {technicalDescriptions.map((item) => (
+              {technicalDescriptions.map((item: TechnicalDescriptionDto) => (
                 <TableRow
                   key={item.name}
                   sx={{

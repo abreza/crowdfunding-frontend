@@ -1,11 +1,11 @@
 import { Button, Grid, Box } from '@mui/material';
 import { Paper, Typography } from '@mui/material';
-import LandingBannerItem from 'components/molecules/landingBannerItem/LandingBannerItem';
+import LandingBannerItem from 'src/components/molecules/landingBannerItem/LandingBannerItem';
 import { FC } from 'react';
 import Link from 'next/link';
-import CreateProjectButton from 'components/atoms/CreateProject';
-import { ProjectRo } from 'types/project';
-import MuiCarousel from 'components/molecules/landingBannerItem/MuiCarousel';
+import CreateProjectButton from 'src/components/atoms/CreateProject';
+import MuiCarousel from 'src/components/molecules/landingBannerItem/MuiCarousel';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
   return (

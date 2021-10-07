@@ -1,5 +1,5 @@
 import { Button, Container, Grid, Stack, Typography } from '@mui/material';
-import ProjectCard from 'components/molecules/projectCard/ProjectCard';
+import ProjectCard from 'src/components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
 import Link from 'next/link';
 

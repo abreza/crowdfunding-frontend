@@ -1,4 +1,4 @@
-import { AuthPageName } from 'components/organisms/authDialog/AuthDialog';
+import { AuthPageName } from 'src/components/organisms/authDialog/AuthDialog';
 import { createContext } from 'react';
 
 export type OpenAuthDialogProps = {

@@ -2,7 +2,7 @@ import { Avatar, Box, Button, Chip, Grid, Typography } from '@mui/material';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { FC } from 'react';
 import Link from 'next/link';
-import Homepage from 'templates/Homepages';
+import Homepage from 'src/templates/Homepages';
 import Image from 'next/image';
 
 type BlogProps = {};

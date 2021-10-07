@@ -1,10 +1,10 @@
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { Add, Close } from '@mui/icons-material';
-import { ProjectDto, TechnicalDescriptionDto } from 'types/project';
 import { FC } from 'react';
 import { toast } from 'react-toastify';
+import { ProjectCreateDto, TechnicalDescriptionDto } from 'src/app/services/api.generated';
 
-const Research: FC<{ handleChange: any; project: ProjectDto }> = ({
+const Research: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
   handleChange,
   project,
 }) => {

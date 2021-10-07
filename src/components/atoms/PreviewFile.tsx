@@ -1,12 +1,12 @@
 import { Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import { Cancel as CancelIcon, CheckCircleOutline } from '@mui/icons-material';
-import { CircularProgressWithLabel } from 'components/atoms/CircularProgressWithLabel';
-import { ExtendedFile } from 'pages/new';
+import { Cancel as CancelIcon } from '@mui/icons-material';
+import { CircularProgressWithLabel } from 'src/components/atoms/CircularProgressWithLabel';
+import { ExtendedFile } from 'src/pages/new';
 import { FC, useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
-import videoImg from 'assets/images/video.png';
+import videoImg from 'src/assets/images/video.png';
 
 export const PreviewFile: FC<{ extendedFile: ExtendedFile; removeFile?: any }> =
   ({ extendedFile, removeFile }) => {

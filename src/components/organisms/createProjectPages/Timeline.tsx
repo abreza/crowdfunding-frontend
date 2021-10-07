@@ -1,14 +1,12 @@
-import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { Add, Close } from '@mui/icons-material';
-import { ProjectDto, TimelineDto } from 'types/project';
 import React, { FC } from 'react';
 import { toast } from 'react-toastify';
-import { LanguageEnum } from 'types/generalTypes';
-import { maxMinDate } from 'utils/calendarUtils';
+import { maxMinDate } from 'src/utils/calendarUtils';
 import CustomDatePicker from '../../molecules/customDatePicker/CustomDatePicker';
+import { ProjectCreateDto, TimelineDto } from 'src/app/services/api.generated';
 
-const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
+const Timeline: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
   handleChange,
   project,
 }) => {
@@ -27,7 +25,7 @@ const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
     }
     const newTimeline: TimelineDto = {
       name: '',
-      date: undefined,
+      date: '',
     };
 
     handleChange({
@@ -114,10 +112,10 @@ const Timeline: FC<{ handleChange: any; project: ProjectDto }> = ({
                     size: 'small',
                     label: 'تاریخ',
                   }}
-                  value={item.date as DayValue}
+                  value={item.date as any}
                   onChange={(value) => onChange(index, 'date', value)}
                   minimumDate={maxMinDate({
-                    language: LanguageEnum.fa,
+                    language: 'fa',
                   })}
                 />
               </Grid>

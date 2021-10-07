@@ -1,7 +1,7 @@
 import React from 'react';
 import Script from 'next/script';
 
-import { Frame } from 'components/molecules/frame/Frame';
+import { Frame } from 'src/components/molecules/frame/Frame';
 import fixDocumentMathElements from './fixDocumentMathElements';
 
 const TinyPreview = ({ hidden = false, content = '', frameProps = {} }) => {

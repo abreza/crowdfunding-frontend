@@ -1,13 +1,13 @@
 import { Avatar, Button, Divider, Menu, MenuItem } from '@mui/material';
-import { Account, AuthRo } from 'types/auth';
-import { logout } from 'app/slices/authSlice';
-import { RootStateType } from 'app/store';
-import { HomepageContext } from 'contexts/HomepageContext';
+import { logout } from 'src/app/slices/authSlice';
+import { RootStateType } from 'src/app/store';
+import { HomepageContext } from 'src/contexts/HomepageContext';
 import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { baseUrl } from 'config';
-import { AuthPageName } from 'components/organisms/authDialog/AuthDialog';
+import { baseUrl } from 'src/config';
+import { AuthPageName } from 'src/components/organisms/authDialog/AuthDialog';
+import { LoginRo, UserRo } from 'src/app/services/api.generated';
 
 const LoginButton: FC = () => {
   const { openAuthDialog } = useContext(HomepageContext);
@@ -22,7 +22,7 @@ const LoginButton: FC = () => {
   );
 };
 
-const ProfileButton: FC<{ user: Account }> = ({ user }) => {
+const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
   const { push } = useRouter();
   const dispatch = useDispatch();
 
@@ -97,7 +97,7 @@ const ProfileButton: FC<{ user: Account }> = ({ user }) => {
 };
 
 const UserButton: FC = () => {
-  const { user, token } = useSelector<RootStateType, AuthRo>(
+  const { user, token } = useSelector<RootStateType, LoginRo>(
     (state) => state.auth
   );
   return token ? <ProfileButton user={user} /> : <LoginButton />;

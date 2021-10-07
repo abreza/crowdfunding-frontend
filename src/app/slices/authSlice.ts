@@ -1,20 +1,18 @@
 import { createSlice, AnyAction } from '@reduxjs/toolkit';
-import { Account, AuthRo } from 'types/auth';
-import { authApi } from 'app/services/auth';
+import { api as generatedApi, LoginRo } from '../services/api.generated';
 
-const initialState: AuthRo = <AuthRo>{};
+const initialState: LoginRo = <LoginRo>{};
 
 const isAuthenticated = (action: AnyAction) => {
   return (
-    authApi.endpoints.login.matchFulfilled(action) ||
-    authApi.endpoints.signUp.matchFulfilled(action)
+    generatedApi.endpoints.authControllerLogin.matchFulfilled(action) ||
+    generatedApi.endpoints.authControllerSignup.matchFulfilled(action)
   );
 };
 
 const isProfileEdit = (action: AnyAction) => {
-  return (
-    authApi.endpoints.setProfile.matchFulfilled(action) ||
-    authApi.endpoints.setMailSettings.matchFulfilled(action)
+  return generatedApi.endpoints.usersControllerUserProfile.matchFulfilled(
+    action
   );
 };
 
@@ -30,16 +28,16 @@ const slice = createSlice({
       state.user = payload.user;
     });
     builder.addMatcher(
-      authApi.endpoints.uploadAvatar.matchFulfilled,
+      generatedApi.endpoints.mediaControllerUploadAvatar.matchFulfilled,
       (state, { payload }) => {
         state.user = {
           ...state.user,
           avatarAddress: payload.path,
-        } as Account;
+        };
       }
     );
     builder.addMatcher(
-      authApi.endpoints.getAccount.matchFulfilled,
+      generatedApi.endpoints.usersControllerUserProfile.matchFulfilled,
       (state, { payload }) => {
         state.user = payload;
       }

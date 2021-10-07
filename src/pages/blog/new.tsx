@@ -1,14 +1,14 @@
 import { Container, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { upload } from 'app/services/uploadFile';
-import { RootStateType } from 'app/store';
+import { upload } from 'src/app/services/uploadFile';
+import { RootStateType } from 'src/app/store';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { MyDropzone } from 'components/molecules/dropzone/MyDropzone';
-import TinyEditor from 'components/molecules/tinyEditor/reactTiny/TinyEditorComponent';
-import { ExtendedFile } from 'pages/new';
+import { MyDropzone } from 'src/components/molecules/dropzone/MyDropzone';
+import TinyEditor from 'src/components/molecules/tinyEditor/reactTiny/TinyEditorComponent';
+import { ExtendedFile } from 'src/pages/new';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Panel from 'templates/Panel';
+import Panel from 'src/templates/Panel';
 
 type CreatePostProps = {};
 

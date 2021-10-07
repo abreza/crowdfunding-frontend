@@ -1,9 +1,9 @@
 import { Button, Grid, Hidden, Avatar, LinearProgress } from '@mui/material';
 import { Typography, Divider } from '@mui/material';
 import { Rating } from '@mui/material';
-import { HomepageContext } from 'contexts/HomepageContext';
+import { HomepageContext } from 'src/contexts/HomepageContext';
 import { FC, useContext } from 'react';
-import { dateFormatter } from 'utils/dateFormatterUtils';
+import { dateFormatter } from 'src/utils/dateFormatterUtils';
 
 type ProjectReviewProps = {};
 type RatingLineProps = {

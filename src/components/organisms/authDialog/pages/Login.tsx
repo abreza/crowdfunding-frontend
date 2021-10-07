@@ -6,17 +6,19 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { LoginDto } from 'types/auth';
-import { useLoginMutation } from 'app/services/auth';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
   AuthPageName,
   PageProps,
-} from 'components/organisms/authDialog/AuthDialog';
+} from 'src/components/organisms/authDialog/AuthDialog';
 import React, { FC, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import {
+  LoginDto,
+  useAuthControllerLoginMutation,
+} from 'src/app/services/api.generated';
 
 const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
   const { push } = useRouter();
@@ -27,7 +29,7 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading }] = useAuthControllerLoginMutation();
 
   const handleChange = ({
     target: { name, value },
@@ -36,7 +38,7 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
 
   const submitLogin = async () => {
     try {
-      await login(formState).unwrap();
+      await login({ loginDto: formState }).unwrap();
       toast.success('خوش آمدید');
       if (afterAuth) {
         push(afterAuth);

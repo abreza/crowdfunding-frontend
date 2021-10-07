@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
-import { getCookie } from 'utils/getCookies';
-import { DispatchContext } from 'contexts/DispatchContext';
+import { getCookie } from 'src/utils/getCookies';
+import { DispatchContext } from 'src/contexts/DispatchContext';
 import { Switch } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/system';

@@ -1,9 +1,9 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query';
-import { RootStateType } from 'app/store';
-import { baseUrl } from 'config';
+import { RootStateType } from 'src/app/store';
+import { rootUrl } from 'src/config';
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl,
+  baseUrl: rootUrl,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootStateType).auth.token;
     if (token) {

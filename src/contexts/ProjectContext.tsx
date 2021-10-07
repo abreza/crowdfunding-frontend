@@ -1,11 +1,11 @@
 import { Context, createContext } from 'react';
-import { CategoryEnum, ProjectRo, ProjectState } from 'types/project';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 export const initProjectContext: ProjectRo = {
   id: '',
   subject: '',
   institution: '',
-  category: CategoryEnum.COMPUTER,
+  category: 'COMPUTER',
   summary: '',
   budgets: [],
   budgetReason: '',
@@ -17,7 +17,7 @@ export const initProjectContext: ProjectRo = {
   timeDescription: '',
   timelines: [],
   imageUrls: [],
-  state: ProjectState.START,
+  state: 'START',
   owner: {
     username: '',
     email: '',
@@ -38,8 +38,11 @@ export const initProjectContext: ProjectRo = {
       projectReviews: true,
       magazine: true,
     },
+    blog: '',
   },
   rewards: [],
+  reviews: [],
 };
 
-export const ProjectContext: Context<ProjectRo> = createContext(initProjectContext);
+export const ProjectContext: Context<ProjectRo> =
+  createContext(initProjectContext);

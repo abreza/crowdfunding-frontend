@@ -8,8 +8,8 @@ import {
   AccordionSummary,
 } from '@mui/material';
 import { FC, SyntheticEvent, useState } from 'react';
-import Homepage from 'templates/Homepages';
-import sharif from 'assets/images/sharif.jpg';
+import Homepage from 'src/templates/Homepages';
+import sharif from 'src/assets/images/sharif.jpg';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';

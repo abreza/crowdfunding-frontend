@@ -8,7 +8,8 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "syncApis": "bash ./sync_apis"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,6 +41,7 @@
     "@nivo/circle-packing": "^0.73.0",
     "@nivo/core": "^0.73.0",
     "@reduxjs/toolkit": "^1.6.2",
+    "@rtk-incubator/rtk-query-codegen-openapi": "^0.5.0",
     "@tinymce/tinymce-react": "^3.13.0",
     "axios": "^0.22.0",
     "google-map-react": "^2.1.10",

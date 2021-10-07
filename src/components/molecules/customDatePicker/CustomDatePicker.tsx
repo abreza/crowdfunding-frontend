@@ -14,7 +14,7 @@ import {
   Theme,
 } from '@mui/material';
 import { CalendarToday } from '@mui/icons-material';
-import { humanReadableDate } from 'utils/calendarUtils';
+import { humanReadableDate } from 'src/utils/calendarUtils';
 import { blue } from '@mui/material/colors';
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';

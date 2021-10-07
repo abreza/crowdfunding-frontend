@@ -1,5 +1,5 @@
 import { Box } from '@mui/system';
-import { ProjectContext } from 'contexts/ProjectContext';
+import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from 'recharts';
 

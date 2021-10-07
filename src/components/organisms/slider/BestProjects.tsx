@@ -1,9 +1,9 @@
 import { Container, Typography, Grid, Button, IconButton } from '@mui/material';
 import { ArrowForward, ArrowBack } from '@mui/icons-material';
-import ChunkedCarousel from 'components/molecules/chunkedCarousel/ChunkedCarousel';
+import ChunkedCarousel from 'src/components/molecules/chunkedCarousel/ChunkedCarousel';
 import { FC, useState } from 'react';
 import Link from 'next/link';
-import { ProjectRo } from 'types/project';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 const BestProjects: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
   const [index, setIndex] = useState(0);

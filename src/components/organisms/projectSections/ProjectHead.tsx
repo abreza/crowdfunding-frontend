@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { ProjectContext } from 'contexts/ProjectContext';
+import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
 
 type ProjectHeadProps = {};

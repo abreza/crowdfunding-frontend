@@ -1,8 +1,8 @@
-import { logout } from 'app/slices/authSlice';
-import { RootStateType } from 'app/store';
+import { logout } from 'src/app/slices/authSlice';
+import { RootStateType } from 'src/app/store';
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { isExpiredJwt } from 'utils/parseJwt';
+import { isExpiredJwt } from 'src/utils/parseJwt';
 
 export const CheckToken: FC = () => {
   const token = useSelector<RootStateType, string>((state) => state.auth.token);

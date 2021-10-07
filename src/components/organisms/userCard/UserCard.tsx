@@ -6,16 +6,16 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-import { RootStateType } from 'app/store';
-import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar';
-import { baseUrl } from 'config';
+import { RootStateType } from 'src/app/store';
+import { ProfileAvatar } from 'src/components/molecules/profileAvatar/ProfileAvatar';
+import { baseUrl } from 'src/config';
 
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import { Account } from 'types/auth';
+import { UserRo } from 'src/app/services/api.generated';
 
 export const UserCard = () => {
-  const user = useSelector<RootStateType, Account>((state) => state.auth.user);
+  const user = useSelector<RootStateType, UserRo>((state) => state.auth.user);
 
   return (
     <Card sx={{ maxWidth: 345, mx: 'auto' }}>

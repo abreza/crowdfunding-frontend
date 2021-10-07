@@ -1,13 +1,16 @@
 import { Container } from '@mui/material';
 import { FC } from 'react';
-import Homepage from 'templates/Homepages';
-import ProjectHead from 'components/organisms/projectSections/ProjectHead';
-import ProjectStatus from 'components/organisms/projectSections/ProjectStatus';
-import ProjectTabs from 'components/organisms/projectSections/projectTabs/ProjectTabs';
-import { initProjectContext, ProjectContext } from 'contexts/ProjectContext';
-import { ProjectRo } from 'types/project';
+import Homepage from 'src/templates/Homepages';
+import ProjectHead from 'src/components/organisms/projectSections/ProjectHead';
+import ProjectStatus from 'src/components/organisms/projectSections/ProjectStatus';
+import ProjectTabs from 'src/components/organisms/projectSections/projectTabs/ProjectTabs';
+import {
+  initProjectContext,
+  ProjectContext,
+} from 'src/contexts/ProjectContext';
 import axios from 'axios';
-import { baseUrl } from 'config';
+import { baseUrl } from 'src/config';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 type ProjectProps = {
   project?: ProjectRo;

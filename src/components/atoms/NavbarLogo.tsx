@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import logo2 from 'assets/images/logo2.png';
-import logo3 from 'assets/images/logo3.png';
-import Link from 'components/atoms/Link';
+import logo2 from 'src/assets/images/logo2.png';
+import logo3 from 'src/assets/images/logo3.png';
+import Link from 'src/components/atoms/Link';
 import Image from 'next/image';
 import { Box, useTheme } from '@mui/system';
 import { useMediaQuery } from '@mui/material';

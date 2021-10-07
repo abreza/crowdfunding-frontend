@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { CloudflareImageLoader } from './cloudflareImage.loader';
-import { frontUrl } from 'config';
+import { frontUrl } from 'src/config';
 
 export type CloudflareImageProps = ImageProps & { base?: string };
 

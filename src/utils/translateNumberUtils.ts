@@ -1,5 +1,3 @@
-import getLocale from './getLocaleUtils';
-
 export const toPersianNumber = (num: number | string) => {
   const persian = {
     0: '۰',
@@ -49,7 +47,7 @@ export const tLocalNum = (num: number | string) => {
 };
 
 const translateNumber = ({
-  lang = getLocale(),
+  lang = 'fa',
   num,
 }: {
   lang?: string;

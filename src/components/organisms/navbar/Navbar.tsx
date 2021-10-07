@@ -14,7 +14,7 @@ import {
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { cloneElement, FC } from 'react';
 import { useState } from 'react';
-import HideOnScroll from 'components/atoms/hideOnScroll/HideOnScroll';
+import HideOnScroll from 'src/components/atoms/hideOnScroll/HideOnScroll';
 
 import modes from './modes';
 import { Box, useTheme } from '@mui/system';

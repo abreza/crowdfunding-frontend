@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-key */
 import { Button } from '@mui/material';
-import NavbarLogo from 'components/atoms/NavbarLogo';
-import NavbarSearch from 'components/atoms/NavbarSearch';
+import NavbarLogo from 'src/components/atoms/NavbarLogo';
+import NavbarSearch from 'src/components/atoms/NavbarSearch';
 import { ReactElement } from 'react';
 import Link from 'next/link';
-import UserButton from 'components/atoms/UserButton';
-import CreateProjectButton from 'components/atoms/CreateProject';
+import UserButton from 'src/components/atoms/UserButton';
+import CreateProjectButton from 'src/components/atoms/CreateProject';
 
 const LandingAppBarItems = () => {
   const WICButton: ReactElement = (

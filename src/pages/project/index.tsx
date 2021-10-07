@@ -7,12 +7,12 @@ import {
   Typography,
 } from '@mui/material';
 import { Sort as SortIcon } from '@mui/icons-material';
-import ProjectCard from 'components/molecules/projectCard/ProjectCard';
+import ProjectCard from 'src/components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
-import Homepage from 'templates/Homepages';
+import Homepage from 'src/templates/Homepages';
 import axios from 'axios';
-import { baseUrl } from 'config';
-import { ProjectRo } from 'types/project';
+import { baseUrl } from 'src/config';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 type ProjectsProps = {
   projects: ProjectRo[];

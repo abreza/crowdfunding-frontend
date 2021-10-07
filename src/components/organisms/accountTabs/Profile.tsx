@@ -5,22 +5,26 @@ import {
   Web,
 } from '@mui/icons-material';
 import { Grid, InputAdornment, TextField } from '@mui/material';
-import { RootStateType } from 'app/store';
-import { ProfileAvatar } from 'components/molecules/profileAvatar/ProfileAvatar';
-import { baseUrl } from 'config';
+import { RootStateType } from 'src/app/store';
+import { ProfileAvatar } from 'src/components/molecules/profileAvatar/ProfileAvatar';
+import { baseUrl } from 'src/config';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useSetProfileMutation } from 'app/services/auth';
-import { Account, ProfileDto } from 'types/auth';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { toast } from 'react-toastify';
+import {
+  UserRo,
+  UserUpdateDto,
+  useUsersControllerUpdateUserProfileMutation,
+} from 'src/app/services/api.generated';
 
 export const Profile = () => {
-  const user = useSelector<RootStateType, Account>((state) => state.auth.user);
+  const user = useSelector<RootStateType, UserRo>((state) => state.auth.user);
 
-  const [setProfile, { isLoading }] = useSetProfileMutation();
+  const [updateProfile, { isLoading }] =
+    useUsersControllerUpdateUserProfileMutation();
 
-  const [profileForm, setProfileForm] = useState<ProfileDto>(user);
+  const [profileForm, setProfileForm] = useState<UserUpdateDto>(user);
 
   useEffect(() => {
     const { roleNames, mailConfig, avatarAddress, email, ...newProfile } = user;
@@ -29,15 +33,13 @@ export const Profile = () => {
 
   const onChange: (e: React.ChangeEvent<{ name: string; value: any }>) => void =
     ({ target: { name, value } }) =>
-      setProfileForm((pf: ProfileDto) => ({ ...pf, [name]: value }));
+      setProfileForm((pf) => ({ ...pf, [name]: value }));
 
-  const onSubmit = () => {
-    setProfile(profileForm)
+  const onSubmit = () =>
+    updateProfile({ userUpdateDto: profileForm })
       .unwrap()
       .then(() => toast.success('تغییرات ثبت شد!'))
       .catch((err) => err && toast.error(JSON.stringify(err)));
-  };
-
   return (
     <Grid container sx={{ pt: 2 }} spacing={2}>
       <Grid item xs={12}>

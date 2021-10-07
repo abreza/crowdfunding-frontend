@@ -1,9 +1,9 @@
 import { Grid, Paper, Tab, Tabs } from '@mui/material';
-import AllPosts from 'components/organisms/adminTabs/AllPosts';
-import AllProjects from 'components/organisms/adminTabs/AllProjects';
-import AllSupports from 'components/organisms/adminTabs/AllSupports';
+import AllPosts from 'src/components/organisms/adminTabs/AllPosts';
+import AllProjects from 'src/components/organisms/adminTabs/AllProjects';
+import AllSupports from 'src/components/organisms/adminTabs/AllSupports';
 import { FC, useState } from 'react';
-import Panel from 'templates/Panel';
+import Panel from 'src/templates/Panel';
 
 type AdminProps = {};
 

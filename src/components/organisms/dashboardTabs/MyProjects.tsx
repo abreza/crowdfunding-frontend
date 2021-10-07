@@ -1,13 +1,16 @@
 import { Container, Grid, Typography, Stack } from '@mui/material';
-import ProjectCard from 'components/molecules/projectCard/ProjectCard';
+import ProjectCard from 'src/components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
-import { useGetMyProjectsQuery } from 'app/services/project';
-import CreateProjectButton from 'components/atoms/CreateProject';
+import CreateProjectButton from 'src/components/atoms/CreateProject';
+import { useProjectControllerFindMyProjectsQuery } from 'src/app/services/api';
 
 const MyProjects: FC = () => {
-  const { data, isLoading } = useGetMyProjectsQuery(null, {
-    refetchOnMountOrArgChange: 30,
-  });
+  const { data, isLoading } = useProjectControllerFindMyProjectsQuery(
+    undefined as void,
+    {
+      refetchOnMountOrArgChange: 30,
+    }
+  );
 
   return (
     <Container maxWidth="md" sx={{ pt: 2 }}>

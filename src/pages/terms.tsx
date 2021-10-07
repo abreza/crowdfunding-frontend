@@ -2,8 +2,8 @@ import { Container, Grid, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC } from 'react';
 
-import sharif from 'assets/images/sharif.jpg';
-import Homepage from 'templates/Homepages';
+import sharif from 'src/assets/images/sharif.jpg';
+import Homepage from 'src/templates/Homepages';
 import Image from 'next/image';
 
 type TermsProps = {};

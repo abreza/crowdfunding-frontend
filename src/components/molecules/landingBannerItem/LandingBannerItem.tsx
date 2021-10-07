@@ -1,7 +1,7 @@
-import { Box, Button, Theme, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import Link from 'next/link';
-import { ProjectRo } from 'types/project';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
   return (

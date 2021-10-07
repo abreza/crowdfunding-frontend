@@ -7,19 +7,19 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material';
-import { useDeleteProjectMutation } from 'app/services/project';
 import { FC } from 'react';
 import { toast } from 'react-toastify';
+import { useProjectControllerDeleteMutation } from 'src/app/services/api.generated';
 
 export const DeleteProjectDialog: FC<{
   open: boolean;
   handleClose: any;
   projectId: string;
 }> = ({ open, handleClose, projectId }) => {
-  const [deleteProject, { isLoading }] = useDeleteProjectMutation();
+  const [deleteProject, { isLoading }] = useProjectControllerDeleteMutation();
 
   const submit = () => {
-    deleteProject(projectId)
+    deleteProject({ projectId })
       .unwrap()
       .then(() => toast.success('پروژه با موفقیت حذف شد.'))
       .catch(() => toast.error('ایرادی رخ‌داده است! دوباره تلاش کنید.'));

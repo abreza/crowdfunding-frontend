@@ -17,14 +17,14 @@ import {
   Email as EmailIcon,
   Telegram as TelegramIcon,
 } from '@mui/icons-material';
-import { ProjectContext } from 'contexts/ProjectContext';
+import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import { VideoPlayer } from 'components/atoms/VideoPlayer';
-import videoImg from 'assets/images/video.png';
+import { VideoPlayer } from 'src/components/atoms/VideoPlayer';
+import videoImg from 'src/assets/images/video.png';
 import Image from 'next/image';
-import emptyFile from 'assets/images/empty_file.png';
+import emptyFile from 'src/assets/images/empty_file.png';
 
 type ProjectStatusProps = {};
 

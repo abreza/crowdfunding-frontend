@@ -1,18 +1,20 @@
 import { Grid, Link, TextField, Typography } from '@mui/material';
-import { SignUpDto } from 'types/auth';
-import { useSignUpMutation } from 'app/services/auth';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
   AuthPageName,
   PageProps,
-} from 'components/organisms/authDialog/AuthDialog';
+} from 'src/components/organisms/authDialog/AuthDialog';
 import React, { FC, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import {
+  useAuthControllerSignupMutation,
+  UserCreateDto,
+} from 'src/app/services/api.generated';
 
 const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
   const { push } = useRouter();
-  const [formState, setFormState] = useState<SignUpDto>({
+  const [formState, setFormState] = useState<UserCreateDto>({
     username: '',
     password: '',
     firstName: '',
@@ -22,7 +24,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
 
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const [signUp, { isLoading }] = useSignUpMutation();
+  const [signUp, { isLoading }] = useAuthControllerSignupMutation();
 
   const handleChange = ({
     target: { name, value },
@@ -35,7 +37,7 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
       return;
     }
     try {
-      await signUp(formState).unwrap();
+      await signUp({ userCreateDto: formState }).unwrap();
       toast.success('خوش آمدید');
       if (afterAuth) {
         push(afterAuth);

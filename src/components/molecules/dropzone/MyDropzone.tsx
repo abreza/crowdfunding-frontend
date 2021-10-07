@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Box } from '@mui/system';
-import { ExtendedFile } from 'pages/new';
-import { PreviewFile } from 'components/atoms/PreviewFile';
+import { ExtendedFile } from 'src/pages/new';
+import { PreviewFile } from 'src/components/atoms/PreviewFile';
 
 type FileDropzoneProps = {
   accept?: string;

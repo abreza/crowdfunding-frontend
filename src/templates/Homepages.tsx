@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
-import ResponsiveAppBar from 'components/organisms/navbar/Navbar';
-import Footer from 'components/organisms/footer/Footer';
-import AuthDialog from 'components/organisms/authDialog/AuthDialog';
-import { HomepageContext, OpenAuthDialogProps } from 'contexts/HomepageContext';
+import ResponsiveAppBar from 'src/components/organisms/navbar/Navbar';
+import Footer from 'src/components/organisms/footer/Footer';
+import AuthDialog from 'src/components/organisms/authDialog/AuthDialog';
+import { HomepageContext, OpenAuthDialogProps } from 'src/contexts/HomepageContext';
 import { Box } from '@mui/system';
 
 type HomepageProps = {};

@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { FC } from 'react';
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing';
-import { fakeData } from 'constants/fakeData';
+import { fakeData } from 'src/constants/fakeData';
 
 type ProjectFoundsProps = {};
 

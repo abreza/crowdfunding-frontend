@@ -7,10 +7,10 @@ import {
   Typography,
 } from '@mui/material';
 import { Create as CreateIcon } from '@mui/icons-material';
-import { ProjectDto } from 'types/project';
 import { FC } from 'react';
+import { ProjectCreateDto } from 'src/app/services/api.generated';
 
-const Team: FC<{ handleChange: any; project: ProjectDto }> = ({
+const Team: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
   handleChange,
   project,
 }) => {

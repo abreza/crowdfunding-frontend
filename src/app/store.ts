@@ -15,12 +15,9 @@ import {
 } from 'redux-persist';
 import storage from './reduxPersistStorage';
 
-import { translatorReducer } from 'app/slices/localSlice';
-import { projectsReducer } from 'app/slices/projectsSlice';
-import authReducer from 'app/slices/authSlice';
+import authReducer from './slices/authSlice';
 import { rtkQueryErrorHandler } from './rtkQueryError';
-import { authApi } from './services/auth';
-import { projectApi } from './services/project';
+import { api } from './services/api.generated';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -34,11 +31,8 @@ const persistAuthReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: combineReducers({
-    [authApi.reducerPath]: authApi.reducer,
-    [projectApi.reducerPath]: projectApi.reducer,
+    [api.reducerPath]: api.reducer,
     auth: persistAuthReducer,
-    projects: projectsReducer,
-    local: translatorReducer,
   }),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -46,8 +40,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     })
-      .concat(authApi.middleware)
-      .concat(projectApi.middleware)
+      .concat(api.middleware)
       .concat(rtkQueryErrorHandler),
   devTools: isDevelopment,
 });

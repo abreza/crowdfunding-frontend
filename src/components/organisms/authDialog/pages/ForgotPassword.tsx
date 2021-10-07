@@ -1,20 +1,23 @@
 import { Grid, Link, TextField, Typography } from '@mui/material';
-import { useForgotPasswordMutation } from 'app/services/auth';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
   AuthPageName,
   PageProps,
-} from 'components/organisms/authDialog/AuthDialog';
+} from 'src/components/organisms/authDialog/AuthDialog';
 import React, { FC, useState } from 'react';
 import { toast } from 'react-toastify';
-import { UsernameDto } from 'types/auth';
+import {
+  MailResetPasswordDto,
+  useUsersControllerMailResetPasswordMutation,
+} from 'src/app/services/api.generated';
 
 const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
-  const [form, setForm] = useState<UsernameDto>({
-    username: '',
+  const [form, setForm] = useState<MailResetPasswordDto>({
+    email: '',
   });
 
-  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
+  const [forgotPassword, { isLoading }] =
+    useUsersControllerMailResetPasswordMutation();
 
   const handleChange = ({
     target: { name, value },
@@ -23,7 +26,7 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
 
   const submitForgot = async () => {
     try {
-      await forgotPassword(form).unwrap();
+      await forgotPassword({ mailResetPasswordDto: form }).unwrap();
       toast.success('ایمیل تغییر رمزعبور برایتان ارسال شد!');
       handleClose();
     } catch (err: any) {
@@ -36,11 +39,11 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
       <Grid item>
         <TextField
           size="small"
-          label="نام‌کاربری"
-          name="username"
+          label="ایمیل"
+          name="email"
           type="text"
           fullWidth
-          value={form.username}
+          value={form.email}
           InputProps={{ className: 'ltr-input' }}
           onChange={handleChange}
         />

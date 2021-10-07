@@ -2,7 +2,7 @@ import { Button, ButtonGroup, Paper } from '@mui/material';
 import { Delete, Edit, Settings } from '@mui/icons-material';
 import { FC, useState } from 'react';
 import { DeleteProjectDialog } from './dialogs/DeleteProjectDialog';
-import { ProjectRo } from 'types/project';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 export const ManageProjectCard: FC<{ project?: ProjectRo }> = ({ project }) => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);

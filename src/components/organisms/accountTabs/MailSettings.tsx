@@ -6,23 +6,35 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useSetMailSettingsMutation } from 'app/services/auth';
-import { RootStateType } from 'app/store';
+import { RootStateType } from 'src/app/store';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { Account, MailSettingsDto } from 'types/auth';
+import {
+  MailConfigDto,
+  UserRo,
+  UserUpdateDto,
+  useUsersControllerUpdateUserProfileMutation,
+} from 'src/app/services/api.generated';
 
 export const MailSettings = () => {
-  const { mailConfig, email, username } = useSelector<RootStateType, Account>(
+  const { mailConfig, email, username } = useSelector<RootStateType, UserRo>(
     (state) => state.auth.user
   );
 
-  const [setMailSettings, { isLoading }] = useSetMailSettingsMutation();
+  const [setMailSettings, { isLoading }] =
+    useUsersControllerUpdateUserProfileMutation();
 
-  const [form, setForm] = useState<MailSettingsDto>({
-    mailConfig,
+  const [form, setForm] = useState<UserUpdateDto>({
+    mailConfig: {
+      profile: true,
+      supportedProjects: true,
+      createdProjects: true,
+      crowdfundingUpdates: true,
+      projectReviews: true,
+      magazine: true,
+    },
     email,
     username,
   });
@@ -33,7 +45,7 @@ export const MailSettings = () => {
 
   const onChange: (e: React.ChangeEvent<{ name: string; value: any }>) => void =
     ({ target: { name, value } }) =>
-      setForm((pf: MailSettingsDto) => ({
+      setForm((pf: UserUpdateDto) => ({
         ...pf,
         [name]: value,
       }));
@@ -42,21 +54,19 @@ export const MailSettings = () => {
     e: React.ChangeEvent<{ name: string; value: any }>,
     checked: boolean
   ) => void = ({ target: { name } }, checked) =>
-    setForm((pf: MailSettingsDto) => ({
+    setForm((pf: UserUpdateDto) => ({
       ...pf,
       mailConfig: {
-        ...pf.mailConfig,
+        ...(pf.mailConfig as MailConfigDto),
         [name]: checked,
       },
     }));
 
-  const onSubmit = () => {
-    setMailSettings(form)
+  const onSubmit = () =>
+    setMailSettings({ userUpdateDto: form })
       .unwrap()
       .then(() => toast.success('تغییرات ثبت شد!'))
       .catch((err) => err && toast.error(JSON.stringify(err)));
-  };
-
   return (
     <Grid container sx={{ pt: 2 }} spacing={2}>
       <Grid item xs={12} sm={6}>
@@ -81,7 +91,7 @@ export const MailSettings = () => {
           <FormControlLabel
             disabled
             control={
-              <Checkbox name="profile" checked={form.mailConfig.profile} />
+              <Checkbox name="profile" checked={form?.mailConfig?.profile} />
             }
             label="ایمیل‌های مدیریت حساب کاربری"
           />
@@ -89,7 +99,7 @@ export const MailSettings = () => {
             control={
               <Checkbox
                 name="supportedProjects"
-                checked={form.mailConfig.supportedProjects}
+                checked={form?.mailConfig?.supportedProjects}
                 onChange={onChangeMailConfig}
               />
             }
@@ -99,7 +109,7 @@ export const MailSettings = () => {
             control={
               <Checkbox
                 name="createdProjects"
-                checked={form.mailConfig.createdProjects}
+                checked={form?.mailConfig?.createdProjects}
                 onChange={onChangeMailConfig}
               />
             }
@@ -109,7 +119,7 @@ export const MailSettings = () => {
             control={
               <Checkbox
                 name="crowdfundingUpdates"
-                checked={form.mailConfig.crowdfundingUpdates}
+                checked={form?.mailConfig?.crowdfundingUpdates}
                 onChange={onChangeMailConfig}
               />
             }
@@ -119,7 +129,7 @@ export const MailSettings = () => {
             control={
               <Checkbox
                 name="projectReviews"
-                checked={form.mailConfig.projectReviews}
+                checked={form?.mailConfig?.projectReviews}
                 onChange={onChangeMailConfig}
               />
             }
@@ -129,7 +139,7 @@ export const MailSettings = () => {
             control={
               <Checkbox
                 name="magazine"
-                checked={form.mailConfig.magazine}
+                checked={form?.mailConfig?.magazine}
                 onChange={onChangeMailConfig}
               />
             }

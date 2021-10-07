@@ -9,11 +9,11 @@ import {
 import { Close, Add } from '@mui/icons-material';
 import React, { FC } from 'react';
 import Link from 'next/link';
-import { BudgetDto, ProjectDto } from 'types/project';
 import { toast } from 'react-toastify';
-import { PriceFormat } from 'components/atoms/PriceFormat';
+import { PriceFormat } from 'src/components/atoms/PriceFormat';
+import { BudgetDto, ProjectCreateDto } from 'src/app/services/api.generated';
 
-const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
+const Budget: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
   handleChange,
   project,
 }) => {
@@ -82,7 +82,7 @@ const Budget: FC<{ handleChange: any; project: ProjectDto }> = ({
           محاسبه می شود.
         </Typography>
         <Grid container sx={{ py: 2 }}>
-          {project.budgets.map((budget, index) => (
+          {project.budgets.map((budget: BudgetDto, index: number) => (
             <Grid
               item
               container

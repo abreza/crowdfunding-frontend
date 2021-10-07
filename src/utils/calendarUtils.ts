@@ -1,5 +1,4 @@
 import { Day, DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
-import { LanguageEnum } from 'types/generalTypes';
 import { onlyNumber } from './functionalUtils';
 import jMoment from 'jalali-moment';
 
@@ -8,13 +7,13 @@ export const humanReadableDate = (date: DayValue) => {
   return `${date.year}/${date.month}/${date.day}`;
 };
 
-export const initializeDate: (language: LanguageEnum) => Day = (language) => {
+export const initializeDate: (language: 'fa') => Day = (language) => {
   const [year, month, day] = new Date()
     .toLocaleDateString(language)
     .split('/')
     .map((a) => Number(onlyNumber(a)));
 
-  return language === LanguageEnum.fa
+  return language === 'fa'
     ? { year, month, day }
     : { year: day, month: year, day: month };
 };
@@ -30,7 +29,7 @@ export const calculateDateRange = (dayRange: number = 30) => ({
 });
 
 type maximumDateType = {
-  language: LanguageEnum;
+  language: 'fa';
   add?: number;
   subtract?: number;
 };

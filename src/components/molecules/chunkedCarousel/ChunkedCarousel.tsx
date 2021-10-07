@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
-import UseWindowDimensions from 'components/hoc/UseWindowSize';
+import UseWindowDimensions from 'src/components/hoc/UseWindowSize';
 import { FC, useEffect, useState } from 'react';
-import ProjectCard from 'components/molecules/projectCard/ProjectCard';
-import { ProjectRo } from 'types/project';
+import ProjectCard from 'src/components/molecules/projectCard/ProjectCard';
 import SwipeableViews from 'react-swipeable-views';
 import { Box } from '@mui/system';
+import { ProjectRo } from 'src/app/services/api.generated';
 
 const ChunkedCarousel: FC<{
   items: ProjectRo[];

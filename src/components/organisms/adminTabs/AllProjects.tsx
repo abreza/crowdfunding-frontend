@@ -1,10 +1,10 @@
 import { Container, Grid, Typography } from '@mui/material';
-import ProjectCard from 'components/molecules/projectCard/ProjectCard';
+import ProjectCard from 'src/components/molecules/projectCard/ProjectCard';
 import { FC } from 'react';
-import { useGetAllProjectsQuery } from 'app/services/project';
+import { useProjectControllerFindForAdminQuery } from 'src/app/services/api.generated';
 
 const AllProjects: FC = () => {
-  const { data, isLoading } = useGetAllProjectsQuery(null);
+  const { data, isLoading } = useProjectControllerFindForAdminQuery();
 
   return (
     <Container maxWidth="md" sx={{ pt: 2 }}>

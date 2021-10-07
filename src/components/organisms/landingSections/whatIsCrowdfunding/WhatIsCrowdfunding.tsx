@@ -2,9 +2,9 @@ import { Container, Button, Typography, Grid, Box } from '@mui/material';
 import { FC } from 'react';
 import Link from 'next/link';
 
-import pic2 from 'assets/images/pic2.png';
-import pic6 from 'assets/images/pic6.png';
-import pic7 from 'assets/images/pic7.png';
+import pic2 from 'src/assets/images/pic2.png';
+import pic6 from 'src/assets/images/pic6.png';
+import pic7 from 'src/assets/images/pic7.png';
 import Image from 'next/image';
 
 type WhatIsCrowdfundingProps = {};

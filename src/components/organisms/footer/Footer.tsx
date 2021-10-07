@@ -7,10 +7,10 @@ import {
   MenuItem,
 } from '@mui/material';
 import Link from 'next/link';
-import logo2 from 'assets/images/logo2.png';
+import logo2 from 'src/assets/images/logo2.png';
 import Image from 'next/image';
 import { Box } from '@mui/system';
-import { SocialNetwork } from 'components/molecules/socialNetworks/socialNetworks';
+import { SocialNetwork } from 'src/components/molecules/socialNetworks/socialNetworks';
 import ThemeModeToggle from './ThemeModeToggle';
 
 export default function Footer() {

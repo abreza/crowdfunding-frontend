@@ -1,41 +1,41 @@
 import { Box, Chip, Grid, TextField, Typography } from '@mui/material';
 import {
-  Category,
+  Category as CategoryIcon,
   Computer as ComputerIcon,
   Functions as FunctionsIcon,
   OutdoorGrill,
 } from '@mui/icons-material';
 import { FC } from 'react';
-import { ProjectDto, CategoryEnum } from 'types/project';
+import { Category, ProjectCreateDto } from 'src/app/services/api.generated';
 
-const chips = [
+const chips: { icon: any; label: string; category: Category }[] = [
   {
     icon: ComputerIcon,
     label: 'کامپیوتر',
-    category: CategoryEnum.COMPUTER,
+    category: 'COMPUTER',
   },
   {
-    icon: Category,
+    icon: CategoryIcon,
     label: 'فیزیک',
-    category: CategoryEnum.PHYSICS,
+    category: 'PHYSICS',
   },
   {
     icon: OutdoorGrill,
     label: 'شیمی',
-    category: CategoryEnum.CHEMISTRY,
+    category: 'CHEMISTRY',
   },
   {
     icon: FunctionsIcon,
     label: 'ریاضی',
-    category: CategoryEnum.MATHEMATICS,
+    category: 'MATHEMATICS',
   },
 ];
 
-const BasicDetails: FC<{ handleChange: any; project: ProjectDto }> = ({
+const BasicDetails: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
   handleChange,
   project,
 }) => {
-  const onClickBadge = (badge: CategoryEnum) => {
+  const onClickBadge = (badge: Category) => {
     handleChange({ target: { name: 'category', value: badge } });
   };
 

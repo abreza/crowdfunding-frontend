@@ -1,12 +1,15 @@
 import { Grid, TextField } from '@mui/material';
-import { useChangePasswordMutation } from 'app/services/auth';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { ChangePasswordDto } from 'types/auth';
+import {
+  ChangePasswordDto,
+  useUsersControllerChangePasswordMutation,
+} from 'src/app/services/api.generated';
 
 export const ChangePassword = () => {
-  const [changePassword, { isLoading }] = useChangePasswordMutation();
+  const [changePassword, { isLoading }] =
+    useUsersControllerChangePasswordMutation();
 
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -19,15 +22,14 @@ export const ChangePassword = () => {
   });
 
   const onChange: (e: React.ChangeEvent<{ name: string; value: any }>) => void =
-    ({ target: { name, value } }) =>
-      setForm((f: ChangePasswordDto) => ({ ...f, [name]: value }));
+    ({ target: { name, value } }) => setForm((f) => ({ ...f, [name]: value }));
 
   const onSubmit = () => {
     if (confirmPassword !== form.newPassword) {
       toast.error('تکرار رمز نادرست است!');
       return;
     }
-    changePassword(form)
+    changePassword({ changePasswordDto: { password: form.newPassword } })
       .unwrap()
       .then(() => toast.success('تغییرات ثبت شد!'))
       .catch((err) => err && toast.error(JSON.stringify(err)));

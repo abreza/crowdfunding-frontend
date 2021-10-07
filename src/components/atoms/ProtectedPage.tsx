@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { RootStateType } from 'app/store';
+import { RootStateType } from 'src/app/store';
 import { useRouter } from 'next/router';
 
 const ProtectedPage: FC<{ onlyAdmin?: boolean }> = ({
