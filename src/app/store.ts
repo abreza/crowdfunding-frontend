@@ -17,7 +17,7 @@ import storage from './reduxPersistStorage';
 
 import authReducer from './slices/authSlice';
 import { rtkQueryErrorHandler } from './rtkQueryError';
-import { api } from './services/api.generated';
+import { api } from './services/api';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
