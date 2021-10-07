@@ -1,4 +1,7 @@
 {
-    "locales": ["fa", "en"],
-    "defaultLocale": "fa"
+  "locales": ["fa", "en"],
+  "defaultLocale": "fa",
+  "pages": {
+    "*": ["common"]
+  }
 }
