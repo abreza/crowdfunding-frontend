@@ -16,12 +16,16 @@ import 'src/assets/styles/app.css';
 import 'src/assets/styles/gallery.css';
 import 'src/assets/fonts/fontiran.css';
 import 'src/assets/styles/tiny.css';
+import 'src/assets/styles/nprogress.css';
 
 import createEmotionCache from 'src/createEmotionCache';
 import { sDarkTheme, sLightTheme } from 'src/constants/theme';
 import { CheckToken } from 'src/components/hoc/CheckToken';
 import { DispatchContext } from 'src/contexts/DispatchContext';
 import { getCookie } from 'src/utils/getCookies';
+
+import { useRouter } from 'next/router';
+import NProgress from 'nprogress';
 
 let persistor = persistStore(store);
 const clientSideEmotionCache = createEmotionCache();
@@ -32,6 +36,29 @@ interface MyAppProps extends AppProps {
 
 const MyApp: FC<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleStart = (url: string) => {
+      console.log(`Loading: ${url}`);
+      NProgress.start();
+    };
+    const handleStop = () => {
+      console.log(`Loaded`);
+      NProgress.done();
+    };
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleStop);
+    router.events.on('routeChangeError', handleStop);
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleStop);
+      router.events.off('routeChangeError', handleStop);
+    };
+  }, [router]);
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const preferredMode = prefersDarkMode ? 'dark' : 'light';
