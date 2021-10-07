@@ -1,13 +1,4 @@
-import {
-  Paper,
-  Box,
-  Container,
-  Button,
-  Theme,
-  Tabs,
-  Tab,
-  Grid,
-} from '@mui/material';
+import { Paper, Box, Container, Button, Tabs, Tab, Grid } from '@mui/material';
 import {
   Assignment as AssignmentIcon,
   AccountBalanceWallet as AccountBalanceWalletIcon,
@@ -27,8 +18,10 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import {
   ProjectCreateDto,
+  TimelineDto,
   useProjectControllerCreateMutation,
 } from 'src/app/services/api.generated';
+import jMoment from 'jalali-moment';
 
 type CreateProjectProps = {};
 
@@ -147,7 +140,20 @@ const CreateProject: FC<CreateProjectProps> = () => {
       setActiveStep(activeStep + 1);
     } else {
       try {
-        const res = await createProject({ projectCreateDto: project }).unwrap();
+        const fixedTimelineProject = {
+          ...project,
+          timelines: project.timelines.map((item: TimelineDto) => ({
+            name: item.name,
+            date: jMoment(
+              // @ts-ignore
+              `${item.date.year}-${item.date.month}-${item.date.day}`,
+              'jYYYY-jM-jD'
+            ).toISOString(),
+          })),
+        };
+        const res = await createProject({
+          projectCreateDto: fixedTimelineProject,
+        }).unwrap();
         toast.success('پروژه شما با موفقیت ثبت شد!');
         push('/project/' + res.id);
       } catch (err: any) {
