@@ -1,18 +1,13 @@
 import { createSlice, AnyAction } from '@reduxjs/toolkit';
-import { api as generatedApi, LoginRo } from '../services/api.generated';
+import { LoginRo } from '../services/api.generated';
+import { api } from '../services/api';
 
 const initialState: LoginRo = <LoginRo>{};
 
 const isAuthenticated = (action: AnyAction) => {
   return (
-    generatedApi.endpoints.authControllerLogin.matchFulfilled(action) ||
-    generatedApi.endpoints.authControllerSignup.matchFulfilled(action)
-  );
-};
-
-const isProfileEdit = (action: AnyAction) => {
-  return generatedApi.endpoints.usersControllerUserProfile.matchFulfilled(
-    action
+    api.endpoints.authControllerLogin.matchFulfilled(action) ||
+    api.endpoints.authControllerSignup.matchFulfilled(action)
   );
 };
 
@@ -28,7 +23,7 @@ const slice = createSlice({
       state.user = payload.user;
     });
     builder.addMatcher(
-      generatedApi.endpoints.mediaControllerUploadAvatar.matchFulfilled,
+      api.endpoints.mediaControllerUploadAvatar.matchFulfilled,
       (state, { payload }) => {
         state.user = {
           ...state.user,
@@ -37,17 +32,21 @@ const slice = createSlice({
       }
     );
     builder.addMatcher(
-      generatedApi.endpoints.usersControllerUserProfile.matchFulfilled,
+      api.endpoints.usersControllerUserProfile.matchFulfilled,
       (state, { payload }) => {
         state.user = payload;
       }
     );
-    builder.addMatcher(isProfileEdit, (state, { meta }) => {
-      state.user = {
-        ...state.user,
-        ...meta?.arg?.originalArgs,
-      };
-    });
+    builder.addMatcher(
+      api.endpoints.usersControllerUpdateUserProfile.matchFulfilled,
+      (state, { meta }) => {
+        state.user = {
+          ...state.user,
+          // @ts-ignore
+          ...meta?.arg?.originalArgs?.userUpdateDto,
+        };
+      }
+    );
   },
 });
 
