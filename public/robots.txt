@@ -1,3 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Allow: /
+
+# Host
+Host: https://funding.amaj.dev
+
+# Sitemaps
+Sitemap: https://funding.amaj.dev/sitemap.xml
