@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import Script from 'next/script';
-import * as gtag from '../utils/gtag';
+import * as gtag from 'src/utils/gtag';
+import { NextIntlProvider } from 'next-intl';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
@@ -90,12 +91,14 @@ const MyApp: FC<MyAppProps> = (props) => {
             <ThemeProvider
               theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}>
               <CssBaseline />
-              <ToastContainer limit={3} />
               <CheckToken />
-              <DispatchContext.Provider
-                value={{ setThemeMode: changeTheme, themeMode }}>
-                <Component {...pageProps} />
-              </DispatchContext.Provider>
+              <NextIntlProvider>
+                <ToastContainer limit={3} />
+                <DispatchContext.Provider
+                  value={{ setThemeMode: changeTheme, themeMode }}>
+                  <Component {...pageProps} />
+                </DispatchContext.Provider>
+              </NextIntlProvider>
             </ThemeProvider>
           </CacheProvider>
         </PersistGate>

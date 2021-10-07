@@ -16,4 +16,8 @@ module.exports = withImages({
   env: {
     PUBLIC_URL: '',
   },
+  i18n: {
+    locales: ['fa', 'en'],
+    defaultLocale: 'fa',
+  },
 });
