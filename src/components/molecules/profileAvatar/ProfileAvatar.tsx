@@ -2,7 +2,7 @@ import { Edit } from '@mui/icons-material';
 import { Avatar, IconButton, Skeleton } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC } from 'react';
-import { useMediaControllerUploadAvatarMutation } from 'src/app/services/api';
+import { useMediaControllerUploadAvatarMutation } from 'src/app/services/api.generated';
 
 export const ProfileAvatar: FC<{ editable?: boolean; src: string }> = ({
   editable = true,
@@ -15,7 +15,7 @@ export const ProfileAvatar: FC<{ editable?: boolean; src: string }> = ({
     if (!image) return;
     const formData = new FormData();
     formData.append('file', image);
-    await uploadAvatar(formData as any);
+    await uploadAvatar({ body: formData as any });
   };
 
   return (

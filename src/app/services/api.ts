@@ -7,13 +7,6 @@ export const api = generatedApi
   .enhanceEndpoints({
     addTagTypes: ['Project'],
     endpoints: {
-      mediaControllerUploadAvatar: {
-        query: (formData: any) => ({
-          url: 'media/avatar',
-          method: 'POST',
-          body: formData,
-        }),
-      },
       projectControllerDelete: {
         invalidatesTags: (result, error, { projectId }) => [
           { type: 'Project', id: projectId },
@@ -51,5 +44,4 @@ export const {
   useProjectControllerDeleteMutation,
   useProjectControllerFindMyProjectsQuery,
   useProjectControllerFindForAdminQuery,
-  useMediaControllerUploadAvatarMutation,
 } = api;
