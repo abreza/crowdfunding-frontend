@@ -3,5 +3,6 @@
   "defaultLocale": "fa",
   "pages": {
     "*": ["common"]
-  }
+  },
+  "localeDetection": false
 }

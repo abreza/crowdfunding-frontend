@@ -12,8 +12,13 @@ import Image from 'next/image';
 import { Box } from '@mui/system';
 import { SocialNetwork } from 'src/components/molecules/socialNetworks/socialNetworks';
 import ThemeModeToggle from './ThemeModeToggle';
+import { localLabels } from 'src/constants/locals';
+import useTranslation from 'next-translate/useTranslation';
+import setLanguage from 'next-translate/setLanguage';
 
 export default function Footer() {
+  const { lang: translationLang } = useTranslation();
+
   return (
     <footer>
       <Box
@@ -54,8 +59,8 @@ export default function Footer() {
               <Grid item xs={12}>
                 <TextField
                   select
-                  value={'fa'}
                   size="small"
+                  value={translationLang}
                   sx={{
                     color: 'white',
                     ' .MuiInputLabel-root': {
@@ -71,8 +76,17 @@ export default function Footer() {
                       border: '1px solid white',
                     },
                   }}>
-                  <MenuItem value={'en'}>English (US)</MenuItem>
-                  <MenuItem value={'fa'}>فارسی</MenuItem>
+                  {localLabels.map((lang) => (
+                    <MenuItem
+                      key={lang.code}
+                      selected={translationLang === lang.code}
+                      value={lang.code}
+                      onClick={() =>
+                        translationLang !== lang.code && setLanguage(lang.code)
+                      }>
+                      {lang.text}
+                    </MenuItem>
+                  ))}
                 </TextField>
               </Grid>
               <Grid item xs={12}>

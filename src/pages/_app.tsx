@@ -31,6 +31,7 @@ import { getCookie } from 'src/utils/getCookies';
 
 import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
+import { usePersistLocaleCookie } from 'src/components/hoc/UsePersistLocaleCookie';
 
 let persistor = persistStore(store);
 const clientSideEmotionCache = createEmotionCache();
@@ -43,6 +44,7 @@ const MyApp: FC<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const router = useRouter();
+  usePersistLocaleCookie();
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
