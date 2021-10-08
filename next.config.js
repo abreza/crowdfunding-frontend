@@ -27,4 +27,7 @@ module.exports = withPlugins([[withImages], [nextTranslate]], {
       'crowdfunding.mamalan.ir',
     ],
   },
+  env: {
+    PUBLIC_URL: '',
+  },
 });
