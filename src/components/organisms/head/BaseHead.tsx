@@ -5,14 +5,20 @@ const BaseHead = () => {
   return (
     <Head>
       <meta charSet="utf-8" />
-      <link rel="icon" href={process.env.PUBLIC_URL + 'logo.png'} />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="theme-color" content="#000000" />
-
+      <meta name="application-name" content="Crowd Funding" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="Crowd Funding" />
       <meta
         name="description"
-        content="Web site created using create-react-app"
+        content="A place to invest in science projects."
       />
+      <meta name="format-detection" content="telephone=no" />
+
+      <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+
+      <link rel="icon" href={process.env.PUBLIC_URL + 'logo.png'} />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       <link
         rel="apple-touch-icon"
@@ -83,16 +89,15 @@ const BaseHead = () => {
         sizes="16x16"
         href={process.env.PUBLIC_URL + '/favicon/favicon-16x16.png'}
       />
-      <link
-        rel="manifest"
-        href={process.env.PUBLIC_URL + '/favicon/manifest.json'}
-      />
+      <link rel="manifest" href={process.env.PUBLIC_URL + '/manifest.json'} />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta
         name="msapplication-TileImage"
         content={process.env.PUBLIC_URL + '/favicon/ms-icon-144x144.png'}
       />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="msapplication-TileColor" content="#007FFF" />
+      <meta name="msapplication-tap-highlight" content="no" />
+      <meta name="theme-color" content="#007FFF" />
       <title>تامین مالی جمعی شریف</title>
     </Head>
   );
