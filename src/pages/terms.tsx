@@ -6,9 +6,7 @@ import sharif from 'src/assets/images/sharif.jpg';
 import Homepage from 'src/templates/Homepages';
 import Image from 'next/image';
 
-type TermsProps = {};
-
-const Terms: FC<TermsProps> = () => {
+const Terms: FC = () => {
   return (
     <Homepage>
       <Container sx={{ py: 2 }} maxWidth="md">
@@ -17,13 +15,15 @@ const Terms: FC<TermsProps> = () => {
             overflow: 'hidden',
             position: 'relative',
             mb: 2,
-          }}>
+          }}
+        >
           <Box
             sx={{
               height: 450,
               position: 'relative',
               filter: 'blur(2px) grayscale(70%) brightness(0.70)',
-            }}>
+            }}
+          >
             <Image
               src={sharif}
               alt="about"
@@ -44,13 +44,15 @@ const Terms: FC<TermsProps> = () => {
               right: 0,
               width: '100%',
               height: '100%',
-            }}>
+            }}
+          >
             <Grid item xs={12}>
               <Typography
                 variant="h1"
                 align="center"
                 color="white"
-                sx={{ textShadow: '#ccc 1px 3px' }}>
+                sx={{ textShadow: '#ccc 1px 3px' }}
+              >
                 قوانین
               </Typography>
             </Grid>

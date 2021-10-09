@@ -10,9 +10,7 @@ import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Panel from 'src/templates/Panel';
 
-type CreatePostProps = {};
-
-const CreatePost: FC<CreatePostProps> = () => {
+const CreatePost: FC = () => {
   const [titleImage, setTitleImage] = useState<ExtendedFile | undefined>();
   const [content, setContent] = useState('');
   const token = useSelector<RootStateType, string>((state) => state.auth.token);

@@ -48,7 +48,8 @@ export const Profile = () => {
           spacing={2}
           direction="row"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <Grid item xs={12} sm={4}>
             <Grid container alignItems="center" justifyContent="center">
               <ProfileAvatar
@@ -177,7 +178,8 @@ export const Profile = () => {
           fullWidth
           variant="contained"
           onClick={onSubmit}
-          loading={isLoading}>
+          loading={isLoading}
+        >
           ثبت اطلاعات
         </LoadingButton>
       </Grid>

@@ -93,7 +93,8 @@ const AuthDialog: FC<AuthDialogProps> = ({
               minHeight: 300,
               padding: 2,
             }}
-            spacing={1}>
+            spacing={1}
+          >
             <Grid item>
               <Typography component="h3" variant="h2" align="center">
                 {title}
@@ -114,7 +115,8 @@ const AuthDialog: FC<AuthDialogProps> = ({
                 backgroundSize: '160% auto',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center center',
-              }}></Grid>
+              }}
+            ></Grid>
           </Hidden>
         </Grid>
       </DialogContent>

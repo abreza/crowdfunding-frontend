@@ -48,7 +48,8 @@ const ChunkedCarousel: FC<{
             justifyContent="space-around"
             alignItems="center"
             spacing={3}
-            sx={{ p: 2 }}>
+            sx={{ p: 2 }}
+          >
             {cis.map((item, j) => (
               <Grid item key={j} xs={chunk !== 1 && itemSize}>
                 <ProjectCard item={item} />

@@ -1,10 +1,9 @@
 /* global tinymce */
 import mathTextToSvg from '../mathTextToSvg';
 if (typeof window !== 'undefined') {
-  const tinymce = require('tinymce');
-
-  (function () {
-    const open = function (editor: any /* TODO:fix */, initData: string = '') {
+  (async () => {
+    const tinymce = await import('tinymce');
+    const open = function (editor: any /* TODO:fix */, initData = '') {
       let latexData = initData;
       let svgLatex = mathTextToSvg(latexData);
       editor.windowManager.open({
@@ -104,8 +103,8 @@ if (typeof window !== 'undefined') {
     };
 
     const Plugin = () => {
-      // @ts-ignore
       const tm = tinymce;
+      // @ts-ignore
       tm.util.Tools.resolve('tinymce.PluginManager').add(
         'latex',
         function (editor: any /* TODO:fix */) {

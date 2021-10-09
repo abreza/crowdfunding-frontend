@@ -76,7 +76,8 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
               <InputAdornment position="start">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={() => setShowPassword(!showPassword)}>
+                  onClick={() => setShowPassword(!showPassword)}
+                >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
@@ -91,7 +92,8 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           variant="contained"
           color="primary"
           onClick={submitLogin}
-          loading={isLoading}>
+          loading={isLoading}
+        >
           ورود
         </LoadingButton>
       </Grid>
@@ -109,7 +111,8 @@ const Login: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
             {'فراموشی '}
             <Link
               href="#"
-              onClick={() => changePage(AuthPageName.FORGOT_PASSWORD)}>
+              onClick={() => changePage(AuthPageName.FORGOT_PASSWORD)}
+            >
               {'گذرواژه'}
             </Link>
           </Typography>

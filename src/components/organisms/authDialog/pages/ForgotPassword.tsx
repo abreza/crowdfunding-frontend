@@ -54,7 +54,8 @@ const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
           variant="contained"
           color="primary"
           onClick={submitForgot}
-          loading={isLoading}>
+          loading={isLoading}
+        >
           بازیابی
         </LoadingButton>
       </Grid>

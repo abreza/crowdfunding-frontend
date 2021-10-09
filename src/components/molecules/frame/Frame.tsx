@@ -14,11 +14,8 @@ export const Frame: FC<{
   handleUpdateContent?: any;
 }> = ({ content, frameProps, title = '', handleUpdateContent }) => {
   const [contentRef, setContentRef] = useState(null);
-  // @ts-ignore
-  const cd = contentRef?.contentDocument;
-  // @ts-ignore
-  const cwd = contentRef?.contentWindow?.document;
-  const doc = (cd ?? cwd) as Document;
+  const doc = ((contentRef as any)?.contentDocument ??
+    (contentRef as any)?.contentWindow?.document) as Document;
 
   const fixHeight = useCallback(() => {
     if (contentRef) {

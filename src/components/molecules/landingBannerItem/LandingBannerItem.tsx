@@ -23,7 +23,8 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
               'linear-gradient(rgba(80,80,80,.6),rgba(80,80,80,.6))',
             content: '""',
           },
-        }}></Box>
+        }}
+      ></Box>
       <Box
         sx={{
           p: 1,
@@ -34,7 +35,8 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
           width: { sm: '40%', xs: '90%' },
           height: '30%',
           color: 'white',
-        }}>
+        }}
+      >
         <Typography variant="h2">{item.subject}</Typography>
         <Typography
           variant="body1"
@@ -46,7 +48,8 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             mb: 3,
-          }}>
+          }}
+        >
           {item.summary}
         </Typography>
         <Link href={`/project/${item.id}`} passHref>

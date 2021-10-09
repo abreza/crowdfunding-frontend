@@ -25,7 +25,8 @@ const NextComposed = React.forwardRef<HTMLAnchorElement, NextComposedProps>(
         replace={replace}
         scroll={scroll}
         shallow={shallow}
-        passHref={passHref}>
+        passHref={passHref}
+      >
         <a ref={ref} {...other} />
       </NextLink>
     );

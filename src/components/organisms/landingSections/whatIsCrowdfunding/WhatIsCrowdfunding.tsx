@@ -7,9 +7,7 @@ import pic6 from 'src/assets/images/pic6.png';
 import pic7 from 'src/assets/images/pic7.png';
 import Image from 'next/image';
 
-type WhatIsCrowdfundingProps = {};
-
-const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
+const WhatIsCrowdfunding: FC = () => {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h2" sx={{ pb: 3 }} align="center">
@@ -20,7 +18,8 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           item
           sm={6}
           xs={12}
-          sx={{ order: { xs: 0, sm: 1 }, position: 'relative' }}>
+          sx={{ order: { xs: 0, sm: 1 }, position: 'relative' }}
+        >
           <Image
             src={pic2}
             alt="crowdfunding"
@@ -69,7 +68,8 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           item
           sm={6}
           xs={12}
-          sx={{ order: { xs: 4, sm: 5 }, position: 'relative' }}>
+          sx={{ order: { xs: 4, sm: 5 }, position: 'relative' }}
+        >
           <Image
             src={pic7}
             alt="crowdfunding"
@@ -95,7 +95,8 @@ const WhatIsCrowdfunding: FC<WhatIsCrowdfundingProps> = () => {
           justifyContent="center"
           xs={12}
           sm={12}
-          sx={{ order: 6 }}>
+          sx={{ order: 6 }}
+        >
           <Link href="/project" passHref>
             <Button variant="contained" color="primary">
               مشاهده پروژه‌های موفق

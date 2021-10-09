@@ -5,7 +5,7 @@ export const upload = async (
   file: File,
   token: string,
   onUploadProgress?: (progressEvent: any) => void,
-  path: string = 'media/'
+  path = 'media/'
 ): Promise<string> => {
   const formData = new FormData();
   formData.append('file', file);

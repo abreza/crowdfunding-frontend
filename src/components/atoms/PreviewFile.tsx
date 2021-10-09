@@ -41,12 +41,14 @@ export const PreviewFile: FC<{ extendedFile: ExtendedFile; removeFile?: any }> =
             p: 0.5,
             boxSizing: 'border-box',
             position: 'relative',
-          }}>
+          }}
+        >
           {removeFile && (
             <IconButton
               onClick={() => removeFile(extendedFile.id)}
               sx={{ position: 'absolute', top: -15, left: -15, zIndex: 5 }}
-              color="error">
+              color="error"
+            >
               <CancelIcon />
             </IconButton>
           )}
@@ -59,7 +61,8 @@ export const PreviewFile: FC<{ extendedFile: ExtendedFile; removeFile?: any }> =
               height: '100%',
               position: 'relative',
               borderRadius: 2,
-            }}>
+            }}
+          >
             {previewImage && (
               <Image
                 src={previewImage}

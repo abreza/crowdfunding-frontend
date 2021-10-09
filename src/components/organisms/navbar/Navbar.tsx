@@ -70,7 +70,8 @@ const ResponsiveAppBar: FC<any> = ({
                   pt: 4,
                 }),
             }}
-            color="inherit">
+            color="inherit"
+          >
             <Container>
               <Toolbar disableGutters>
                 {mobileMenuListItems.length > 0 && (
@@ -83,20 +84,23 @@ const ResponsiveAppBar: FC<any> = ({
                       display: { sm: 'flex', md: 'none' },
                     }}
                     onClick={() => setDrawerOpen(!drawerOpen)}
-                    size="large">
+                    size="large"
+                  >
                     <MenuIcon />
                   </IconButton>
                 )}
                 <Grid
                   container
                   alignItems="center"
-                  justifyContent="space-between">
+                  justifyContent="space-between"
+                >
                   <Grid item>
                     <Grid
                       spacing={1}
                       container
                       justifyContent="flex-start"
-                      alignItems="center">
+                      alignItems="center"
+                    >
                       {rightItems.map((item, index) => (
                         <Grid key={index} item>
                           {item}
@@ -109,7 +113,8 @@ const ResponsiveAppBar: FC<any> = ({
                       spacing={1}
                       container
                       justifyContent="flex-end"
-                      alignItems="center">
+                      alignItems="center"
+                    >
                       {leftItems.map((item, index) => (
                         <Grid key={index} item>
                           {item}
@@ -129,11 +134,13 @@ const ResponsiveAppBar: FC<any> = ({
           PaperProps={{ sx: { right: 'unset', left: 0 } }}
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
-          onOpen={() => {}}>
+          onOpen={() => {}}
+        >
           <Box
             sx={{
               width: 250,
-            }}>
+            }}
+          >
             <List>
               {mobileMenuListItems.map((item, index) => (
                 <ListItem key={index}>{item}</ListItem>

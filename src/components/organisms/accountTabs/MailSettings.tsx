@@ -152,7 +152,8 @@ export const MailSettings = () => {
           fullWidth
           variant="contained"
           onClick={onSubmit}
-          loading={isLoading}>
+          loading={isLoading}
+        >
           ثبت تنظیمات
         </LoadingButton>
       </Grid>

@@ -9,10 +9,8 @@ import Image from 'next/image';
 import emptyFile from 'src/assets/images/empty_file.png';
 import { Box } from '@mui/system';
 
-type ProjectGalleryProps = {};
-
-const ProjectGallery: FC<ProjectGalleryProps> = () => {
-  const [originalHeight, setOriginalHeight] = useState(300);
+const ProjectGallery: FC = () => {
+  const [originalHeight, setOriginalHeight] = useState<undefined | number>(300);
 
   const { imageUrls } = useContext(ProjectContext);
 
@@ -46,8 +44,7 @@ const ProjectGallery: FC<ProjectGalleryProps> = () => {
             autoPlay={false}
             items={imageUrls?.map(getImageGalleryItem) || []}
             onScreenChange={(fullscreen) =>
-              // @ts-ignore
-              setOriginalHeight(!fullscreen && 300)
+              setOriginalHeight(fullscreen ? undefined : 300)
             }
             lazyLoad={true}
             isRTL={true}
@@ -57,12 +54,14 @@ const ProjectGallery: FC<ProjectGalleryProps> = () => {
             alignItems="center"
             justifyContent="center"
             sx={{ height: '100%', pb: 1 }}
-            spacing={3}>
+            spacing={3}
+          >
             <Box
               sx={{
                 width: { sm: '30%', xs: '50%' },
                 position: 'relative',
-              }}>
+              }}
+            >
               <Image
                 src={emptyFile}
                 alt="empty"

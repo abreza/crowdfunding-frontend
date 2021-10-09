@@ -39,7 +39,7 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
   const [showCalendar, setShowCalendar] = useState(false);
 
   const inputValueHandler = () => {
-    let result: string = '';
+    let result = '';
     if (!value) {
       result = '';
     }
@@ -111,7 +111,8 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
               backdropFilter: 'blur(2px)',
               zIndex: 100,
             }}
-            onClick={() => setShowCalendar(false)}></Grid>
+            onClick={() => setShowCalendar(false)}
+          ></Grid>
           <Box
             sx={{
               position: 'fixed',
@@ -124,7 +125,8 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
               borderRadius: 1,
               overflow: 'hidden',
               pb: 1,
-            }}>
+            }}
+          >
             <Calendar
               value={date as DayValue}
               onChange={dateChangeHandler}
@@ -139,14 +141,16 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
               container
               justifyContent="space-evenly"
               alignItems="center"
-              alignContent="center">
+              alignContent="center"
+            >
               <Grid item>
                 <Button
                   onClick={cancelClickHandler}
                   sx={{
                     width: 80,
                     marginBottom: 2,
-                  }}>
+                  }}
+                >
                   پاک کردن
                 </Button>
               </Grid>
@@ -156,7 +160,8 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
                   sx={{
                     width: 80,
                     marginBottom: 2,
-                  }}>
+                  }}
+                >
                   ادامه
                 </Button>
               </Grid>

@@ -6,8 +6,6 @@ import { FC, useState } from 'react';
 import Panel from 'src/templates/Panel';
 import { useUsersControllerUserProfileQuery } from 'src/app/services/api.generated';
 
-type AccountProps = {};
-
 const tabs = [
   {
     label: 'پروفایل',
@@ -23,7 +21,7 @@ const tabs = [
   },
 ];
 
-const Account: FC<AccountProps> = () => {
+const Account: FC = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   useUsersControllerUserProfileQuery();

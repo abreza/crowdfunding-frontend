@@ -26,9 +26,9 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
   return (
     <Card
       sx={{
-        maxWidth: 345,
-        minWidth: 270,
-      }}>
+        width: 270,
+      }}
+    >
       <Link href={item ? `/project/${item.id}` : '#'} passHref>
         <CardActionArea disableRipple>
           {item ? (
@@ -68,7 +68,8 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     marginBottom: 3,
-                  }}>
+                  }}
+                >
                   {item.summary}
                 </Typography>
               </>
@@ -88,7 +89,8 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
               direction="row"
               alignItems="center"
               spacing={2}
-              sx={{ mb: 1 }}>
+              sx={{ mb: 1 }}
+            >
               <Grid item>
                 {item ? (
                   <Avatar
@@ -119,7 +121,8 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
                       <Typography
                         variant="caption"
                         color="textSecondary"
-                        component="p">
+                        component="p"
+                      >
                         {item.owner.headline}
                       </Typography>
                     ) : (
@@ -135,14 +138,16 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
               justifyContent="space-between"
               alignItems="center"
               direction="row"
-              sx={{ mt: 2 }}>
+              sx={{ mt: 2 }}
+            >
               <Grid item>
                 {item ? (
                   <Typography
                     align="center"
                     sx={{
                       fontWeight: 600,
-                    }}>
+                    }}
+                  >
                     {`${totalBudget} تومان`}
                   </Typography>
                 ) : (
@@ -155,7 +160,8 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
                     align="center"
                     sx={{
                       fontWeight: 600,
-                    }}>
+                    }}
+                  >
                     ۳۲٪
                   </Typography>
                 ) : (
@@ -172,7 +178,8 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
             <Typography
               sx={{
                 fontWeight: 600,
-              }}>
+              }}
+            >
               {item ? '۱۰ روز' : <Skeleton animation="wave" width={40} />}
             </Typography>
           </CardContent>

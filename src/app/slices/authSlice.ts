@@ -42,7 +42,6 @@ const slice = createSlice({
       (state, { meta }) => {
         state.user = {
           ...state.user,
-          // @ts-ignore
           ...meta?.arg?.originalArgs?.userUpdateDto,
         };
       }

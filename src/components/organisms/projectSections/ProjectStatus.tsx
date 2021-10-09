@@ -20,9 +20,7 @@ import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
 import { Box } from '@mui/system';
 
-type ProjectStatusProps = {};
-
-const ProjectStatus: FC<ProjectStatusProps> = () => {
+const ProjectStatus: FC = () => {
   const { budgets } = useContext(ProjectContext);
 
   const totalBudget = budgets?.reduce(
@@ -69,7 +67,8 @@ const ProjectStatus: FC<ProjectStatusProps> = () => {
             container
             alignItems="center"
             justifyContent="space-between"
-            direction="row">
+            direction="row"
+          >
             <Grid item>
               <IconButton size="large">
                 <LinkIcon sx={{ transform: 'scaleX(1)' }} />

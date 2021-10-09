@@ -16,13 +16,11 @@ import { Box, BoxProps, useTheme } from '@mui/system';
 import { SocialNetwork } from 'src/components/molecules/socialNetworks/socialNetworks';
 import { LocationOn } from '@mui/icons-material';
 
-type ContactUsProps = {};
-
 const Marker: FC<{ lat: number; lng: number } & BoxProps> = (props) => (
   <Box {...props} />
 );
 
-const ContactUs: FC<ContactUsProps> = () => {
+const ContactUs: FC = () => {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -35,7 +33,8 @@ const ContactUs: FC<ContactUsProps> = () => {
             position: 'relative',
             height: { sm: 550, xs: 900 },
             mb: 2,
-          }}>
+          }}
+        >
           <GoogleMapReact
             bootstrapURLKeys={{
               key: 'AIzaSyAwAOGAxY5PZ8MshDtaJFk2KgK7VYxArPA',
@@ -51,11 +50,13 @@ const ContactUs: FC<ContactUsProps> = () => {
                     lng: 51.3510847,
                   }
             }
-            defaultZoom={18}>
+            defaultZoom={18}
+          >
             <Marker
               lat={35.7025623}
               lng={51.3510847}
-              sx={{ transform: 'translate(-20px, -110%)' }}>
+              sx={{ transform: 'translate(-20px, -110%)' }}
+            >
               <Box className={styles.pin}></Box>
             </Marker>
           </GoogleMapReact>
@@ -70,7 +71,8 @@ const ContactUs: FC<ContactUsProps> = () => {
             endIcon={<LocationOn />}
             component="a"
             href="https://goo.gl/maps/xecM1MpCkEb9687Q8"
-            target="_blank">
+            target="_blank"
+          >
             مشاهده در نقشه
           </Button>
           <Box
@@ -82,30 +84,35 @@ const ContactUs: FC<ContactUsProps> = () => {
               left: 0,
               right: 0,
               bottom: 0,
-            }}>
+            }}
+          >
             <Paper color="primary" sx={{ overflow: 'hidden' }}>
               <Grid
                 container
                 alignItems="scratch"
                 justifyContent="center"
-                spacing={2}>
+                spacing={2}
+              >
                 <Grid
                   item
                   xs={12}
                   sm={4}
-                  sx={{ bgcolor: 'primary.main', color: 'white' }}>
+                  sx={{ bgcolor: 'primary.main', color: 'white' }}
+                >
                   <Grid
                     container
                     direction="column"
                     spacing={2}
                     sx={{ p: 2 }}
-                    justifyContent="space-around">
+                    justifyContent="space-around"
+                  >
                     <Grid item xs={12}>
                       <Typography variant="h5">شماره تلفن:</Typography>
                       <Typography
                         variant="body1"
                         sx={{ direction: 'rtl' }}
-                        align="left">
+                        align="left"
+                      >
                         +۹۸-۲۱۶۶۱۶۶۶۰۱
                       </Typography>
                     </Grid>

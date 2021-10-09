@@ -5,9 +5,7 @@ import Link from 'next/link';
 import Homepage from 'src/templates/Homepages';
 import Image from 'next/image';
 
-type PostProps = {};
-
-const Post: FC<PostProps> = () => {
+const Post: FC = () => {
   return (
     <Homepage>
       <Grid container alignItems="center" justifyContent="center" sx={{ p: 2 }}>
@@ -26,7 +24,8 @@ const Post: FC<PostProps> = () => {
               overflow: 'hidden',
               position: 'relative',
               height: 400,
-            }}>
+            }}
+          >
             <Image
               src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
               alt="crowdfunding"

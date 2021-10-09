@@ -11,9 +11,7 @@ import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
 import { TechnicalDescriptionDto } from 'src/app/services/api.generated';
 
-type ProjectTechnicalProps = {};
-
-const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
+const ProjectTechnical: FC = () => {
   const { technicalDescriptions = [] } = useContext(ProjectContext);
 
   return (
@@ -29,7 +27,8 @@ const ProjectTechnical: FC<ProjectTechnicalProps> = () => {
                     '&:nth-of-type(odd)': {
                       backgroundColor: 'action.hover',
                     },
-                  }}>
+                  }}
+                >
                   <TableCell align="center">{item.name}</TableCell>
                   <TableCell align="center">{item.value}</TableCell>
                 </TableRow>

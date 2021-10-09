@@ -1,4 +1,3 @@
-
 export const fakeData = {
   name: 'root',
   children: [

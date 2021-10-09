@@ -45,7 +45,8 @@ export const MyDropzone: FC<FileDropzoneProps> = ({
             color: '#bdbdbd',
             outline: 'none',
             transition: 'border .24s ease-in-out',
-          }}>
+          }}
+        >
           <input {...getInputProps()} />
           <p>{placeholder}</p>
         </Box>
@@ -56,7 +57,8 @@ export const MyDropzone: FC<FileDropzoneProps> = ({
           flexDirection: 'row',
           flexWrap: 'wrap',
           mt: 2,
-        }}>
+        }}
+      >
         {files.map((extendedFile: ExtendedFile) => (
           <PreviewFile
             extendedFile={extendedFile}

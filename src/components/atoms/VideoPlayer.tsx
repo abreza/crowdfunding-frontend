@@ -36,7 +36,8 @@ const Player: FC<any> = ({ videoUrl }) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
-        size="large">
+        size="large"
+      >
         {playing ? (
           <Pause
             sx={{

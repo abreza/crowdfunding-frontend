@@ -19,13 +19,15 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
           width: { lg: '40%', md: '100%' },
           borderRadius: { lg: '5px 0 0 5px', md: '0' },
           zIndex: 2,
-        }}>
+        }}
+      >
         <Grid
           container
           direction="column"
           justifyContent="space-around"
           sx={{ height: '100%' }}
-          spacing={3}>
+          spacing={3}
+        >
           <Grid item>
             <Typography variant="h2" gutterBottom>
               تامین‌مالی جمعی شریف

@@ -33,7 +33,7 @@ import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import { usePersistLocaleCookie } from 'src/components/hoc/UsePersistLocaleCookie';
 
-let persistor = persistStore(store);
+const persistor = persistStore(store);
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
@@ -94,12 +94,14 @@ const MyApp: FC<MyAppProps> = (props) => {
           <BaseHead />
           <CacheProvider value={emotionCache}>
             <ThemeProvider
-              theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}>
+              theme={themeMode === 'dark' ? sDarkTheme : sLightTheme}
+            >
               <CssBaseline />
               <CheckToken />
               <ToastContainer limit={3} />
               <DispatchContext.Provider
-                value={{ setThemeMode: changeTheme, themeMode }}>
+                value={{ setThemeMode: changeTheme, themeMode }}
+              >
                 <Component {...pageProps} />
               </DispatchContext.Provider>
             </ThemeProvider>

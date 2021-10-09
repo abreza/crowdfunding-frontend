@@ -12,7 +12,7 @@ export const toPersianNumber = (num: number | string) => {
     9: '۹',
   } as any;
   num = num.toString();
-  let len = num.length;
+  const len = num.length;
   let converted = '';
   for (let i = 0; i < len; i++) {
     converted += persian[num[i]] || num[i];
@@ -34,7 +34,7 @@ export const toEnglishNumber = (num: number | string) => {
     '۹': '9',
   } as any;
   num = num.toString();
-  let len = num.length;
+  const len = num.length;
   let converted = '';
   for (let i = 0; i < len; i++) {
     converted += english[num[i]] || num[i];

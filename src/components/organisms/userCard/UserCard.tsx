@@ -25,7 +25,8 @@ export const UserCard = () => {
           spacing={2}
           direction="row"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <Grid item xs={12} sm={4}>
             <Grid container alignItems="center" justifyContent="center">
               <ProfileAvatar
@@ -41,7 +42,8 @@ export const UserCard = () => {
             container
             direction="column"
             justifyContent="center"
-            spacing={1}>
+            spacing={1}
+          >
             <Grid item xs={12}>
               <Typography variant="h5" component="div">
                 {user.firstName + ' ' + user.lastName}
@@ -57,7 +59,8 @@ export const UserCard = () => {
             <Typography
               variant="subtitle2"
               color="text.secondary"
-              sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+              sx={{ textAlign: { xs: 'center', sm: 'left' } }}
+            >
               {user.description}
             </Typography>
           </Grid>

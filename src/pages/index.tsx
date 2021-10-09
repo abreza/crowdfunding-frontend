@@ -39,7 +39,8 @@ const Landing: FC<LandingProps> = ({ projects = [] }) => {
       <Divider />
       <Box
         ref={whatIsCrowdfunding}
-        sx={{ scrollMarginTop: 50, scrollSnapMargin: 50 }}>
+        sx={{ scrollMarginTop: 50, scrollSnapMargin: 50 }}
+      >
         <WhatIsCrowdfunding />
       </Box>
     </Homepage>

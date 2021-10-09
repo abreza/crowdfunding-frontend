@@ -78,7 +78,8 @@ const BasicDetails: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
               justifyContent: 'center',
               flexWrap: 'wrap',
               m: 1,
-            }}>
+            }}
+          >
             {chips.map((chip) => (
               <Chip
                 key={chip.category}
