@@ -4,7 +4,7 @@ import { baseUrl } from 'src/config';
 export const upload = async (
   file: File,
   token: string,
-  onUploadProgress?: (progressEvent: any) => void,
+  onUploadProgress?: (progressEvent: { loaded: number; total: number }) => void,
   path = 'media/'
 ): Promise<string> => {
   const formData = new FormData();

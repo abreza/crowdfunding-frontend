@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, GridSize } from '@mui/material';
 import UseWindowDimensions from 'src/components/hoc/UseWindowSize';
 import { FC, useEffect, useState } from 'react';
 import ProjectCard from 'src/components/molecules/projectCard/ProjectCard';
@@ -36,11 +36,11 @@ const ChunkedCarousel: FC<{
   const len = chunkedItems.length;
   const realIndex = (((rtl ? -index - 1 : index) % len) + len) % len;
 
-  const itemSize = Math.floor(12 / chunk) as any;
+  const itemSize = Math.floor(12 / chunk) as GridSize;
 
   return (
     <SwipeableViews index={realIndex} enableMouseEvents>
-      {chunkedItems.map((cis: any[], i) => (
+      {chunkedItems.map((cis, i) => (
         <Box key={i} dir="rtl" sx={{ overflow: 'hidden' }}>
           <Grid
             container

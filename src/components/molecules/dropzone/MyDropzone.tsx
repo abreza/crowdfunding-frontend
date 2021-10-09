@@ -1,13 +1,17 @@
 import { FC } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { DropEvent, FileRejection, useDropzone } from 'react-dropzone';
 import { Box } from '@mui/system';
 import { ExtendedFile } from 'src/pages/new';
 import { PreviewFile } from 'src/components/atoms/PreviewFile';
 
 type FileDropzoneProps = {
   accept?: string;
-  onDrop?: any;
-  removeFile?: any;
+  onDrop?: (
+    acceptedFiles: File[],
+    fileRejections: FileRejection[],
+    event: DropEvent
+  ) => void;
+  removeFile?: (id: number) => void;
   files?: ExtendedFile[];
   multiple?: boolean;
   placeholder?: string;
