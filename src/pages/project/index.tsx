@@ -84,7 +84,7 @@ const Projects: FC<ProjectsProps> = ({ projects = [] }) => {
           spacing={3}
           sx={{ py: 1 }}
         >
-          {projects.map((item: any, i: number) => (
+          {projects.map((item, i: number) => (
             <Grid item key={i}>
               <ProjectCard item={item} />
             </Grid>

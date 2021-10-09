@@ -13,8 +13,9 @@ import { baseUrl } from 'src/config';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { UserRo } from 'src/app/services/api.generated';
+import { FC } from 'react';
 
-export const UserCard = () => {
+export const UserCard: FC = () => {
   const user = useSelector<RootStateType, UserRo>((state) => state.auth.user);
 
   return (

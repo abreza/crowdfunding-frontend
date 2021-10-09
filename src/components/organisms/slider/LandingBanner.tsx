@@ -54,7 +54,7 @@ const LandingBanner: FC<{ projects: ProjectRo[] }> = ({ projects }) => {
       </Paper>
       {projects.length > 0 && (
         <MuiCarousel>
-          {projects.map((item: any, i: number) => (
+          {projects.map((item, i: number) => (
             <LandingBannerItem key={i} item={item} />
           ))}
         </MuiCarousel>

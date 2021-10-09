@@ -17,11 +17,11 @@ import {
 import { useRouter } from 'next/router';
 import ProjectGallery from 'src/components/organisms/projectSections/ProjectGallery';
 
-const FetchProject: FC<{ setProject: any; projectId: string }> = ({
-  setProject,
-  projectId,
-}) => {
-  const { data = {}, isSuccess } = useProjectControllerGetQuery({ projectId });
+const FetchProject: FC<{
+  setProject: (project: ProjectRo) => void;
+  projectId: string;
+}> = ({ setProject, projectId }) => {
+  const { data, isSuccess } = useProjectControllerGetQuery({ projectId });
   useEffect(() => {
     if (data && isSuccess) {
       setProject(data);
@@ -95,7 +95,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { pid } }: any) {
+export async function getStaticProps({
+  params: { pid },
+}: {
+  params: { pid: string };
+}) {
   try {
     const res = await axios(baseUrl + 'project/' + pid);
     const project = res.data;

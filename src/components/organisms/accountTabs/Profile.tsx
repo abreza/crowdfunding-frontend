@@ -9,7 +9,7 @@ import { RootStateType } from 'src/app/store';
 import { ProfileAvatar } from 'src/components/molecules/profileAvatar/ProfileAvatar';
 import { baseUrl } from 'src/config';
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { toast } from 'react-toastify';
 import {
@@ -18,7 +18,7 @@ import {
   useUsersControllerUpdateUserProfileMutation,
 } from 'src/app/services/api.generated';
 
-export const Profile = () => {
+export const Profile: FC = () => {
   const user = useSelector<RootStateType, UserRo>((state) => state.auth.user);
 
   const [updateProfile, { isLoading }] =

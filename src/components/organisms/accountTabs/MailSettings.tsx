@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { RootStateType } from 'src/app/store';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import {
@@ -18,7 +18,7 @@ import {
   useUsersControllerUpdateUserProfileMutation,
 } from 'src/app/services/api.generated';
 
-export const MailSettings = () => {
+export const MailSettings: FC = () => {
   const { mailConfig, email, username } = useSelector<RootStateType, UserRo>(
     (state) => state.auth.user
   );

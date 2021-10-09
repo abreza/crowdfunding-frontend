@@ -5,8 +5,9 @@ import {
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
 } from '@mui/icons-material';
+import { FC } from 'react';
 
-export const SocialNetwork = () => {
+export const SocialNetwork: FC = () => {
   return (
     <Grid container justifyContent="center">
       <IconButton color="inherit" size="large">

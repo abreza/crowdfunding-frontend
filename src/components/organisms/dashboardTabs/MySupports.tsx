@@ -16,13 +16,13 @@ const MySupports: FC = () => {
         sx={{ py: 1 }}
       >
         {isLoading ? (
-          [1, 1].map((item: any, i: number) => (
+          [1, 1].map((item, i: number) => (
             <Grid item key={i}>
               <ProjectCard />
             </Grid>
           ))
         ) : data?.supports?.length ? (
-          data?.supports.map((item: any, i: number) => (
+          data?.supports.map((item, i: number) => (
             <Grid item key={i}></Grid>
           ))
         ) : (

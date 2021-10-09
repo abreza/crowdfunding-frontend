@@ -1,13 +1,10 @@
 import { Grid, TextField } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { toast } from 'react-toastify';
-import {
-  ChangePasswordDto,
-  useUsersControllerChangePasswordMutation,
-} from 'src/app/services/api.generated';
+import { useUsersControllerChangePasswordMutation } from 'src/app/services/api.generated';
 
-export const ChangePassword = () => {
+export const ChangePassword: FC = () => {
   const [changePassword, { isLoading }] =
     useUsersControllerChangePasswordMutation();
 
