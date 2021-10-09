@@ -17,7 +17,7 @@ module.exports = withPlugins([[withImages], [withPWA], [nextTranslate]], {
     disable: prod ? false : true,
     dest: 'public',
     runtimeCaching,
-    publicExcludes: ['!robots.txt', '!sitemap.xml.gz'],
+    publicExcludes: ['!robots.txt', '!sitemap.xml'],
   },
   images: {
     disableStaticImages: true,
