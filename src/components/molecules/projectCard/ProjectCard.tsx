@@ -14,7 +14,16 @@ import Link from 'next/link';
 import { ManageProjectCard } from './ManageProjectCard';
 import { ProjectRo } from 'src/app/services/api.generated';
 
-const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
+export enum ProjectPermission {
+  VISITOR = 'VISITOR',
+  OWNER = 'OWNER',
+  ADMIN = 'ADMIN',
+}
+
+const ProjectCard: FC<{
+  item?: ProjectRo;
+  permissionMode?: ProjectPermission;
+}> = ({ item, permissionMode = ProjectPermission.VISITOR }) => {
   const totalBudget =
     item?.budgets?.reduce(
       (partial_sum, budget) => partial_sum + budget.value,
@@ -185,7 +194,9 @@ const ProjectCard: FC<{ item?: ProjectRo }> = ({ item }) => {
           </CardContent>
         </CardActionArea>
       </Link>
-      <ManageProjectCard project={item as ProjectRo} />
+      {permissionMode !== ProjectPermission.VISITOR && (
+        <ManageProjectCard project={item as ProjectRo} />
+      )}
     </Card>
   );
 };
