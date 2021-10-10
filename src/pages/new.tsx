@@ -217,7 +217,6 @@ const CreateProject: FC = () => {
                     variant="outlined"
                     color="primary"
                     onClick={() => setActiveStep(activeStep - 1)}
-                    sx={{ mr: 9 }}
                   >
                     قبلی
                   </Button>
@@ -229,7 +228,6 @@ const CreateProject: FC = () => {
                   color="primary"
                   onClick={onClickNext}
                   loading={isLoading}
-                  sx={{ mr: 9 }}
                   type={
                     activeStep === TabsData.length - 1 ? 'submit' : 'button'
                   }
