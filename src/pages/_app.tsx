@@ -19,7 +19,7 @@ import { persistStore } from 'redux-persist';
 
 import 'src/assets/styles/app.css';
 import 'src/assets/styles/gallery.css';
-import 'src/assets/fonts/fontiran.css';
+import 'src/assets/styles/fontiran.css';
 import 'src/assets/styles/tiny.css';
 import 'src/assets/styles/nprogress.css';
 

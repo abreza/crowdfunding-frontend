@@ -98,7 +98,7 @@ const grey = {
 };
 
 const systemFont = [
-  'IRANSans',
+  'iransansxv',
   '-apple-system',
   'BlinkMacSystemFont',
   '"Segoe UI"',

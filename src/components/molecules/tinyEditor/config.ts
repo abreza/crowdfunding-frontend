@@ -61,7 +61,7 @@ if (typeof window !== 'undefined') {
       'Harmattan=Harmattan, sans-serif;' +
       'Helvetica=helvetica;' +
       // 'iranyekan=iranyekan, sans-serif;' +
-      'IRANSans=IRANSans, sans-serif;' +
+      'iransansxv=iransansxv, sans-serif;' +
       'Impact=impact,chicago;' +
       'Iskola Pota=iskoola_pota;' +
       'Iskola Pota Bold=iskoola_pota_bold;' +

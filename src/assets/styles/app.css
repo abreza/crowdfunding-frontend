@@ -1,5 +1,5 @@
 body[dir='rtl'] {
-  font-family: IRANSans;
+  font-family: 'iransansxv';
   font-weight: 300;
   letter-spacing: normal;
 }
@@ -42,7 +42,7 @@ body[dir='rtl'] .MuiDropzoneSnackbar-icon.MuiSvgIcon-root {
 
 body[dir='rtl'] .Toastify__toast {
   direction: rtl;
-  font-family: IRANSans;
+  font-family: 'iransansxv';
   text-align: right;
   -moz-font-feature-settings: 'ss02';
   -webkit-font-feature-settings: 'ss02';
