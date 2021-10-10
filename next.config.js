@@ -20,7 +20,6 @@ module.exports = withPlugins([[withPWA], [withImages], [nextTranslate]], {
     publicExcludes: ['!robots.txt', '!sitemap.xml'],
     register: true,
     sw: '/sw.js',
-    importScripts: ['worker/index.js'],
   },
   images: {
     disableStaticImages: true,
