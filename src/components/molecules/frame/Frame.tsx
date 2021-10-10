@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 import React, {
   FC,
   useCallback,
@@ -7,12 +6,19 @@ import React, {
   useState,
 } from 'react';
 
-export const Frame: FC<{
+export type FrameProps = {
   content: string;
   frameProps: any;
   title?: string;
   handleUpdateContent?: any;
-}> = ({ content, frameProps, title = '', handleUpdateContent }) => {
+};
+
+export const Frame: FC<FrameProps> = ({
+  content,
+  frameProps,
+  title = '',
+  handleUpdateContent,
+}) => {
   const [contentRef, setContentRef] = useState(null);
   const doc = ((contentRef as any)?.contentDocument ??
     (contentRef as any)?.contentWindow?.document) as Document;

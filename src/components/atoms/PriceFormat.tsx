@@ -7,7 +7,7 @@ interface CustomProps {
 }
 
 export const PriceFormat = forwardRef<NumberFormat, CustomProps>(
-  function NumberFormatCustom(props, ref) {
+  function NumberFormatCustom(props: CustomProps, ref) {
     const { onChange, ...other } = props;
 
     return (

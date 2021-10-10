@@ -12,9 +12,6 @@
     "lint": "next lint",
     "syncApis": "bash ./sync_apis"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -92,12 +89,13 @@
     "@types/react-swipeable-views-utils": "^0.13.3",
     "@types/webpack-env": "^1.16.2",
     "@types/yup": "^0.29.13",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/eslint-plugin": "canary",
+    "@typescript-eslint/parser": "canary",
     "babel-plugin-styled-components": "^1.13.2",
-    "eslint": "^8.0.0",
-    "eslint-config-next": "11.1.2",
+    "eslint": "7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
     "husky": "^7.0.2",
     "lint-staged": "^11.2.2",
     "next-sitemap": "^1.6.179",

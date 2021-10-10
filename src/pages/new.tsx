@@ -90,7 +90,6 @@ const CreateProject: FC = () => {
       setProject((prs) => ({ ...prs, imageUrls }));
     }
     setNeedUpdateUrls(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [needUpdateUrls]);
 
   const addFile = (newFile: ExtendedFile) =>

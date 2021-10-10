@@ -1,9 +1,12 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
-    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "no-restricted-imports": [
@@ -17,6 +20,7 @@
     "react/display-name": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }

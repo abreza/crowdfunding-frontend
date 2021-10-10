@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
 import { Box, IconButton } from '@mui/material';
 import { Pause, PlayArrow } from '@mui/icons-material';
 import { FC, useRef, useState } from 'react';

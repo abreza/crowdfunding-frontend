@@ -1,5 +1,3 @@
-/* eslint-disable react/display-name */
-/* eslint-disable jsx-a11y/anchor-has-content */
 import * as React from 'react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
@@ -13,7 +11,7 @@ type NextComposedProps = Omit<
   NextLinkProps;
 
 const NextComposed = React.forwardRef<HTMLAnchorElement, NextComposedProps>(
-  (props, ref) => {
+  (props: NextComposedProps, ref) => {
     const { as, href, replace, scroll, passHref, shallow, prefetch, ...other } =
       props;
 

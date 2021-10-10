@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { FC } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { CloudflareImageLoader } from './cloudflareImage.loader';
