@@ -16,7 +16,7 @@ module.exports = withPlugins([[withImages], [withPWA], [nextTranslate]], {
   pwa: {
     disable: prod ? false : true,
     dest: 'public',
-    // runtimeCaching,
+    runtimeCaching,
     publicExcludes: ['!robots.txt', '!sitemap.xml'],
   },
   images: {
