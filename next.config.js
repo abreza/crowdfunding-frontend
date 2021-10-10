@@ -12,12 +12,15 @@ const runtimeCaching = require('next-pwa/cache');
 
 const prod = process.env.NODE_ENV === 'production';
 
-module.exports = withPlugins([[withImages], [withPWA], [nextTranslate]], {
+module.exports = withPlugins([[withPWA], [withImages], [nextTranslate]], {
   pwa: {
     disable: prod ? false : true,
     dest: 'public',
     runtimeCaching,
     publicExcludes: ['!robots.txt', '!sitemap.xml'],
+    register: true,
+    sw: '/sw.js',
+    importScripts: ['worker/index.js'],
   },
   images: {
     disableStaticImages: true,
