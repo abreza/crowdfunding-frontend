@@ -22,9 +22,7 @@ const MySupports: FC = () => {
             </Grid>
           ))
         ) : data?.supports?.length ? (
-          data?.supports.map((item, i: number) => (
-            <Grid item key={i}></Grid>
-          ))
+          data?.supports.map((item, i: number) => <Grid item key={i}></Grid>)
         ) : (
           <Grid item>
             <Stack spacing={2}>
