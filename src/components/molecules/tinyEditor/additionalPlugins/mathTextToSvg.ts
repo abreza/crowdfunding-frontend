@@ -1,12 +1,12 @@
 /* global MathJax */
 
-const mathTextToSvg = (mathText: string = '', config?: any) => {
+const mathTextToSvg = (mathText = '', config?: any) => {
   const span = document.createElement('span');
   span.className = 'tiny-math';
   span.dataset.latex = mathText;
   // @ts-ignore
   const mj = MathJax;
-  let res = mj.tex2svg(mathText, {
+  const res = mj.tex2svg(mathText, {
     em: 16,
     ex: 8,
     containerWidth: 579,

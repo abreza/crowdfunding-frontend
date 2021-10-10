@@ -16,10 +16,10 @@ declare module '@mui/material/styles/createPalette' {
     900: string;
   }
 
-  interface PaletteColor extends ColorRange {}
+  interface PaletteColor extends Partial<ColorRange> {}
 
   interface Palette {
-    primaryDark: PaletteColor;
+    primaryDark: ColorRange;
   }
 }
 

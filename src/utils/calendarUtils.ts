@@ -23,7 +23,7 @@ export const convertToIsoString = (date: Day) => {
   return newDate.toISOString();
 };
 
-export const calculateDateRange = (dayRange: number = 30) => ({
+export const calculateDateRange = (dayRange = 30) => ({
   from: jMoment().toISOString(),
   to: jMoment().add(dayRange, 'days').toISOString(),
 });

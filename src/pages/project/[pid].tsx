@@ -58,7 +58,8 @@ const Project: FC<ProjectProps> = ({ project = initProjectContext }) => {
             alignItems="stretch"
             direction="row"
             justifyContent="space-between"
-            spacing={3}>
+            spacing={3}
+          >
             <Grid item sm={7} xs={12}>
               <ProjectGallery />
             </Grid>

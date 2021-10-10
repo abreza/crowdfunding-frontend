@@ -20,7 +20,8 @@ const CreateProjectButton: FC<ButtonProps> = (props) => {
       onClick={() => openAuthDialog({ afterAuth: '/new' })}
       variant="contained"
       color="primary"
-      {...props}>
+      {...props}
+    >
       ایجاد پروژه جدید
     </Button>
   );

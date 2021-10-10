@@ -12,7 +12,8 @@ const AllSupports: FC = () => {
         direction="row"
         justifyContent="space-around"
         spacing={3}
-        sx={{ py: 1 }}>
+        sx={{ py: 1 }}
+      >
         {isLoading ? (
           [1, 1].map((item: any, i: number) => (
             <Grid item key={i}>

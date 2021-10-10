@@ -16,7 +16,8 @@ const Panel: FC<PanelProps> = ({ children, onlyAdmin = false }) => {
         sx={{
           minHeight: '70vh',
           bgcolor: (theme) => theme.palette.background.default,
-        }}>
+        }}
+      >
         {children}
       </Box>
       <Footer />

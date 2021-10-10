@@ -5,7 +5,6 @@ import { HomepageContext } from 'src/contexts/HomepageContext';
 import { FC, useContext } from 'react';
 import { dateFormatter } from 'src/utils/dateFormatterUtils';
 
-type ProjectReviewProps = {};
 type RatingLineProps = {
   rating: number;
   percent: number;
@@ -26,7 +25,8 @@ const RatingLine: FC<RatingLineProps> = ({ rating, percent }) => {
       item
       spacing={2}
       alignItems="center"
-      justifyContent="center">
+      justifyContent="center"
+    >
       <Grid item xs={6} sm={7}>
         <LinearProgress
           variant="determinate"
@@ -91,7 +91,7 @@ const ReviewLine: FC<ReviewLineProps> = ({
   );
 };
 
-const ProjectReview: FC<ProjectReviewProps> = () => {
+const ProjectReview: FC = () => {
   const { openAuthDialog } = useContext(HomepageContext);
 
   const addComment = () => {
@@ -119,7 +119,8 @@ const ProjectReview: FC<ProjectReviewProps> = () => {
           justifyContent="center"
           sm={3}
           xs={12}
-          spacing={1}>
+          spacing={1}
+        >
           <Grid item>
             <Typography variant="h1" component="h6">
               3.1
@@ -139,7 +140,8 @@ const ProjectReview: FC<ProjectReviewProps> = () => {
           alignItems="center"
           justifyContent="center"
           sm={9}
-          xs={12}>
+          xs={12}
+        >
           <RatingLine rating={5} percent={40} />
           <RatingLine rating={4} percent={45} />
           <RatingLine rating={3} percent={10} />
@@ -151,7 +153,8 @@ const ProjectReview: FC<ProjectReviewProps> = () => {
             variant="contained"
             color="primary"
             fullWidth
-            onClick={addComment}>
+            onClick={addComment}
+          >
             افزودن دیدگاه
           </Button>
         </Grid>

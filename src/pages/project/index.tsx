@@ -27,7 +27,8 @@ const Projects: FC<ProjectsProps> = ({ projects = [] }) => {
           direction="row"
           spacing={3}
           alignItems="center"
-          justifyContent="flex-start">
+          justifyContent="flex-start"
+        >
           <Grid item>
             <TextField select value="all">
               <MenuItem value="all">همه موضوعات</MenuItem>
@@ -58,7 +59,8 @@ const Projects: FC<ProjectsProps> = ({ projects = [] }) => {
           direction="row"
           spacing={2}
           alignItems="center"
-          justifyContent="flex-start">
+          justifyContent="flex-start"
+        >
           <Grid item>
             <SortIcon sx={{ transform: 'scaleX(1)' }} />
           </Grid>
@@ -80,7 +82,8 @@ const Projects: FC<ProjectsProps> = ({ projects = [] }) => {
           direction="row"
           justifyContent="space-around"
           spacing={3}
-          sx={{ py: 1 }}>
+          sx={{ py: 1 }}
+        >
           {projects.map((item: any, i: number) => (
             <Grid item key={i}>
               <ProjectCard item={item} />

@@ -89,7 +89,8 @@ const Budget: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
               xs={12}
               spacing={1}
               alignItems="center"
-              key={index}>
+              key={index}
+            >
               <Grid item xs={7}>
                 <TextField
                   value={budget.title}
@@ -128,7 +129,8 @@ const Budget: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
           variant="outlined"
           color="secondary"
           startIcon={<Add />}
-          onClick={addNewBudget}>
+          onClick={addNewBudget}
+        >
           اضافه کردن مورد جدید
         </Button>
       </Grid>

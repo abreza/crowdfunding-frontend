@@ -5,8 +5,6 @@ import AllSupports from 'src/components/organisms/adminTabs/AllSupports';
 import { FC, useState } from 'react';
 import Panel from 'src/templates/Panel';
 
-type AdminProps = {};
-
 const tabs: { label: string; component: FC<any> }[] = [
   {
     label: 'پروژه‌ها',
@@ -22,7 +20,7 @@ const tabs: { label: string; component: FC<any> }[] = [
   },
 ];
 
-const Admin: FC<AdminProps> = () => {
+const Admin: FC = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const CurrentComponent = tabs[activeTab].component;
@@ -38,7 +36,8 @@ const Admin: FC<AdminProps> = () => {
               textColor="primary"
               onChange={(event, value) => setActiveTab(value)}
               centered
-              orientation="vertical">
+              orientation="vertical"
+            >
               {tabs.map((tab) => (
                 <Tab
                   key={tab.label}

@@ -5,10 +5,7 @@ import Link from 'next/link';
 import Homepage from 'src/templates/Homepages';
 import Image from 'next/image';
 
-type BlogProps = {};
-type BlogCardProps = {};
-
-const BlogCard: FC<BlogCardProps> = () => {
+const BlogCard: FC = () => {
   return (
     <div>
       <Box
@@ -18,7 +15,8 @@ const BlogCard: FC<BlogCardProps> = () => {
           overflow: 'hidden',
           position: 'relative',
           height: 400,
-        }}>
+        }}
+      >
         <Image
           src="https://bankautomationnews.com/wp-content/uploads/2019/08/crowdfunding-3576868_1920.jpg"
           alt="crowdfunding"
@@ -40,7 +38,8 @@ const BlogCard: FC<BlogCardProps> = () => {
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         }}
-        align="justify">
+        align="justify"
+      >
         برای خیلی از سرمایه‌گذاران ممکن است این سوال پیش بیاید که با وجود بازدهی
         بالای خرید و فروش سهام، چرا باید بخشی از سرمایه خود را به سرمایه‌گذاری
         در تامین مالی جمعی اختصاص دهیم؟ در این مطلب سعی کرده‌ایم به چهار مزیت
@@ -77,7 +76,7 @@ const BlogCard: FC<BlogCardProps> = () => {
   );
 };
 
-const Blog: FC<BlogProps> = () => {
+const Blog: FC = () => {
   return (
     <Homepage>
       <Grid container alignItems="center" justifyContent="center" sx={{ p: 2 }}>

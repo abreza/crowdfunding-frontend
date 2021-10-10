@@ -11,9 +11,7 @@ import { FC } from 'react';
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing';
 import { fakeData } from 'src/constants/fakeData';
 
-type ProjectFoundsProps = {};
-
-const ProjectFounds: FC<ProjectFoundsProps> = () => {
+const ProjectFounds: FC = () => {
   return (
     <Grid container>
       <Grid item xs={12} sm={8}>
@@ -27,7 +25,8 @@ const ProjectFounds: FC<ProjectFoundsProps> = () => {
             '> *': {
               m: 1,
             },
-          }}>
+          }}
+        >
           <Chip
             avatar={
               <Avatar
@@ -106,7 +105,8 @@ const ProjectFounds: FC<ProjectFoundsProps> = () => {
             sx={{
               height: 250,
               width: '100%',
-            }}>
+            }}
+          >
             <ResponsiveCirclePackingCanvas
               data={fakeData}
               margin={{ top: 20, right: 20, bottom: 20, left: 20 }}

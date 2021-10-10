@@ -29,7 +29,8 @@ export default function Footer() {
           px: 5,
           pb: 1,
           color: 'white',
-        }}>
+        }}
+      >
         <Grid container spacing={2} sx={{ mb: 2 }}>
           <Grid item xs={12} sm={6} md={3}>
             <Grid
@@ -37,7 +38,8 @@ export default function Footer() {
               direction="column"
               alignItems="center"
               justifyContent="center"
-              spacing={2}>
+              spacing={2}
+            >
               <Grid item xs={4} sm={5}>
                 <Link href="/" passHref>
                   <Button
@@ -45,7 +47,8 @@ export default function Footer() {
                       width: { sm: 90, xs: 130 },
                       position: 'relative',
                       display: 'block',
-                    }}>
+                    }}
+                  >
                     <Image
                       src={logo2}
                       alt="logo"
@@ -75,7 +78,8 @@ export default function Footer() {
                     ' .MuiSelect-focused': {
                       border: '1px solid white',
                     },
-                  }}>
+                  }}
+                >
                   {localLabels.map((lang) => (
                     <MenuItem
                       key={lang.code}
@@ -83,7 +87,8 @@ export default function Footer() {
                       value={lang.code}
                       onClick={() =>
                         translationLang !== lang.code && setLanguage(lang.code)
-                      }>
+                      }
+                    >
                       {lang.text}
                     </MenuItem>
                   ))}
@@ -99,12 +104,14 @@ export default function Footer() {
               container
               direction="column"
               alignItems="center"
-              justifyContent="space-between">
+              justifyContent="space-between"
+            >
               <Grid item sx={{ pb: 3 }}>
                 <Typography
                   sx={{ color: 'grey.400' }}
                   variant="h4"
-                  component="label">
+                  component="label"
+                >
                   تامین‌مالی برای
                 </Typography>
               </Grid>
@@ -130,12 +137,14 @@ export default function Footer() {
               container
               direction="column"
               alignItems="center"
-              justifyContent="space-between">
+              justifyContent="space-between"
+            >
               <Grid item sx={{ pb: 3 }}>
                 <Typography
                   sx={{ color: 'grey.400' }}
                   variant="h4"
-                  component="label">
+                  component="label"
+                >
                   مطالعه بیشتر
                 </Typography>
               </Grid>
@@ -162,12 +171,14 @@ export default function Footer() {
               container
               direction="column"
               alignItems="center"
-              justifyContent="space-between">
+              justifyContent="space-between"
+            >
               <Grid item sx={{ pb: 3 }}>
                 <Typography
                   sx={{ color: 'grey.400' }}
                   variant="h4"
-                  component="label">
+                  component="label"
+                >
                   منابع
                 </Typography>
               </Grid>
@@ -194,13 +205,15 @@ export default function Footer() {
           container
           justifyContent="space-between"
           alignItems="center"
-          direction="row">
+          direction="row"
+        >
           <Grid item xs={12} sm={6}>
             <Grid
               container
               direction="row"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Grid item>
                 <div dir="ltr">
                   <Typography sx={{ color: 'inherit' }}>

@@ -40,14 +40,16 @@ export const DeleteProjectDialog: FC<{
           onClick={handleClose}
           variant="contained"
           color="primary"
-          autoFocus>
+          autoFocus
+        >
           خیر
         </Button>
         <LoadingButton
           onClick={submit}
           loading={isLoading}
           variant="outlined"
-          color="error">
+          color="error"
+        >
           بله
         </LoadingButton>
       </DialogActions>

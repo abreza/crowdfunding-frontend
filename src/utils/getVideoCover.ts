@@ -2,7 +2,6 @@ export const getVideoCoverFromFile = (file: File, seekTo = 0.0) => {
   return getVideoCover(URL.createObjectURL(file), seekTo);
 };
 
-
 export const getVideoCover = (url: string, seekTo = 0.0) => {
   console.log('getting video cover for file: ', url);
   return new Promise((resolve, reject) => {
@@ -11,8 +10,8 @@ export const getVideoCover = (url: string, seekTo = 0.0) => {
     videoPlayer.setAttribute('src', url);
     // videoPlayer.crossOrigin = 'anonymous';
     videoPlayer.load();
-    videoPlayer.addEventListener('error', (ex) => {
-      reject('error when loading video file');
+    videoPlayer.addEventListener('error', (err) => {
+      reject('error when loading video file' + err);
     });
     // load metadata of the video to get video duration and dimensions
     videoPlayer.addEventListener('loadedmetadata', () => {
@@ -43,7 +42,7 @@ export const getVideoCover = (url: string, seekTo = 0.0) => {
           'image/jpeg',
           0.75 /* quality */
         );
-        
+
         // canvas.toDataURL('image/jpeg')
       });
     });

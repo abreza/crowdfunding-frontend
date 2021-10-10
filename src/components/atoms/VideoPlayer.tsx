@@ -3,12 +3,13 @@ import { Box, IconButton } from '@mui/material';
 import { Pause, PlayArrow } from '@mui/icons-material';
 import { FC, useRef, useState } from 'react';
 
-const Player: FC<any> = ({ videoUrl }) => {
-  const video = useRef(null) as any;
+const Player: FC<{ videoUrl: string }> = ({ videoUrl }) => {
+  const video = useRef<HTMLVideoElement>(null);
 
   const [playing, setPlaying] = useState(false);
 
   const playVideo = () => {
+    if (!video.current) return;
     if (video.current.paused === true) {
       video.current.play();
       setPlaying(true);
@@ -36,7 +37,8 @@ const Player: FC<any> = ({ videoUrl }) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
-        size="large">
+        size="large"
+      >
         {playing ? (
           <Pause
             sx={{

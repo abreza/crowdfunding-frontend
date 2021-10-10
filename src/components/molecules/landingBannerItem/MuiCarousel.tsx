@@ -25,7 +25,8 @@ const MuiCarousel: FC = ({ children }) => {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
-        enableMouseEvents>
+        enableMouseEvents
+      >
         {steps.map((step, index: number) => (
           <div key={index} dir={theme.direction}>
             {Math.abs(activeStep - index) <= 2 ? step : null}
@@ -38,7 +39,8 @@ const MuiCarousel: FC = ({ children }) => {
         spacing={0.5}
         direction="row"
         alignItems="center"
-        justifyContent="center">
+        justifyContent="center"
+      >
         {[...Array(maxSteps)].map((e, i) => (
           <Grid item key={i}>
             <IconButton size="small" onClick={() => setActiveStep(i)}>

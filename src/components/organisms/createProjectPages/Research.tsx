@@ -2,7 +2,10 @@ import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { Add, Close } from '@mui/icons-material';
 import { FC } from 'react';
 import { toast } from 'react-toastify';
-import { ProjectCreateDto, TechnicalDescriptionDto } from 'src/app/services/api.generated';
+import {
+  ProjectCreateDto,
+  TechnicalDescriptionDto,
+} from 'src/app/services/api.generated';
 
 const Research: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
   handleChange,
@@ -123,7 +126,8 @@ const Research: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
               xs={12}
               spacing={1}
               alignItems="center"
-              key={index}>
+              key={index}
+            >
               <Grid item xs={6}>
                 <TextField
                   value={item.name}
@@ -156,7 +160,8 @@ const Research: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
           variant="outlined"
           color="secondary"
           startIcon={<Add />}
-          onClick={addNewTechnicalDescription}>
+          onClick={addNewTechnicalDescription}
+        >
           اضافه کردن مورد جدید
         </Button>
       </Grid>

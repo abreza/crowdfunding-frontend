@@ -1,5 +1,5 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQuery } from "src/app/services/baseQuery";
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { baseQuery } from 'src/app/services/baseQuery';
 export const api = createApi({
   baseQuery: baseQuery,
   tagTypes: [],
@@ -10,7 +10,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.userCreateDto,
       }),
     }),
@@ -20,7 +20,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users`,
-        method: "PUT",
+        method: 'PUT',
         body: queryArg.userUpdateDto,
       }),
     }),
@@ -50,7 +50,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/profile`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.userUpdateDto,
       }),
     }),
@@ -60,7 +60,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/suspend`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.usernameDto,
       }),
     }),
@@ -70,7 +70,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/activate`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.usernameDto,
       }),
     }),
@@ -80,7 +80,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/role`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.userRoleDto,
       }),
     }),
@@ -90,7 +90,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/checkPermission`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.checkPermissionDto,
       }),
     }),
@@ -100,7 +100,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/mailResetPassword`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.mailResetPasswordDto,
       }),
     }),
@@ -119,7 +119,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/resetPassword`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.changePasswordDto,
         params: { resetCode: queryArg.resetCode, email: queryArg.email },
       }),
@@ -130,7 +130,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/users/changePassword`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.changePasswordDto,
       }),
     }),
@@ -140,7 +140,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/auth`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.loginDto,
       }),
     }),
@@ -150,7 +150,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/auth/signup`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.userCreateDto,
       }),
     }),
@@ -160,7 +160,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/auth/verifyToken`,
-        method: "POST",
+        method: 'POST',
         headers: { Authorization: queryArg.authorization },
       }),
     }),
@@ -176,7 +176,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/roles`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.roleDto,
       }),
     }),
@@ -186,7 +186,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/roles`,
-        method: "PUT",
+        method: 'PUT',
         body: queryArg.updateRoleDto,
       }),
     }),
@@ -202,7 +202,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/roles`,
-        method: "DELETE",
+        method: 'DELETE',
         body: queryArg.roleIdDto,
       }),
     }),
@@ -224,7 +224,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/media`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.body,
       }),
     }),
@@ -242,7 +242,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/media/avatar`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.body,
       }),
     }),
@@ -252,7 +252,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/project`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.projectCreateDto,
       }),
     }),
@@ -292,7 +292,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/project/${queryArg.projectId}`,
-        method: "PUT",
+        method: 'PUT',
         body: queryArg.projectUpdateDto,
       }),
     }),
@@ -302,7 +302,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/project/${queryArg.projectId}`,
-        method: "DELETE",
+        method: 'DELETE',
       }),
     }),
     projectControllerAddReward: build.mutation<
@@ -311,7 +311,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/project/${queryArg.projectId}/addReward`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.rewardDto,
       }),
     }),
@@ -321,7 +321,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/project/${queryArg.projectId}/review`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.reviewDto,
       }),
     }),
@@ -331,7 +331,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/payment/reward`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.payRewardDto,
       }),
     }),
@@ -341,7 +341,7 @@ export const api = createApi({
     >({
       query: (queryArg) => ({
         url: `/api/v1/payment/donate`,
-        method: "POST",
+        method: 'POST',
         body: queryArg.donateDto,
       }),
     }),
@@ -618,7 +618,7 @@ export type UserRoleDto = {
 };
 export type CheckPermissionDto = {
   username: string;
-  permissions: ("ADMIN" | "REVIEWER")[];
+  permissions: ('ADMIN' | 'REVIEWER')[];
 };
 export type MailResetPasswordDto = {
   email: string;
@@ -646,16 +646,16 @@ export type PermissionViewRo = {
 export type RoleRo = {
   id: string;
   name: string;
-  permissions: ("ADMIN" | "REVIEWER")[];
+  permissions: ('ADMIN' | 'REVIEWER')[];
 };
 export type RoleDto = {
   name: string;
-  permissions: ("ADMIN" | "REVIEWER")[];
+  permissions: ('ADMIN' | 'REVIEWER')[];
 };
 export type UpdateRoleDto = {
   id: string;
   name: string;
-  permissions: ("ADMIN" | "REVIEWER")[];
+  permissions: ('ADMIN' | 'REVIEWER')[];
 };
 export type RolesRo = {
   roles: RoleRo[];
@@ -666,7 +666,7 @@ export type RoleIdDto = {
 export type UploadMediaRo = {
   path: string;
 };
-export type Category = "COMPUTER" | "PHYSICS" | "CHEMISTRY" | "MATHEMATICS";
+export type Category = 'COMPUTER' | 'PHYSICS' | 'CHEMISTRY' | 'MATHEMATICS';
 export type BudgetDto = {
   title: string;
   value: number;
@@ -706,7 +706,7 @@ export type ProjectRo = {
   timeDescription: string;
   timelines: TimelineDto[];
   imageUrls: string[];
-  state: "FAILED" | "FINISHED" | "FINANCING" | "REVIEWING" | "START";
+  state: 'FAILED' | 'FINISHED' | 'FINANCING' | 'REVIEWING' | 'START';
   owner: UserRo;
   rewards: RewardRo[];
   reviews: ReviewRo[];
@@ -745,7 +745,7 @@ export type ProjectUpdateDto = {
   timeDescription?: string;
   timelines?: TimelineDto[];
   imageUrls?: string[];
-  state?: "FAILED" | "FINISHED" | "FINANCING" | "REVIEWING" | "START";
+  state?: 'FAILED' | 'FINISHED' | 'FINANCING' | 'REVIEWING' | 'START';
 };
 export type RewardDto = {
   title: string;
@@ -823,4 +823,3 @@ export const {
   usePaymentControllerFindPaymentsOfProjectQuery,
   usePaymentControllerFindPaymentsOfUserQuery,
 } = api;
-

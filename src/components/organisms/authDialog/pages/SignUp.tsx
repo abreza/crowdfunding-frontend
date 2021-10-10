@@ -122,7 +122,8 @@ const SignUp: FC<PageProps> = ({ handleClose, changePage, afterAuth }) => {
           variant="contained"
           color="primary"
           onClick={submitSignUp}
-          loading={isLoading}>
+          loading={isLoading}
+        >
           ثبت‌نام
         </LoadingButton>
       </Grid>

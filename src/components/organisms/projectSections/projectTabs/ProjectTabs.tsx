@@ -6,8 +6,6 @@ import ProjectFounds from './ProjectFounds';
 import ProjectReviews from './ProjectReviews';
 import ProjectTechnical from './ProjectTechnical';
 
-type ProjectTabsProps = {};
-
 const tabs: { label: string; component: FC<any> }[] = [
   {
     label: 'توضیحات',
@@ -31,7 +29,7 @@ const tabs: { label: string; component: FC<any> }[] = [
   },
 ];
 
-const ProjectTabs: FC<ProjectTabsProps> = () => {
+const ProjectTabs: FC = () => {
   const [activeTav, setActiveTav] = useState(0);
 
   const TabComponent = tabs[activeTav].component;
@@ -47,7 +45,8 @@ const ProjectTabs: FC<ProjectTabsProps> = () => {
           variant="scrollable"
           allowScrollButtonsMobile
           scrollButtons="auto"
-          centered>
+          centered
+        >
           {tabs.map((tab) => (
             <Tab key={tab.label} label={tab.label} />
           ))}

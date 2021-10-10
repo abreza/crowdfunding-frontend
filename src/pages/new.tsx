@@ -23,8 +23,6 @@ import {
 } from 'src/app/services/api.generated';
 import jMoment from 'jalali-moment';
 
-type CreateProjectProps = {};
-
 const TabsData = [
   {
     icon: <AssignmentIcon />,
@@ -60,7 +58,7 @@ export type ExtendedFile = {
   progress?: number;
 };
 
-const CreateProject: FC<CreateProjectProps> = () => {
+const CreateProject: FC = () => {
   const { push } = useRouter();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -195,7 +193,8 @@ const CreateProject: FC<CreateProjectProps> = () => {
             onChange={(e, value) => setActiveStep(value)}
             variant="scrollable"
             allowScrollButtonsMobile
-            scrollButtons="auto">
+            scrollButtons="auto"
+          >
             {TabsData.map((tab) => (
               <Tab key={tab.label} icon={tab.icon} label={tab.label} />
             ))}
@@ -211,14 +210,16 @@ const CreateProject: FC<CreateProjectProps> = () => {
               container
               justifyContent="space-between"
               direction="row"
-              sx={{ pt: 2 }}>
+              sx={{ pt: 2 }}
+            >
               <Grid item>
                 {activeStep !== 0 && (
                   <Button
                     variant="outlined"
                     color="primary"
                     onClick={() => setActiveStep(activeStep - 1)}
-                    sx={{ mr: 9 }}>
+                    sx={{ mr: 9 }}
+                  >
                     قبلی
                   </Button>
                 )}
@@ -232,7 +233,8 @@ const CreateProject: FC<CreateProjectProps> = () => {
                   sx={{ mr: 9 }}
                   type={
                     activeStep === TabsData.length - 1 ? 'submit' : 'button'
-                  }>
+                  }
+                >
                   {activeStep === TabsData.length - 1
                     ? 'ثبت نهایی'
                     : 'ثبت و ادامه'}

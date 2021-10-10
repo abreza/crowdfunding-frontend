@@ -25,11 +25,13 @@ export const ProfileAvatar: FC<{ editable?: boolean; src: string }> = ({
         position: 'relative',
         width: { sm: '80%', xs: '60%' },
         mx: 'auto',
-      }}>
+      }}
+    >
       <Box
         sx={{
           mt: '100%',
-        }}></Box>
+        }}
+      ></Box>
       <Box
         sx={{
           position: 'absolute',
@@ -37,7 +39,8 @@ export const ProfileAvatar: FC<{ editable?: boolean; src: string }> = ({
           bottom: 0,
           left: 0,
           right: 0,
-        }}>
+        }}
+      >
         {isLoading ? (
           <Skeleton
             animation="wave"
@@ -51,7 +54,8 @@ export const ProfileAvatar: FC<{ editable?: boolean; src: string }> = ({
         {editable && (
           <IconButton
             sx={{ position: 'absolute', bottom: '0', right: '0' }}
-            component="label">
+            component="label"
+          >
             <Edit color="primary" />
             <input
               type="file"

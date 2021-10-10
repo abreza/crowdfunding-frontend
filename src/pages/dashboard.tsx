@@ -6,8 +6,6 @@ import { UserCard } from 'src/components/organisms/userCard/UserCard';
 import { FC, useState } from 'react';
 import Panel from 'src/templates/Panel';
 
-type DashboardProps = {};
-
 const tabs: { label: string; component: FC<any> }[] = [
   {
     label: 'پروژه‌ها',
@@ -23,7 +21,7 @@ const tabs: { label: string; component: FC<any> }[] = [
   },
 ];
 
-const Dashboard: FC<DashboardProps> = () => {
+const Dashboard: FC = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const CurrentComponent = tabs[activeTab].component;
@@ -44,7 +42,8 @@ const Dashboard: FC<DashboardProps> = () => {
               variant="scrollable"
               allowScrollButtonsMobile
               scrollButtons="auto"
-              centered>
+              centered
+            >
               {tabs.map((tab) => (
                 <Tab key={tab.label} label={tab.label} />
               ))}

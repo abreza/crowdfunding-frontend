@@ -18,7 +18,8 @@ export const CircularProgressWithLabel: FC<
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-      }}>
+      }}
+    >
       {finished ? (
         <CheckCircleOutline
           sx={{
@@ -47,7 +48,8 @@ export const CircularProgressWithLabel: FC<
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
+            }}
+          >
             <Typography variant="caption" color="primary">{`${Math.round(
               value
             )}%`}</Typography>

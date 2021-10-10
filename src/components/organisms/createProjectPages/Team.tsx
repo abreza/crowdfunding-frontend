@@ -38,7 +38,8 @@ const Team: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
             spacing={2}
             xs={3}
             alignItems="center"
-            justifyContent="center">
+            justifyContent="center"
+          >
             <Grid item>
               <Badge
                 overlap="circular"
@@ -50,7 +51,8 @@ const Team: FC<{ handleChange: any; project: ProjectCreateDto }> = ({
                   <IconButton size="large">
                     <CreateIcon />
                   </IconButton>
-                }>
+                }
+              >
                 <Avatar
                   sx={{
                     width: 56,

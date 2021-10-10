@@ -16,7 +16,8 @@ const NavbarSearch: FC = () => {
         marginRight: 2,
         marginLeft: { sm: 0, md: 3 },
         transition: '0.3s',
-      }}>
+      }}
+    >
       <Box
         sx={{
           width: 56,
@@ -26,7 +27,8 @@ const NavbarSearch: FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-        }}>
+        }}
+      >
         <SearchIcon />
       </Box>
       <InputBase

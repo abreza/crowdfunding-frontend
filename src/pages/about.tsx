@@ -6,9 +6,7 @@ import our from 'src/assets/images/our.png';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 
-type AboutProps = {};
-
-const About: FC<AboutProps> = () => {
+const About: FC = () => {
   return (
     <Homepage>
       <Container sx={{ py: 2 }}>
@@ -17,13 +15,15 @@ const About: FC<AboutProps> = () => {
             overflow: 'hidden',
             position: 'relative',
             mb: 2,
-          }}>
+          }}
+        >
           <Box
             sx={{
               height: 450,
               position: 'relative',
               filter: 'blur(2px) grayscale(70%) brightness(0.70)',
-            }}>
+            }}
+          >
             <Image
               src={sharif}
               alt="about"
@@ -44,13 +44,15 @@ const About: FC<AboutProps> = () => {
               right: 0,
               width: '100%',
               height: '100%',
-            }}>
+            }}
+          >
             <Grid item xs={12}>
               <Typography
                 variant="h1"
                 align="center"
                 color="white"
-                sx={{ textShadow: '#ccc 1px 3px' }}>
+                sx={{ textShadow: '#ccc 1px 3px' }}
+              >
                 درباره ما
               </Typography>
             </Grid>
@@ -61,7 +63,8 @@ const About: FC<AboutProps> = () => {
             container
             spacing={1}
             alignItems="center"
-            justifyContent="center">
+            justifyContent="center"
+          >
             <Grid item xs={12} sm={6}>
               <Image
                 src={our}

@@ -91,7 +91,8 @@ export const ChangePassword = () => {
           fullWidth
           variant="contained"
           onClick={onSubmit}
-          loading={isLoading}>
+          loading={isLoading}
+        >
           ثبت
         </LoadingButton>
       </Grid>

@@ -16,7 +16,8 @@ const LoginButton: FC = () => {
     <Button
       onClick={() => openAuthDialog({ initPage: AuthPageName.LOGIN })}
       variant="outlined"
-      color="primary">
+      color="primary"
+    >
       ورود
     </Button>
   );
@@ -70,7 +71,8 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
             }}
             src={user.avatarAddress && baseUrl + user.avatarAddress}
           />
-        }>
+        }
+      >
         {user.firstName} {user.lastName}
       </Button>
       <Menu
@@ -85,7 +87,8 @@ const ProfileButton: FC<{ user: UserRo }> = ({ user }) => {
         transformOrigin={{
           vertical: 'top',
           horizontal: 'center',
-        }}>
+        }}
+      >
         <MenuItem onClick={goToProfile}>پروفایل</MenuItem>
         <MenuItem onClick={goToMyProjects}>پروژه‌های من</MenuItem>
         {isAdmin && <MenuItem onClick={goToAdmin}>مدیریت</MenuItem>}

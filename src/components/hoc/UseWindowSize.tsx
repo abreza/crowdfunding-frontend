@@ -10,7 +10,7 @@ const getWindowDimensions = (breakPointWidth: number) => {
   };
 };
 
-const UseWindowDimensions = (breakPointWidth: number = 600) => {
+const UseWindowDimensions = (breakPointWidth = 600) => {
   const [windowDimensions, setWindowDimensions] = useState({
     isMobile: true,
     width: 0,

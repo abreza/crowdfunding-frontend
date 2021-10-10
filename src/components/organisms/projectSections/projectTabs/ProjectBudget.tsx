@@ -63,22 +63,22 @@ const renderActiveShape = (props: any) => {
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
         textAnchor={textAnchor}
-        fill="#333">{`PV ${value}`}</text>
+        fill="#333"
+      >{`PV ${value}`}</text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
         dy={18}
         textAnchor={textAnchor}
-        fill="#999">
+        fill="#999"
+      >
         {`(Rate ${(percent * 100).toFixed(2)}%)`}
       </text>
     </g>
   );
 };
 
-type ProjectBudgetProps = {};
-
-const ProjectBudget: FC<ProjectBudgetProps> = () => {
+const ProjectBudget: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const { budgets = [] } = useContext(ProjectContext);
@@ -100,7 +100,8 @@ const ProjectBudget: FC<ProjectBudgetProps> = () => {
             outerRadius={80}
             fill="#8884d8"
             dataKey="value"
-            onMouseEnter={(_, index) => setActiveIndex(index)}>
+            onMouseEnter={(_, index) => setActiveIndex(index)}
+          >
             {budgets.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}

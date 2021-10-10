@@ -2,9 +2,7 @@ import { Skeleton, Typography } from '@mui/material';
 import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
 
-type ProjectHeadProps = {};
-
-const ProjectHead: FC<ProjectHeadProps> = () => {
+const ProjectHead: FC = () => {
   const { subject, owner } = useContext(ProjectContext);
 
   return (
