@@ -4786,10 +4786,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@^11.2.2:
-  version "11.2.2"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-11.2.2.tgz#b2b96d8c4eb350f832143c812defa2c70b9d0a2c"
-  integrity sha512-rbtLCRTyndPJvtjpLwVjjb6K91jQrJ06oNArA4igPTGYlDCrJMIFbNDUAQGa4GRd8AjUBHkAAmq+K38tcmMaAQ==
+lint-staged@^11.2.3:
+  version "11.2.3"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-11.2.3.tgz#fc3f4569cc4f46553309dfc1447b8aef69f744fb"
+  integrity sha512-Tfmhk8O2XFMD25EswHPv+OYhUjsijy5D7liTdxeXvhG2rsadmOLFtyj8lmlfoFFXY8oXWAIOKpoI+lJe1DB1mw==
   dependencies:
     cli-truncate "2.1.0"
     colorette "^1.4.0"
@@ -7123,10 +7123,10 @@ tinycolor2@^1.4.1:
   resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
   integrity sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==
 
-tinymce@^5.5.1, tinymce@^5.9.2:
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.9.2.tgz#c56a1d7800ac23026fbe6e0fcf444c0f157ccafe"
-  integrity sha512-/dHTsbxo0YwLvB5krRqiw/qHEm04/k6l0dvAQ3hO5oNw4e9QalKcUQCdr+g/b/FWcsUMP6scvKmm8MX50/j3Cg==
+tinymce@^5.10.0, tinymce@^5.5.1:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.10.0.tgz#5f88b40c2b26dc72b126f7d04944014dcb1ace05"
+  integrity sha512-SaqBK8GtTKYSsTfhKdN0+NrZRgmVWO+j3fvgzLjt0t/g0osNzRH5os8icm2Rv5HvaeTd4TpxetUuLE+R9yg/yg==
 
 tmp@^0.0.33:
   version "0.0.33"

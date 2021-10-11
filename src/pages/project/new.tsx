@@ -22,6 +22,7 @@ import {
   useProjectControllerCreateMutation,
 } from 'src/app/services/api.generated';
 import jMoment from 'jalali-moment';
+import { createProjectInit } from 'src/constants/initData';
 
 const TabsData = [
   {
@@ -58,26 +59,13 @@ export type ExtendedFile = {
   progress?: number;
 };
 
-const CreateProject: FC = () => {
+const CreateProject: FC<{ initProject?: ProjectCreateDto }> = ({
+  initProject = createProjectInit,
+}) => {
   const { push } = useRouter();
   const [activeStep, setActiveStep] = useState(0);
 
-  const [project, setProject] = useState<ProjectCreateDto>({
-    subject: '',
-    institution: '',
-    category: 'COMPUTER',
-    summary: '',
-    budgets: [{ title: '', value: 0 }],
-    budgetReason: '',
-    projectFirstIdea: '',
-    projectMainIdea: '',
-    projectGoal: '',
-    technicalDescriptions: [],
-    projectAdditionalInfo: '',
-    timeDescription: '',
-    timelines: [],
-    imageUrls: [],
-  });
+  const [project, setProject] = useState<ProjectCreateDto>(initProject);
 
   const [files, setFiles] = useState<ExtendedFile[]>([]);
   const [needUpdateUrls, setNeedUpdateUrls] = useState(false);

@@ -6,7 +6,12 @@ import { FC } from 'react';
 import { useProjectControllerFindForAdminQuery } from 'src/app/services/api.generated';
 
 const AllProjects: FC = () => {
-  const { data, isLoading } = useProjectControllerFindForAdminQuery();
+  const { data, isLoading } = useProjectControllerFindForAdminQuery(
+    undefined as void,
+    {
+      refetchOnMountOrArgChange: 5,
+    }
+  );
 
   return (
     <Container maxWidth="md" sx={{ pt: 2 }}>
@@ -35,7 +40,7 @@ const AllProjects: FC = () => {
         ) : (
           <Grid item>
             <Typography align="center">
-              متاسفانه مطلبی ایجاد نکرده‌اید.
+              متاسفانه پروژه‌ای ایجاد نشده است.
             </Typography>
           </Grid>
         )}

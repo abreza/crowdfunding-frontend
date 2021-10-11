@@ -3,10 +3,11 @@ import { Delete, Edit, Settings } from '@mui/icons-material';
 import { FC, useState } from 'react';
 import { DeleteProjectDialog } from './dialogs/DeleteProjectDialog';
 import { ProjectRo } from 'src/app/services/api.generated';
+import { useRouter } from 'next/router';
 
 export const ManageProjectCard: FC<{ project?: ProjectRo }> = ({ project }) => {
+  const { push } = useRouter();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const [openEditDialog, setOpenEditDialog] = useState(false);
   const [openSettingsDialog, setOpenSettingsDialog] = useState(false);
 
   return (
@@ -15,7 +16,9 @@ export const ManageProjectCard: FC<{ project?: ProjectRo }> = ({ project }) => {
         <Button onClick={() => setOpenDeleteDialog(true)}>
           <Delete />
         </Button>
-        <Button onClick={() => alert()}>
+        <Button
+          onClick={() => project?.id && push('/project/edit/' + project.id)}
+        >
           <Edit />
         </Button>
         <Button onClick={() => alert()}>

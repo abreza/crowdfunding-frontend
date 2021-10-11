@@ -6,11 +6,12 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
+  DocumentInitialProps,
 } from 'next/document';
 import { sLightTheme } from 'src/config/theme';
 import React from 'react';
 
-export default class MyDocument extends Document {
+export default class extends Document {
   render() {
     return (
       <Html lang="fa">
@@ -26,7 +27,9 @@ export default class MyDocument extends Document {
     );
   }
 
-  async getInitialProps(ctx: DocumentContext) {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
     const cache = createEmotionCache();
     const { extractCriticalToChunks } = createEmotionServer(cache);
 

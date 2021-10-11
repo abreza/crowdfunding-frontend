@@ -10,14 +10,14 @@ const CreateProjectButton: FC<ButtonProps> = (props) => {
   const { openAuthDialog } = useContext(HomepageContext);
 
   return token ? (
-    <Link href="/new" passHref>
+    <Link href="/project/new" passHref>
       <Button variant="contained" color="primary" {...props}>
         ایجاد پروژه جدید
       </Button>
     </Link>
   ) : (
     <Button
-      onClick={() => openAuthDialog({ afterAuth: '/new' })}
+      onClick={() => openAuthDialog({ afterAuth: '/project/new' })}
       variant="contained"
       color="primary"
       {...props}

@@ -414,6 +414,13 @@ export function getThemedComponents(theme: Theme) {
           },
         },
       },
+      MuiChip: {
+        styleOverrides: {
+          labelMedium: {
+            height: 18,
+          },
+        },
+      },
       MuiListItemButton: {
         styleOverrides: {
           root: {

@@ -82,7 +82,7 @@ export async function getStaticPaths() {
     );
     projects = res.data.projects;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 
   const paths = projects.map((project: ProjectRo) => ({
@@ -108,7 +108,7 @@ export async function getStaticProps({
       revalidate: 30,
     };
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
   return {
     props: {},

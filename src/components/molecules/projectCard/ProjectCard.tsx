@@ -1,4 +1,4 @@
-import { Divider, Skeleton } from '@mui/material';
+import { Chip, Divider, Skeleton } from '@mui/material';
 import {
   Avatar,
   Card,
@@ -13,6 +13,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { ManageProjectCard } from './ManageProjectCard';
 import { ProjectRo } from 'src/app/services/api.generated';
+import { Box } from '@mui/system';
 
 export enum ProjectPermission {
   VISITOR = 'VISITOR',
@@ -42,13 +43,22 @@ const ProjectCard: FC<{
         <CardActionArea disableRipple>
           {item ? (
             !!item?.imageUrls?.length && (
-              <CardMedia
-                component="img"
-                alt={item.subject}
-                height="140"
-                image={image}
-                title={item.subject}
-              />
+              <Box sx={{ position: 'relative' }}>
+                <CardMedia
+                  component="img"
+                  alt={item.subject}
+                  height="140"
+                  image={image}
+                  title={item.subject}
+                />
+                {permissionMode !== ProjectPermission.VISITOR && (
+                  <Chip
+                    color="primary"
+                    label={item.state}
+                    sx={{ position: 'absolute', left: 10, top: 10 }}
+                  />
+                )}
+              </Box>
             )
           ) : (
             <Skeleton

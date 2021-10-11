@@ -10,7 +10,7 @@ const MyProjects: FC = () => {
   const { data, isLoading } = useProjectControllerFindMyProjectsQuery(
     undefined as void,
     {
-      refetchOnMountOrArgChange: 30,
+      refetchOnMountOrArgChange: 5,
     }
   );
 
