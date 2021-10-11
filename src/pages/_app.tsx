@@ -21,7 +21,6 @@ import 'src/assets/styles/app.css';
 import 'src/assets/styles/gallery.css';
 import 'src/assets/styles/fontiran.css';
 import 'src/assets/styles/tiny.css';
-import 'src/assets/styles/nprogress.css';
 
 import createEmotionCache from 'src/createEmotionCache';
 import { sDarkTheme, sLightTheme } from 'src/config/theme';
@@ -30,8 +29,8 @@ import { DispatchContext } from 'src/contexts/DispatchContext';
 import { getCookie } from 'src/utils/getCookies';
 
 import { useRouter } from 'next/router';
-import NProgress from 'nprogress';
 import { usePersistLocaleCookie } from 'src/components/hoc/UsePersistLocaleCookie';
+import { Loading } from 'src/components/atoms/Loading';
 
 const persistor = persistStore(store);
 const clientSideEmotionCache = createEmotionCache();
@@ -46,19 +45,17 @@ const MyApp: FC<MyAppProps> = (props) => {
   const router = useRouter();
   usePersistLocaleCookie();
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       gtag.pageview(url);
     };
 
     const handleStart = (url: string) => {
-      console.log(`Loading: ${url}`);
-      NProgress.start();
+      url !== router.pathname ? setLoading(true) : setLoading(false);
     };
-    const handleStop = () => {
-      console.log(`Loaded`);
-      NProgress.done();
-    };
+    const handleStop = (url: string) => setLoading(false);
 
     router.events.on('routeChangeComplete', handleRouteChange);
     router.events.on('routeChangeStart', handleStart);
@@ -99,6 +96,7 @@ const MyApp: FC<MyAppProps> = (props) => {
               <CssBaseline />
               <CheckToken />
               <ToastContainer limit={3} />
+              <Loading loading={loading} />
               <DispatchContext.Provider
                 value={{ setThemeMode: changeTheme, themeMode }}
               >
