@@ -36,7 +36,7 @@ type ProjectProps = {
 
 const Project: FC<ProjectProps> = ({ project = initProjectContext }) => {
   const router = useRouter();
-  const { pid } = router.query;
+  const pid = /[^/]*$/.exec(router.asPath)?.[0];
   const [proj, setProj] = useState(project);
 
   useEffect(() => {
@@ -48,8 +48,8 @@ const Project: FC<ProjectProps> = ({ project = initProjectContext }) => {
   return (
     <Homepage>
       <ProjectContext.Provider value={proj}>
-        {router.isFallback && (
-          <FetchProject setProject={setProj} projectId={pid as string} />
+        {router.isFallback && pid && (
+          <FetchProject setProject={setProj} projectId={pid} />
         )}
         <Container maxWidth="md" sx={{ py: 3 }}>
           <ProjectHead />
@@ -103,17 +103,16 @@ export async function getStaticProps({
   try {
     const res = await axios(baseUrl + 'project/' + pid);
     const project = res.data;
-    return {
-      props: { project },
-      revalidate: 30,
-    };
+    return project
+      ? {
+          props: { project },
+          revalidate: 30,
+        }
+      : { notFound: true };
   } catch (err) {
     // console.log(err);
   }
-  return {
-    props: {},
-    revalidate: 30,
-  };
+  return { notFound: true };
 }
 
 export default Project;
