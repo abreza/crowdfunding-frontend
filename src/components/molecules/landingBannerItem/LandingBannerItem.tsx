@@ -5,7 +5,13 @@ import { ProjectRo } from 'src/app/services/api.generated';
 
 const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
   return (
-    <Box sx={{ height: { sm: 486, xs: 300 }, position: 'relative' }}>
+    <Box
+      sx={{
+        height: { sm: 486, xs: 300 },
+        position: 'relative',
+        direction: 'ltr',
+      }}
+    >
       <Box
         sx={{
           background: `url("${item.imageUrls?.[0]}") 50% center / cover no-repeat`,
@@ -20,7 +26,7 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
             width: '100%',
             height: '100%',
             backgroundImage:
-              'linear-gradient(rgba(80,80,80,.6),rgba(80,80,80,.6))',
+              'linear-gradient(rgba(40,40,40,.7),rgba(40,40,40,.7))',
             content: '""',
           },
         }}
@@ -37,7 +43,15 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
           color: 'white',
         }}
       >
-        <Typography variant="h2">{item.subject}</Typography>
+        <Typography
+          variant="h2"
+          sx={{
+            mb: 1,
+            color: 'white',
+          }}
+        >
+          {item.subject}
+        </Typography>
         <Typography
           variant="body1"
           sx={{
@@ -48,6 +62,7 @@ const LandingBannerItem: FC<{ item: ProjectRo }> = ({ item }) => {
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             mb: 3,
+            color: 'white',
           }}
         >
           {item.summary}
