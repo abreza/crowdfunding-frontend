@@ -15,7 +15,7 @@ const ProjectFounds: FC = () => {
   return (
     <Grid container>
       <Grid item xs={12} sm={8}>
-        <Typography variant="h2">سرمایه‌گذاران</Typography>
+        <Typography variant="h3">سرمایه‌گذاران</Typography>
         <Box
           sx={{
             p: 2,
@@ -100,7 +100,7 @@ const ProjectFounds: FC = () => {
           </Grid>
         </Hidden>
         <Grid item xs>
-          <Typography variant="h2">نمودار مشارکت</Typography>
+          <Typography variant="h4">نمودار مشارکت</Typography>
           <Box
             sx={{
               height: 250,

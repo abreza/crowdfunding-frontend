@@ -6,6 +6,8 @@ import {
   TableCell,
   TableContainer,
   Paper,
+  Typography,
+  Stack,
 } from '@mui/material';
 import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
@@ -15,29 +17,28 @@ const ProjectTechnical: FC = () => {
   const { technicalDescriptions = [] } = useContext(ProjectContext);
 
   return (
-    <Grid container alignItems="center" justifyContent="center">
-      <Grid item xs={12} sm={7}>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableBody>
-              {technicalDescriptions.map((item: TechnicalDescriptionDto) => (
-                <TableRow
-                  key={item.name}
-                  sx={{
-                    '&:nth-of-type(odd)': {
-                      backgroundColor: 'action.hover',
-                    },
-                  }}
-                >
-                  <TableCell align="center">{item.name}</TableCell>
-                  <TableCell align="center">{item.value}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Grid>
-    </Grid>
+    <Stack spacing={2}>
+      <Typography variant="h3">موارد فنی محصول</Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+            {technicalDescriptions.map((item: TechnicalDescriptionDto) => (
+              <TableRow
+                key={item.name}
+                sx={{
+                  '&:nth-of-type(odd)': {
+                    backgroundColor: 'action.hover',
+                  },
+                }}
+              >
+                <TableCell align="center">{item.name}</TableCell>
+                <TableCell align="center">{item.value}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Stack>
   );
 };
 

@@ -9,15 +9,23 @@ type ProjectDescriptionProps = {
 };
 
 const ProjectDescription: FC<ProjectDescriptionProps> = () => {
-  const { summary, projectFirstIdea } = useContext(ProjectContext);
+  const { summary, projectFirstIdea, timeDescription } =
+    useContext(ProjectContext);
 
   return (
     <Stack spacing={2}>
-      <Typography variant="body1">{summary}</Typography>
-      <ProjectTimeline />
+      <Box>
+        <Typography variant="h3">خلاصه</Typography>
+        <Typography variant="body1">{summary}</Typography>
+      </Box>
+      <Box>
+        <Typography variant="h3">زمان‌بندی</Typography>
+        {timeDescription && <Typography>{timeDescription}</Typography>}
+        <ProjectTimeline />
+      </Box>
       {projectFirstIdea && (
         <Box>
-          <Typography variant="h2">ایده اولیه پروژه</Typography>
+          <Typography variant="h3">ایده اولیه پروژه</Typography>
           <Typography>{projectFirstIdea}</Typography>
         </Box>
       )}
