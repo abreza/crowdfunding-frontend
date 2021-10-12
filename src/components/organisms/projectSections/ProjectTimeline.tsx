@@ -7,6 +7,7 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import { FC, useContext } from 'react';
 import { ProjectContext } from 'src/contexts/ProjectContext';
+import { dateFormatter } from 'src/utils/dateFormatterUtils';
 
 export const ProjectTimeline: FC = () => {
   const { timelines = [] } = useContext(ProjectContext);
@@ -16,7 +17,7 @@ export const ProjectTimeline: FC = () => {
         {timelines.map((timeline, index) => (
           <TimelineItem key={index}>
             <TimelineOppositeContent color="text.secondary">
-              {timeline.date}
+              {dateFormatter({ date: timeline.date })}
             </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineDot />
