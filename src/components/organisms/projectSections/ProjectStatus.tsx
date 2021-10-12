@@ -19,6 +19,7 @@ import {
 import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
 import { Box } from '@mui/system';
+import { DonateButton } from './DonateButton';
 
 const ProjectStatus: FC = () => {
   const { budgets } = useContext(ProjectContext);
@@ -60,9 +61,7 @@ const ProjectStatus: FC = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Button fullWidth variant="contained" color="primary" sx={{ my: 2 }}>
-            سرمایه‌گذاری
-          </Button>
+          <DonateButton />
           <Grid
             container
             alignItems="center"
