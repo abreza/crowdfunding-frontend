@@ -13,7 +13,7 @@ import { useProjectControllerDeleteMutation } from 'src/app/services/api.generat
 
 export const DeleteProjectDialog: FC<{
   open: boolean;
-  handleClose: any;
+  handleClose: () => void;
   projectId: string;
 }> = ({ open, handleClose, projectId }) => {
   const [deleteProject, { isLoading }] = useProjectControllerDeleteMutation();
@@ -21,15 +21,18 @@ export const DeleteProjectDialog: FC<{
   const submit = () => {
     deleteProject({ projectId })
       .unwrap()
-      .then(() => toast.success('پروژه با موفقیت حذف شد.'))
+      .then(() => {
+        toast.success('پروژه با موفقیت حذف شد.');
+        handleClose();
+      })
       .catch(() => toast.error('ایرادی رخ‌داده است! دوباره تلاش کنید.'));
   };
 
   return (
     <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
-      <DialogTitle id="alert-dialog-title">حذف پروژه از سامانه؟</DialogTitle>
+      <DialogTitle>حذف پروژه از سامانه؟</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
+        <DialogContentText>
           آیا مایل به حذف این پروژه از سامانه هستید؟
           <br />
           در صورت حذف پروژه امکان بازیابی آن وجود ندارد.

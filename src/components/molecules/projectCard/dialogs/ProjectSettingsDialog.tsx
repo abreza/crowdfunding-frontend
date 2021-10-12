@@ -6,24 +6,66 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  MenuItem,
+  TextField,
 } from '@mui/material';
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { toast } from 'react-toastify';
+import {
+  ProjectRo,
+  useProjectControllerUpdateMutation,
+} from 'src/app/services/api.generated';
+import { projectStates } from 'src/constants/projectStates';
 
 export const ProjectSettingsDialog: FC<{
   open: boolean;
-  handleClose: any;
-  projectId: string;
-}> = ({ open, handleClose, projectId }) => {
-  const submit = () => {};
+  handleClose: () => void;
+  project: ProjectRo;
+}> = ({ open, handleClose, project }) => {
+  const [updateProject, { isLoading }] = useProjectControllerUpdateMutation();
 
+  const [projectState, setProjectState] = useState(project.state);
+
+  const submit = () => {
+    const {
+      id: projectId,
+      owner,
+      rewards,
+      reviews,
+      ...projectUpdateDto
+    } = {
+      ...project,
+      state: projectState,
+    };
+    updateProject({
+      projectId,
+      projectUpdateDto,
+    })
+      .unwrap()
+      .then(() => {
+        toast.success('پروژه با موفقیت حذف شد.');
+        handleClose();
+      })
+      .catch(() => toast.error('ایرادی رخ‌داده است! دوباره تلاش کنید.'));
+  };
   return (
     <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
-      <DialogTitle id="alert-dialog-title">حذف پروژه از سامانه؟</DialogTitle>
+      <DialogTitle>تنظیمات پروژه</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          آیا مایل به حذف این پروژه از سامانه هستید؟
-          <br />
-          در صورت حذف پروژه امکان بازیابی آن وجود ندارد.
+        <DialogContentText sx={{ py: 1 }}>
+          <TextField
+            select
+            label="وضعیت پروژه"
+            value={projectState}
+            sx={{ minWidth: 150 }}
+            onChange={(e) => setProjectState(e.target.value as any)}
+          >
+            {projectStates.map((state) => (
+              <MenuItem key={state.value} value={state.value}>
+                {state.label}
+              </MenuItem>
+            ))}
+          </TextField>
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -33,10 +75,15 @@ export const ProjectSettingsDialog: FC<{
           color="primary"
           autoFocus
         >
-          خیر
+          لغو
         </Button>
-        <LoadingButton onClick={submit} variant="outlined" color="error">
-          بله
+        <LoadingButton
+          onClick={submit}
+          variant="outlined"
+          color="error"
+          loading={isLoading}
+        >
+          ثبت
         </LoadingButton>
       </DialogActions>
     </Dialog>

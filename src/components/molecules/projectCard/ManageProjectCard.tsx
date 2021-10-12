@@ -4,6 +4,7 @@ import { FC, useState } from 'react';
 import { DeleteProjectDialog } from './dialogs/DeleteProjectDialog';
 import { ProjectRo } from 'src/app/services/api.generated';
 import { useRouter } from 'next/router';
+import { ProjectSettingsDialog } from './dialogs/ProjectSettingsDialog';
 
 export const ManageProjectCard: FC<{ project?: ProjectRo }> = ({ project }) => {
   const { push } = useRouter();
@@ -21,15 +22,24 @@ export const ManageProjectCard: FC<{ project?: ProjectRo }> = ({ project }) => {
         >
           <Edit />
         </Button>
-        <Button onClick={() => alert()}>
+        <Button onClick={() => setOpenSettingsDialog(true)}>
           <Settings />
         </Button>
       </ButtonGroup>
-      <DeleteProjectDialog
-        open={!!project && openDeleteDialog}
-        handleClose={() => setOpenDeleteDialog(false)}
-        projectId={project?.id as string}
-      />
+      {project && (
+        <>
+          <DeleteProjectDialog
+            open={openDeleteDialog}
+            handleClose={() => setOpenDeleteDialog(false)}
+            projectId={project.id}
+          />
+          <ProjectSettingsDialog
+            open={openSettingsDialog}
+            handleClose={() => setOpenSettingsDialog(false)}
+            project={project}
+          />
+        </>
+      )}
     </Paper>
   );
 };
