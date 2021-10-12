@@ -10,6 +10,7 @@ import {
 import { FC } from 'react';
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing';
 import { fakeData } from 'src/constants/fakeData';
+import translateNumber from 'src/utils/translateNumberUtils';
 
 const ProjectFounds: FC = () => {
   return (
@@ -121,7 +122,7 @@ const ProjectFounds: FC = () => {
               labelTextColor={{ from: 'color', modifiers: [['darker', 2.4]] }}
               borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
               animate={true}
-              valueFormat={(v) => `${v} میلیون تومان`}
+              valueFormat={(v) => `${translateNumber({ num: v })} میلیون تومان`}
             />
           </Box>
         </Grid>

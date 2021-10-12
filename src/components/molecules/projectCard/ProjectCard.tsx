@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { ManageProjectCard } from './ManageProjectCard';
 import { ProjectRo } from 'src/app/services/api.generated';
 import { Box } from '@mui/system';
+import translateNumber from 'src/utils/translateNumberUtils';
 
 export enum ProjectPermission {
   VISITOR = 'VISITOR',
@@ -167,7 +168,7 @@ const ProjectCard: FC<{
                       fontWeight: 600,
                     }}
                   >
-                    {`${totalBudget} تومان`}
+                    {`${translateNumber({ num: totalBudget })} تومان`}
                   </Typography>
                 ) : (
                   <Skeleton animation="wave" height={10} width={40} />
