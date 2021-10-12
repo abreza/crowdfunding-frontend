@@ -12,6 +12,11 @@ export const api = generatedApi
           { type: 'Project', id: projectId },
         ],
       },
+      projectControllerUpdate: {
+        invalidatesTags: (result, error, { projectId }) => [
+          { type: 'Project', id: projectId },
+        ],
+      },
       projectControllerFindMyProjects: {
         keepUnusedDataFor: 180,
         providesTags: (result) =>
