@@ -4,6 +4,7 @@ import { Rating } from '@mui/material';
 import { HomepageContext } from 'src/contexts/HomepageContext';
 import { FC, useContext } from 'react';
 import { dateFormatter } from 'src/utils/dateFormatterUtils';
+import translateNumber from 'src/utils/translateNumberUtils';
 
 type RatingLineProps = {
   rating: number;
@@ -40,7 +41,9 @@ const RatingLine: FC<RatingLineProps> = ({ rating, percent }) => {
         </Grid>
         <Hidden lgDown>
           <Grid item>
-            <Typography variant="h5">{percent}%</Typography>
+            <Typography variant="h5">
+              %{translateNumber({ num: percent })}
+            </Typography>
           </Grid>
         </Hidden>
       </Grid>
@@ -123,7 +126,7 @@ const ProjectReview: FC = () => {
         >
           <Grid item>
             <Typography variant="h1" component="h6">
-              3.1
+              ۳.۱
             </Typography>
           </Grid>
           <Grid item>
@@ -153,6 +156,7 @@ const ProjectReview: FC = () => {
             variant="contained"
             color="primary"
             fullWidth
+            disabled
             onClick={addComment}
           >
             افزودن دیدگاه
