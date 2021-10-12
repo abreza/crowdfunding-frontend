@@ -45,7 +45,6 @@ const ProjectTabs: FC = () => {
           variant="scrollable"
           allowScrollButtonsMobile
           scrollButtons="auto"
-          centered
         >
           {tabs.map((tab) => (
             <Tab key={tab.label} label={tab.label} />
