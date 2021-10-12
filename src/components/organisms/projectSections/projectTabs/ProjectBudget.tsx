@@ -2,6 +2,7 @@ import { Box } from '@mui/system';
 import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from 'recharts';
+import { Stack, Typography } from '@mui/material';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -81,37 +82,41 @@ const renderActiveShape = (props: any) => {
 const ProjectBudget: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { budgets = [] } = useContext(ProjectContext);
+  const { budgets = [], budgetReason } = useContext(ProjectContext);
 
   return (
-    <Box sx={{ height: 250 }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={250} height={250}>
-          <Pie
-            activeIndex={activeIndex}
-            activeShape={renderActiveShape}
-            data={budgets.map((budget) => ({
-              name: budget.title,
-              value: budget.value,
-            }))}
-            cx="50%"
-            cy="50%"
-            innerRadius={60}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="value"
-            onMouseEnter={(_, index) => setActiveIndex(index)}
-          >
-            {budgets.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
-    </Box>
+    <Stack spacing={2}>
+      <Box sx={{ height: 250 }}>
+        <Typography variant="h3">موارد بودجه</Typography>
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart width={250} height={250}>
+            <Pie
+              activeIndex={activeIndex}
+              activeShape={renderActiveShape}
+              data={budgets.map((budget) => ({
+                name: budget.title,
+                value: budget.value,
+              }))}
+              cx="50%"
+              cy="50%"
+              innerRadius={60}
+              outerRadius={80}
+              fill="#8884d8"
+              dataKey="value"
+              onMouseEnter={(_, index) => setActiveIndex(index)}
+            >
+              {budgets.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </Box>
+      <Typography>{budgetReason}</Typography>
+    </Stack>
   );
 };
 
