@@ -3,6 +3,6 @@
 }
 
 .image-gallery-thumbnail .image-gallery-thumbnail-image {
-  width: auto;
-  max-width: 100%;
+  width: auto !important;
+  max-width: 100% !important;
 }
