@@ -20,6 +20,7 @@ import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext } from 'react';
 import { Box } from '@mui/system';
 import { DonateButton } from './DonateButton';
+import translateNumber from 'src/utils/translateNumberUtils';
 
 const ProjectStatus: FC = () => {
   const { budgets } = useContext(ProjectContext);
@@ -35,7 +36,7 @@ const ProjectStatus: FC = () => {
         <Box sx={{ p: 2 }}>
           <Typography variant="h3">۲۳ میلیون تومان</Typography>
           <Typography variant="h5" color="textSecondary">
-            {`از ${totalBudget} تومان تامین شده است.`}
+            {`از ${translateNumber({ num: totalBudget })} تومان تامین شده است.`}
           </Typography>
           <LinearProgress
             sx={{ my: 2 }}
