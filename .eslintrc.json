@@ -3,7 +3,9 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
-    "plugin:react/recommended",
+    // "next",
+    // "next/core-web-vitals",
+    "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
