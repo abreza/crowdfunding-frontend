@@ -1,12 +1,14 @@
 import { Grid, Typography } from '@mui/material';
 import { FC } from 'react';
 
-import { ExtendedFile } from 'src/pages/new';
 import { toast } from 'react-toastify';
 import { baseUrl } from 'src/config';
 import { RootStateType } from 'src/app/store';
 import { useSelector } from 'react-redux';
-import { MyDropzone } from 'src/components/molecules/dropzone/MyDropzone';
+import {
+  ExtendedFile,
+  MyDropzone,
+} from 'src/components/molecules/dropzone/MyDropzone';
 import { upload } from 'src/app/services/uploadFile';
 
 const Gallery: FC<{

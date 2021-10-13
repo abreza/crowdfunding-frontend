@@ -3,9 +3,11 @@ import { Box } from '@mui/system';
 import { upload } from 'src/app/services/uploadFile';
 import { RootStateType } from 'src/app/store';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { MyDropzone } from 'src/components/molecules/dropzone/MyDropzone';
+import {
+  ExtendedFile,
+  MyDropzone,
+} from 'src/components/molecules/dropzone/MyDropzone';
 import TinyEditor from 'src/components/molecules/tinyEditor/reactTiny/TinyEditorComponent';
-import { ExtendedFile } from 'src/pages/new';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Panel from 'src/templates/Panel';

@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { DropEvent, FileRejection, useDropzone } from 'react-dropzone';
 import { Box } from '@mui/system';
-import { ExtendedFile } from 'src/pages/new';
 import { PreviewFile } from 'src/components/atoms/PreviewFile';
 
 type FileDropzoneProps = {
@@ -15,6 +14,13 @@ type FileDropzoneProps = {
   files?: ExtendedFile[];
   multiple?: boolean;
   placeholder?: string;
+};
+
+export type ExtendedFile = {
+  id: number;
+  file: File;
+  url?: string;
+  progress?: number;
 };
 
 export const MyDropzone: FC<FileDropzoneProps> = ({

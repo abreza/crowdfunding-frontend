@@ -23,6 +23,7 @@ import {
 } from 'src/app/services/api.generated';
 import jMoment from 'jalali-moment';
 import { createProjectInit } from 'src/constants/initData';
+import { ExtendedFile } from 'src/components/molecules/dropzone/MyDropzone';
 
 const TabsData = [
   {
@@ -51,13 +52,6 @@ const TabsData = [
     component: Gallery,
   },
 ];
-
-export type ExtendedFile = {
-  id: number;
-  file: File;
-  url?: string;
-  progress?: number;
-};
 
 const CreateProject: FC<{ initProject?: ProjectCreateDto }> = ({
   initProject = createProjectInit,

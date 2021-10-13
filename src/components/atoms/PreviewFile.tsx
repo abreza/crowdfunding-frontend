@@ -2,11 +2,11 @@ import { Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { Cancel as CancelIcon } from '@mui/icons-material';
 import { CircularProgressWithLabel } from 'src/components/atoms/CircularProgressWithLabel';
-import { ExtendedFile } from 'src/pages/new';
 import { FC, useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import videoImg from 'src/assets/images/video.png';
+import { ExtendedFile } from '../molecules/dropzone/MyDropzone';
 
 export const PreviewFile: FC<{
   extendedFile: ExtendedFile;
