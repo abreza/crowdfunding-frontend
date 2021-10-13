@@ -3,6 +3,7 @@ import { ProjectContext } from 'src/contexts/ProjectContext';
 import { FC, useContext, useState } from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from 'recharts';
 import { Stack, Typography } from '@mui/material';
+import translateNumber from 'src/utils/translateNumberUtils';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -65,7 +66,7 @@ const renderActiveShape = (props: any) => {
         y={ey}
         textAnchor={textAnchor}
         fill="#333"
-      >{`PV ${value}`}</text>
+      >{`${translateNumber({ num: value })} تومان`}</text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -73,7 +74,7 @@ const renderActiveShape = (props: any) => {
         textAnchor={textAnchor}
         fill="#999"
       >
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+        {`(${translateNumber({ num: (percent * 100).toFixed(1) })}%)`}
       </text>
     </g>
   );
@@ -86,7 +87,7 @@ const ProjectBudget: FC = () => {
 
   return (
     <Stack spacing={2}>
-      <Box sx={{ height: 250 }}>
+      <Box sx={{ height: 250, mb: 3 }}>
         <Typography variant="h3">موارد بودجه</Typography>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart width={250} height={250}>
@@ -106,10 +107,7 @@ const ProjectBudget: FC = () => {
               onMouseEnter={(_, index) => setActiveIndex(index)}
             >
               {budgets.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
+                <Cell key={index} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
           </PieChart>
