@@ -35,7 +35,7 @@ export const DonateDialog: FC<{ open: boolean; handleClose: () => void }> = ({
       donateDto: {
         amount,
         projectId: id as string,
-        callbackUrl: 'https://funding.amaj.dev/payment/result/',
+        callbackUrl: 'https://funding.amaj.dev/payment/result/' + id + '/',
       },
     })
       .unwrap()
