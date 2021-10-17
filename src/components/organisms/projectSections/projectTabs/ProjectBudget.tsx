@@ -65,8 +65,10 @@ const renderActiveShape = (props: any) => {
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
         textAnchor={textAnchor}
-        fill="#333"
-      >{`${translateNumber({ num: value })} تومان`}</text>
+        fill={fill}
+      >
+        {`${translateNumber({ num: value })} تومان`}
+      </text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
