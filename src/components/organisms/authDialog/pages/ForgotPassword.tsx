@@ -14,6 +14,7 @@ import {
 const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
   const [form, setForm] = useState<MailResetPasswordDto>({
     email: '',
+    callbackUrl: 'https://funding.amaj.dev/resetPassword/',
   });
 
   const [forgotPassword, { isLoading }] =

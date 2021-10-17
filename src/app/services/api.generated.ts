@@ -376,6 +376,59 @@ export const api = createApi({
         url: `/api/v1/payment/user/${queryArg.username}`,
       }),
     }),
+    blogControllerCreate: build.mutation<
+      BlogControllerCreateApiResponse,
+      BlogControllerCreateApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/api/v1/blog`,
+        method: 'POST',
+        body: queryArg.blogDto,
+      }),
+    }),
+    blogControllerFind: build.query<
+      BlogControllerFindApiResponse,
+      BlogControllerFindApiArg
+    >({
+      query: () => ({ url: `/api/v1/blog` }),
+    }),
+    blogControllerFindForAdmin: build.query<
+      BlogControllerFindForAdminApiResponse,
+      BlogControllerFindForAdminApiArg
+    >({
+      query: () => ({ url: `/api/v1/blog/all` }),
+    }),
+    blogControllerFindMyBlogs: build.query<
+      BlogControllerFindMyBlogsApiResponse,
+      BlogControllerFindMyBlogsApiArg
+    >({
+      query: () => ({ url: `/api/v1/blog/myBlogs` }),
+    }),
+    blogControllerGet: build.query<
+      BlogControllerGetApiResponse,
+      BlogControllerGetApiArg
+    >({
+      query: (queryArg) => ({ url: `/api/v1/blog/${queryArg.blogId}` }),
+    }),
+    blogControllerUpdate: build.mutation<
+      BlogControllerUpdateApiResponse,
+      BlogControllerUpdateApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/api/v1/blog/${queryArg.blogId}`,
+        method: 'PUT',
+        body: queryArg.blogDto,
+      }),
+    }),
+    blogControllerDelete: build.mutation<
+      BlogControllerDeleteApiResponse,
+      BlogControllerDeleteApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/api/v1/blog/${queryArg.blogId}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 export type UsersControllerCreateApiResponse = /** status 201  */ UserRo;
@@ -509,7 +562,7 @@ export type ProjectControllerGetApiResponse = /** status 200  */ ProjectRo;
 export type ProjectControllerGetApiArg = {
   projectId: string;
 };
-export type ProjectControllerUpdateApiResponse = /** status 200  */ ProjectRo;
+export type ProjectControllerUpdateApiResponse = unknown;
 export type ProjectControllerUpdateApiArg = {
   projectId: string;
   projectUpdateDto: ProjectUpdateDto;
@@ -556,6 +609,29 @@ export type PaymentControllerFindPaymentsOfUserApiResponse =
 export type PaymentControllerFindPaymentsOfUserApiArg = {
   username: string;
 };
+export type BlogControllerCreateApiResponse = /** status 201  */ BlogRo;
+export type BlogControllerCreateApiArg = {
+  blogDto: BlogDto;
+};
+export type BlogControllerFindApiResponse = /** status 200  */ BlogsRo;
+export type BlogControllerFindApiArg = void;
+export type BlogControllerFindForAdminApiResponse = /** status 200  */ BlogsRo;
+export type BlogControllerFindForAdminApiArg = void;
+export type BlogControllerFindMyBlogsApiResponse = /** status 200  */ BlogsRo;
+export type BlogControllerFindMyBlogsApiArg = void;
+export type BlogControllerGetApiResponse = /** status 200  */ BlogRo;
+export type BlogControllerGetApiArg = {
+  blogId: string;
+};
+export type BlogControllerUpdateApiResponse = unknown;
+export type BlogControllerUpdateApiArg = {
+  blogId: string;
+  blogDto: BlogDto;
+};
+export type BlogControllerDeleteApiResponse = unknown;
+export type BlogControllerDeleteApiArg = {
+  blogId: string;
+};
 export type MailConfigDto = {
   profile: boolean;
   supportedProjects: boolean;
@@ -570,7 +646,6 @@ export type UserRo = {
   lastName: string;
   email: string;
   roleNames: string[];
-  blog: string;
   avatarAddress: string;
   description: string;
   headline: string;
@@ -597,7 +672,6 @@ export type UserUpdateDto = {
   firstName?: string;
   lastName?: string;
   email?: string;
-  blog?: string;
   avatarAddress?: string;
   description?: string;
   headline?: string;
@@ -622,6 +696,7 @@ export type CheckPermissionDto = {
 };
 export type MailResetPasswordDto = {
   email: string;
+  callbackUrl: string;
 };
 export type ChangePasswordDto = {
   password: string;
@@ -706,10 +781,17 @@ export type ProjectRo = {
   timeDescription: string;
   timelines: TimelineDto[];
   imageUrls: string[];
-  state: 'FAILED' | 'FINISHED' | 'FINANCING' | 'REVIEWING' | 'START';
+  state:
+    | 'REJECTED'
+    | 'FAILED'
+    | 'FINISHED'
+    | 'FINANCING'
+    | 'REVIEWING'
+    | 'START';
   owner: UserRo;
   rewards: RewardRo[];
   reviews: ReviewRo[];
+  totalPayedMoney: number;
 };
 export type ProjectCreateDto = {
   subject: string;
@@ -745,7 +827,13 @@ export type ProjectUpdateDto = {
   timeDescription?: string;
   timelines?: TimelineDto[];
   imageUrls?: string[];
-  state?: 'FAILED' | 'FINISHED' | 'FINANCING' | 'REVIEWING' | 'START';
+  state?:
+    | 'REJECTED'
+    | 'FAILED'
+    | 'FINISHED'
+    | 'FINANCING'
+    | 'REVIEWING'
+    | 'START';
 };
 export type RewardDto = {
   title: string;
@@ -761,10 +849,12 @@ export type PaymentLinkRo = {
 };
 export type PayRewardDto = {
   rewardId: string;
+  callbackUrl: string;
 };
 export type DonateDto = {
   amount: number;
   projectId: string;
+  callbackUrl: string;
 };
 export type PaymentRo = {
   amount: number;
@@ -778,6 +868,22 @@ export type PaymentRo = {
 };
 export type PaymentsRo = {
   payments: PaymentRo[];
+};
+export type BlogRo = {
+  id: string;
+  name: string;
+  writer: UserRo;
+  blog: string;
+  mainPicture: string;
+  state: 'REJECTED' | 'ACCEPTED' | 'REVIEWING';
+};
+export type BlogDto = {
+  name: string;
+  blog: string;
+  mainPicture: string;
+};
+export type BlogsRo = {
+  blogs: BlogRo[];
 };
 export const {
   useUsersControllerCreateMutation,
@@ -822,4 +928,11 @@ export const {
   usePaymentControllerFindAllQuery,
   usePaymentControllerFindPaymentsOfProjectQuery,
   usePaymentControllerFindPaymentsOfUserQuery,
+  useBlogControllerCreateMutation,
+  useBlogControllerFindQuery,
+  useBlogControllerFindForAdminQuery,
+  useBlogControllerFindMyBlogsQuery,
+  useBlogControllerGetQuery,
+  useBlogControllerUpdateMutation,
+  useBlogControllerDeleteMutation,
 } = api;

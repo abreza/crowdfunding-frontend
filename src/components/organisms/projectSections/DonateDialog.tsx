@@ -31,7 +31,13 @@ export const DonateDialog: FC<{ open: boolean; handleClose: () => void }> = ({
       toast.error('لطفا مبلغ مورد نظر را وارد کنید.');
       return;
     }
-    donate({ donateDto: { amount, projectId: id as string } })
+    donate({
+      donateDto: {
+        amount,
+        projectId: id as string,
+        callbackUrl: 'https://funding.amaj.dev/payment/result/',
+      },
+    })
       .unwrap()
       .then(({ link }) => {
         window.location.href = link;
