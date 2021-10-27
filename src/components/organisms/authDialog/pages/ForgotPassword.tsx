@@ -14,7 +14,7 @@ import {
 const ForgotPassword: FC<PageProps> = ({ handleClose, changePage }) => {
   const [form, setForm] = useState<MailResetPasswordDto>({
     email: '',
-    callbackUrl: 'https://funding.mamalan.ir/resetPassword/',
+    callbackUrl: 'https://crowdfunding.mamalan.ir/resetPassword/',
   });
 
   const [forgotPassword, { isLoading }] =

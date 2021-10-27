@@ -35,7 +35,7 @@ export const DonateDialog: FC<{ open: boolean; handleClose: () => void }> = ({
       donateDto: {
         amount,
         projectId: id as string,
-        callbackUrl: 'https://funding.mamalan.ir/payment/result/' + id + '/',
+        callbackUrl: 'https://crowdfunding.mamalan.ir/payment/result/' + id + '/',
       },
     })
       .unwrap()
