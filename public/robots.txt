@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://funding.amaj.dev
+Host: https://crowdfunding.mamalan.ir
 
 # Sitemaps
-Sitemap: https://funding.amaj.dev/sitemap.xml
+Sitemap: https://crowdfunding.mamalan.ir/sitemap.xml
