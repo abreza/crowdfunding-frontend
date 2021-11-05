@@ -11,28 +11,7 @@ const EditProject: FC<{ project?: ProjectRo }> = ({
   return <CreateProject initProject={project} />;
 };
 
-export async function getServerSideProps() {
-  let projects: ProjectRo[] = [];
-  try {
-    const res = await axios.get<{ projects: ProjectRo[] }>(
-      baseUrl + 'project/'
-    );
-    projects = res.data.projects;
-  } catch (err) {
-    // console.log(err);
-  }
-
-  const paths = projects.map((project: ProjectRo) => ({
-    params: { pid: project.id },
-  }));
-
-  return {
-    paths,
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({
+export async function getServerSideProps({
   params: { pid },
 }: {
   params: { pid: string };
