@@ -11,7 +11,7 @@ const EditProject: FC<{ project?: ProjectRo }> = ({
   return <CreateProject initProject={project} />;
 };
 
-export async function getStaticPaths() {
+export async function getServerSideProps() {
   let projects: ProjectRo[] = [];
   try {
     const res = await axios.get<{ projects: ProjectRo[] }>(
