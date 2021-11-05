@@ -21,14 +21,12 @@ export async function getServerSideProps({
     const project = res.data;
     return {
       props: { project },
-      revalidate: 30,
     };
   } catch (err) {
     // console.log(err);
   }
   return {
     props: {},
-    revalidate: 30,
   };
 }
 export default EditProject;

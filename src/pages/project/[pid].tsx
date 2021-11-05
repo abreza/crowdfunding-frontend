@@ -85,7 +85,6 @@ export async function getServerSideProps({
     return project
       ? {
           props: { project },
-          revalidate: 30,
         }
       : { notFound: true };
   } catch (err) {
