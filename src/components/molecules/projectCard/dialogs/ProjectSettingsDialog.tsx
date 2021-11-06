@@ -27,23 +27,13 @@ export const ProjectSettingsDialog: FC<{
   const [projectState, setProjectState] = useState(project.state);
 
   const submit = () => {
-    const {
-      id: projectId,
-      owner,
-      rewards,
-      reviews,
-      ...projectUpdateDto
-    } = {
-      ...project,
-      state: projectState,
-    };
     updateProject({
-      projectId,
-      projectUpdateDto,
+      projectId: project.id,
+      projectUpdateDto: { state: projectState },
     })
       .unwrap()
       .then(() => {
-        toast.success('پروژه با موفقیت حذف شد.');
+        toast.success('پروژه با موفقیت تغییر وضعیت داد.');
         handleClose();
       })
       .catch(() => toast.error('ایرادی رخ‌داده است! دوباره تلاش کنید.'));
