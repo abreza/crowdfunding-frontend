@@ -30,27 +30,17 @@ const FetchProject: FC<{
   return <></>;
 };
 
-type ProjectProps = {
-  project?: ProjectRo;
-};
-
-const Project: FC<ProjectProps> = ({ project = initProjectContext }) => {
+const Project: FC = () => {
   const router = useRouter();
   const pid = /[^/]*$/.exec(router.asPath)?.[0];
-  const [proj, setProj] = useState(project);
 
-  useEffect(() => {
-    if (!router.isFallback) {
-      setProj(project);
-    }
-  }, [project]);
+  const { data } = useProjectControllerGetQuery({
+    projectId: pid as string,
+  });
 
   return (
     <Homepage>
-      <ProjectContext.Provider value={proj}>
-        {router.isFallback && pid && (
-          <FetchProject setProject={setProj} projectId={pid} />
-        )}
+      <ProjectContext.Provider value={data || initProjectContext}>
         <Container maxWidth="md" sx={{ py: 3 }}>
           <ProjectHead />
           <Grid
@@ -74,23 +64,23 @@ const Project: FC<ProjectProps> = ({ project = initProjectContext }) => {
   );
 };
 
-export async function getServerSideProps({
-  params: { pid },
-}: {
-  params: { pid: string };
-}) {
-  try {
-    const res = await axios(baseUrl + 'project/' + pid);
-    const project = res.data;
-    return project
-      ? {
-          props: { project },
-        }
-      : { notFound: true };
-  } catch (err) {
-    // console.log(err);
-  }
-  return { notFound: true };
-}
+// export async function getServerSideProps({
+//   params: { pid },
+// }: {
+//   params: { pid: string };
+// }) {
+//   try {
+//     const res = await axios(baseUrl + 'project/' + pid);
+//     const project = res.data;
+//     return project
+//       ? {
+//           props: { project },
+//         }
+//       : { notFound: true };
+//   } catch (err) {
+//     // console.log(err);
+//   }
+//   return { notFound: true };
+// }
 
 export default Project;
